@@ -1,11 +1,12 @@
-<nav id="nav-bar">
+<nav id="nav-bar" class="space-between">
     <div class="nav-elements">
-        <span class="logo">Heartbreaker</span>
+        <span class="logo small-gap">
+            <img src="/Images/RedKobolt.png">
+            <span class="emphasized-text">Heartbreaker</span>
+        </span>
     </div>
-    <div class="nav-elements" data-bind="foreach: NavigationOptions">
-        <!-- <a class="link" data-bind="text: $data, click: $parent.lastClickedOnView">Link</a> -->
+    <div class="nav-elements small-gap" data-bind="foreach: NavigationOptions">
         <button class="wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
-        <!-- <span data-bind="if: $parent.showDivider()" class="dividers">|</span>  -->
     </div>
 </nav>
 
@@ -17,29 +18,21 @@
         <div id="design-section">
             <div><img src="/Images/logo(1).png" alt="Chenevert Software Services" /></div>
             <div>
-                Built with <span class="button-icon centered"><img src="/Images/Heart_corazón.svg", alt="love"></span> by Chenevert Software Services. <br> Building aesthetically beautiful and technically excellent code since 2025.
+                Building aesthetically beautiful and technically excellent code since 2025.
             </div>
         </div>
     
-        <div id="contacts-section">
-            <h2>Contact</h2>
-            
-            <b>Email: </b> ChenevertSoftwareServices@gmail.com <br>
-            
-            <b>Social Media: </b>
-            <span>
-                <button class="button-icon pop-content centered">
-                    <a class="button-link" href="https://github.com/UlricChenevert">
-                        <img src="/Images/discord-icon-svgrepo-com.svg" alt="Discord" />
-                    </a>
+        <div class="small-gap">
+            <div>
+                <button class="wizard-button">
+                    <a  href="https://github.com/hb-rpg/hb-rpg.github.io">Contribute to Heartbreaker</a>
                 </button>
-        
-                <button class="button-icon pop-content centered">
-                    <a class="button-link" href="https://www.linkedin.com/in/william-chenevert">
-                        <img src="/Images/linkedin-svgrepo-com.svg" alt="Linkedin" />
-                    </a>
+            </div>
+            <div>
+                <button class="wizard-button">
+                    <a href="https://github.com/hb-rpg/hb-rpg.github.io/issues/new">Report bugs</a>
                 </button>
-            </span>
+            </div>
         </div>
     </div>
 
