@@ -1,37 +1,36 @@
 @import "./variables.less";
 
 #nav-bar {
-    background-color: @pop-color; 
     padding: @standard-padding; 
-    filter: drop-shadow(0 0 0.5em #000000);
-    position: sticky;
+    // filter: drop-shadow(0 0 0.5em #000000);
+    position: fixed;
     top:0;
     display: flex;
-    flex-direction: column;
-    max-width: 100vw;
+    width: 100vw;
 
     z-index: 999;
 
-    // button {
-    //     border: 1;
-    //     border-color: transparent;
-    //     border-radius: 0.5em;
-    //     padding: auto;
-
-    //     background-color: transparent;
-
-    //     &:hover, &:focus {
-    //         background-color: @hover-color;
-    //         outline: none;
-    //         transform: scale(1.3);
-    //     }
-    // }
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 
     .nav-elements {
         display: flex; 
         justify-content:space-evenly;
         align-items: center;
         flex-wrap: wrap;
+    }
+
+    .wizard-button {
+        border: none;
+        background: none;
+        text-transform: uppercase;
+        color: @text-color;
+    }
+
+    .wizard-button:hover {
+        background: transparent;
     }
 
     @media only screen and (max-width: @max-size-before-element-reaction) {
@@ -45,9 +44,13 @@
     }
 
     .logo {
-        font-family: 'Knewave-Regular', Arial;
+        // font-family: 'Metamorphous-Regular', Arial;
         font-weight: bold;
         font-size: @title-font-size;
+
+        img {
+            height: 2em;
+        }
     }
 
 }

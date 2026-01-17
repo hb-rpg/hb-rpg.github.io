@@ -1,13 +1,28 @@
 @import "./variables.less";
 #custom-article {
-    @media (width <= @max-size-before-element-reaction) {
-        margin: 0;
-    }
-    margin: 0 15%;
-    padding: @article-top-padding @article-side-padding;
-    background-color: @article-color;
+    border: 1.3px black solid;
+    border-radius: 1em;
+    margin: 1em 3em;
+    background-position-x: center;
     min-height: 90vh;
+    padding: 3em;
+    margin-top: 5em;
 }
+
+.product-text {
+    margin-top: 1.5em;
+    font-size: 5em;
+    font-weight: bold;
+
+    .emphasize {
+        margin-left: 2em;
+        background-color: @colorA;
+        color: white;
+        letter-spacing: 4px;
+        padding: 0.1em 0.5em 0.1em 0.5em
+    }
+}
+
 
 #custom-article section {
     @media (width <= @max-size-before-element-reaction) {

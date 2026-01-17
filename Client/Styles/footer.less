@@ -4,12 +4,24 @@
     display: flex;
     text-align: center;
     flex-direction: column;
-    background-color: @pop-color;
+    background-color: @background-color;
     color: @less-important-text-color;
+    padding: 0 3em 2em 3em;
 
     .centered {
          display: inline-flex;
     }
+
+    .wizard-button {
+        border: none;
+        background: none;
+        text-transform: uppercase;
+        color: @text-color;
+    }
+
+    .wizard-button:hover {
+        background: transparent;
+    }   
 
     #sections {
         display: flex;

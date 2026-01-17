@@ -127,6 +127,8 @@
     appearance: none;
     color: @text-color;
 
+    overflow-x: scroll;
+
     border: 1px solid fade(@pop-color, 30%);
     border-radius: 0.2em;
 
@@ -237,6 +239,17 @@
     font-size: 1.2em;
 }
 
+.emphasized-text {
+    // font-family: var(--header-font);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 2em;
+}
+
 .hoverable-container {
     border: 1px solid #ccc;
     border-radius: 0.5em;
@@ -260,6 +273,13 @@
 .hoverable-container:hover {
     outline: 1px solid #ccc;
     box-shadow: 0 0 1.0em 0.5em rgba(0, 0, 0, 0.10);
+}
+
+.home-cover {
+    background-image: url("/Images/CharacterCreator/Human/RR MEN SPELLCASTER Ray Spell Dean Spencer.png");
+    
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .cover {
@@ -309,10 +329,12 @@
 }
 
 .wizard-button {
-    background: @pop-color;
-    color: @text-color;
+    background: @background-color;
+    // color: @text-color;
 
-    border: 1px solid fade(@pop-color, 30%);
+    border-radius: 0.5em;
+    color: @pop-color;
+    border: 1px solid @pop-color;
     border-radius: 0.2em;
 
     padding: @standard-padding @standard-padding;
@@ -330,28 +352,34 @@
     white-space: nowrap;
     -webkit-appearance: none;
     appearance: none;
+    
 }
 
 .fill-row {
     flex-grow: 1;
 }
 
-// .x-y-centered {
-    
-// }
 
 .random-button:hover {
     animation: shake 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
-.wizard-button:focus, .wizard-button:hover, .button-icon:focus, .button-icon:hover {
+.wizard-button:focus, .wizard-button:hover {
     transform: scale(1.10);
     cursor: pointer;
+    border-radius: 0.25em;
+    border: none;
+    color:@background-color;
+    background-color: @pop-color;
+    background: @hover-color;
 }
 
-.wizard-button:hover, .wizard-button:focus {
-    background: @hover-color;
-}   
+.button-icon:focus, .button-icon:hover {
+    transform: scale(1.10);
+    
+}
+
+
 
 .selected-button {
     background: @hover-color !important; 
@@ -623,13 +651,15 @@ hr {
 }
 
 .character-sheet-container {
-    background: radial-gradient(circle at top, @article-color, @fade-background-color 150%);
+    // background: radial-gradient(circle at top, @article-color, @fade-background-color 150%);
+    background: white;
     width: 80vw;
     padding: 1em;
 
     display: flex;
     flex-direction: column;
     transition: all 2s ease-in-out;
+    border-radius: 2em;
 
     .header {
         display: flex;

@@ -3,7 +3,6 @@
 @import "./fonts.less";
 @import "./variables.less";
 @import "./article.less";
-@import "./game.less";
 @import "./characterCreation.less";
 @import "./carousel.less";
 @import "./toolTip.less";
@@ -19,7 +18,7 @@ body {
     // @media (width <= @max-size-before-element-reaction) {font-size: @small-font-size;}
 
     font-size: @body-font-size;
-    background-color: @pop-color;
+    background-color: @background-color;
 
     min-height: 100vh;
 
@@ -83,8 +82,6 @@ img {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-
-    background-color: @fade-background-color;
 
     nav {
         flex-grow: 1;
