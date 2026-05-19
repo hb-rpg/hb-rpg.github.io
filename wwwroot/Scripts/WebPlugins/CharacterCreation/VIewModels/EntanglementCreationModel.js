@@ -8,7 +8,7 @@
 // import { TaggedCharacterData } from "../Contracts/TaggedData.js";
 // export class EntanglementCreationModel implements IWizardModel<void, TaggedCharacterData<Entanglements>, TaggedCharacterData<Entanglements>> {
 //     FriendlyName = "Entanglement"
-//     ViewUrl = "PartialViews/EntanglementsView.html"
+//     ViewUrl = "PartialViews/CharacterCreation/EntanglementsView.html"
 //     isLoading: Observable<boolean>;
 //     createdEntanglementsName : Observable<string>
 //     entanglementPronoun : PronounType | undefined

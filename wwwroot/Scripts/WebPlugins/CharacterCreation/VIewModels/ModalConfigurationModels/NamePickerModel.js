@@ -20,7 +20,7 @@ export class NamePickerModel {
     possibleBynames;
     possibleEpithets;
     FriendlyName = "Name";
-    ViewUrl = "PartialViews/NamePickerView.html";
+    ViewUrl = "PartialViews/CharacterCreation/NamePickerView.html";
     isLoading;
     NamePicker;
     BynamePicker;

@@ -20,5 +20,5 @@ export class LanguagePreviewModel {
     }
     isLoading = ko.observable(false);
     Init = () => Promise.resolve();
-    ViewUrl = "/PartialViews/LanguagePreview.html";
+    ViewUrl = "PartialViews/CharacterCreation/LanguagePreview.html";
 }

@@ -15,7 +15,7 @@
 // import { CharacterName } from "../Contracts/CharacterName.js";
 // import { getCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
 // export class PropensityViewModel implements ICharacterWizardViewModel<void, void> {
-//     ViewUrl = "PartialViews/PropensityView.html"
+//     ViewUrl = "PartialViews/CharacterCreation/PropensityView.html"
 //     isLoading: Observable<boolean>;
 //     FriendlyName = "Ancestry    "
 //     ChosenRace : ko.Observable<RaceType>

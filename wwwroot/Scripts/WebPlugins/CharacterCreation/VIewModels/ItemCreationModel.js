@@ -2,7 +2,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 export class ItemCreationModel {
     possibleItems;
     FriendlyName = "Items";
-    ViewUrl = "PartialViews/ItemCreationView.html";
+    ViewUrl = "PartialViews/CharacterCreation/ItemCreationView.html";
     isLoading;
     chosenItem;
     createdItemName;

@@ -16,7 +16,7 @@ export class JobBackgroundPickerModel {
     ProfessionsJobs;
     JobsStory;
     JobToJobSubsets;
-    ViewUrl = "PartialViews/JobBackgroundPicker.html";
+    ViewUrl = "PartialViews/CharacterCreation/JobBackgroundPicker.html";
     isLoading;
     FriendlyName = "Class History Picker";
     chosenProfession;

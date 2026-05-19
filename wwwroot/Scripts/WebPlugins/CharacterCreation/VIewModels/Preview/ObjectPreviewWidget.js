@@ -7,5 +7,5 @@
 //         public Description: string) { }
 //     isLoading: Observable<boolean> = ko.observable(false);
 //     Init = () => Promise.resolve();
-//     public ViewUrl = "/PartialViews/LanguagePreview.html";
+//     public ViewUrl = "PartialViews/CharacterCreation/LanguagePreview.html";
 // }

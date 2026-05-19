@@ -24,5 +24,5 @@ export class SimplePreviewModel implements IConfigurableViewModel {
     }
     isLoading: Observable<boolean> = ko.observable(false);
     Init = () => Promise.resolve();
-    public ViewUrl = "/PartialViews/SimplePreviewView.html"
+    public ViewUrl = "PartialViews/CharacterCreation/SimplePreviewView.html"
 }

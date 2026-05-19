@@ -3,7 +3,7 @@ export class ModalFrameModel {
     FriendlyName;
     ModalModel;
     isConfiguredCallback;
-    ViewUrl = "PartialViews/ModalView.html";
+    ViewUrl = "PartialViews/WebCore/ModalView.html";
     isLoading;
     isVisible;
     constructor(FriendlyName, ModalModel, isConfiguredCallback) {

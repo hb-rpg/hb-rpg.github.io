@@ -2,7 +2,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 export class EdgesCreationModel {
     possibleEdges;
     FriendlyName = "Edges";
-    ViewUrl = "PartialViews/EdgesCreationView.html";
+    ViewUrl = "PartialViews/CharacterCreation/EdgesCreationView.html";
     isLoading;
     chosenEdge;
     chosenEdgeDescription;

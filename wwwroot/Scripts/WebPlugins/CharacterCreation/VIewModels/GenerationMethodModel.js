@@ -6,7 +6,7 @@ export class EntryConfigurationModel {
     nextPanel;
     characterWizardRandomize;
     FriendlyName = "Generation Method";
-    ViewUrl = "PartialViews/GenerationMethod.html";
+    ViewUrl = "PartialViews/CharacterCreation/GenerationMethod.html";
     isLoading;
     RaceDropDownViewModel = Utility.BundleViewAndModel(new DropDownButtonModel("Quickstart", [
         { Name: "Human", clickFunction: () => { this.SetRace("Human"); } },

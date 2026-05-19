@@ -20,5 +20,5 @@ export class SimplePreviewModel {
     }
     isLoading = ko.observable(false);
     Init = () => Promise.resolve();
-    ViewUrl = "/PartialViews/SimplePreviewView.html";
+    ViewUrl = "PartialViews/CharacterCreation/SimplePreviewView.html";
 }

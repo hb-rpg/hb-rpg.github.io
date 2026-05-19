@@ -12,7 +12,7 @@ const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "W
 
 export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
     FriendlyName = "Ability Scores";
-    ViewUrl = "PartialViews/SkillsView.html"
+    ViewUrl = "PartialViews/CharacterCreation/SkillsView.html"
     isLoading: Observable<boolean>;
 
     abilityPickers: Record<string, IPartialViewModel<LockableObjectPickerModel<number>>> = {};

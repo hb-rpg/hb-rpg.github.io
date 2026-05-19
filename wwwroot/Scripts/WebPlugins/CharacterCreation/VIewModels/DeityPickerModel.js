@@ -4,7 +4,7 @@ import { Deity } from "../Contracts/Diety.js";
 export class DeityCreationModel {
     possibleDeities;
     FriendlyName;
-    ViewUrl = "PartialViews/DeityPickerView.html";
+    ViewUrl = "PartialViews/CharacterCreation/DeityPickerView.html";
     isLoading;
     chosenDeity;
     chosenDeityDescription;

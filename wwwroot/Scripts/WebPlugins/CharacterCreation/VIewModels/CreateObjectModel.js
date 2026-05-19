@@ -9,7 +9,7 @@ export class CreateObjectModel {
     isConfiguredCallback;
     EvaluationCallback;
     GlobalCharacterData;
-    ViewUrl = "PartialViews/CreateObjectView.html";
+    ViewUrl = "PartialViews/CharacterCreation/CreateObjectView.html";
     isLoading;
     item;
     modal;

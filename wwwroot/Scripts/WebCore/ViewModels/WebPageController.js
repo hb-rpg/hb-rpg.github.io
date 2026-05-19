@@ -1,7 +1,7 @@
 import { ko } from "../../Framework/Knockout/ko.js";
 // Controls url, current page, and navigation within SPA
 export class WebPageController {
-    ViewUrl = "/PartialViews/WebPageView.html";
+    ViewUrl = "PartialViews/WebCore/WebPageView.html";
     isLoading;
     NavigationOptions;
     CurrentPage;

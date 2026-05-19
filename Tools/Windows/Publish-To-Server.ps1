@@ -15,11 +15,11 @@ param(
 )
 
 # --- Configuration ---
-$DirectoryName = "Blog"
+$DirectoryName = "Heartbreaker"
 $LocalDir = ".\$DirectoryName"
 $RemotePath = "/var/www/" # The target parent path on the server
 $Framework = "net9.0" # IMPORTANT: Update this to your target framework version
-$ServiceName = "Blog"
+$ServiceName = "Heartbreaker"
 
 # --- 1. Preparation and Build ---
 Write-Host "--- 1. Building and Publishing Application ---"

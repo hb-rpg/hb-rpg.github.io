@@ -5,7 +5,7 @@ import { MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
 
 export class EdgesCreationModel implements IWizardModel<void, Edges, Edges | undefined> {
     FriendlyName = "Edges"
-    ViewUrl = "PartialViews/EdgesCreationView.html"
+    ViewUrl = "PartialViews/CharacterCreation/EdgesCreationView.html"
     isLoading: Observable<boolean>;
     
     chosenEdge : Observable<Edges>

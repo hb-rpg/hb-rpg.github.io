@@ -3,7 +3,7 @@ export class PaneledOptions {
     Options;
     rowAmount;
     visibleRows;
-    ViewUrl = "PartialViews/PaneledOptions.html";
+    ViewUrl = "PartialViews/WebCore/PaneledOptions.html";
     isLoading;
     currentPanelIndex;
     selectedPanelIndex;

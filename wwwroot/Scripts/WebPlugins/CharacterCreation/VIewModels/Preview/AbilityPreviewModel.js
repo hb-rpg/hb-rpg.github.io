@@ -22,5 +22,5 @@ export class AbilityPreviewModel {
     }
     isLoading = ko.observable(false);
     Init = () => Promise.resolve();
-    ViewUrl = "/PartialViews/AbilityPreview.html";
+    ViewUrl = "PartialViews/CharacterCreation/AbilityPreview.html";
 }

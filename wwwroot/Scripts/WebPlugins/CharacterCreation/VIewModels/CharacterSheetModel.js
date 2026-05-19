@@ -8,7 +8,7 @@ import { flattenAndCombineSelectionPackage } from "../Utility/UpdateUtility.js";
 export class CharacterSheetModel {
     GlobalCharacterData;
     FriendlyName = "Character Sheet";
-    ViewUrl = "PartialViews/CharacterSheetView.html";
+    ViewUrl = "PartialViews/CharacterCreation/CharacterSheetView.html";
     isLoading;
     jsonText;
     showOutput;

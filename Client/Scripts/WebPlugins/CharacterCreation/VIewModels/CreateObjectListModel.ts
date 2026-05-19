@@ -6,7 +6,7 @@ import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 
 export class CreateObjectListModel<T> implements ICharacterWizardViewModel<void, void> {
-    readonly ViewUrl = "PartialViews/CreateObjectListView.html";
+    readonly ViewUrl = "PartialViews/CharacterCreation/CreateObjectListView.html";
     isLoading: Observable<boolean>;
 
     itemList : ObservableArray<Observable<T>>

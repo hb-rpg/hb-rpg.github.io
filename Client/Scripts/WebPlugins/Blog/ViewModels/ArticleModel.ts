@@ -5,7 +5,7 @@ import { Utility } from "../../../WebCore/Utility.js";
 
 export class ArticleModel implements IHTMLInjectable<void> {
     isLoading: Observable<boolean>;
-    public readonly ViewUrl : string = "/PartialViews/ArticleView.html"
+    public readonly ViewUrl : string = "PartialViews/Blog/ArticleView.html"
 
     Blog: IPartialViewModel<BlogModel>
     

@@ -13,7 +13,7 @@
 // import { ClassBackgrounds, possibleClasses, possibleJobs } from "../Configuration/CareerGroupBackgroundData.js"
 // import { Moralities, Order } from "../Configuration/DispositionData.js"
 // export class BackgroundViewModel implements ICharacterWizardViewModel<void, void> {
-//     ViewUrl = "PartialViews/BackgroundView.html"
+//     ViewUrl = "PartialViews/CharacterCreation/BackgroundView.html"
 //     isLoading: Observable<boolean>
 //     FriendlyName = "Background"
 //     ChosenAge : ko.Observable<AgeType>

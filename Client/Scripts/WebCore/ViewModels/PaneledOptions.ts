@@ -2,7 +2,7 @@ import { Observable, ObservableArray } from "../../Framework/Knockout/knockout.j
 import { ko } from "../../Framework/Knockout/ko.js";
 
 export class PaneledOptions<T> implements IHTMLInjectable<void>, IEvaluatable<T> {
-    ViewUrl = "PartialViews/PaneledOptions.html";
+    ViewUrl = "PartialViews/WebCore/PaneledOptions.html";
     isLoading: Observable<boolean>;
 
     currentPanelIndex : Observable<number>

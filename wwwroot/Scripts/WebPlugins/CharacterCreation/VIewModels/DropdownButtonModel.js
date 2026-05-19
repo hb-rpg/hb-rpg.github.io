@@ -2,7 +2,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 export class DropDownButtonModel {
     FirstOptionName;
     buttonOptions;
-    ViewUrl = "PartialViews/DropDownButton.html";
+    ViewUrl = "PartialViews/CharacterCreation/DropDownButton.html";
     isLoading;
     isDropdownVisible;
     constructor(FirstOptionName, buttonOptions) {

@@ -9,7 +9,7 @@ import { flattenAndFilterSelectionPackage } from "../../Utility/FilterUtility.js
 import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 
 export class SelectionPackageConfigurationModel<SelectionType> implements ICharacterWizardViewModel<void, TaggedObservableSelectionPackage<SelectionType>> {
-    ViewUrl = "PartialViews/SelectionPackageConfigurationView.html";
+    ViewUrl = "PartialViews/CharacterCreation/SelectionPackageConfigurationView.html";
     isLoading: Observable<boolean>;
 
     fixedChoices : ObservableArray<ObjectPreview>

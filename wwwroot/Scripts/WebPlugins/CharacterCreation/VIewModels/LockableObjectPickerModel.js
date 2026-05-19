@@ -7,7 +7,7 @@ export class LockableObjectPickerModel {
     DefaultValue;
     determineSelectionPreview;
     determineWidgetPreview;
-    ViewUrl = "PartialViews/LockableObjectPickerModel.html";
+    ViewUrl = "PartialViews/CharacterCreation/LockableObjectPickerModel.html";
     isLoading;
     widgetPreviewText;
     selectedUIValueObservable;

@@ -8,7 +8,7 @@ import { Observable } from "../../../../Framework/Knockout/knockout.js";
 import { getCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js";
 
 export class AncestryViewModel implements IWizardModel<void, RaceType> {
-    ViewUrl = "PartialViews/PropensityView.html"
+    ViewUrl = "PartialViews/CharacterCreation/PropensityView.html"
     isLoading: Observable<boolean>;
     FriendlyName = "Ancestry"
     

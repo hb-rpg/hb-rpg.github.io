@@ -8,7 +8,7 @@
 // import { DeityCreationModel } from "./DeityPickerModel.js";
 // import { Deity } from "../Contracts/Diety.js";
 // export class ReligionPickerModel implements ICharacterWizardViewModel<void, Deity[]> {
-//     readonly ViewUrl = "PartialViews/ReligionPickerView.html";
+//     readonly ViewUrl = "PartialViews/CharacterCreation/ReligionPickerView.html";
 //     FriendlyName = "Religion" 
 //     isLoading: Observable<boolean>;
 //     isMonotheist : Observable<boolean>

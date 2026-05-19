@@ -4,7 +4,7 @@ import { Utility } from "../../../WebCore/Utility.js";
 export class ArticleModel {
     BlogUrl;
     isLoading;
-    ViewUrl = "/PartialViews/ArticleView.html";
+    ViewUrl = "PartialViews/Blog/ArticleView.html";
     Blog;
     constructor(BlogUrl) {
         this.BlogUrl = BlogUrl;

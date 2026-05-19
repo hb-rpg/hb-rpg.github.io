@@ -5,7 +5,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 export type ButtonOption = {Name: string, clickFunction : Function}
 
 export class DropDownButtonModel implements IHTMLInjectable<void> {
-    readonly ViewUrl = "PartialViews/DropDownButton.html";
+    readonly ViewUrl = "PartialViews/CharacterCreation/DropDownButton.html";
     isLoading: Observable<boolean>;
     isDropdownVisible: Observable<boolean>;
 

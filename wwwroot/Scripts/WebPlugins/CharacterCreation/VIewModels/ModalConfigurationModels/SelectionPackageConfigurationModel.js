@@ -10,7 +10,7 @@ export class SelectionPackageConfigurationModel {
     DetermineName;
     DetermineDescription;
     IsConfigured;
-    ViewUrl = "PartialViews/SelectionPackageConfigurationView.html";
+    ViewUrl = "PartialViews/CharacterCreation/SelectionPackageConfigurationView.html";
     isLoading;
     fixedChoices;
     selectableChoices;

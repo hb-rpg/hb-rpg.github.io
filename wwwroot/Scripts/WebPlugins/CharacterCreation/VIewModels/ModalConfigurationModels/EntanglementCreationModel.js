@@ -7,7 +7,7 @@ import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 export class EntanglementCreationModel {
     GlobalCharacterData;
     FriendlyName = "Entanglement";
-    ViewUrl = "PartialViews/EntanglementsConfigurationView.html";
+    ViewUrl = "PartialViews/CharacterCreation/EntanglementsConfigurationView.html";
     isLoading;
     Pickers;
     ConfiguredEntanglements;

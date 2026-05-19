@@ -10,7 +10,7 @@ export class CreateObjectListModel {
     initializationCallback;
     GlobalCharacterData;
     subheading;
-    ViewUrl = "PartialViews/CreateObjectListView.html";
+    ViewUrl = "PartialViews/CharacterCreation/CreateObjectListView.html";
     isLoading;
     itemList;
     modal;

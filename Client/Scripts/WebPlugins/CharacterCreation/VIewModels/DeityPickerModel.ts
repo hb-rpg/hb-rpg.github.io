@@ -5,7 +5,7 @@ import { Deity } from "../Contracts/Diety.js";
 import { PronounType } from "../Contracts/StringTypes.js";
 
 export class DeityCreationModel implements IWizardModel<void, Deity, Deity> {
-    ViewUrl = "PartialViews/DeityPickerView.html"
+    ViewUrl = "PartialViews/CharacterCreation/DeityPickerView.html"
     isLoading: Observable<boolean>;
     
     chosenDeity : Observable<Deity>

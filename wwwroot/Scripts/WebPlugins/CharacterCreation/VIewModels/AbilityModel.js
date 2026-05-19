@@ -7,7 +7,7 @@ const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "W
 export class SkillsModel {
     GlobalCharacterData;
     FriendlyName = "Ability Scores";
-    ViewUrl = "PartialViews/SkillsView.html";
+    ViewUrl = "PartialViews/CharacterCreation/SkillsView.html";
     isLoading;
     abilityPickers = {};
     PictureUrl;

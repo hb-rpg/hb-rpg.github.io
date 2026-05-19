@@ -1,7 +1,7 @@
 import { ko } from "../../Framework/Knockout/ko.js";
 export class HelpIconModel {
     HelpfulText;
-    ViewUrl = "PartialViews/HelpView.html";
+    ViewUrl = "PartialViews/WebCore/HelpView.html";
     isLoading;
     isShowingHelpfulText;
     Init() { return Promise.resolve(); }

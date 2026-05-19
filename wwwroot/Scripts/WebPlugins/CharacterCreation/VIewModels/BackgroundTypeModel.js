@@ -7,7 +7,7 @@
 // import { ko } from "../../../Framework/Knockout/ko.js";
 // import { Utility } from "../../../WebCore/Utility.js";
 // export class BackgroundStoryPickerModel<NameType> implements ICharacterWizardViewModel<void, StoryModel<NameType>> {
-//     readonly ViewUrl = "PartialViews/BackgroundStoryPicker.html";
+//     readonly ViewUrl = "PartialViews/CharacterCreation/BackgroundStoryPicker.html";
 //     isLoading: Observable<boolean>;
 //     ChosenBackground : ko.Observable<string>
 //     ChosenStory : ko.Observable<StoryModel<NameType>>

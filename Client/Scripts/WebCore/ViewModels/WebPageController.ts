@@ -5,7 +5,7 @@ import { PageOption } from "../Contracts/PageOption.js";
 // Controls url, current page, and navigation within SPA
 
 export class WebPageController implements IHTMLInjectable<void> {
-    readonly ViewUrl = "/PartialViews/WebPageView.html";
+    readonly ViewUrl = "PartialViews/WebCore/WebPageView.html";
     isLoading: Observable<boolean>;
     NavigationOptions : PageOption[]
     CurrentPage : ko.Observable<IPartialViewModel<IHTMLInjectable<void>>>

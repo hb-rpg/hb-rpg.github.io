@@ -7,7 +7,7 @@ import { RaceType } from "../Contracts/StringTypes.js";
 
 export class EntryConfigurationModel implements IWizardModel<void, void> {
     readonly FriendlyName = "Generation Method";
-    readonly ViewUrl = "PartialViews/GenerationMethod.html";
+    readonly ViewUrl = "PartialViews/CharacterCreation/GenerationMethod.html";
     isLoading: Observable<boolean>;
 
     RaceDropDownViewModel = Utility.BundleViewAndModel(new DropDownButtonModel("Quickstart", [

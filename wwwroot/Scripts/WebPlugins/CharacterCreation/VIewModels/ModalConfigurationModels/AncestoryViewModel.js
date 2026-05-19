@@ -5,7 +5,7 @@ import { getCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js"
 export class AncestryViewModel {
     GlobalCharacterData;
     PossibleRaces;
-    ViewUrl = "PartialViews/PropensityView.html";
+    ViewUrl = "PartialViews/CharacterCreation/PropensityView.html";
     isLoading;
     FriendlyName = "Ancestry";
     ChosenRace;

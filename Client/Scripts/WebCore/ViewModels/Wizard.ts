@@ -2,7 +2,7 @@ import { ko } from "../../Framework/Knockout/ko.js";
 import { Observable } from "../../Framework/Knockout/knockout.js";
 
 export class Wizard implements IWizardModel<void, string> {
-    ViewUrl: string = '/PartialViews/WizardView.html'
+    ViewUrl: string = 'PartialViews/WebCore/WizardView.html'
     isLoading: Observable<boolean>;
 
     panels : IPartialViewModel<IWizardModel<void, void>>[]

@@ -10,7 +10,7 @@ import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 
 export class EntanglementCreationModel implements ICharacterWizardViewModel<void, OrganizationEntanglementsGroup> {
     FriendlyName = "Entanglement";
-    ViewUrl = "PartialViews/EntanglementsConfigurationView.html"
+    ViewUrl = "PartialViews/CharacterCreation/EntanglementsConfigurationView.html"
     isLoading: Observable<boolean>;
 
     Pickers: Record<EntanglementOrganizationTypesEnum, IPartialViewModel<LockableObjectPickerModel<DispositionsEnum>>>;

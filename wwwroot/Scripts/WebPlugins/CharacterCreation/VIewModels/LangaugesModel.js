@@ -5,7 +5,7 @@
 // import { MultiTaggedCharacterData, TaggedCharacterData } from "../Contracts/TaggedData.js";
 // export class LanguageModel implements IWizardModel<void, LearnedLanguage, LearnedLanguage | undefined> {
 //     FriendlyName = "Languages"
-//     ViewUrl = "PartialViews/LanguageView.html"
+//     ViewUrl = "PartialViews/CharacterCreation/LanguageView.html"
 //     isLoading: Observable<boolean>;
 //     chosenLanguage : Observable<MultiTaggedCharacterData<Language>>
 //     canSpeak : Observable<boolean>

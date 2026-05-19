@@ -12,7 +12,7 @@ import { flattenAndCombineSelectionPackage } from "../Utility/UpdateUtility.js";
 
 export class CharacterSheetModel implements ICharacterWizardViewModel<void, void> {
     FriendlyName = "Character Sheet";
-    ViewUrl = "PartialViews/CharacterSheetView.html";
+    ViewUrl = "PartialViews/CharacterCreation/CharacterSheetView.html";
     isLoading: Observable<boolean>;
 
     jsonText : ko.Observable<string>

@@ -1,7 +1,7 @@
 import { ko } from "../../Framework/Knockout/ko.js";
 export class Wizard {
     FriendlyName;
-    ViewUrl = '/PartialViews/WizardView.html';
+    ViewUrl = 'PartialViews/WebCore/WizardView.html';
     isLoading;
     panels;
     currentPanelIndex;

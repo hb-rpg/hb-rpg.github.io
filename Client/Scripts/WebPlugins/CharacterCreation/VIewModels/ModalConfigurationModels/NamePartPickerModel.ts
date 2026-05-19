@@ -5,7 +5,7 @@ import { Utility } from "../../../../WebCore/Utility.js";
 import { MultiTaggedCharacterData } from "../../Contracts/TaggedData.js";
 
 export class NamePartPickerModel implements IWizardModel<void, string, string | undefined> {
-    ViewUrl = "PartialViews/NamePartPicker.html"
+    ViewUrl = "PartialViews/CharacterCreation/NamePartPicker.html"
     isLoading: Observable<boolean>;
 
     chosenValueOption : ko.Observable<MultiTaggedCharacterData<string> | undefined>

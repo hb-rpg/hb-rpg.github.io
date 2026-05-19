@@ -4,7 +4,7 @@ import { ko } from "../../Framework/Knockout/ko.js";
 export class ModalFrameModel<ResolveType, EvaluateType, InitializationType, ModelType extends IWizardModel<ResolveType, EvaluateType, InitializationType> >
     implements IWizardModel<ResolveType, EvaluateType, InitializationType> 
 {
-    readonly ViewUrl = "PartialViews/ModalView.html";
+    readonly ViewUrl = "PartialViews/WebCore/ModalView.html";
     isLoading: Observable<boolean>;
     isVisible: Observable<boolean>;
 

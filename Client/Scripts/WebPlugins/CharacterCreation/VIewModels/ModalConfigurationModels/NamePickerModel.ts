@@ -13,7 +13,7 @@ class NameDecoration {constructor(public Preview: string, public Byname : boolea
 
 export class NamePickerModel implements ICharacterWizardViewModel<void, CharacterName> {
     FriendlyName = "Name"
-    ViewUrl = "PartialViews/NamePickerView.html"
+    ViewUrl = "PartialViews/CharacterCreation/NamePickerView.html"
     isLoading: Observable<boolean>;
     
     NamePicker : IPartialViewModel<NamePartPickerModel>

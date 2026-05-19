@@ -4,7 +4,7 @@ import { Item, MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
 
 export class ItemCreationModel implements IWizardModel<void, Item, Item | undefined> {
     FriendlyName = "Items"
-    ViewUrl = "PartialViews/ItemCreationView.html"
+    ViewUrl = "PartialViews/CharacterCreation/ItemCreationView.html"
     isLoading: Observable<boolean>;
     
     chosenItem : Observable<MultiTaggedCharacterData<Item>>

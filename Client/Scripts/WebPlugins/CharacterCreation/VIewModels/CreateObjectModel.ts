@@ -6,7 +6,7 @@ import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js
 import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModels.js";
 
 export class CreateObjectModel<ItemToConfigureDataType, PreviewModelType> implements ICharacterWizardViewModel<void, void> {
-    readonly ViewUrl = "PartialViews/CreateObjectView.html"
+    readonly ViewUrl = "PartialViews/CharacterCreation/CreateObjectView.html"
     isLoading: Observable<boolean>;
     item : Observable<ItemToConfigureDataType>
     modal : IPartialViewModel<ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>>

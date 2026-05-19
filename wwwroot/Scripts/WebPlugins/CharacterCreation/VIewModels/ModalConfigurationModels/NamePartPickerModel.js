@@ -3,7 +3,7 @@ import { Utility } from "../../../../WebCore/Utility.js";
 export class NamePartPickerModel {
     FriendlyName;
     overrideOnNotFound;
-    ViewUrl = "PartialViews/NamePartPicker.html";
+    ViewUrl = "PartialViews/CharacterCreation/NamePartPicker.html";
     isLoading;
     chosenValueOption;
     chosenValue;

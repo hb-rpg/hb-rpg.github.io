@@ -20,5 +20,5 @@ export class StringListPreviewModel {
     }
     isLoading = ko.observable(false);
     Init = () => Promise.resolve();
-    ViewUrl = "/PartialViews/StringListPreview.html";
+    ViewUrl = "PartialViews/CharacterCreation/StringListPreview.html";
 }

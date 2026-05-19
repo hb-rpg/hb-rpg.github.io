@@ -1,7 +1,7 @@
 import { ko } from "../../Framework/Knockout/ko.js";
 
 export class HelpIconModel implements IHTMLInjectable<void> {
-    readonly ViewUrl = "PartialViews/HelpView.html";
+    readonly ViewUrl = "PartialViews/WebCore/HelpView.html";
     isLoading : ko.Observable<boolean>
     isShowingHelpfulText : ko.Observable<boolean>
 

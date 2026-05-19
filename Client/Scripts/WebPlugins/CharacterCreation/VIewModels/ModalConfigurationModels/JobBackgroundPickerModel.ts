@@ -23,7 +23,7 @@ import { tryGetCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.
 // Each Job will have it's own selection constructor (configuring who you pissed off, story?, and default picture url) so that you don't have to recreate it for every sub-job
 
 export class JobBackgroundPickerModel implements ICharacterWizardViewModel<void, StoryModel<JobType>> {
-    readonly ViewUrl = "PartialViews/JobBackgroundPicker.html";
+    readonly ViewUrl = "PartialViews/CharacterCreation/JobBackgroundPicker.html";
     isLoading: Observable<boolean>;
 
     FriendlyName = "Class History Picker" 
