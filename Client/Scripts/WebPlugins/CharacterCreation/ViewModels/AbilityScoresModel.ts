@@ -10,9 +10,9 @@ import { LockableObjectPickerModel } from "./LockableObjectPickerModel.js";
 
 const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"] as const;
 
-export class SkillsModel implements ICharacterWizardViewModel<void, Abilities> {
+export class AbilityScoresModel implements ICharacterWizardViewModel<void, Abilities> {
     FriendlyName = "Ability Scores";
-    ViewUrl = "PartialViews/CharacterCreation/SkillsView.html"
+    ViewUrl = "PartialViews/CharacterCreation/AbilityScoresView.html"
     isLoading: Observable<boolean>;
 
     abilityPickers: Record<string, IPartialViewModel<LockableObjectPickerModel<number>>> = {};
