@@ -1,14 +1,14 @@
-import { Observable } from "../../../Framework/Knockout/knockout.js";
+import { Observable, Computed, computed } from "../../../Framework/Knockout/knockout.js";
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
 import { ICharacterWizardViewModel, IConfigurableViewModal } from "../Contracts/CharacterWizardViewModels.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
-import { TaggedObservableSelectionPackage } from "../Contracts/TaggedData.js";
 import { JobSubsetEnum } from "../Contracts/StringTypes.js";
 import { MaxAbility } from "../Contracts/Abilities.js";
 import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { Personalities } from "../Configuration/MoodData.js";
 import { flattenAndCombineSelectionPackage } from "../Utility/UpdateUtility.js";
+import { ResolveURLData } from "../../../WebCore/Contracts/PageOption.js";
 
 export class CharacterSheetModel implements ICharacterWizardViewModel<void, void> {
     FriendlyName = "Character Sheet";
@@ -19,8 +19,9 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     showOutput : ko.Observable<boolean>
 
     modalPickers : IConfigurableViewModal<any>[]
-    canSectionBeConfiguredObservables : Observable<boolean>[]
-    isThereAnythingToConfigure : Observable<boolean>[]
+    sectionHasContent : Computed<boolean>[]
+    sectionUnlocked   : Computed<boolean>[]
+    sectionVisible    : Computed<boolean>[]
 
     constructor (public GlobalCharacterData: ConfiguredCharacterData) {
         this.modalPickers = [
@@ -53,45 +54,32 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
             ConfiguredModals.createNamePickerModel(GlobalCharacterData),
         ]
         
-        this.isThereAnythingToConfigure = []
-        this.modalPickers.forEach(()=>{this.isThereAnythingToConfigure.push(ko.observable(true))})
+        this.sectionHasContent = this.modalPickers.map(picker => picker.hasContent);
 
-        for (let i=7; i < 11; i++)
-            this.isThereAnythingToConfigure[i](false)
+        this.sectionUnlocked = []
 
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SkillsSelection(), this.isThereAnythingToConfigure[7]);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SpellSelection(), this.isThereAnythingToConfigure[8]);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.DrawbacksSelection(), this.isThereAnythingToConfigure[9]);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.CorruptionSelection(), this.isThereAnythingToConfigure[10]);
+        this.modalPickers.forEach((pickerModel, index) => {
+            if (index === 0) {
+                this.sectionUnlocked.push(ko.computed(() => true));
+                return
+            }
 
-        this.canSectionBeConfiguredObservables = []
-        this.modalPickers.forEach(()=>{this.canSectionBeConfiguredObservables.push(ko.observable(false))})
-        this.canSectionBeConfiguredObservables[0](true)
+            const prev = this.modalPickers[index - 1];
+            const sectionUnlockedCompute = ko.computed(() =>
+                this.sectionUnlocked[index - 1]() &&
+                (!prev.hasContent() || prev.Model.previewViewModel.Model.IsConfigured())
+            ) 
 
-        this.canSectionBeConfiguredObservables.forEach((sectionObservable, index)=>{
-            // Subscribe to last section to see if this section can be configured
-            this.modalPickers[index - 1]?.Model.previewViewModel.Model.IsConfigured.subscribe((isConfigured)=>{
-                // Any skippable as well
-                let j = index;
+            this.sectionUnlocked.push(sectionUnlockedCompute);
+        });
 
-                while (j < this.canSectionBeConfiguredObservables.length && !this.isThereAnythingToConfigure[j]()) {
-                    this.canSectionBeConfiguredObservables[j](isConfigured)
-                    j++
-                }
-                
-                // Show the section after the last "nothing to configure sections" 
-                if (j < this.canSectionBeConfiguredObservables.length)
-                    this.canSectionBeConfiguredObservables[j](isConfigured)
-            }) 
-        })
+        this.sectionVisible = this.modalPickers.map((picker, index) =>
+            ko.computed(() => this.sectionUnlocked[index]() && picker.hasContent())
+        );
         
         this.isLoading = ko.observable(true)
         this.jsonText = ko.observable("")
         this.showOutput = ko.observable(false)
-    }
-
-    IsSelection<T> (data : TaggedObservableSelectionPackage<T>) {
-        return data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0
     }
 
     exportAsPDF () {
@@ -124,15 +112,10 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
 
     }
 
-    Init () {
+    Init (data?: ResolveURLData<void>) {
         return Promise.all(this.modalPickers.map(x=>x.Model.Init())).then(()=>Promise.resolve())
     }
     Evaluate () {return}
     Randomize () {return}
 
-}
-
-const UpdateIsThereAnythingToConfigure = <T>(data : TaggedObservableSelectionPackage<T>, SomethingToBeConfigured : Observable<boolean>)=>{
-    data.ChoiceSelection.subscribe(()=>SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0))
-    data.FixedSelection.subscribe(()=>SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0))
 }

@@ -24,5 +24,5 @@ export class AbilityPreviewModel implements IConfigurableViewModel {
 
     isLoading: Observable<boolean> = ko.observable(false);
     Init = () => Promise.resolve();
-    public ViewUrl = "PartialViews/CharacterCreation/AbilityPreview.html";
+    public ViewUrl = "PartialViews/CharacterCreation/AbilityPreviewView.html";
 }

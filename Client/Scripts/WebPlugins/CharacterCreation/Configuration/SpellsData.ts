@@ -159,6 +159,6 @@ export namespace SpellData {
     }
 
     export const EdgeToSpellRecord : Map<Edges, SelectionPackage<Spell>> = new Map()
-    EdgeToSpellRecord.set(EdgesData.InnateSpell, new SelectionPackage<Spell>([], [new ChoiceGroup(1, [ChangeSelf, new Spell("Fire Bolt", "You can shoot a ball of fire from your hands or eyes."), new Spell("Darkness", "Non-magical light is temporarily suppressed.")], [])], []))
+    EdgeToSpellRecord.set(EdgesData.StandardSpell, new SelectionPackage<Spell>([], [new ChoiceGroup(1, [ChangeSelf, new Spell("Fire Bolt", "You can shoot a ball of fire from your hands or eyes."), new Spell("Darkness", "Non-magical light is temporarily suppressed.")], [])], []))
 
 }

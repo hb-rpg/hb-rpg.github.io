@@ -16,7 +16,7 @@ import { ItemData } from "./ItemData.js"
 import { ReligionData } from "./DietiesData.js"
 import { Spell } from "../Contracts/Spell.js"
 import { CareerData } from "./CareerData.js"
-import { createTaggedData, innateSourceTag } from "../Utility/TagUtility.js"
+import { createTaggedData, standardSourceTag } from "../Utility/TagUtility.js"
 
 
 export class ConfiguredCharacterData {
@@ -73,16 +73,16 @@ export class ConfiguredCharacterData {
         this.Abilities = ko.observable<Abilities>(new Abilities(0, 0, 0, 0, 0, 0))
         this.LanguageSelections = EmptyTaggedObservableSelectionPackageFactory()
 
-        this.ItemSelections = TaggedObservableSelectionPackageFactory(ItemData.UniversalStartingGear, innateSourceTag)
+        this.ItemSelections = TaggedObservableSelectionPackageFactory(ItemData.UniversalStartingGear, standardSourceTag)
 
-        this.TrinketSelections = TaggedObservableSelectionPackageFactory(ItemData.TrinketSelection, innateSourceTag)
+        this.TrinketSelections = TaggedObservableSelectionPackageFactory(ItemData.TrinketSelection, standardSourceTag)
 
         this.OrganizationEntanglements = ko.observable<OrganizationEntanglementsGroup>(new OrganizationEntanglementsGroup(undefined, undefined, undefined, undefined, undefined, undefined))
         this.EntanglementAffects = ko.observableArray<TaggedCharacterData<EntanglementAffect>>([]);
 
         this.Name = ko.observable<CharacterName>(new CharacterName("", "", ""))
 
-        this.ReligionSelections = TaggedObservableSelectionPackageFactory(ReligionData.ReligionSelection, innateSourceTag)
+        this.ReligionSelections = TaggedObservableSelectionPackageFactory(ReligionData.ReligionSelection, standardSourceTag)
 
         this.IsMonotheist = ko.observable(false)
 

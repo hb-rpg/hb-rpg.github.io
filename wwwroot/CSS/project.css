@@ -461,9 +461,13 @@
   padding: 10em;
   min-height: 75vh;
 }
+.three-wide-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
 .container-list-item {
   flex-grow: 1;
-  flex-basis: 15%;
+  flex-basis: 100%;
 }
 .standard-wizard-styles {
   display: flex;

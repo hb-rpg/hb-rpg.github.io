@@ -2,7 +2,7 @@ import { Utility } from "../../../WebCore/Utility.js";
 import { JobSubset, JobSubsetEnum, JobType, ProfessionType, RaceType } from "../Contracts/StringTypes.js";
 import { ChoiceGroup, Item, MultiTaggedCharacterData, OverrideChoiceLambda, SelectionPackage, TaggedCharacterData } from "../Contracts/TaggedData.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
-import { ancestrySourceTag, backgroundSourceTag, createTaggedData, humanTag, innateSourceTag } from "../Utility/TagUtility.js";
+import { ancestrySourceTag, backgroundSourceTag, createTaggedData, humanTag, standardSourceTag } from "../Utility/TagUtility.js";
 
 const genericCoinFactory = (amount : number, Description? : string) : Item => {
     return new Item("Coin", amount, Description, amount)
@@ -367,7 +367,7 @@ export namespace ItemData {
     const basicTrinketChoice = new ChoiceGroup(1, [randomizeTrinketSelection[0], TrinketToCoinFactory(randomizeTrinketSelection[0])], [])
 
     const overrideBasicTrinketSelection = new Map<ChoiceGroup<Item>, TaggedCharacterData<OverrideChoiceLambda<Item>>>()
-    overrideBasicTrinketSelection.set(basicTrinketChoice, createTaggedData(innateSourceTag,
+    overrideBasicTrinketSelection.set(basicTrinketChoice, createTaggedData(standardSourceTag,
         (taggedChoiceBeingOverridden, characterData)=>{
             const raceOverride = TrinketUpdates.get(characterData.Race())
             if (raceOverride) return raceOverride

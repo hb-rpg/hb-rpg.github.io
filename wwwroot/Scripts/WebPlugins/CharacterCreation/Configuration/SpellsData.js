@@ -153,5 +153,5 @@ export var SpellData;
         [JobSubsetEnum.BurglarSpecialist]: none
     };
     SpellData.EdgeToSpellRecord = new Map();
-    SpellData.EdgeToSpellRecord.set(EdgesData.InnateSpell, new SelectionPackage([], [new ChoiceGroup(1, [ChangeSelf, new Spell("Fire Bolt", "You can shoot a ball of fire from your hands or eyes."), new Spell("Darkness", "Non-magical light is temporarily suppressed.")], [])], []));
+    SpellData.EdgeToSpellRecord.set(EdgesData.StandardSpell, new SelectionPackage([], [new ChoiceGroup(1, [ChangeSelf, new Spell("Fire Bolt", "You can shoot a ball of fire from your hands or eyes."), new Spell("Darkness", "Non-magical light is temporarily suppressed.")], [])], []));
 })(SpellData || (SpellData = {}));

@@ -13,8 +13,9 @@ export class CharacterSheetModel {
     jsonText;
     showOutput;
     modalPickers;
-    canSectionBeConfiguredObservables;
-    isThereAnythingToConfigure;
+    sectionHasContent;
+    sectionUnlocked;
+    sectionVisible;
     constructor(GlobalCharacterData) {
         this.GlobalCharacterData = GlobalCharacterData;
         this.modalPickers = [
@@ -33,37 +34,22 @@ export class CharacterSheetModel {
             ConfiguredModals.createDeityPickerModel(GlobalCharacterData),
             ConfiguredModals.createNamePickerModel(GlobalCharacterData),
         ];
-        this.isThereAnythingToConfigure = [];
-        this.modalPickers.forEach(() => { this.isThereAnythingToConfigure.push(ko.observable(true)); });
-        for (let i = 7; i < 11; i++)
-            this.isThereAnythingToConfigure[i](false);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SkillsSelection(), this.isThereAnythingToConfigure[7]);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.SpellSelection(), this.isThereAnythingToConfigure[8]);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.DrawbacksSelection(), this.isThereAnythingToConfigure[9]);
-        UpdateIsThereAnythingToConfigure(this.GlobalCharacterData.CorruptionSelection(), this.isThereAnythingToConfigure[10]);
-        this.canSectionBeConfiguredObservables = [];
-        this.modalPickers.forEach(() => { this.canSectionBeConfiguredObservables.push(ko.observable(false)); });
-        this.canSectionBeConfiguredObservables[0](true);
-        this.canSectionBeConfiguredObservables.forEach((sectionObservable, index) => {
-            // Subscribe to last section to see if this section can be configured
-            this.modalPickers[index - 1]?.Model.previewViewModel.Model.IsConfigured.subscribe((isConfigured) => {
-                // Any skippable as well
-                let j = index;
-                while (j < this.canSectionBeConfiguredObservables.length && !this.isThereAnythingToConfigure[j]()) {
-                    this.canSectionBeConfiguredObservables[j](isConfigured);
-                    j++;
-                }
-                // Show the section after the last "nothing to configure sections" 
-                if (j < this.canSectionBeConfiguredObservables.length)
-                    this.canSectionBeConfiguredObservables[j](isConfigured);
-            });
+        this.sectionHasContent = this.modalPickers.map(picker => picker.hasContent);
+        this.sectionUnlocked = [];
+        this.modalPickers.forEach((pickerModel, index) => {
+            if (index === 0) {
+                this.sectionUnlocked.push(ko.computed(() => true));
+                return;
+            }
+            const prev = this.modalPickers[index - 1];
+            const sectionUnlockedCompute = ko.computed(() => this.sectionUnlocked[index - 1]() &&
+                (!prev.hasContent() || prev.Model.previewViewModel.Model.IsConfigured()));
+            this.sectionUnlocked.push(sectionUnlockedCompute);
         });
+        this.sectionVisible = this.modalPickers.map((picker, index) => ko.computed(() => this.sectionUnlocked[index]() && picker.hasContent()));
         this.isLoading = ko.observable(true);
         this.jsonText = ko.observable("");
         this.showOutput = ko.observable(false);
-    }
-    IsSelection(data) {
-        return data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0;
     }
     exportAsPDF() {
         print();
@@ -85,13 +71,9 @@ export class CharacterSheetModel {
     }
     exportAsDocx() {
     }
-    Init() {
+    Init(data) {
         return Promise.all(this.modalPickers.map(x => x.Model.Init())).then(() => Promise.resolve());
     }
     Evaluate() { return; }
     Randomize() { return; }
 }
-const UpdateIsThereAnythingToConfigure = (data, SomethingToBeConfigured) => {
-    data.ChoiceSelection.subscribe(() => SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0));
-    data.FixedSelection.subscribe(() => SomethingToBeConfigured(data.ChoiceSelection().length > 0 || data.FixedSelection().length > 0));
-};

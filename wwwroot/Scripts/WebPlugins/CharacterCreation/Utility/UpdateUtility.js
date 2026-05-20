@@ -1,3 +1,4 @@
+import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { EdgesData } from "../Configuration/EdgesData.js";
 import { ItemData } from "../Configuration/ItemData.js";
@@ -6,7 +7,7 @@ import { SkillsData } from "../Configuration/SkillsData.js";
 import { SpellData } from "../Configuration/SpellsData.js";
 import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../Configuration/TaggedNameData.js";
 import { CharacterName } from "../Contracts/CharacterName.js";
-import { CreateObjectModel } from "../VIewModels/CreateObjectModel.js";
+import { CreateObjectModel } from "../ViewModels/CreateObjectModel.js";
 import { getMatchingMultiTaggedData, flattenAndFilterSelectionPackage } from "./FilterUtility.js";
 const filterSelectionBySource = (sourceToFilterBy, updateTarget, override) => {
     const nonSourceOverrideSelections = (!override) ? updateTarget() : updateTarget().filter((taggedSource) => {
@@ -131,7 +132,9 @@ export const createGenericPicker = (options) => {
     // 3. Use the provided lambda to instantiate the specific preview model
     tempPreview.Model = createPreview(objectConfigurationViewModel);
     tempPreview.ViewUrl = tempPreview.Model.ViewUrl;
-    return modalBundle;
+    return Object.assign(modalBundle, {
+        hasContent: options.hasContent ?? ko.computed(() => true)
+    });
 };
 export const addNewOverrides = (sourceOverrides, overrideTarget) => {
     sourceOverrides.forEach((lambda, selection) => {

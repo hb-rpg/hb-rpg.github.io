@@ -1,4 +1,5 @@
-import { Observable } from "../../../Framework/Knockout/knockout.js"
+import { Observable, Computed } from "../../../Framework/Knockout/knockout.js"
+import { ko } from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js"
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
 import { EdgesData } from "../Configuration/EdgesData.js"
@@ -12,7 +13,7 @@ import { EntanglementAffect } from "../Contracts/Entanglements.js"
 import { LearnedLanguage } from "../Contracts/Language.js"
 import { SourceTypes } from "../Contracts/StringTypes.js"
 import { TaggedCharacterData, ChoiceGroup, MultiTaggedCharacterData, TaggedObservableSelectionPackage, SelectionPackage, OverrideChoiceLambda } from "../Contracts/TaggedData.js"
-import { CreateObjectModel } from "../VIewModels/CreateObjectModel.js"
+import { CreateObjectModel } from "../ViewModels/CreateObjectModel.js"
 import { getMatchingMultiTaggedData, flattenAndFilterSelectionPackage } from "./FilterUtility.js"
 import { createTaggedData } from "./TagUtility.js"
 
@@ -196,6 +197,7 @@ export interface PickerOptions<PickerModelType extends (IWizardModel<void, ItemT
     onUpdate?: (data: ConfiguredCharacterData) => void;
     // This lambda tells the factory how to build the specific preview model
     createPreview: (modal: CreateObjectModel<ItemType, PreviewModelType>) => PreviewModelType;
+    hasContent?: Computed<boolean>;
 }
 
 export const createGenericPicker = <
@@ -225,7 +227,9 @@ export const createGenericPicker = <
     tempPreview.Model = createPreview(objectConfigurationViewModel);
     tempPreview.ViewUrl = tempPreview.Model.ViewUrl
 
-    return modalBundle;
+    return Object.assign(modalBundle, {
+        hasContent: options.hasContent ?? ko.computed(() => true)
+    });
 };
 
 export const addNewOverrides = <SelectionType>(sourceOverrides : Map<ChoiceGroup<SelectionType>, TaggedCharacterData<OverrideChoiceLambda<SelectionType>>>, overrideTarget : Map<ChoiceGroup<SelectionType>, TaggedCharacterData<OverrideChoiceLambda<SelectionType>>>)=>{

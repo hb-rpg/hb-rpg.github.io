@@ -1,7 +1,7 @@
-import { Observable } from "../../../Framework/Knockout/knockout.js";
+import { Observable, Computed } from "../../../Framework/Knockout/knockout.js";
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js";
-import { CreateObjectModel } from "../VIewModels/CreateObjectModel.js";
-import { StringListPreviewModel } from "../VIewModels/Preview/StringListPreviewModel.js";
+import { CreateObjectModel } from "../ViewModels/CreateObjectModel.js";
+import { StringListPreviewModel } from "../ViewModels/Preview/StringListPreviewModel.js";
 
 export interface ICharacterWizardViewModel<ResolveType, EvaluateType> extends IWizardModel<ResolveType, EvaluateType>  {
     Randomize : Function
@@ -11,7 +11,9 @@ export interface ICharacterWizardViewModel<ResolveType, EvaluateType> extends IW
 export type IRandomizeWizardModel<EvaluateType> = IWizardModel<void, EvaluateType, undefined> & {Randomize : Function}
 
 
-export type IConfigurableViewModal<ItemToConfigureDataType> = IPartialViewModel<CreateObjectModel<ItemToConfigureDataType, IConfigurableViewModel>>
+export type IConfigurableViewModal<ItemToConfigureDataType> =
+    IPartialViewModel<CreateObjectModel<ItemToConfigureDataType, IConfigurableViewModel>>
+    & { hasContent: Computed<boolean> }
 
 export type IConfigurableViewModel = IHTMLInjectable<void> & {IsConfigured : Observable<boolean>}
 

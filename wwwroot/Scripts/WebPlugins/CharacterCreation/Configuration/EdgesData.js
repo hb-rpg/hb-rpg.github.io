@@ -18,7 +18,7 @@ export var EdgesData;
     EdgesData.InfernalHeritage = new Edges("Infernal Heritage", "Physical expressions of Ixian lineage (wings, hooves, etc).");
     EdgesData.FireResistance = new Edges("Fire Resistance", "Fire has less chance to harm you.");
     EdgesData.Flight = new Edges("Flight", "You have small but functional bat wings.");
-    EdgesData.InnateSpell = new Edges("Innate Spell", "You know and can cast a spell at will.");
+    EdgesData.StandardSpell = new Edges("Standard Spell", "You know and can cast a spell at will.");
     // Universal / Shared Edges
     EdgesData.LowLightVision = new Edges("Low Light Vision", "See in daylight and dim conditions.");
     EdgesData.Sneaky = new Edges("Sneaky", "Good at hiding and moving stealthily.");
@@ -62,7 +62,7 @@ export var EdgesData;
     EdgesData.DwarfEdgeSelection = new SelectionPackage([EdgesData.DeterminedEdge], [new ChoiceGroup(1, [EdgesData.LowLightVision, EdgesData.UnderSense, EdgesData.PackMule], [])], []);
     EdgesData.ElfEdgeSelection = new SelectionPackage([EdgesData.DireFocus], [new ChoiceGroup(1, [EdgesData.LowLightVision, EdgesData.SylvanStep, EdgesData.ElvenAccuracy], [])], []);
     EdgesData.OrcEdgeSelection = new SelectionPackage([EdgesData.Vengeful], [new ChoiceGroup(1, [EdgesData.Brute1, EdgesData.LowLightVision, EdgesData.OrcSavagery], [])], []);
-    EdgesData.IxianEdgeSelection = new SelectionPackage([EdgesData.InfernalHeritage], [new ChoiceGroup(1, [EdgesData.FireResistance, EdgesData.Flight, EdgesData.InnateSpell], [])], []);
+    EdgesData.IxianEdgeSelection = new SelectionPackage([EdgesData.InfernalHeritage], [new ChoiceGroup(1, [EdgesData.FireResistance, EdgesData.Flight, EdgesData.StandardSpell], [])], []);
     EdgesData.HalflingEdgeSelection = new SelectionPackage([EdgesData.SecondBreakfast], [new ChoiceGroup(1, [EdgesData.Sneaky, EdgesData.Elusive, EdgesData.Durable], [])], []);
     EdgesData.HumanEdgeSelection = new SelectionPackage([EdgesData.Adaptable], [], []);
     EdgesData.NoneEdgeSelection = new SelectionPackage([], [], []);

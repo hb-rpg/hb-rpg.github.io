@@ -1,8 +1,20 @@
 {
-"cSpell.words": [
+    "cSpell.words": [
         "Byname",
         "Bynames",
         "Halfling",
         "Perlin"
-],
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.github": true,
+        "**/node_modules": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true,
+        "**/package-lock.json": true,
+        "**/*.user": true,
+        "wwwroot/" : true
+    }
 }
+

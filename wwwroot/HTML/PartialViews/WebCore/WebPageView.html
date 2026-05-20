@@ -1,0 +1,44 @@
+<nav id="nav-bar" class="space-between">
+    <div class="nav-elements">
+        <span class="logo small-gap">
+            <img src="/Images/RedKobolt.png">
+            <span class="emphasized-text">Heartbreaker</span>
+        </span>
+    </div>
+    <div class="nav-elements small-gap" data-bind="foreach: NavigationOptions">
+        <button class="wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+    </div>
+</nav>
+
+<main id="main-view" data-bind="PartialView: CurrentPage()"></main>
+
+<footer id="footer" class="standard-padding"> 
+    <div id="sections" class="centered">
+        
+        <div id="design-section">
+            <div><img src="/Images/logo(1).png" alt="Chenevert Software Services" /></div>
+            <div>
+                Building aesthetically beautiful and technically excellent code since 2025.
+            </div>
+        </div>
+    
+        <div class="small-gap">
+            <div>
+                <button class="wizard-button">
+                    <a  href="https://github.com/hb-rpg/hb-rpg.github.io">Contribute to Heartbreaker</a>
+                </button>
+            </div>
+            <div>
+                <button class="wizard-button">
+                    <a href="https://github.com/hb-rpg/hb-rpg.github.io/issues">Report bugs</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        © 2025 Chenevert Software Services. 
+        This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license">Creative Commons Attribution-NonCommercial 4.0 International Public License</a>.<br>
+    </div>
+    
+</footer>

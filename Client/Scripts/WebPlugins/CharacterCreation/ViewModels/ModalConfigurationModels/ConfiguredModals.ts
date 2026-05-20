@@ -12,8 +12,8 @@ import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenA
 import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
 import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
 import { StringListPreviewModel } from "../Preview/StringListPreviewModel.js";
-import { SkillsModel } from "../AbilityModel.js";
-import { AncestryViewModel } from "./AncestoryViewModel.js";
+import { AbilityScoresModel } from "../AbilityScoresModel.js";
+import { AncestryViewModel } from "./AncestryViewModel.js";
 import { SelectionPackageConfigurationModel } from "./SelectionPackageConfigurationModel.js";
 import { LearnedLanguage } from "../../Contracts/Language.js";
 import { Deity } from "../../Contracts/Diety.js";
@@ -121,7 +121,11 @@ export namespace ConfiguredModals {
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            hasContent: ko.computed(() => {
+                const pkg = characterData.SkillsSelection();
+                return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
+            })
         });
     };
 
@@ -162,10 +166,10 @@ export namespace ConfiguredModals {
     };
 
     export const createAbilityScoresPickerModel = (characterData: ConfiguredCharacterData) => {
-        return createGenericPicker<SkillsModel, AbilityPreviewModel, Abilities>({
+        return createGenericPicker<AbilityScoresModel, AbilityPreviewModel, Abilities>({
             name: "Ability Scores",
             characterData,
-            pickerModel: new SkillsModel(characterData),
+            pickerModel: new AbilityScoresModel(characterData),
             dataSelector: (data) => data.Abilities,
             createPreview: (modal) => new AbilityPreviewModel(
                 modal.FriendlyName,
@@ -346,7 +350,11 @@ export namespace ConfiguredModals {
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            hasContent: ko.computed(() => {
+                const pkg = characterData.SpellSelection();
+                return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
+            })
         });
     };
 
@@ -379,7 +387,11 @@ export namespace ConfiguredModals {
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            hasContent: ko.computed(() => {
+                const pkg = characterData.DrawbacksSelection();
+                return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
+            })
         });
     };
 
@@ -412,7 +424,11 @@ export namespace ConfiguredModals {
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            hasContent: ko.computed(() => {
+                const pkg = characterData.CorruptionSelection();
+                return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
+            })
         });
     };
 
@@ -480,8 +496,8 @@ export namespace ConfiguredModals {
             modal.Model.EditItem.bind(modal.Model)
         )
         tempPreview.ViewUrl = tempPreview.Model.ViewUrl
-    
-        return modal
+
+        return Object.assign(modal, { hasContent: ko.computed(() => true) })
     }
     
     export const createAbilityPickerModel = (

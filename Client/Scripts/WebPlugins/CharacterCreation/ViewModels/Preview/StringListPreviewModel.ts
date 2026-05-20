@@ -24,5 +24,5 @@ export class StringListPreviewModel implements IConfigurableViewModel {
     }
     isLoading: Observable<boolean> = ko.observable(false);
     Init = () => Promise.resolve();
-    public ViewUrl = "PartialViews/CharacterCreation/StringListPreview.html"
+    public ViewUrl = "PartialViews/CharacterCreation/StringListPreviewView.html"
 }

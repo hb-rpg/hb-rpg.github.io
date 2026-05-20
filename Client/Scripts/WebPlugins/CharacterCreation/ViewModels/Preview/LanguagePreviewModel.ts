@@ -25,5 +25,5 @@ export class LanguagePreviewModel implements IConfigurableViewModel {
     }
     isLoading: Observable<boolean> = ko.observable(false);
     Init = () => Promise.resolve();
-    public ViewUrl = "PartialViews/CharacterCreation/LanguagePreview.html"
+    public ViewUrl = "PartialViews/CharacterCreation/LanguagePreviewView.html"
 }

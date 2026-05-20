@@ -5,7 +5,7 @@ import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 
 export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacterWizardViewModel<void, ObjectSelectionType> {
-    ViewUrl = "PartialViews/CharacterCreation/LockableObjectPickerModel.html"
+    ViewUrl = "PartialViews/CharacterCreation/LockableObjectPickerView.html"
     isLoading: Observable<boolean>;
 
     widgetPreviewText : Observable<string>

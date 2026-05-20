@@ -74,7 +74,7 @@ export const fenceTag = backgroundTag("Rogue", "Fence");
 export const spyTag = backgroundTag("Rogue", "Spy");
 export const urchinTag = backgroundTag("Rogue", "Street Urchin");
 
-export const innateSourceTag = sourceTag("Innate")
+export const standardSourceTag = sourceTag("Standard")
 export const ancestrySourceTag = sourceTag("Ancestry")
 export const backgroundSourceTag = sourceTag("Background")
 

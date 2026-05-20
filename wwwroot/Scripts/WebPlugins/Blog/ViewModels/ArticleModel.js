@@ -11,7 +11,7 @@ export class ArticleModel {
         this.isLoading = ko.observable(true);
         this.Blog = Utility.BundleViewAndModel(new BlogModel(BlogUrl));
     }
-    Init() {
+    Init(data) {
         return Promise.resolve();
     }
 }
