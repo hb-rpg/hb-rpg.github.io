@@ -5,6 +5,11 @@
 
     <hr>
 
+    <div class="small-gap" data-bind="text: AbilitiesExplanation"> 
+    </div>
+
+    <hr>
+
     <div class="boolean-button small-gap">
         <div class="padded-centered-text hoverable-container" data-bind="click: ()=>{isUsingCustomRoll(false)}, css: { selected: !isUsingCustomRoll() }">
             <div>
@@ -37,16 +42,18 @@
         </div>
     </div>
 
+    <div class="centered">
+        <button class="hoverable-container wizard-button" data-bind="click: chooseRandomly"> Randomly Assign Scores </button>
+    </div>
+
     <!--ko if: PictureUrl -->
     <div class="image-container">
         <img class="medium-sized-image image " data-bind="attr: {src: PictureUrl}">
     </div>
     <!-- /ko -->
 
-    <div class="centered">
-        <button class="hoverable-container wizard-button" data-bind="click: chooseRandomly"> Randomly Assign Scores </button>
-    </div>
-
     <div>Note: Randomly generated ability scores are rolled at startup.</div>
+
+    <div class="error-message" data-bind="visible: errorMessage, text: errorMessage"></div>
 
 </div>

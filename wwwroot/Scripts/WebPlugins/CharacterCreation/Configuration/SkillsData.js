@@ -60,6 +60,12 @@ export var SkillsData;
     SkillsData.SizeUpMarkSkill = new Skill("Size Up Mark", "You can usually tell if someone is faster and/or smarter than you and how much money they may be carrying.");
     SkillsData.ObservantSkill = new Skill("Observant", "You are good at noticing and recalling details.");
     SkillsData.VigilantSkill = new Skill("Vigilant", "Your cautious nature lets you usually act first.");
+    // Additional Artisan Skills
+    SkillsData.ArmorerSkill = new Skill("Armorer", "You can make & repair armors and shields.");
+    SkillsData.BowfletSkill = new Skill("Bowyer & Fletcher", "You can make bows & arrows but not crossbows.");
+    SkillsData.ClothierSkill = new Skill("Clothier", "You are a tailor who can make complex clothing and outfits.");
+    SkillsData.LocksmithSkill = new Skill("Locksmith", "You can make & repair keys and locks. You are also able to pick locks.");
+    SkillsData.WagonerSkill = new Skill("Wagoner", "You drive a wagon to transport goods for various farmers and mercantile groups.");
     // Arcane Skills
     SkillsData.FlashPowderSkill = new Skill("Formulate Flash Powder", "With proper materials and equipment, you can make Flash Powder (Ud4).");
     SkillsData.DowsingRodSkill = new Skill("Fabricate Dowsing Rods", "With proper materials and tools, you can fabricate sensitive dowsing rods in one day for ¼ the typical cost.");
@@ -160,7 +166,7 @@ export var SkillsData;
         [JobSubsetEnum.Interpreter]: new SelectionPackage([SkillsData.PolyglotSkill], [], []),
         [JobSubsetEnum.Smith]: new SelectionPackage([SkillsData.SmithSkill], [], []),
         [JobSubsetEnum.Carpenter]: new SelectionPackage([SkillsData.CarpenterSkill], [], []),
-        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([SkillsData.MoneyChangerSkill], [], []),
+        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([SkillsData.MoneyChangerSkill, SkillsData.FenceSkill], [], []),
         [JobSubsetEnum.Ambler]: new SelectionPackage([SkillsData.EquitationSkill], [], []),
         [JobSubsetEnum.Chef]: new SelectionPackage([SkillsData.ChefSkill], [], []),
         // Escaped Thrall Subsets
@@ -204,6 +210,24 @@ export var SkillsData;
         [JobSubsetEnum.Kain]: noSkillSelection,
         [JobSubsetEnum.ThreeTrinketRandom]: noSkillSelection,
         [JobSubsetEnum.OneTrinketChoice]: noSkillSelection,
+        // Additional Artisan subsets
+        [JobSubsetEnum.Armorer]: new SelectionPackage([SkillsData.ArmorerSkill], [], []),
+        [JobSubsetEnum.Bowyer]: new SelectionPackage([SkillsData.BowfletSkill], [], []),
+        [JobSubsetEnum.Fletcher]: new SelectionPackage([SkillsData.BowfletSkill], [], []),
+        [JobSubsetEnum.Tailor]: new SelectionPackage([SkillsData.ClothierSkill], [], []),
+        [JobSubsetEnum.Locksmith]: new SelectionPackage([SkillsData.LocksmithSkill], [], []),
+        // Additional Crafter subsets
+        [JobSubsetEnum.Cooper]: new SelectionPackage([SkillsData.CooperSkill], [], []),
+        [JobSubsetEnum.Leatherworker]: new SelectionPackage([SkillsData.LeatherworkerSkill], [], []),
+        [JobSubsetEnum.Mason]: new SelectionPackage([SkillsData.MasonSkill], [], []),
+        [JobSubsetEnum.Swordsmith]: new SelectionPackage([SkillsData.SwordsmithSkill], [], []),
+        // Additional Mercantiler subsets
+        [JobSubsetEnum.Assayer]: new SelectionPackage([SkillsData.MoneyChangerSkill, SkillsData.AssayerSkill], [], []),
+        [JobSubsetEnum.Herbalist]: new SelectionPackage([SkillsData.HerbalistSkill], [], []),
+        [JobSubsetEnum.Peddler]: new SelectionPackage([SkillsData.PeddlerSkill, SkillsData.FenceSkill], [], []),
+        // Additional Laborer subsets
+        [JobSubsetEnum.Fisher]: new SelectionPackage([SkillsData.FisherSkill], [], []),
+        [JobSubsetEnum.Wagoner]: new SelectionPackage([SkillsData.WagonerSkill], [], []),
     };
     // --- Race Records ---
     SkillsData.RaceRecord = {

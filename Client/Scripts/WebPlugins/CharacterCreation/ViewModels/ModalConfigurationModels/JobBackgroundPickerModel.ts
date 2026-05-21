@@ -6,7 +6,13 @@ import { ko } from "../../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../../WebCore/Utility.js";
 import { JobSubset, JobSubsetEnum, JobType, ProfessionType } from "../../Contracts/StringTypes.js";
 import { PopulateBackground } from "../../Utility/PopulateStory.js";
-import { tryGetCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js";
+import { getCharacterCreatorPicturePath, tryGetCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js";
+
+// TODO: replace PictureUrl with a background-specific placeholder image
+const BackgroundPlaceholder = {
+    PictureUrl: getCharacterCreatorPicturePath("Copy of CH 10 Treasure John Dickson Batten Fairy_tales_from_the_Arabian_nights_-_Batten_illustration_at_page_306 2.jpg"),
+    Description: "Choose a Profession and then a Job to define your character's history and starting configuration. Your background determines starting equipment, skills, edges, languages, and social entanglements. See the rulebook for more details."
+}
 
 // Configure which profession you are 
     
@@ -26,83 +32,108 @@ export class JobBackgroundPickerModel implements ICharacterWizardViewModel<void,
     readonly ViewUrl = "PartialViews/CharacterCreation/JobBackgroundPickerView.html";
     isLoading: Observable<boolean>;
 
-    FriendlyName = "Class History Picker" 
+    FriendlyName = "Class History Picker"
 
-    chosenProfession : Observable<ProfessionType>
-    chosenJob : Observable<JobType>
-    chosenJobBackground : Observable<StoryModel<JobType>>
+    chosenProfession : Observable<ProfessionType | null>
+    chosenJob : Observable<JobType | null>
+    chosenJobBackground : Observable<StoryModel<JobType> | null>
     chosenJobSubset : Observable<JobSubset | undefined>
 
     PossibleJobs : ObservableArray<JobType>
     PossibleJobSubset : ObservableArray<JobSubset>
 
+    showJobSubset : Observable<boolean>
+
     PictureUrl : Observable<string>
+    description : Observable<string>
+
+    errorMessage : Observable<string> = ko.observable("")
 
     constructor (
-        public GlobalCharacterData : ConfiguredCharacterData, 
+        public GlobalCharacterData : ConfiguredCharacterData,
         public PossibleProfessions : ProfessionType[],
         public ProfessionsJobs : Record<ProfessionType, JobType[]>,
         public JobsStory : Record<JobType, StoryModel<JobType>>,
         public JobToJobSubsets : Record<JobType, JobSubset[]>,
-        
     ) {
-        // Initial State
-        this.chosenProfession = ko.observable<ProfessionType>(this.PossibleProfessions[0])
-        this.PossibleJobs = ko.observableArray(this._determinePossibleJobs())
+        this.chosenProfession = ko.observable<ProfessionType | null>(null)
+        this.PossibleJobs = ko.observableArray<JobType>([])
+        this.chosenJob = ko.observable<JobType | null>(null)
+        this.chosenJobBackground = ko.observable<StoryModel<JobType> | null>(null)
+        this.PossibleJobSubset = ko.observableArray<JobSubset>([])
+        this.chosenJobSubset = ko.observable<JobSubset | undefined>(undefined)
+        this.showJobSubset = ko.observable(false)
+        this.PictureUrl = ko.observable(BackgroundPlaceholder.PictureUrl)
+        this.description = ko.observable(BackgroundPlaceholder.Description)
 
-        this.chosenJob = ko.observable<JobType>(this._setInitialJob())
-        this.chosenJobBackground = ko.observable<StoryModel<JobType>>(this._determineClassBackground(this.PossibleJobs()[0]))
-
-        this.PossibleJobSubset = ko.observableArray(this._determinePossibleJobSubsets())
-        this.chosenJobSubset = ko.observable<JobSubset | undefined>(this.PossibleJobSubset()[0])
-        
-        this.PictureUrl = ko.observable(tryGetCharacterCreatorPicturePath(this.chosenJobBackground().PartialPictureUrl))
-        
-        // Maintenance State
-        this.chosenProfession.subscribe((newValue)=>{
-            if (newValue === undefined) this.chosenProfession(this.PossibleProfessions[0])
+        this.chosenProfession.subscribe((newValue) => {
+            if (!newValue) {
+                this.PossibleJobs([])
+                this.chosenJob(null)
+                this.chosenJobSubset(undefined)
+                this.PictureUrl(BackgroundPlaceholder.PictureUrl)
+                return
+            }
             this.PossibleJobs(this._determinePossibleJobs())
         })
 
-        this.PossibleJobs.subscribe(()=>this.chosenJob(this._setInitialJob()))
+        this.PossibleJobs.subscribe(() => this.chosenJob(this.PossibleJobs()[0] ?? null))
 
-        this.chosenJob.subscribe((newJob)=>{
-            const chosenClass = this.chosenProfession()
-            if (chosenClass === undefined) return
-            if (newJob === undefined) return
+        this.chosenJob.subscribe((newJob) => {
+            if (!newJob) {
+                this.chosenJobSubset(undefined)
+                this.PossibleJobSubset([])
+                this.showJobSubset(false)
+                this.chosenJobBackground(null)
+                this.PictureUrl(BackgroundPlaceholder.PictureUrl)
+                this.description(BackgroundPlaceholder.Description)
+                return
+            }
 
             const classBackground = this._determineClassBackground(newJob)
-
             if (classBackground == undefined) return
 
             this.chosenJobBackground(PopulateBackground(classBackground, this.GlobalCharacterData))
             this.PossibleJobSubset(this._determinePossibleJobSubsets())
             this.chosenJobSubset(this.PossibleJobSubset()[0])
-
             this.PictureUrl(tryGetCharacterCreatorPicturePath(classBackground.PartialPictureUrl))
+            this.description(classBackground.Story)
         })
 
-        this.isLoading = ko.observable(false);
+        this.PossibleJobSubset.subscribe((newValues) => {
+            this.showJobSubset(newValues.length > 0 && newValues.filter((value) => value == JobSubsetEnum.None).length == 0)
+        })
+
+        this.isLoading = ko.observable(false)
     }
 
     Init () {
-        this.chosenProfession(this.GlobalCharacterData.Profession())
-        this.chosenJob(this.GlobalCharacterData.Job())
-        this.chosenJobBackground(this.GlobalCharacterData.JobBackground())
-        this.chosenJobSubset(this.GlobalCharacterData.JobSubset())
-
+        this.errorMessage("")
+        if (this.GlobalCharacterData.HasChosenBackground) {
+            this.chosenProfession(this.GlobalCharacterData.Profession())
+            this.chosenJob(this.GlobalCharacterData.Job())
+            this.chosenJobBackground(this.GlobalCharacterData.JobBackground())
+            this.chosenJobSubset(this.GlobalCharacterData.JobSubset())
+        }
         return Promise.resolve()
     }
 
+    isConfigured () { return this.chosenProfession() != null && this.chosenJob() != null }
+    configurationError () { return "Please select a profession and job." }
+    onValidationFailed () { this.errorMessage(this.configurationError()) }
+
     Evaluate () {
+        if (this.chosenProfession() === null || this.chosenJob() === null || this.chosenJobBackground() === null) throw EvalError()
+
         const JobSubsetChoice = (this.chosenJobSubset() !== undefined)? <JobSubsetEnum>this.chosenJobSubset() : JobSubsetEnum.None
 
-        this.GlobalCharacterData.Profession(this.chosenProfession())
-        this.GlobalCharacterData.Job(this.chosenJob())
-        this.GlobalCharacterData.JobBackground(this.chosenJobBackground())
+        this.GlobalCharacterData.Profession(this.chosenProfession() as ProfessionType)
+        this.GlobalCharacterData.Job(this.chosenJob() as JobType)
+        this.GlobalCharacterData.JobBackground(this.chosenJobBackground() as StoryModel<JobType>)
         this.GlobalCharacterData.JobSubset(JobSubsetChoice)
+        this.GlobalCharacterData.HasChosenBackground = true
 
-        return this.chosenJobBackground()
+        return this.chosenJobBackground() as StoryModel<JobType> 
     }
 
     Randomize () {

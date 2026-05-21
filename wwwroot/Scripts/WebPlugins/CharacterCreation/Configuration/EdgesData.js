@@ -166,6 +166,20 @@ export var EdgesData;
         [JobSubsetEnum.Kain]: EdgesData.NoneEdgeSelection,
         [JobSubsetEnum.ThreeTrinketRandom]: EdgesData.NoneEdgeSelection,
         [JobSubsetEnum.OneTrinketChoice]: EdgesData.NoneEdgeSelection,
-        [JobSubsetEnum.DisguiseSpecialist]: EdgesData.NoneEdgeSelection
+        [JobSubsetEnum.DisguiseSpecialist]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Armorer]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Bowyer]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Fletcher]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Tailor]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Locksmith]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Cooper]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Leatherworker]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Mason]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Swordsmith]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Assayer]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Herbalist]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Peddler]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Fisher]: EdgesData.NoneEdgeSelection,
+        [JobSubsetEnum.Wagoner]: EdgesData.NoneEdgeSelection,
     };
 })(EdgesData || (EdgesData = {}));

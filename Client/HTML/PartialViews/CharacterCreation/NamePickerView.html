@@ -12,7 +12,7 @@
     
     <hr>
 
-    <div class="name-picker three-wide-grid">
+    <div class="name-picker container-list">
         <div class="container-list-item" data-bind="PartialView: NamePicker"></div>
         <!-- ko ifnot: notShowingBynames -->
         <div class="container-list-item" data-bind="PartialView: BynamePicker"></div>
@@ -22,5 +22,6 @@
         <!-- /ko -->
     </div>
 
+    <div class="error-message" data-bind="visible: errorMessage, text: errorMessage"></div>
 
 </div>

@@ -35,3 +35,9 @@ interface IOptionModel<OptionValue> {
     DescriptionModel : IPartialViewModel
     Value : OptionValue
 }
+
+interface IValidatable {
+    isConfigured(): boolean
+    onValidationFailed(): void
+    errorMessage: ko.Observable<string>
+}

@@ -234,7 +234,21 @@ export namespace EdgesData {
         [JobSubsetEnum.Moloch]: NoneEdgeSelection,
         [JobSubsetEnum.Kain]: NoneEdgeSelection,
         [JobSubsetEnum.ThreeTrinketRandom]: NoneEdgeSelection,
-        [JobSubsetEnum.OneTrinketChoice]: NoneEdgeSelection,
-        [JobSubsetEnum.DisguiseSpecialist]: NoneEdgeSelection
+        [JobSubsetEnum.OneTrinketChoice]:   NoneEdgeSelection,
+        [JobSubsetEnum.DisguiseSpecialist]: NoneEdgeSelection,
+        [JobSubsetEnum.Armorer]:            NoneEdgeSelection,
+        [JobSubsetEnum.Bowyer]:             NoneEdgeSelection,
+        [JobSubsetEnum.Fletcher]:           NoneEdgeSelection,
+        [JobSubsetEnum.Tailor]:             NoneEdgeSelection,
+        [JobSubsetEnum.Locksmith]:          NoneEdgeSelection,
+        [JobSubsetEnum.Cooper]:             NoneEdgeSelection,
+        [JobSubsetEnum.Leatherworker]:      NoneEdgeSelection,
+        [JobSubsetEnum.Mason]:              NoneEdgeSelection,
+        [JobSubsetEnum.Swordsmith]:         NoneEdgeSelection,
+        [JobSubsetEnum.Assayer]:            NoneEdgeSelection,
+        [JobSubsetEnum.Herbalist]:          NoneEdgeSelection,
+        [JobSubsetEnum.Peddler]:            NoneEdgeSelection,
+        [JobSubsetEnum.Fisher]:             NoneEdgeSelection,
+        [JobSubsetEnum.Wagoner]:            NoneEdgeSelection,
     }
 }

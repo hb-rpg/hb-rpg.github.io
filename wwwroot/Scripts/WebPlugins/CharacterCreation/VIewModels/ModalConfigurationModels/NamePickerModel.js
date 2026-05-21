@@ -77,9 +77,18 @@ export class NamePickerModel {
     }
     Destruction;
     Init() {
+        this.errorMessage("");
         const name = this.GlobalCharacterData.Name();
         this.notShowingEpithets(!name.showEpithets);
         this.notShowingBynames(!name.showByname);
+        // Sync dropdown to match the current state — must come after the direct
+        // flag assignments so the subscriber can't override them.
+        if (name.showByname)
+            this.chosenDecorations(this.possibleNameDecorations[1]);
+        else if (name.showEpithets)
+            this.chosenDecorations(this.possibleNameDecorations[2]);
+        else
+            this.chosenDecorations(this.possibleNameDecorations[0]);
         this.NamePicker.Model.possibleOptions(getMatchingMultiTaggedData(this.possibleNames, this.GlobalCharacterData));
         this.BynamePicker.Model.possibleOptions(getMatchingMultiTaggedData(this.possibleBynames, this.GlobalCharacterData));
         this.EpithetPicker.Model.possibleOptions(getMatchingMultiTaggedData(this.possibleEpithets, this.GlobalCharacterData));
@@ -94,6 +103,10 @@ export class NamePickerModel {
             this.chosenGender(globalGender);
         return Promise.resolve();
     }
+    errorMessage = ko.observable("");
+    isConfigured() { return !!this.chosenName(); }
+    configurationError() { return "Please enter a name."; }
+    onValidationFailed() { this.errorMessage(this.configurationError()); }
     Evaluate() {
         this.GlobalCharacterData.Name(this.characterName());
         this.GlobalCharacterData.Gender(this.chosenGender());

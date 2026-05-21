@@ -1,29 +1,44 @@
+
+<!-- explanation: longer context shown after choices (e.g. rule reference) -->
+<!-- ko if: explanation -->
+<div data-bind="PartialView: explanation"></div>
+<!-- /ko -->
+
+<!-- choices: fixed grants and player-selectable pickers -->
 <!-- ko if: fixedChoices().length == 0 && selectableChoices().length == 0 -->
     <div>Nothing to select.</div>
 <!-- /ko -->
 
-
 <!-- ko ifnot: fixedChoices().length == 0 && selectableChoices().length == 0 -->
-    <div class="centered">
-        <button class="wizard-button pop-content" data-bind="click: ChoiceRandomly">Choose Randomly</button>
-    </div>
-    
-    <div class="three-wide-grid">
+    <div class="vertically-stacked-widgets">
         <!-- ko foreach: fixedChoices -->
-        
-        <div class="hoverable-container container-list-item">
+
+        <div class="hoverable-container vertically-stacked-widget-children">
             <h4 class="title" data-bind="text: $data.Title"></h4>
             <div data-bind="text: $data.Description"></div>
         </div>
-        
+
         <!-- /ko -->
-        
+
         <!-- ko foreach: selectableChoices -->
-        
-        <div class="hoverable-container container-list-item">
+
+        <div class="hoverable-container vertically-stacked-widget-children">
             <div data-bind="PartialView: $data"></div>
         </div>
         <!-- /ko -->
     </div>
+
+    <div class="centered">
+        <button class="wizard-button pop-content" data-bind="click: ChoiceRandomly">Choose Randomly</button>
+    </div>
+
 <!-- /ko -->
 
+
+<!-- qualifier: short notice shown before choices -->
+<!-- ko if: qualifier -->
+<div data-bind="PartialView: qualifier"></div>
+<!-- /ko -->
+
+<!-- error: validation feedback -->
+<div class="error-message" data-bind="visible: errorMessage, text: errorMessage"></div>

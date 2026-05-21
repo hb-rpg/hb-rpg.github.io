@@ -4,49 +4,48 @@ import { ModalFrameModel } from "../../../WebCore/ViewModels/ModalFrameModel.js"
 export class CreateObjectModel {
     FriendlyName;
     itemConstructionModel;
-    evaluationItemLocation;
+    dataSelector;
     previewViewModel;
-    isConfiguredCallback;
-    EvaluationCallback;
+    onUpdate;
     GlobalCharacterData;
     ViewUrl = "PartialViews/CharacterCreation/CreateObjectView.html";
     isLoading;
-    item;
     modal;
-    constructor(FriendlyName, itemConstructionModel, evaluationItemLocation, previewViewModel, isConfiguredCallback, EvaluationCallback, GlobalCharacterData) {
+    constructor(FriendlyName, itemConstructionModel, dataSelector, previewViewModel, onUpdate, GlobalCharacterData) {
         this.FriendlyName = FriendlyName;
         this.itemConstructionModel = itemConstructionModel;
-        this.evaluationItemLocation = evaluationItemLocation;
+        this.dataSelector = dataSelector;
         this.previewViewModel = previewViewModel;
-        this.isConfiguredCallback = isConfiguredCallback;
-        this.EvaluationCallback = EvaluationCallback;
+        this.onUpdate = onUpdate;
         this.GlobalCharacterData = GlobalCharacterData;
-        this.item = this.evaluationItemLocation(this.GlobalCharacterData);
         const a = Utility.BundleViewAndModel(itemConstructionModel);
-        const b = new ModalFrameModel(FriendlyName, a, isConfiguredCallback);
+        const b = new ModalFrameModel(FriendlyName, a, () => {
+            const configured = itemConstructionModel.isConfigured?.() ?? true;
+            if (!configured)
+                itemConstructionModel.onValidationFailed?.();
+            else
+                itemConstructionModel.errorMessage?.("");
+            return configured;
+        });
         this.modal = Utility.BundleViewAndModel(b);
         this.isLoading = ko.observable(true);
     }
     Init() {
-        // this.itemList(this.evaluationItemLocation(this.GlobalCharacterData)().map(x=>ko.observable(x)))
         return Promise.resolve();
     }
     EditItem() {
-        this.modal.Model.Init(this.item()).then(() => this.modal.Model.Open());
+        this.modal.Model.Init(this.dataSelector(this.GlobalCharacterData)()).then(() => this.modal.Model.Open());
         const subscription = this.modal.Model.isVisible.subscribe((isVisible) => {
             if (isVisible)
                 return;
             subscription.dispose();
-            if (!this.isConfiguredCallback(this.itemConstructionModel))
-                return;
-            this.item(this.modal.Model.Evaluate());
-            this.EvaluationCallback(this.GlobalCharacterData);
+            if (!this.modal.Model.wasCancelled)
+                this.onUpdate(this.GlobalCharacterData);
         });
     }
     Evaluate() { }
     Randomize() {
         this.itemConstructionModel.Randomize();
-        this.item(this.modal.Model.Evaluate());
-        this.EvaluationCallback(this.GlobalCharacterData);
+        this.onUpdate(this.GlobalCharacterData);
     }
 }

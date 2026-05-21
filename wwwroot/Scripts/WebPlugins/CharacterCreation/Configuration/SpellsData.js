@@ -150,7 +150,21 @@ export var SpellData;
         [JobSubsetEnum.ThreeTrinketRandom]: none,
         [JobSubsetEnum.OneTrinketChoice]: none,
         [JobSubsetEnum.DisguiseSpecialist]: none,
-        [JobSubsetEnum.BurglarSpecialist]: none
+        [JobSubsetEnum.BurglarSpecialist]: none,
+        [JobSubsetEnum.Armorer]: none,
+        [JobSubsetEnum.Bowyer]: none,
+        [JobSubsetEnum.Fletcher]: none,
+        [JobSubsetEnum.Tailor]: none,
+        [JobSubsetEnum.Locksmith]: none,
+        [JobSubsetEnum.Cooper]: none,
+        [JobSubsetEnum.Leatherworker]: none,
+        [JobSubsetEnum.Mason]: none,
+        [JobSubsetEnum.Swordsmith]: none,
+        [JobSubsetEnum.Assayer]: none,
+        [JobSubsetEnum.Herbalist]: none,
+        [JobSubsetEnum.Peddler]: none,
+        [JobSubsetEnum.Fisher]: none,
+        [JobSubsetEnum.Wagoner]: none,
     };
     SpellData.EdgeToSpellRecord = new Map();
     SpellData.EdgeToSpellRecord.set(EdgesData.StandardSpell, new SelectionPackage([], [new ChoiceGroup(1, [ChangeSelf, new Spell("Fire Bolt", "You can shoot a ball of fire from your hands or eyes."), new Spell("Darkness", "Non-magical light is temporarily suppressed.")], [])], []));

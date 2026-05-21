@@ -15,6 +15,7 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
 
     isLocked : ko.Observable<boolean>
     isUnlockableByUser : Observable<boolean>
+    availableOptions : ko.Computed<ObjectSelectionType[]>
 
     constructor (
         public FriendlyName : string, 
@@ -40,17 +41,21 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
             this.chosenValue(newValue)
             this.isLocked(true)
             this.widgetPreviewText(this.determineWidgetPreview(this.chosenValue()))
-
         })
 
         this.isLocked.subscribe((isLocked)=>{
-            if (isLocked) return // Unlocking adds the value back to pile
-            
+            if (isLocked) return
             this.UnselectedValues.push(this.chosenValue() as ObjectSelectionType)
         })
 
         this.isLoading = ko.observable(false)
         this.isUnlockableByUser = ko.observable(true)
+
+        this.availableOptions = ko.computed(() => [...this.UnselectedValues()])
+    }
+
+    isConfigured() {
+        return this.isLocked()
     }
 
     unlock() {
@@ -59,7 +64,7 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
     }
 
     clear() {
-        this.unlock(); 
+        this.unlock()
         this.selectedUIValueObservable(undefined)
     }
     

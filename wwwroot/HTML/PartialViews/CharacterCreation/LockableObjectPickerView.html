@@ -13,7 +13,7 @@
     <!-- /ko -->
 
     <!-- ko ifnot: isLocked-->
-        <select class="wizard-select" data-bind="options: UnselectedValues, optionsText: determineSelectionPreview, optionsCaption: 'Choose', value: selectedUIValueObservable"></select>
+        <select class="wizard-select" data-bind="options: availableOptions, optionsText: determineSelectionPreview, optionsCaption: 'Choose', value: selectedUIValueObservable"></select>
     <!-- /ko -->
 
 </div>

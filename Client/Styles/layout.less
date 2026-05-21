@@ -1,0 +1,120 @@
+@import "./variables.less";
+
+// --- Flex utilities ---
+
+.make-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-direction: column;
+}
+
+.fill-row {
+    flex-grow: 1;
+}
+
+.align-left {
+    margin-left: auto;
+    display: block;
+}
+
+.retain-height {
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+.grow-height-as-much-as-possible {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+// --- Gap utilities ---
+
+.small-gap {
+    display: flex;
+    gap: 1em;
+}
+
+.medium-gap {
+    display: flex;
+    gap: 2.5em;
+}
+
+.large-gap {
+    display: flex;
+    gap: 4em !important;
+}
+
+// --- Padding utilities ---
+
+.standard-padding {
+    padding: @standard-padding @standard-padding;
+}
+
+.section-padding {
+    padding: @section-padding !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+// --- Grid utilities ---
+
+.grid-4 {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-8 {
+    display: inline-grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.three-wide-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+// --- List/container layouts ---
+
+.container-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.container-list-item {
+    flex-grow: 1;
+    flex-basis: 15%;
+}
+
+// --- Responsive ---
+
+.section-buttons {
+    @media (width <= @max-size-before-element-reaction) {
+        flex-direction: column;
+    }
+}

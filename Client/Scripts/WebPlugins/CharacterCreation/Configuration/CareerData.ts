@@ -86,7 +86,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Colleagues, RollReservations.Lowest, "Former Troupe")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN ACROBAT Garnier.jpg"
         },
         "Contortionist": {
             Name: "Contortionist",
@@ -95,7 +95,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Colleagues, RollReservations.Lowest, "Former Troupe Leader")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Elf\\CC 300dpi 3inW MEN WOMEN ELF THIEF ACROBAT CONTORTIONIST ACTION Ambush Didrik Magnus-Andresen.jpg"
         },
         "Jester": {
             Name: "Jester",
@@ -104,7 +104,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Master, RollReservations.Lowest, "Insulted Lord")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN JESTER Arthur Rackham.jpg"
         },
         "Minstrel": {
             Name: "Minstrel",
@@ -113,7 +113,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Colleagues, RollReservations.Lowest, "Rival Musician")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN BARD MINSTREL Charles Fokard modified.jpg"
         },
         "Scholar": {
             Name: "Scholar",
@@ -131,7 +131,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Colleagues, RollReservations.Lowest, "Former Troupe")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW ACTOR STORYTELLER THESPIAN BARD W Heath Robinson.jpg"
         },
         "Accursed": {
             Name: "Accursed",
@@ -140,7 +140,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.ReligiousAuthorities, RollReservations.Lowest, "Inquisitor")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN GROUP MAGIC SPELLCASTER ACCURSED Corruption Hirsute Robert Anning Bell  modified.jpg"
         },
         "Acolyte": {
             Name: "Acolyte",
@@ -149,7 +149,7 @@ export namespace CareerData {
             AffectedPeople: [],
             AffectedOrganization: [generateRelationships(EntanglementOrganizationTypesEnum.ReligiousAuthorities, RollReservations.Highest, "Local Temple")],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MAGIC CLERIC ACOLYTE Florence Harrison.jpg"
         },
         "Inquisitor": {
             Name: "Inquisitor",
@@ -158,7 +158,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Neighbors, RollReservations.Lowest, "Local Neighbors")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN INQUISITOR INSPECTOR BUREAUCRAT REEVE Sword Scroll Walery Eljasz-Radzikowski.jpg"
         },
         "Pariah": {
             Name: "Pariah",
@@ -167,7 +167,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.ReligiousAuthorities, RollReservations.Lowest, "Religious Leaders")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MAGIC PARIAH Dalziel Brothers.jpg"
         },
         "Touched/Anchorite": {
             Name: "Touched/Anchorite",
@@ -176,7 +176,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Neighbors, RollReservations.Highest, "Disadvantaged Locals")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW CLERIC TOUCHED MAGIC  Apeles Mestres.jpg"
         },
         "Armiger": {
             Name: "Armiger",
@@ -185,7 +185,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Master, RollReservations.Highest, "Suzerain Lord")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN FIGHTER ARMIGER Knight Sword Combat Horace Knowles.jpg"
         },
         "Mercenary/Hedge": {
             Name: "Mercenary/Hedge",
@@ -194,7 +194,7 @@ export namespace CareerData {
             AffectedPeople: [],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\RR MEN FIGHTER Bandit Carlos Castilho.png"
         },
         "Prizefighter": {
             Name: "Prizefighter",
@@ -203,7 +203,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.ShadowGroups, RollReservations.Highest, "Crime Boss")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD MEN PRIZEFIGHTER FIGHTER THUG Walter Paget.jpg"
         },
         "Ruffian/Enforcer": {
             Name: "Ruffian/Enforcer",
@@ -212,7 +212,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Colleagues, RollReservations.Highest, "The Gang")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN RUFFIAN BARBARIAN FIGHTER THUG CREATURE Ogre Club Reginald and Horace Knowles.jpg"
         },
         "Woodard/Warden": {
             Name: "Woodard/Warden",
@@ -221,7 +221,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Master, RollReservations.Highest, "Forest Master")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\RR HUMAN MEN WOODARD WARDEN Axe DeanSpencer.png"
         },
         "Adept/Arcane Apprentice": {
             Name: "Adept/Arcane Apprentice",
@@ -230,7 +230,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Master, RollReservations.Lowest, "Former Master")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD WOMEN ADEPT SPELLCASTER CLERIC MAGICUSER Sleep Dora Curtis modified.jpg"
         },
         "Alchemy Apprentice": {
             Name: "Alchemy Apprentice",
@@ -239,7 +239,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.ShadowGroups, RollReservations.Lowest, "Alchemy Guild")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN ALCHEMIST Rene Bull  modified.jpg"
         },
         "Arcane Researcher": {
             Name: "Arcane Researcher",
@@ -248,7 +248,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Master, RollReservations.Lowest, "Academy Master")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MAGIC RESEARCHER Francois Pannemaker modified.jpg"
         },
         "Charlatan": {
             Name: "Charlatan",
@@ -257,7 +257,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Neighbors, RollReservations.Lowest, "Former Audience")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 6inW MEN SPELLCASTER CHARLATAN Adolf Ehrhardt.jpg"
         },
         "Dowser": {
             Name: "Dowser",
@@ -266,7 +266,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Neighbors, RollReservations.Lowest, "Suspicious Neighbors")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW WOMEN MEN MAGIC DOWSER Divining Rod Otto Edler von Graeve.jpg"
         },
         "Warlock": {
             Name: "Warlock",
@@ -284,7 +284,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.ShadowGroups, RollReservations.Highest, "Criminal Contacts")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN FENCE ASSAYER ALCHEMIST Ludwig Richter.jpg"
         },
         "Gambler": {
             Name: "Gambler",
@@ -293,7 +293,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Neighbors, RollReservations.Lowest, "Sore Losers")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD MEN GAMBLER Howard Pyle modified.jpg"
         },
         "Scoundrel": {
             Name: "Scoundrel",
@@ -311,7 +311,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.ShadowGroups, RollReservations.Highest, "Thieves Guild")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN THIEF SHARP Stealth Leslie L Brook modified.jpg"
         },
         "Spy": {
             Name: "Spy",
@@ -320,7 +320,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Master, RollReservations.Highest, "Handler")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN SPY Arthur Rackham.jpg"
         },
         "Street Urchin": {
             Name: "Street Urchin",
@@ -329,7 +329,7 @@ export namespace CareerData {
             AffectedPeople: [generateRelationships(EntanglementOrganizationTypesEnum.Colleagues, RollReservations.Highest, "Urchin Gang")],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: undefined
+            PartialPictureUrl: "Human\\PD 300dpi 3inW MEN GROUP URCHIN Helen Stratton.jpg"
         },
         "Cultist": {
             Name: "Cultist",
@@ -347,7 +347,7 @@ export namespace CareerData {
             AffectedPeople: [],
             AffectedOrganization: [],
             AffectedPlace: [],
-            PartialPictureUrl: "Human\\RR WOMEN Martial BARBARIAN Ricardo de Gaspar_0924_1.png"
+            PartialPictureUrl: "Human\\RR WOMEN FIGHTER BARBARIAN Ricardo de Gaspar_0924_1.png"
         },
     }
     
@@ -374,11 +374,11 @@ export namespace CareerData {
         Prizefighter: [JobSubsetEnum.None],
         "Ruffian/Enforcer": [JobSubsetEnum.None],
         // OTHERS
-        "Apprentice Artisan": [JobSubsetEnum.Jeweler, JobSubsetEnum.Arbalist],
+        "Apprentice Artisan": [JobSubsetEnum.Jeweler, JobSubsetEnum.Arbalist, JobSubsetEnum.Armorer, JobSubsetEnum.Bowyer, JobSubsetEnum.Fletcher, JobSubsetEnum.Tailor, JobSubsetEnum.Locksmith],
         "Apprentice Bureaucrat": [JobSubsetEnum.Scrivener, JobSubsetEnum.Advocate, JobSubsetEnum.Cartographer, JobSubsetEnum.Inspector, JobSubsetEnum.Interpreter],
-        "Free Laborer": [JobSubsetEnum.Ambler, JobSubsetEnum.Chef],
-        "Apprentice Crafter": [JobSubsetEnum.Smith, JobSubsetEnum.Carpenter],
-        "Apprentice Mercantiler": [JobSubsetEnum.MoneyChanger],
+        "Free Laborer": [JobSubsetEnum.Ambler, JobSubsetEnum.Chef, JobSubsetEnum.Farmer, JobSubsetEnum.Fisher, JobSubsetEnum.Herder, JobSubsetEnum.Wagoner],
+        "Apprentice Crafter": [JobSubsetEnum.Smith, JobSubsetEnum.Carpenter, JobSubsetEnum.Cooper, JobSubsetEnum.Leatherworker, JobSubsetEnum.Mason, JobSubsetEnum.Swordsmith],
+        "Apprentice Mercantiler": [JobSubsetEnum.MoneyChanger, JobSubsetEnum.Assayer, JobSubsetEnum.Brewer, JobSubsetEnum.Herbalist, JobSubsetEnum.Peddler, JobSubsetEnum.Vintner],
         "Escaped Peasant/Thrall": [JobSubsetEnum.HouseServant, JobSubsetEnum.Farmhand, JobSubsetEnum.Laborer, JobSubsetEnum.Sailor],
         "Adept/Arcane Apprentice": [JobSubsetEnum.IxianRaver, JobSubsetEnum.IxianArchon, JobSubsetEnum.Dragon, JobSubsetEnum.Lich, JobSubsetEnum.Wizard],
         Warlock: [JobSubsetEnum.IxianRaver, JobSubsetEnum.IxianArchon, JobSubsetEnum.ElderGod, JobSubsetEnum.Lich, JobSubsetEnum.Moloch, JobSubsetEnum.Kain],

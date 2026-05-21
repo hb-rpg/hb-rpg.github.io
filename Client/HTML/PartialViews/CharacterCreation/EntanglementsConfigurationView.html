@@ -1,4 +1,11 @@
 <div class="AbilityView">
+    <div class="image-container">
+        <img class="medium-sized-image image" data-bind="attr: {src: PictureUrl}">
+        <div class="description largeText" data-bind="text: EntanglementDescription"></div>
+    </div>
+
+    <hr>
+
     <div class="section-buttons boolean-button small-gap">
         <div class="padded-centered-text hoverable-container">
             <div>
@@ -23,5 +30,9 @@
     <div class="centered">
         <button class="hoverable-container wizard-button" data-bind="click: chooseRandomly"> Randomly Assign Scores </button>
     </div>
+
+    <div>Note: Some entanglement slots may be pre-selected based on your background.</div>
+
+    <div class="error-message" data-bind="visible: errorMessage, text: errorMessage"></div>
 
 </div>

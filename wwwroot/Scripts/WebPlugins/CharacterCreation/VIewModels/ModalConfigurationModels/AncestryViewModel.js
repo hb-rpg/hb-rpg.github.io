@@ -1,6 +1,6 @@
 import { ko } from "../../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../../WebCore/Utility.js";
-import { RaceDescriptions, Races } from "../../Configuration/DispositionData.js";
+import { RaceDefaultExplanation, RaceDescriptions, Races } from "../../Configuration/DispositionData.js";
 import { getCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js";
 export class AncestryViewModel {
     GlobalCharacterData;
@@ -11,25 +11,39 @@ export class AncestryViewModel {
     ChosenRace;
     PictureUrl;
     RaceDescription;
+    errorMessage = ko.observable("");
     constructor(GlobalCharacterData, PossibleRaces) {
         this.GlobalCharacterData = GlobalCharacterData;
         this.PossibleRaces = PossibleRaces;
-        this.ChosenRace = ko.observable(PossibleRaces[0]);
-        const raceData = this.GetRaceData(PossibleRaces[0]);
-        this.PictureUrl = ko.observable(raceData.PictureUrl);
-        this.RaceDescription = ko.observable(raceData.Description);
+        this.ChosenRace = ko.observable(null);
+        this.PictureUrl = ko.observable(getCharacterCreatorPicturePath(RaceDefaultExplanation.PictureUrl));
+        this.RaceDescription = ko.observable(RaceDefaultExplanation.Description);
         this.isLoading = ko.observable(true);
         this.ChosenRace.subscribe((race) => {
+            if (!race) {
+                this.PictureUrl(getCharacterCreatorPicturePath(RaceDefaultExplanation.PictureUrl));
+                this.RaceDescription(RaceDefaultExplanation.Description);
+                return;
+            }
             const raceData = this.GetRaceData(race);
             this.PictureUrl(raceData.PictureUrl);
             this.RaceDescription(raceData.Description);
         });
     }
     Init() {
-        this.ChosenRace(this.GlobalCharacterData.Race());
+        this.errorMessage("");
+        if (this.GlobalCharacterData.HasChosenRace)
+            this.ChosenRace(this.GlobalCharacterData.Race());
         return Promise.resolve();
     }
+    isConfigured() { return this.ChosenRace() != null; }
+    configurationError() { return "Please select an ancestry."; }
+    onValidationFailed() { this.errorMessage(this.configurationError()); }
     Evaluate() {
+        if (this.ChosenRace() === null)
+            throw EvalError("ChosenRace cannot be null");
+        this.GlobalCharacterData.Race(this.ChosenRace());
+        this.GlobalCharacterData.HasChosenRace = true;
         return this.ChosenRace();
     }
     Randomize() {

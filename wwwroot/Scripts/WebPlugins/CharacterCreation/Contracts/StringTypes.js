@@ -31,6 +31,11 @@ export var JobSubsetEnum;
     // Skilled & Laborer
     JobSubsetEnum["Jeweler"] = "Jeweler";
     JobSubsetEnum["Arbalist"] = "Arbalist";
+    JobSubsetEnum["Armorer"] = "Armorer";
+    JobSubsetEnum["Bowyer"] = "Bowyer";
+    JobSubsetEnum["Fletcher"] = "Fletcher";
+    JobSubsetEnum["Tailor"] = "Tailor";
+    JobSubsetEnum["Locksmith"] = "Locksmith";
     JobSubsetEnum["Scrivener"] = "Scrivener";
     JobSubsetEnum["Advocate"] = "Advocate/Beadle";
     JobSubsetEnum["Cartographer"] = "Cartographer";
@@ -38,9 +43,16 @@ export var JobSubsetEnum;
     JobSubsetEnum["Interpreter"] = "Interpreter";
     JobSubsetEnum["Smith"] = "Smith";
     JobSubsetEnum["Carpenter"] = "Carpenter";
+    JobSubsetEnum["Cooper"] = "Cooper";
+    JobSubsetEnum["Leatherworker"] = "Leatherworker";
+    JobSubsetEnum["Mason"] = "Mason";
+    JobSubsetEnum["Assayer"] = "Assayer";
+    JobSubsetEnum["Swordsmith"] = "Swordsmith";
     JobSubsetEnum["MoneyChanger"] = "Money Changer";
     JobSubsetEnum["Ambler"] = "Ambler";
     JobSubsetEnum["Chef"] = "Chef";
+    JobSubsetEnum["Fisher"] = "Fisher";
+    JobSubsetEnum["Wagoner"] = "Wagoner";
     // Escaped Thrall
     JobSubsetEnum["HouseServant"] = "House Servant";
     JobSubsetEnum["Farmhand"] = "Farmhand";
@@ -53,6 +65,8 @@ export var JobSubsetEnum;
     JobSubsetEnum["Oratory"] = "Oratory";
     JobSubsetEnum["Theology"] = "Theology";
     JobSubsetEnum["Vintner"] = "Vintner";
+    JobSubsetEnum["Herbalist"] = "Herbalist";
+    JobSubsetEnum["Peddler"] = "Peddler";
     JobSubsetEnum["Esoterica"] = "Esoterica";
     // Martial (Armiger/Mercenary/Woodard)
     JobSubsetEnum["ActiveService"] = "Active Service";

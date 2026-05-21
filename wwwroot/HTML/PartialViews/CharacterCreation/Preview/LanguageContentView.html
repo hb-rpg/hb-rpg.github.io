@@ -1,0 +1,20 @@
+<div class="container-list large-gap" data-bind="foreach: data">
+    <span class="container-list-item small-gap">
+        <span data-bind="text: Language.Name"></span>
+        <!-- ko if: canSpeak -->
+            <span class="button-icon centered">
+                <img src="/Images/speaking-svgrepo-com.svg" alt="Speak"/>
+            </span>
+        <!-- /ko -->
+        <!-- ko if: canRead -->
+            <span class="button-icon centered">
+                <img src="/Images/read-book-icon.svg" alt="Read"/>
+            </span>
+        <!-- /ko -->
+        <!-- ko if: canWrite -->
+            <span class="button-icon centered">
+                <img src="/Images/writing-icon.svg" alt="Write"/>
+            </span>
+        <!-- /ko -->
+    </span>
+</div>

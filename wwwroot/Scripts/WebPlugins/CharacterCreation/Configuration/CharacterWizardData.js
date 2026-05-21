@@ -12,6 +12,8 @@ import { createTaggedData, standardSourceTag } from "../Utility/TagUtility.js";
 export class ConfiguredCharacterData {
     Name;
     Race;
+    HasChosenRace = false;
+    HasChosenBackground = false;
     // Age: Observable<AgeType>
     // Morality: Observable<MoralityTypes>
     // Order: Observable<OrderTypes>
@@ -50,7 +52,13 @@ export class ConfiguredCharacterData {
         this.Abilities = ko.observable(new Abilities(0, 0, 0, 0, 0, 0));
         this.LanguageSelections = EmptyTaggedObservableSelectionPackageFactory();
         this.ItemSelections = TaggedObservableSelectionPackageFactory(ItemData.UniversalStartingGear, standardSourceTag);
-        this.TrinketSelections = TaggedObservableSelectionPackageFactory(ItemData.TrinketSelection, standardSourceTag);
+        this.TrinketSelections = TaggedObservableSelectionPackageFactory(ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset()), standardSourceTag);
+        const swapTrinketPackage = () => {
+            this.TrinketSelections(TaggedObservableSelectionPackageFactory(ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset()), standardSourceTag)());
+        };
+        this.Race.subscribe(swapTrinketPackage);
+        this.Job.subscribe(swapTrinketPackage);
+        this.JobSubset.subscribe(swapTrinketPackage);
         this.OrganizationEntanglements = ko.observable(new OrganizationEntanglementsGroup(undefined, undefined, undefined, undefined, undefined, undefined));
         this.EntanglementAffects = ko.observableArray([]);
         this.Name = ko.observable(new CharacterName("", "", ""));

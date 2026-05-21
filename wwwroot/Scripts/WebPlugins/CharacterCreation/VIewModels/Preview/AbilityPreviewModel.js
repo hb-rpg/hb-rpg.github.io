@@ -1,26 +1,9 @@
-import { ko } from "../../../../Framework/Knockout/ko.js";
-export class AbilityPreviewModel {
-    FriendlyName;
+import { BasePreviewModel } from "./BasePreviewModel.js";
+export class AbilityPreviewModel extends BasePreviewModel {
     Ability;
-    IsConfigured;
-    Randomize;
-    Edit;
-    constructor(FriendlyName, Ability, IsConfigured, Randomize, Edit) {
-        this.FriendlyName = FriendlyName;
+    constructor(friendlyName, Ability, isConfigured, randomize, edit) {
+        super(friendlyName, isConfigured, randomize, edit);
         this.Ability = Ability;
-        this.IsConfigured = IsConfigured;
-        this.Randomize = Randomize;
-        this.Edit = Edit;
-        this.Randomize = () => {
-            this.IsConfigured(true);
-            Randomize();
-        };
-        this.Edit = () => {
-            this.IsConfigured(true);
-            Edit();
-        };
     }
-    isLoading = ko.observable(false);
-    Init = () => Promise.resolve();
-    ViewUrl = "PartialViews/CharacterCreation/AbilityPreviewView.html";
+    contentViewUrl = "PartialViews/CharacterCreation/Preview/AbilityContentView.html";
 }

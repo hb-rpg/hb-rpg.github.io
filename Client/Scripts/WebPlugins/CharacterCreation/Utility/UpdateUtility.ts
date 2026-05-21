@@ -2,6 +2,8 @@ import { Observable, Computed } from "../../../Framework/Knockout/knockout.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { Utility } from "../../../WebCore/Utility.js"
 import { ConfiguredCharacterData } from "../Configuration/CharacterWizardData.js"
+import { CorruptionData } from "../Configuration/CorruptionData.js";
+import { DrawbackData } from "../Configuration/DrawbackData.js";
 import { EdgesData } from "../Configuration/EdgesData.js"
 import { ItemData } from "../Configuration/ItemData.js"
 import { LanguageData } from "../Configuration/LanguageData.js"
@@ -9,6 +11,7 @@ import { SkillsData } from "../Configuration/SkillsData.js"
 import { SpellData } from "../Configuration/SpellsData.js"
 import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../Configuration/TaggedNameData.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
+import { Corruption } from "../Contracts/Corruption.js";
 import { EntanglementAffect } from "../Contracts/Entanglements.js"
 import { LearnedLanguage } from "../Contracts/Language.js"
 import { SourceTypes } from "../Contracts/StringTypes.js"
@@ -111,7 +114,7 @@ export const updateBackgroundEdges = (characterData : ConfiguredCharacterData)=>
 
 export const updateBackgroundSpells = (characterData : ConfiguredCharacterData)=>{
     updateBackgroundData(SpellData.JobToSpellsRecord[characterData.Job()], characterData.SpellSelection())
-    updateBackgroundData(SpellData.JobSubsetToSpellsRecord[characterData.JobSubset()], characterData.SpellSelection(), true)
+    updateBackgroundData(SpellData.JobSubsetToSpellsRecord[characterData.JobSubset()], characterData.SpellSelection(), false)
 }
 
 export const updateEdgesSpells = (characterData : ConfiguredCharacterData)=>{
@@ -125,6 +128,20 @@ export const updateEdgesSpells = (characterData : ConfiguredCharacterData)=>{
             updateGenericSelectionPackage(spellsRecord, characterData.SpellSelection(), "Edges", false)
         }
     )
+}
+
+export const updateBackgroundCorruption = (CharacterData : ConfiguredCharacterData) => {
+    updateBackgroundData(CorruptionData.JobTypeToCorruption[CharacterData.Job()], CharacterData.CorruptionSelection())
+    updateBackgroundData(CorruptionData.JobSubsetToCorruption[CharacterData.JobSubset()], CharacterData.CorruptionSelection(), false)
+}
+
+export const updateBackgroundDrawbacks = (characterData: ConfiguredCharacterData) => {
+    updateBackgroundData(DrawbackData.JobTypeToDrawback[characterData.Job()], characterData.DrawbacksSelection())
+    updateBackgroundData(DrawbackData.JobSubsetToDrawback[characterData.JobSubset()], characterData.DrawbacksSelection(), false)
+}
+
+export const updateRaceDrawbackData = (characterData: ConfiguredCharacterData, source: SourceTypes) => {
+    updateGenericSelectionPackage(DrawbackData.RaceRecord[characterData.Race()], characterData.DrawbacksSelection(), source)
 }
 
 // export const updateRaceSpells = (characterData : ConfiguredCharacterData)=>{
@@ -194,36 +211,36 @@ export interface PickerOptions<PickerModelType extends (IWizardModel<void, ItemT
     characterData: ConfiguredCharacterData;
     pickerModel: PickerModelType;
     dataSelector: (data: ConfiguredCharacterData) => Observable<ItemType>;
-    onUpdate?: (data: ConfiguredCharacterData) => void;
+    onUpdate: (data: ConfiguredCharacterData) => void;
     // This lambda tells the factory how to build the specific preview model
     createPreview: (modal: CreateObjectModel<ItemType, PreviewModelType>) => PreviewModelType;
     hasContent?: Computed<boolean>;
 }
 
 export const createGenericPicker = <
-    TModel extends IWizardModel<void, ItemType, ItemType> & { Randomize: Function; }, 
-    TPreview extends IHTMLInjectable<void, void>, 
+    TModel extends IWizardModel<void, ItemType, ItemType> & { Randomize: Function; },
+    TPreview extends IHTMLInjectable<void, void>,
     ItemType>
-    (options: PickerOptions<TModel, TPreview, ItemType>) => 
+    (options: PickerOptions<TModel, TPreview, ItemType>) =>
 {
-    const { name, characterData, pickerModel, dataSelector, onUpdate, createPreview } = options;
-    
-    // 1. Initialize the placeholder bundle
+    const { name, characterData, pickerModel, dataSelector, createPreview } = options;
+
+    const combinedOnUpdate = (data: ConfiguredCharacterData) => {
+        options.onUpdate(data);
+    };
+
     let tempPreview = Utility.BundleViewAndModel<void, TPreview, void>({} as TPreview);
-    // 2. Create the main configuration model (the "Modal")
     const objectConfigurationViewModel = new CreateObjectModel<ItemType, TPreview>(
         name,
         pickerModel,
         dataSelector,
         tempPreview,
-        () => true,
-        onUpdate || (() => {}),
+        combinedOnUpdate,
         characterData
     );
 
     const modalBundle = Utility.BundleViewAndModel(objectConfigurationViewModel);
 
-    // 3. Use the provided lambda to instantiate the specific preview model
     tempPreview.Model = createPreview(objectConfigurationViewModel);
     tempPreview.ViewUrl = tempPreview.Model.ViewUrl
 

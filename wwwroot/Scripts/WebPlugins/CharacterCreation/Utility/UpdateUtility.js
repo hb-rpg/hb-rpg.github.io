@@ -1,5 +1,7 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
+import { CorruptionData } from "../Configuration/CorruptionData.js";
+import { DrawbackData } from "../Configuration/DrawbackData.js";
 import { EdgesData } from "../Configuration/EdgesData.js";
 import { ItemData } from "../Configuration/ItemData.js";
 import { LanguageData } from "../Configuration/LanguageData.js";
@@ -69,7 +71,7 @@ export const updateBackgroundEdges = (characterData) => {
 };
 export const updateBackgroundSpells = (characterData) => {
     updateBackgroundData(SpellData.JobToSpellsRecord[characterData.Job()], characterData.SpellSelection());
-    updateBackgroundData(SpellData.JobSubsetToSpellsRecord[characterData.JobSubset()], characterData.SpellSelection(), true);
+    updateBackgroundData(SpellData.JobSubsetToSpellsRecord[characterData.JobSubset()], characterData.SpellSelection(), false);
 };
 export const updateEdgesSpells = (characterData) => {
     filterSelectionPackage(characterData.SpellSelection(), "Edges");
@@ -79,6 +81,17 @@ export const updateEdgesSpells = (characterData) => {
             return;
         updateGenericSelectionPackage(spellsRecord, characterData.SpellSelection(), "Edges", false);
     });
+};
+export const updateBackgroundCorruption = (CharacterData) => {
+    updateBackgroundData(CorruptionData.JobTypeToCorruption[CharacterData.Job()], CharacterData.CorruptionSelection());
+    updateBackgroundData(CorruptionData.JobSubsetToCorruption[CharacterData.JobSubset()], CharacterData.CorruptionSelection(), false);
+};
+export const updateBackgroundDrawbacks = (characterData) => {
+    updateBackgroundData(DrawbackData.JobTypeToDrawback[characterData.Job()], characterData.DrawbacksSelection());
+    updateBackgroundData(DrawbackData.JobSubsetToDrawback[characterData.JobSubset()], characterData.DrawbacksSelection(), false);
+};
+export const updateRaceDrawbackData = (characterData, source) => {
+    updateGenericSelectionPackage(DrawbackData.RaceRecord[characterData.Race()], characterData.DrawbacksSelection(), source);
 };
 // export const updateRaceSpells = (characterData : ConfiguredCharacterData)=>{
 //     updateBackgroundData(SpellData.RaceToSpellsRecord[characterData.Race()], characterData.SpellSelection())
@@ -123,13 +136,13 @@ export const flattenAndCombineSelectionPackage = (selectionPackage, characterDat
     return result;
 };
 export const createGenericPicker = (options) => {
-    const { name, characterData, pickerModel, dataSelector, onUpdate, createPreview } = options;
-    // 1. Initialize the placeholder bundle
+    const { name, characterData, pickerModel, dataSelector, createPreview } = options;
+    const combinedOnUpdate = (data) => {
+        options.onUpdate(data);
+    };
     let tempPreview = Utility.BundleViewAndModel({});
-    // 2. Create the main configuration model (the "Modal")
-    const objectConfigurationViewModel = new CreateObjectModel(name, pickerModel, dataSelector, tempPreview, () => true, onUpdate || (() => { }), characterData);
+    const objectConfigurationViewModel = new CreateObjectModel(name, pickerModel, dataSelector, tempPreview, combinedOnUpdate, characterData);
     const modalBundle = Utility.BundleViewAndModel(objectConfigurationViewModel);
-    // 3. Use the provided lambda to instantiate the specific preview model
     tempPreview.Model = createPreview(objectConfigurationViewModel);
     tempPreview.ViewUrl = tempPreview.Model.ViewUrl;
     return Object.assign(modalBundle, {

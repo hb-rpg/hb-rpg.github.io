@@ -1,0 +1,4 @@
+import { getCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
+
+export const EntanglementPicture = getCharacterCreatorPicturePath("Human\\PD 300dpi 3inW MAGIC PARIAH Dalziel Brothers.jpg")
+export const EntanglementConceptDescription = "Entanglements define your character's relationships with seven groups — Colleagues, Family, Local Civic Authorities, Local Religious Authorities, Master/Mentor, Neighbors, and Shadow Groups — and serve as the catalyst for why your character is stepping into a life of adventure. Assigning each entanglement result to a group to determine their attitude toward you, ranging from Aggressive to Friendly. Use these relationships as prompts to build a brief backstory framework that your GM can draw on for plot hooks, rivalries, and allies throughout your campaign."

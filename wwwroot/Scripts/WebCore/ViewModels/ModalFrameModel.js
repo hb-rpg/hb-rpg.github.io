@@ -6,6 +6,7 @@ export class ModalFrameModel {
     ViewUrl = "PartialViews/WebCore/ModalView.html";
     isLoading;
     isVisible;
+    wasCancelled = false;
     constructor(FriendlyName, ModalModel, isConfiguredCallback) {
         this.FriendlyName = FriendlyName;
         this.ModalModel = ModalModel;
@@ -19,9 +20,14 @@ export class ModalFrameModel {
     });
     Evaluate() { return this.ModalModel.Model.Evaluate(); } // External Process must evaluate
     Open() { this.isVisible(true); }
-    Close() { this.isVisible(false); }
+    Close() {
+        this.wasCancelled = true;
+        this.isVisible(false);
+    }
     Done() {
-        if (this.isConfiguredCallback(this.ModalModel.Model))
+        if (this.isConfiguredCallback(this.ModalModel.Model)) {
+            this.wasCancelled = false;
             this.isVisible(false);
+        }
     }
 }

@@ -1,3 +1,5 @@
+import { getCharacterCreatorPicturePath } from "../Utility/RoutingUtility";
+
 export const Personalities : string[] = [
     "Grumpy",
     "Bubbly",

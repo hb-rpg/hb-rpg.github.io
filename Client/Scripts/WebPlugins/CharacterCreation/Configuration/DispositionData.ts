@@ -7,6 +7,11 @@ export const Moralities : MoralityTypes[] = ["Good", "Neutral", "Evil"]
 export const Order : OrderTypes[] = ["Lawful", "Neutral", "Chaotic"]
 export const DevelopmentalEnvironments : DevelopmentalEnvironmentType[] = ['Nobility', 'Clergy', 'Commoner']
 
+export const RaceDefaultExplanation : PictureModel = {
+    PictureUrl: "Copy of CH 10 Treasure John Dickson Batten Fairy_tales_from_the_Arabian_nights_-_Batten_illustration_at_page_306 2.jpg",
+    Description: "Choose one of six Ancestries — Dwarf, Elf, Halfling, Human, Ixian, or Orc — to define your character's species and cultural heritage. Your Ancestry reflects not just your biology but your upbringing, culture, and the world that shaped you before adventure called. Each Ancestry automatically populates your character with a package of features — Edges, Spells, Skills, Languages, Gear, Names, and Other — which will be reflected in the following steps as they are configured. See the rulebook for more details."
+} 
+
 export const RaceDescriptions : TaggedCharacterData<PictureModel>[] = [
     {
         Tags: {

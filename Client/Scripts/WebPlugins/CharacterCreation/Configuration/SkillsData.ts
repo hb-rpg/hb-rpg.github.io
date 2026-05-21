@@ -68,6 +68,13 @@ export namespace SkillsData {
     export const ObservantSkill = new Skill("Observant", "You are good at noticing and recalling details.");
     export const VigilantSkill = new Skill("Vigilant", "Your cautious nature lets you usually act first.");
 
+    // Additional Artisan Skills
+    export const ArmorerSkill = new Skill("Armorer", "You can make & repair armors and shields.");
+    export const BowfletSkill = new Skill("Bowyer & Fletcher", "You can make bows & arrows but not crossbows.");
+    export const ClothierSkill = new Skill("Clothier", "You are a tailor who can make complex clothing and outfits.");
+    export const LocksmithSkill = new Skill("Locksmith", "You can make & repair keys and locks. You are also able to pick locks.");
+    export const WagonerSkill = new Skill("Wagoner", "You drive a wagon to transport goods for various farmers and mercantile groups.");
+
     // Arcane Skills
     export const FlashPowderSkill = new Skill("Formulate Flash Powder", "With proper materials and equipment, you can make Flash Powder (Ud4).");
     export const DowsingRodSkill = new Skill("Fabricate Dowsing Rods", "With proper materials and tools, you can fabricate sensitive dowsing rods in one day for ¼ the typical cost.");
@@ -180,7 +187,7 @@ export namespace SkillsData {
         [JobSubsetEnum.Interpreter]: new SelectionPackage([PolyglotSkill], [], []),
         [JobSubsetEnum.Smith]: new SelectionPackage([SmithSkill], [], []),
         [JobSubsetEnum.Carpenter]: new SelectionPackage([CarpenterSkill], [], []),
-        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([MoneyChangerSkill], [], []),
+        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([MoneyChangerSkill, FenceSkill], [], []),
         [JobSubsetEnum.Ambler]: new SelectionPackage([EquitationSkill], [], []),
         [JobSubsetEnum.Chef]: new SelectionPackage([ChefSkill], [], []),
 
@@ -229,6 +236,25 @@ export namespace SkillsData {
     [JobSubsetEnum.Kain]: noSkillSelection,
     [JobSubsetEnum.ThreeTrinketRandom]: noSkillSelection,
     [JobSubsetEnum.OneTrinketChoice]: noSkillSelection,
+
+    // Additional Artisan subsets
+    [JobSubsetEnum.Armorer]:      new SelectionPackage([ArmorerSkill], [], []),
+    [JobSubsetEnum.Bowyer]:       new SelectionPackage([BowfletSkill], [], []),
+    [JobSubsetEnum.Fletcher]:     new SelectionPackage([BowfletSkill], [], []),
+    [JobSubsetEnum.Tailor]:       new SelectionPackage([ClothierSkill], [], []),
+    [JobSubsetEnum.Locksmith]:    new SelectionPackage([LocksmithSkill], [], []),
+    // Additional Crafter subsets
+    [JobSubsetEnum.Cooper]:       new SelectionPackage([CooperSkill], [], []),
+    [JobSubsetEnum.Leatherworker]: new SelectionPackage([LeatherworkerSkill], [], []),
+    [JobSubsetEnum.Mason]:        new SelectionPackage([MasonSkill], [], []),
+    [JobSubsetEnum.Swordsmith]:   new SelectionPackage([SwordsmithSkill], [], []),
+    // Additional Mercantiler subsets
+    [JobSubsetEnum.Assayer]:      new SelectionPackage([MoneyChangerSkill, AssayerSkill], [], []),
+    [JobSubsetEnum.Herbalist]:    new SelectionPackage([HerbalistSkill], [], []),
+    [JobSubsetEnum.Peddler]:      new SelectionPackage([PeddlerSkill, FenceSkill], [], []),
+    // Additional Laborer subsets
+    [JobSubsetEnum.Fisher]:       new SelectionPackage([FisherSkill], [], []),
+    [JobSubsetEnum.Wagoner]:      new SelectionPackage([WagonerSkill], [], []),
     };
 
     // --- Race Records ---

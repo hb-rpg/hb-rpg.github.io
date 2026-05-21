@@ -1,0 +1,9 @@
+<div class="large-gap">
+    <div class="transform-smoothly container-list" data-bind="foreach: data">
+        <div class="standard-padding">
+            <div data-bind="text: entanglementType"></div>
+            <div data-bind="if: allowedGeneratedNames; text: entanglementName"></div>
+            <div class="subtext" data-bind="text: entanglementReputation"></div>
+        </div>
+    </div>
+</div>

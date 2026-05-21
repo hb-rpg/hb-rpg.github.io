@@ -9,7 +9,7 @@ import { EntanglementAffect,  OrganizationEntanglementsGroup } from "../Contract
 import { Deity } from "../Contracts/Diety.js"
 import { Edges } from "../Contracts/Edges.js"
 import { CharacterName } from "../Contracts/CharacterName.js"
-import { Corruption } from "../Contracts/Corruption.js"
+import {  Corruption } from "../Contracts/Corruption.js"
 import { Skill } from "../Contracts/Skill.js"
 import { Drawbacks } from "../Contracts/Drawbacks.js"
 import { ItemData } from "./ItemData.js"
@@ -22,6 +22,8 @@ import { createTaggedData, standardSourceTag } from "../Utility/TagUtility.js"
 export class ConfiguredCharacterData {
     Name : Observable<CharacterName>
     Race: Observable<RaceType>
+    HasChosenRace : boolean = false
+    HasChosenBackground : boolean = false
     // Age: Observable<AgeType>
     
     // Morality: Observable<MoralityTypes>
@@ -75,7 +77,22 @@ export class ConfiguredCharacterData {
 
         this.ItemSelections = TaggedObservableSelectionPackageFactory(ItemData.UniversalStartingGear, standardSourceTag)
 
-        this.TrinketSelections = TaggedObservableSelectionPackageFactory(ItemData.TrinketSelection, standardSourceTag)
+        this.TrinketSelections = TaggedObservableSelectionPackageFactory(
+            ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset()),
+            standardSourceTag
+        )
+
+        const swapTrinketPackage = () => {
+            this.TrinketSelections(
+                TaggedObservableSelectionPackageFactory(
+                    ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset()),
+                    standardSourceTag
+                )()
+            )
+        }
+        this.Race.subscribe(swapTrinketPackage)
+        this.Job.subscribe(swapTrinketPackage)
+        this.JobSubset.subscribe(swapTrinketPackage)
 
         this.OrganizationEntanglements = ko.observable<OrganizationEntanglementsGroup>(new OrganizationEntanglementsGroup(undefined, undefined, undefined, undefined, undefined, undefined))
         this.EntanglementAffects = ko.observableArray<TaggedCharacterData<EntanglementAffect>>([]);

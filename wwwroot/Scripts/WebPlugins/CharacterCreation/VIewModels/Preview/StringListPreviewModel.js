@@ -1,24 +1,9 @@
-import { ko } from "../../../../Framework/Knockout/ko.js";
-export class StringListPreviewModel {
-    FriendlyName;
+import { BasePreviewModel } from "./BasePreviewModel.js";
+export class StringListPreviewModel extends BasePreviewModel {
     previewList;
-    IsConfigured;
-    Edit;
-    Randomize;
-    constructor(FriendlyName, previewList, IsConfigured, Randomize, Edit) {
-        this.FriendlyName = FriendlyName;
+    constructor(friendlyName, previewList, isConfigured, randomize, edit) {
+        super(friendlyName, isConfigured, randomize, edit);
         this.previewList = previewList;
-        this.IsConfigured = IsConfigured;
-        this.Randomize = () => {
-            this.IsConfigured(true);
-            Randomize();
-        };
-        this.Edit = () => {
-            this.IsConfigured(true);
-            Edit();
-        };
     }
-    isLoading = ko.observable(false);
-    Init = () => Promise.resolve();
-    ViewUrl = "PartialViews/CharacterCreation/StringListPreviewView.html";
+    contentViewUrl = "PartialViews/CharacterCreation/Preview/StringListContentView.html";
 }

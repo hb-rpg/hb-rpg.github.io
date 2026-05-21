@@ -3,6 +3,7 @@ import { Utility } from "../../../WebCore/Utility.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
 import { Abilities, AbilitiesToArray, MaxAbility } from "../Contracts/Abilities.js";
 import { ConfiguredModals } from "./ModalConfigurationModels/ConfiguredModals.js";
+import { AbilitiesConceptDescription } from "../Configuration/AblitiliesData.js";
 const AbilityKeys = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
 export class AbilityScoresModel {
     GlobalCharacterData;
@@ -11,6 +12,7 @@ export class AbilityScoresModel {
     isLoading;
     abilityPickers = {};
     PictureUrl;
+    AbilitiesExplanation = AbilitiesConceptDescription;
     CurrentlySelectedAbilities;
     UnselectedSkills;
     standardRollArray;
@@ -34,14 +36,15 @@ export class AbilityScoresModel {
             this.UnselectedSkills(selectedArray.map(x => x));
         });
         this.UnselectedSkills.subscribe((list) => {
-            if (list.length < DiceRoll.ABILITY_SCORE_AMOUNT)
-                this.PictureUrl(MaxAbility(this.CurrentlySelectedAbilities()).pictureUrl);
             if (list.length == 0)
                 this.CurrentlySelectedAbilities(this.EvaluateChildren());
+            if (list.length < DiceRoll.ABILITY_SCORE_AMOUNT)
+                this.PictureUrl(MaxAbility(this.CurrentlySelectedAbilities()).pictureUrl);
         });
         this.isLoading = ko.observable(false);
     }
     Init() {
+        this.errorMessage("");
         AbilityKeys.forEach(key => {
             const value = this.GlobalCharacterData.Abilities()?.[key];
             this.abilityPickers[key].Model.Init(value);
@@ -71,6 +74,10 @@ export class AbilityScoresModel {
         this.chooseRandomly();
         this.GlobalCharacterData.Abilities(this.EvaluateChildren());
     }
+    errorMessage = ko.observable("");
+    isConfigured() { return this.UnselectedSkills().length === 0; }
+    configurationError() { return "Please assign all ability scores."; }
+    onValidationFailed() { this.errorMessage(this.configurationError()); }
     Evaluate() {
         this.CurrentlySelectedAbilities(this.EvaluateChildren());
         this.GlobalCharacterData.Abilities(this.CurrentlySelectedAbilities());

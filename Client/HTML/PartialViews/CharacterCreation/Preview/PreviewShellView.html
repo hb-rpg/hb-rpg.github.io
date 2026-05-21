@@ -1,0 +1,40 @@
+<!-- ko if: IsConfigured -->
+<div>
+    <div class="large-gap flex-row centered">
+        <div class="bold-text">
+            <span>Step</span> <span data-bind="text: StepNumber"></span>
+        </div>
+        
+        <div data-bind="text: FriendlyName"></div>
+
+        <div class="small-gap remove-when-print">
+            <button class="pop-content button-icon centered" data-bind="click: Edit">
+                <img src="/Images/CharacterCreator/edit-button-svgrepo-com.svg" alt="Edit"/>
+            </button>
+            <button class="pop-content button-icon centered" data-bind="click: Randomize">
+                <img src="/Images/dice-icon.svg" alt="Randomize"/>
+            </button>
+        </div>
+    </div>
+
+    <div data-bind="PartialView: contentViewModel"></div>
+</div>
+<!-- /ko -->
+
+<!-- ko ifnot: IsConfigured -->
+<div class="section-buttons large-gap remove-when-print">
+    <div class="bold-text">
+        <span>Step</span> <span data-bind="text: StepNumber"></span>
+    </div>
+
+    <button class="pop-content wizard-button" data-bind="click: Edit">
+        <span>Select </span>
+        <span data-bind="text: FriendlyName"></span>
+    </button>
+
+    <button class="pop-content wizard-button" data-bind="click: Randomize">
+        <span>Roll </span>
+        <span data-bind="text: FriendlyName"></span>
+    </button>
+</div>
+<!-- /ko -->

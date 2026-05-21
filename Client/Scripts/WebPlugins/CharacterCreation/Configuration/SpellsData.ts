@@ -155,7 +155,21 @@ export namespace SpellData {
         [JobSubsetEnum.ThreeTrinketRandom]: none,
         [JobSubsetEnum.OneTrinketChoice]: none,
         [JobSubsetEnum.DisguiseSpecialist]: none,
-        [JobSubsetEnum.BurglarSpecialist]: none
+        [JobSubsetEnum.BurglarSpecialist]:  none,
+        [JobSubsetEnum.Armorer]:            none,
+        [JobSubsetEnum.Bowyer]:             none,
+        [JobSubsetEnum.Fletcher]:           none,
+        [JobSubsetEnum.Tailor]:             none,
+        [JobSubsetEnum.Locksmith]:          none,
+        [JobSubsetEnum.Cooper]:             none,
+        [JobSubsetEnum.Leatherworker]:      none,
+        [JobSubsetEnum.Mason]:              none,
+        [JobSubsetEnum.Swordsmith]:         none,
+        [JobSubsetEnum.Assayer]:            none,
+        [JobSubsetEnum.Herbalist]:          none,
+        [JobSubsetEnum.Peddler]:            none,
+        [JobSubsetEnum.Fisher]:             none,
+        [JobSubsetEnum.Wagoner]:            none,
     }
 
     export const EdgeToSpellRecord : Map<Edges, SelectionPackage<Spell>> = new Map()

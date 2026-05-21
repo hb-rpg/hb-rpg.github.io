@@ -14,6 +14,7 @@ export class LockableObjectPickerModel {
     chosenValue;
     isLocked;
     isUnlockableByUser;
+    availableOptions;
     constructor(FriendlyName, UnselectedValues, GlobalCharacterData, DefaultValue, determineSelectionPreview, determineWidgetPreview) {
         this.FriendlyName = FriendlyName;
         this.UnselectedValues = UnselectedValues;
@@ -40,11 +41,15 @@ export class LockableObjectPickerModel {
         });
         this.isLocked.subscribe((isLocked) => {
             if (isLocked)
-                return; // Unlocking adds the value back to pile
+                return;
             this.UnselectedValues.push(this.chosenValue());
         });
         this.isLoading = ko.observable(false);
         this.isUnlockableByUser = ko.observable(true);
+        this.availableOptions = ko.computed(() => [...this.UnselectedValues()]);
+    }
+    isConfigured() {
+        return this.isLocked();
     }
     unlock() {
         if (!this.isUnlockableByUser()) {

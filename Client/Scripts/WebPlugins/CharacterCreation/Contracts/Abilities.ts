@@ -126,7 +126,7 @@ export const MaxAbility = (ability: Abilities): AbilitiesDescription  => {
         return new AbilitiesDescription(
             "None",
             "Could not determine the primary ability. Please ensure scores are correctly input.",
-            "URL_FOR_DEFAULT_ICON" 
+            getCharacterCreatorPicturePath("/RR Downtime Drinking Ricardo de Gaspar.JPG")
         );
     }
 };

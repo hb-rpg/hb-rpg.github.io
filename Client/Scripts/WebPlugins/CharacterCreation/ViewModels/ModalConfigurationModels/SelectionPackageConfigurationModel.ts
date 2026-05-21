@@ -7,6 +7,7 @@ import { ObjectPreview } from "../../Contracts/ObjectPreview.js";
 import { ChoiceGroup, TaggedCharacterData, TaggedObservableSelectionPackage } from "../../Contracts/TaggedData.js";
 import { flattenAndFilterSelectionPackage } from "../../Utility/FilterUtility.js";
 import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
+import { NoteModel } from "../NoteModel.js";
 
 export class SelectionPackageConfigurationModel<SelectionType> implements ICharacterWizardViewModel<void, TaggedObservableSelectionPackage<SelectionType>> {
     ViewUrl = "PartialViews/CharacterCreation/SelectionPackageConfigurationView.html";
@@ -21,7 +22,9 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         public SelectionPackageAccessor : (characterData: ConfiguredCharacterData) => Observable<TaggedObservableSelectionPackage<SelectionType>>,
         public DetermineName : (item: SelectionType)=>string,
         public DetermineDescription : (item: SelectionType)=>string,
-        private IsConfigured : Observable<boolean>
+        private IsConfigured : Observable<boolean>,
+        public qualifier?: IPartialViewModel<NoteModel>,    // short notice shown before choices (e.g. "determined at startup")
+        public explanation?: IPartialViewModel<NoteModel>  // longer context shown after choices (e.g. rule reference)
     ) {
         this.fixedChoices = ko.observableArray<ObjectPreview>([])
         this.selectableChoices = ko.observableArray<IPartialViewModel<IRandomizeWizardModel<SelectionType>>>([])
@@ -49,13 +52,17 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
     }
 
     Init() {
+        this.errorMessage("")
         const selectionPackage = this.SelectionPackageAccessor(this.GlobalCharacterData)()
         this.choicesMappingToSelectedViewModels.clear()
 
         const flattenedChoices = flattenAndFilterSelectionPackage(selectionPackage, this.GlobalCharacterData)
 
-        this.fixedChoices(flattenedChoices.fixedSelection.map((fixedChoice)=>new ObjectPreview(
-                `${fixedChoice.Tags.Source} ${this.FriendlyName}`, 
+        this.fixedChoices(flattenedChoices.fixedSelection
+            .slice()
+            .sort((a, b) => this.DetermineName(a.Payload).localeCompare(this.DetermineName(b.Payload)))
+            .map((fixedChoice) => new ObjectPreview(
+                `${fixedChoice.Tags.Source} ${this.FriendlyName}`,
                 this.DetermineDescription(fixedChoice.Payload)
             )))
         
@@ -66,6 +73,7 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
             choicePackage => {
                 const choices = choicePackage.choiceReference
                 const possibleChoices = choicePackage.possibleChoices
+                possibleChoices(possibleChoices().slice().sort((a, b) => this.DetermineName(a).localeCompare(this.DetermineName(b))))
 
                 // Adjust split count if the filter filters out all of the options
                 let splitCount = Math.min(choices.Payload.pickCount, possibleChoices().length)
@@ -89,6 +97,12 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         
         return Promise.resolve();
     }
+
+    errorMessage : Observable<string> = ko.observable("")
+
+    isConfigured () { return this.IsConfigured() }
+    configurationError () { return "Please review and confirm your selections." }
+    onValidationFailed () { this.errorMessage(this.configurationError()) }
 
     Evaluate () {
         // Remove old references

@@ -2,15 +2,19 @@ import { Observable, ObservableArray } from "../../../../Framework/Knockout/knoc
 import { ko } from "../../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../../WebCore/Utility.js";
 import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
+import { EntanglementConceptDescription, EntanglementPicture } from "../../Configuration/EntanglementData.js";
 import { ICharacterWizardViewModel } from "../../Contracts/CharacterWizardViewModels.js";
 import { AttitudesTypes, Entanglements, OrganizationEntanglementsGroup, OrganizationPropertyMap, OrganizationTypes, RandomAttitudes, RollReservations } from "../../Contracts/Entanglements.js";
 import { Dispositions, DispositionsEnum, EntanglementOrganizationTypesEnum } from "../../Contracts/StringTypes.js";
 import { EntanglementUtility } from "../../Utility/EntanglementUtility.js";
+import { getCharacterCreatorPicturePath } from "../../Utility/RoutingUtility.js";
 import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 
 export class EntanglementCreationModel implements ICharacterWizardViewModel<void, OrganizationEntanglementsGroup> {
     FriendlyName = "Entanglement";
     ViewUrl = "PartialViews/CharacterCreation/EntanglementsConfigurationView.html"
+    PictureUrl = EntanglementPicture
+    EntanglementDescription = EntanglementConceptDescription
     isLoading: Observable<boolean>;
 
     Pickers: Record<EntanglementOrganizationTypesEnum, IPartialViewModel<LockableObjectPickerModel<DispositionsEnum>>>;
@@ -58,6 +62,7 @@ export class EntanglementCreationModel implements ICharacterWizardViewModel<void
     }
     
     Init () {
+        this.errorMessage("")
         this.ClearChildren()
 
         const storyEntanglements = this.GlobalCharacterData.EntanglementAffects()
@@ -114,6 +119,12 @@ export class EntanglementCreationModel implements ICharacterWizardViewModel<void
 
         this.Evaluate()
     }
+
+    errorMessage : Observable<string> = ko.observable("")
+
+    isConfigured () { return this.SortedUnselectedAttitudes().length === 0 }
+    configurationError () { return "Please assign all attitudes." }
+    onValidationFailed () { this.errorMessage(this.configurationError()) }
 
     Evaluate () {
         this.ConfiguredEntanglements(this.DetermineEntanglements())

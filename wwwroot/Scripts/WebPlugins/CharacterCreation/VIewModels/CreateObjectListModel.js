@@ -4,9 +4,8 @@ import { ModalFrameModel } from "../../../WebCore/ViewModels/ModalFrameModel.js"
 export class CreateObjectListModel {
     FriendlyName;
     itemConstructionModel;
-    evaluationItemLocation;
+    dataSelector;
     determineName;
-    isConfiguredCallback;
     initializationCallback;
     GlobalCharacterData;
     subheading;
@@ -14,23 +13,22 @@ export class CreateObjectListModel {
     isLoading;
     itemList;
     modal;
-    constructor(FriendlyName, itemConstructionModel, evaluationItemLocation, determineName, isConfiguredCallback, initializationCallback, GlobalCharacterData, subheading = false) {
+    constructor(FriendlyName, itemConstructionModel, dataSelector, determineName, initializationCallback, GlobalCharacterData, subheading = false) {
         this.FriendlyName = FriendlyName;
         this.itemConstructionModel = itemConstructionModel;
-        this.evaluationItemLocation = evaluationItemLocation;
+        this.dataSelector = dataSelector;
         this.determineName = determineName;
-        this.isConfiguredCallback = isConfiguredCallback;
         this.initializationCallback = initializationCallback;
         this.GlobalCharacterData = GlobalCharacterData;
         this.subheading = subheading;
         this.itemList = ko.observableArray([]);
         const a = Utility.BundleViewAndModel(itemConstructionModel);
-        const b = new ModalFrameModel(FriendlyName, a, isConfiguredCallback);
+        const b = new ModalFrameModel(FriendlyName, a, () => true);
         this.modal = Utility.BundleViewAndModel(b);
         this.isLoading = ko.observable(true);
     }
     Init() {
-        this.itemList(this.evaluationItemLocation(this.GlobalCharacterData)().map(x => ko.observable(x)));
+        this.itemList(this.dataSelector(this.GlobalCharacterData)().map(x => ko.observable(x)));
         this.initializationCallback(this.GlobalCharacterData);
         return Promise.resolve();
     }
@@ -40,8 +38,6 @@ export class CreateObjectListModel {
             if (isVisible)
                 return;
             subscription.dispose();
-            if (!this.isConfiguredCallback(this.itemConstructionModel))
-                return;
             this.itemList()[index()](this.modal.Model.Evaluate());
         });
     }
@@ -51,13 +47,11 @@ export class CreateObjectListModel {
             if (isVisible)
                 return;
             subscription.dispose();
-            if (!this.isConfiguredCallback(this.itemConstructionModel))
-                return;
             this.itemList.push(ko.observable(this.modal.Model.Evaluate()));
         });
     }
     Evaluate() {
-        this.evaluationItemLocation(this.GlobalCharacterData)(this.itemList().map(x => x()));
+        this.dataSelector(this.GlobalCharacterData)(this.itemList().map(x => x()));
     }
     Randomize() { }
 }

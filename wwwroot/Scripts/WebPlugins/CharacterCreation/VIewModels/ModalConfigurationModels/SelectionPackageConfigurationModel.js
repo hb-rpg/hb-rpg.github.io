@@ -10,18 +10,24 @@ export class SelectionPackageConfigurationModel {
     DetermineName;
     DetermineDescription;
     IsConfigured;
+    qualifier;
+    explanation;
     ViewUrl = "PartialViews/CharacterCreation/SelectionPackageConfigurationView.html";
     isLoading;
     fixedChoices;
     selectableChoices;
     choicesMappingToSelectedViewModels;
-    constructor(FriendlyName, GlobalCharacterData, SelectionPackageAccessor, DetermineName, DetermineDescription, IsConfigured) {
+    constructor(FriendlyName, GlobalCharacterData, SelectionPackageAccessor, DetermineName, DetermineDescription, IsConfigured, qualifier, // short notice shown before choices (e.g. "determined at startup")
+    explanation // longer context shown after choices (e.g. rule reference)
+    ) {
         this.FriendlyName = FriendlyName;
         this.GlobalCharacterData = GlobalCharacterData;
         this.SelectionPackageAccessor = SelectionPackageAccessor;
         this.DetermineName = DetermineName;
         this.DetermineDescription = DetermineDescription;
         this.IsConfigured = IsConfigured;
+        this.qualifier = qualifier;
+        this.explanation = explanation;
         this.fixedChoices = ko.observableArray([]);
         this.selectableChoices = ko.observableArray([]);
         // This is so you don't lose references to the original unflattened selection
@@ -42,15 +48,20 @@ export class SelectionPackageConfigurationModel {
         });
     }
     Init() {
+        this.errorMessage("");
         const selectionPackage = this.SelectionPackageAccessor(this.GlobalCharacterData)();
         this.choicesMappingToSelectedViewModels.clear();
         const flattenedChoices = flattenAndFilterSelectionPackage(selectionPackage, this.GlobalCharacterData);
-        this.fixedChoices(flattenedChoices.fixedSelection.map((fixedChoice) => new ObjectPreview(`${fixedChoice.Tags.Source} ${this.FriendlyName}`, this.DetermineDescription(fixedChoice.Payload))));
+        this.fixedChoices(flattenedChoices.fixedSelection
+            .slice()
+            .sort((a, b) => this.DetermineName(a.Payload).localeCompare(this.DetermineName(b.Payload)))
+            .map((fixedChoice) => new ObjectPreview(`${fixedChoice.Tags.Source} ${this.FriendlyName}`, this.DetermineDescription(fixedChoice.Payload))));
         // I split the choices groups so that the there are multiple choice selection views that all share the same "choices"
         const finalSelectionViewModels = [];
         flattenedChoices.filteredChoiceSelection.forEach(choicePackage => {
             const choices = choicePackage.choiceReference;
             const possibleChoices = choicePackage.possibleChoices;
+            possibleChoices(possibleChoices().slice().sort((a, b) => this.DetermineName(a).localeCompare(this.DetermineName(b))));
             // Adjust split count if the filter filters out all of the options
             let splitCount = Math.min(choices.Payload.pickCount, possibleChoices().length);
             for (let i = 0; i < splitCount; i++) {
@@ -69,6 +80,10 @@ export class SelectionPackageConfigurationModel {
         this.selectableChoices(finalSelectionViewModels);
         return Promise.resolve();
     }
+    errorMessage = ko.observable("");
+    isConfigured() { return this.IsConfigured(); }
+    configurationError() { return "Please review and confirm your selections."; }
+    onValidationFailed() { this.errorMessage(this.configurationError()); }
     Evaluate() {
         // Remove old references
         const selectionPackage = this.SelectionPackageAccessor(this.GlobalCharacterData);

@@ -1,4 +1,4 @@
-import { Observable, ObservableArray } from "../../../Framework/Knockout/knockout.js";
+import { Observable } from "../../../Framework/Knockout/knockout.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../WebCore/Utility.js";
 import { ModalFrameModel } from "../../../WebCore/ViewModels/ModalFrameModel.js";
@@ -8,50 +8,46 @@ import { ICharacterWizardViewModel } from "../Contracts/CharacterWizardViewModel
 export class CreateObjectModel<ItemToConfigureDataType, PreviewModelType> implements ICharacterWizardViewModel<void, void> {
     readonly ViewUrl = "PartialViews/CharacterCreation/CreateObjectView.html"
     isLoading: Observable<boolean>;
-    item : Observable<ItemToConfigureDataType>
     modal : IPartialViewModel<ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>>
 
     constructor (
-        public FriendlyName : string, 
-        public itemConstructionModel : IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType> & {Randomize : Function}, 
-        public evaluationItemLocation : (characterData : ConfiguredCharacterData)=>Observable<ItemToConfigureDataType>, 
+        public FriendlyName : string,
+        public itemConstructionModel : IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType> & {Randomize : Function} & Partial<IValidatable>,
+        public dataSelector : (characterData : ConfiguredCharacterData) => Observable<ItemToConfigureDataType>,
         public previewViewModel : IPartialViewModel<PreviewModelType>,
-        public isConfiguredCallback: (model: IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>) => boolean,
-        public EvaluationCallback : (characterData : ConfiguredCharacterData) => void,
+        public onUpdate : (characterData : ConfiguredCharacterData) => void,
         public GlobalCharacterData : ConfiguredCharacterData,
     ) {
-        this.item = this.evaluationItemLocation(this.GlobalCharacterData)
-
         const a = Utility.BundleViewAndModel(itemConstructionModel)
-        const b = new ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>(FriendlyName, a, isConfiguredCallback)
+        const b = new ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>(FriendlyName, a, () => {
+            const configured = itemConstructionModel.isConfigured?.() ?? true
+            if (!configured) itemConstructionModel.onValidationFailed?.()
+            else itemConstructionModel.errorMessage?.("")
+            return configured
+        })
         this.modal = Utility.BundleViewAndModel<void, ModalFrameModel<void, ItemToConfigureDataType, ItemToConfigureDataType, IWizardModel<void, ItemToConfigureDataType, ItemToConfigureDataType>>, ItemToConfigureDataType>(b)
 
         this.isLoading = ko.observable(true)
     }
 
     Init() {
-        // this.itemList(this.evaluationItemLocation(this.GlobalCharacterData)().map(x=>ko.observable(x)))
         return Promise.resolve()
     }
 
     EditItem() {
-        this.modal.Model.Init(this.item()).then(()=>this.modal.Model.Open())
+        this.modal.Model.Init(this.dataSelector(this.GlobalCharacterData)()).then(() => this.modal.Model.Open())
 
-        const subscription = this.modal.Model.isVisible.subscribe((isVisible : boolean)=>{
+        const subscription = this.modal.Model.isVisible.subscribe((isVisible : boolean) => {
             if (isVisible) return
             subscription.dispose()
-            
-            if (!this.isConfiguredCallback(this.itemConstructionModel)) return
-
-            this.item(this.modal.Model.Evaluate())
-            this.EvaluationCallback(this.GlobalCharacterData)
+            if (!this.modal.Model.wasCancelled)
+                this.onUpdate(this.GlobalCharacterData)
         })
     }
 
     Evaluate () {}
     Randomize () {
         this.itemConstructionModel.Randomize()
-        this.item(this.modal.Model.Evaluate())
-        this.EvaluationCallback(this.GlobalCharacterData)
+        this.onUpdate(this.GlobalCharacterData)
     }
 }

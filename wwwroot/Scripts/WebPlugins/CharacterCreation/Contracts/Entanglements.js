@@ -1,4 +1,5 @@
 import { Utility } from "../../../WebCore/Utility.js";
+import { EntanglementPreview } from "./EntanglementPreviewModel.js";
 import { EntanglementOrganizationTypesEnum, DispositionsEnum } from "./StringTypes.js";
 export class Entanglements {
     Identifier;
@@ -38,7 +39,9 @@ export class EntanglementAffect {
         this.RollReservation = RollReservation;
     }
 }
-export const createEntanglementPreview = (type, entanglement) => (entanglement) ? `(${type}) ${entanglement.Identifier.name} - ${entanglement.Attitudes}` : "";
+export const createEntanglementPreview = (type, entanglement) => (entanglement && entanglement.Identifier.name) ?
+    new EntanglementPreview(type, entanglement.Identifier.name, entanglement.Attitudes) :
+    new EntanglementPreview("", "", "");
 export class EntanglementSlots {
     Colleague;
     Family;

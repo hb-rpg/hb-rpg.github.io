@@ -1,24 +1,9 @@
-import { ko } from "../../../../Framework/Knockout/ko.js";
-export class SimplePreviewModel {
-    FriendlyName;
+import { BasePreviewModel } from "./BasePreviewModel.js";
+export class SimplePreviewModel extends BasePreviewModel {
     ConfigurationPreview;
-    IsConfigured;
-    Edit;
-    Randomize;
-    constructor(FriendlyName, ConfigurationPreview, IsConfigured, Randomize, Edit) {
-        this.FriendlyName = FriendlyName;
+    constructor(friendlyName, ConfigurationPreview, isConfigured, randomize, edit) {
+        super(friendlyName, isConfigured, randomize, edit);
         this.ConfigurationPreview = ConfigurationPreview;
-        this.IsConfigured = IsConfigured;
-        this.Randomize = () => {
-            this.IsConfigured(true);
-            Randomize();
-        };
-        this.Edit = () => {
-            this.IsConfigured(true);
-            Edit();
-        };
     }
-    isLoading = ko.observable(false);
-    Init = () => Promise.resolve();
-    ViewUrl = "PartialViews/CharacterCreation/SimplePreviewView.html";
+    contentViewUrl = "PartialViews/CharacterCreation/Preview/SimpleContentView.html";
 }

@@ -8,10 +8,8 @@ import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
 import { EntanglementOrganizationTypesEnum, JobType, RaceType } from "../../Contracts/StringTypes.js";
 import { TaggedObservableSelectionPackage, StoryModel, Item, TaggedCharacterData } from "../../Contracts/TaggedData.js";
-import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects, updateBackgroundSpells, updateEdgesSpells } from "../../Utility/UpdateUtility.js";
-import { AbilityPreviewModel } from "../Preview/AbilityPreviewModel.js";
-import { SimplePreviewModel } from "../Preview/SimplePreviewModel.js";
-import { StringListPreviewModel } from "../Preview/StringListPreviewModel.js";
+import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects, updateBackgroundSpells, updateEdgesSpells, updateBackgroundCorruption, updateBackgroundDrawbacks, updateRaceDrawbackData } from "../../Utility/UpdateUtility.js";
+import { PreviewModel, StringPreviewModel, StringListPreviewModel, LanguagePreviewModel, AbilityPreviewModel, EntanglementPreviewContainerModel } from "../Preview/PreviewModel.js";
 import { AbilityScoresModel } from "../AbilityScoresModel.js";
 import { AncestryViewModel } from "./AncestryViewModel.js";
 import { SelectionPackageConfigurationModel } from "./SelectionPackageConfigurationModel.js";
@@ -21,34 +19,44 @@ import { Spell } from "../../Contracts/Spell.js";
 import { Drawbacks } from "../../Contracts/Drawbacks.js";
 import { Corruption } from "../../Contracts/Corruption.js";
 import { JobBackgroundPickerModel } from "./JobBackgroundPickerModel.js";
-import { createEntanglementPreview, Entanglements, OrganizationEntanglementsGroup } from "../../Contracts/Entanglements.js";
+import { createEntanglementPreview, OrganizationEntanglementsGroup } from "../../Contracts/Entanglements.js";
 import { EntanglementCreationModel } from "./EntanglementCreationModel.js";
-import { IConfigurableViewModal } from "../../Contracts/CharacterWizardViewModels.js";
-import { LanguagePreviewModel } from "../Preview/LanguagePreviewModel.js";
+import { CharacterPickerModal } from "../../Contracts/CharacterWizardViewModels.js";
+import { CharacterName } from "../../Contracts/CharacterName.js";
 import { Utility } from "../../../../WebCore/Utility.js";
 import { TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData } from "../../Configuration/TaggedNameData.js";
 import { NameUtility } from "../../Utility/NameUtility.js";
 import { CreateObjectModel } from "../CreateObjectModel.js";
 import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 import { NamePickerModel } from "./NamePickerModel.js";
+import { NoteModel } from "../NoteModel.js";
+import { EdgesExplanation, SkillsExplanation, TrinketQualifier, TrinketExplanation, LanguageExplanation, DrawbacksExplanation, CorruptionExplanation, ReligionExplanation } from "../../Configuration/ConceptIntroductions.js";
+import { EntanglementPreview } from "../../Contracts/EntanglementPreviewModel.js";
+
+const truncate = (text: string, max = 80): string =>
+    text.length > max ? text.slice(0, max) + "…" : text
 
 export namespace ConfiguredModals {
-    export const createAncestryPickerModel = (characterData: ConfiguredCharacterData) : IConfigurableViewModal<RaceType> => {
-        return createGenericPicker<AncestryViewModel, SimplePreviewModel, RaceType>({
+    export const createAncestryPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<RaceType, PreviewModel<StringPreviewModel>> => {
+        const ancestryModel = new AncestryViewModel(characterData, Races);
+        return createGenericPicker<AncestryViewModel, PreviewModel<StringPreviewModel>, RaceType>({
             name: "Ancestry",
             characterData,
-            pickerModel: new AncestryViewModel(characterData, Races),
+            pickerModel: ancestryModel,
             dataSelector: (data) => data.Race,
             onUpdate: (data) => {
+                ancestryModel.Evaluate();
                 updateRaceItemsData(data, "Ancestry");
                 updateRaceLanguageData(data);
                 updateRaceEdgesData(data, "Ancestry");
-                updateRaceSkillsData(data, "Ancestry")
+                updateRaceSkillsData(data, "Ancestry");
+                updateRaceDrawbackData(data, "Ancestry");
                 updateNameData(data);
             },
-            createPreview: (modal) => new SimplePreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 modal.FriendlyName,
-                characterData.Race as Observable<string>,
+                ko.observable(-1),
+                new StringPreviewModel(characterData.Race as Observable<string>),
                 ko.observable(false),
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
@@ -56,72 +64,80 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createEdgesPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createEdgesPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Edges>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.EdgeSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<Edges>, StringListPreviewModel, TaggedObservableSelectionPackage<Edges>>({
+        const edgesModel = new SelectionPackageConfigurationModel(
+            "Edges",
+            characterData,
+            (data) => data.EdgeSelections,
+            (item: Edges) => truncate(item.Name + " - " + item.Description),
+            (item: Edges) => item.Name + " - " + item.Description,
+            isConfigured,
+            undefined,
+            NoteModel.bundle(EdgesExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Edges>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Edges>>({
             name: "Edges",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Edges",
-                characterData,
-                (data) => data.EdgeSelections,
-                (item: Edges) => item.Name,
-                (item: Edges) => item.Name + " - " + item.Description,
-                isConfigured
-            ),
+            pickerModel: edgesModel,
             dataSelector: (data) => data.EdgeSelections,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Edges",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            ), 
-            onUpdate: ()=>{
-                updateEdgesSpells(characterData)
+            ),
+            onUpdate: () => {
+                edgesModel.Evaluate();
+                updateEdgesSpells(characterData);
             }
         });
     };
 
-    export const createSkillsPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createSkillsPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Skill>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.SkillsSelection.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<Skill>, StringListPreviewModel, TaggedObservableSelectionPackage<Skill>>({
+        const skillsModel = new SelectionPackageConfigurationModel(
+            "Skills",
+            characterData,
+            (data) => data.SkillsSelection,
+            (item: Skill) => truncate(item.Name + " - " + item.Description),
+            (item: Skill) => item.Name + " - " + item.Description,
+            isConfigured,
+            undefined,
+            NoteModel.bundle(SkillsExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Skill>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Skill>>({
             name: "Skills",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Skills",
-                characterData,
-                (data) => data.SkillsSelection,
-                (item: Skill) => item.Name,
-                (item: Skill) => item.Name + " - " + item.Description,
-                isConfigured
-            ),
+            pickerModel: skillsModel,
             dataSelector: (data) => data.SkillsSelection,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Skills",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),
+            onUpdate: () => { skillsModel.Evaluate(); },
             hasContent: ko.computed(() => {
                 const pkg = characterData.SkillsSelection();
                 return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
@@ -129,98 +145,104 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createBackgroundPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Local logic for the specific display string
+    export const createBackgroundPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<StoryModel<JobType>, PreviewModel<StringPreviewModel>> => {
         const displayLabel = ko.observable("");
         characterData.JobBackground.subscribe((background) => {
             displayLabel(background ? background.Name : "Unknown");
         });
 
-        return createGenericPicker<JobBackgroundPickerModel, SimplePreviewModel, StoryModel<JobType>>({
+        const backgroundModel = new JobBackgroundPickerModel(
+            characterData,
+            CareerData.possibleProfessions,
+            CareerData.ProfessionToJobData,
+            CareerData.JobToStoryData,
+            CareerData.JobSubsetData
+        );
+        return createGenericPicker<JobBackgroundPickerModel, PreviewModel<StringPreviewModel>, StoryModel<JobType>>({
             name: "Background",
             characterData,
-            pickerModel: new JobBackgroundPickerModel(
-                characterData, 
-                CareerData.possibleProfessions,
-                CareerData.ProfessionToJobData,
-                CareerData.JobToStoryData,
-                CareerData.JobSubsetData
-            ),
+            pickerModel: backgroundModel,
             dataSelector: (data) => data.JobBackground,
-            createPreview: (modal) => new SimplePreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 modal.FriendlyName,
-                displayLabel,
+                ko.observable(-1),
+                new StringPreviewModel(displayLabel),
                 ko.observable(false),
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),
-            onUpdate: ()=> {
-                updateBackgroundItems(characterData)
-                updateBackgroundEdges(characterData)
-                updateBackgroundSkills(characterData)
-                updateBackgroundLanguages(characterData)
-                updateEntanglementBackgroundAffects(characterData)
-                updateBackgroundSpells(characterData)
+            onUpdate: (data) => {
+                backgroundModel.Evaluate();
+                updateBackgroundItems(data);
+                updateBackgroundEdges(data);
+                updateBackgroundSkills(data);
+                updateBackgroundLanguages(data);
+                updateEntanglementBackgroundAffects(data);
+                updateBackgroundSpells(data);
+                updateBackgroundCorruption(data);
+                updateBackgroundDrawbacks(data);
             }
         });
     };
 
-    export const createAbilityScoresPickerModel = (characterData: ConfiguredCharacterData) => {
-        return createGenericPicker<AbilityScoresModel, AbilityPreviewModel, Abilities>({
+    export const createAbilityScoresPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<Abilities, PreviewModel<AbilityPreviewModel>> => {
+        const abilitiesModel = new AbilityScoresModel(characterData);
+        return createGenericPicker<AbilityScoresModel, PreviewModel<AbilityPreviewModel>, Abilities>({
             name: "Ability Scores",
             characterData,
-            pickerModel: new AbilityScoresModel(characterData),
+            pickerModel: abilitiesModel,
             dataSelector: (data) => data.Abilities,
-            createPreview: (modal) => new AbilityPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 modal.FriendlyName,
-                characterData.Abilities,
+                ko.observable(-1),
+                new AbilityPreviewModel(characterData.Abilities),
                 ko.observable(false),
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: () => { abilitiesModel.Evaluate(); }
         });
     };
 
-    
-
-    export const createEquipmentPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createEquipmentPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Item>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.ItemSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<Item>, StringListPreviewModel, TaggedObservableSelectionPackage<Item>>({
+        const equipmentModel = new SelectionPackageConfigurationModel(
+            "Equipment",
+            characterData,
+            (data) => data.ItemSelections,
+            (item: Item) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
+            (item: Item) => `${item.Name}${item.Description ? " - " + item.Description : ""}${item.Amount ? " x" + item.Amount : ""}`,
+            isConfigured
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Item>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Item>>({
             name: "Equipment",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Equipment",
-                characterData,
-                (data) => data.ItemSelections,
-                (item: Item) => item.Name,
-                (item: Item) => `${item.Name} ${(item.Description)? " - " + item.Description : ""} ${(item.Amount)? " x" + item.Amount : ""}`,
-                isConfigured
-            ),
+            pickerModel: equipmentModel,
             dataSelector: (data) => data.ItemSelections,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Equipment",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: () => { equipmentModel.Evaluate(); }
         });
     };
 
-    export const createEntanglementPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
-        const stringPreview = ko.observableArray<string>([]);
+    export const createEntanglementPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<OrganizationEntanglementsGroup, PreviewModel<EntanglementPreviewContainerModel>> => {
+        const entanglementPreview = ko.observableArray<EntanglementPreview>([]);
         characterData.OrganizationEntanglements.subscribe((newValue) => {
-            const finalPreview = [
+            const finalPreview : EntanglementPreview[] = [
                 createEntanglementPreview(EntanglementOrganizationTypesEnum.CivicAuthorities, newValue.CivicAuthorities),
                 createEntanglementPreview(EntanglementOrganizationTypesEnum.Colleagues, newValue.Colleagues),
                 createEntanglementPreview(EntanglementOrganizationTypesEnum.Family, newValue.Family),
@@ -229,69 +251,74 @@ export namespace ConfiguredModals {
                 createEntanglementPreview(EntanglementOrganizationTypesEnum.ReligiousAuthorities, newValue.ReligiousAuthorities),
                 createEntanglementPreview(EntanglementOrganizationTypesEnum.ShadowGroups, newValue.ShadowGroups)
             ]
-
-            stringPreview(finalPreview);
+            entanglementPreview(finalPreview);
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<EntanglementCreationModel, StringListPreviewModel, OrganizationEntanglementsGroup>({
+        const entanglementModel = new EntanglementCreationModel(characterData);
+        return createGenericPicker<EntanglementCreationModel, PreviewModel<EntanglementPreviewContainerModel>, OrganizationEntanglementsGroup>({
             name: "Entanglement",
             characterData,
-            pickerModel: new EntanglementCreationModel(characterData),
+            pickerModel: entanglementModel,
             dataSelector: (data) => data.OrganizationEntanglements,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Entanglement",
-                stringPreview,
+                ko.observable(-1),
+                new EntanglementPreviewContainerModel(entanglementPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: () => { entanglementModel.Evaluate(); }
         });
     };
 
-    export const createTrinketPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createTrinketPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Item>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.TrinketSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<Item>, StringListPreviewModel, TaggedObservableSelectionPackage<Item>>({
+        const trinketModel = new SelectionPackageConfigurationModel(
+            "Trinket",
+            characterData,
+            (data) => data.TrinketSelections,
+            (item: Item) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
+            (item: Item) => `${item.Name}${item.Description ? " - " + item.Description : ""}${item.Amount ? " x" + item.Amount : ""}`,
+            isConfigured,
+            NoteModel.bundle(TrinketQualifier),
+            NoteModel.bundle(TrinketExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Item>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Item>>({
             name: "Trinket",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Trinket",
-                characterData,
-                (data) => data.TrinketSelections,
-                (item: Item) => item.Name,
-                (item: Item) => `${item.Name} ${(item.Description)? " - " + item.Description : ""} ${(item.Amount)? " x" + item.Amount : ""}`,
-                isConfigured
-            ),
+            pickerModel: trinketModel,
             dataSelector: (data) => data.TrinketSelections,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Trinket",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: () => { trinketModel.Evaluate(); }
         });
     };
 
-    export const createLanguagePickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
-        const stringPreview = ko.observableArray<LearnedLanguage>([]);
+    export const createLanguagePickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<LearnedLanguage>, PreviewModel<LanguagePreviewModel>> => {
+        const languagePreview = ko.observableArray<LearnedLanguage>([]);
         characterData.LanguageSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x));
+            languagePreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x));
         });
 
-        const determineName = (language : LearnedLanguage)=>{
+        const determineName = (language: LearnedLanguage) => {
             return `${language.Language.Name} (${(language.canSpeak)? " Speak " : ""} ${(language.canRead)? " Read " : ""} ${(language.canWrite)? " Write " : ""})`
         }
 
@@ -299,58 +326,65 @@ export namespace ConfiguredModals {
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<LearnedLanguage>, LanguagePreviewModel, TaggedObservableSelectionPackage<LearnedLanguage>>({
+        const languageModel = new SelectionPackageConfigurationModel(
+            "Language",
+            characterData,
+            (data) => data.LanguageSelections,
+            (item: LearnedLanguage) => truncate(item.Language.Name),
+            (item: LearnedLanguage) => determineName(item) + ": " + item.Language.Description,
+            isConfigured,
+            undefined,
+            NoteModel.bundle(LanguageExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<LearnedLanguage>, PreviewModel<LanguagePreviewModel>, TaggedObservableSelectionPackage<LearnedLanguage>>({
             name: "Language",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Language",
-                characterData,
-                (data) => data.LanguageSelections,
-                (item: LearnedLanguage) => item.Language.Name,
-                (item: LearnedLanguage) => determineName(item) + ": " + item.Language.Description,
-                isConfigured
-            ),
+            pickerModel: languageModel,
             dataSelector: (data) => data.LanguageSelections,
-            createPreview: (modal) => new LanguagePreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Language",
-                stringPreview,
+                ko.observable(-1),
+                new LanguagePreviewModel(languagePreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: () => { languageModel.Evaluate(); }
         });
     };
 
-    export const createSpellPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createSpellPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Spell>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.SpellSelection.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
-        
-        return createGenericPicker<SelectionPackageConfigurationModel<Spell>, StringListPreviewModel, TaggedObservableSelectionPackage<Spell>>({
+
+        const spellsModel = new SelectionPackageConfigurationModel(
+            "Spells",
+            characterData,
+            (data) => data.SpellSelection,
+            (item: Spell) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
+            (item: Spell) => `${item.Name}${item.Description ? " - " + item.Description : ""}`,
+            isConfigured
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Spell>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Spell>>({
             name: "Spells",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Spells",
-                characterData,
-                (data) => data.SpellSelection,
-                (item: Spell) => item.Name,
-                (item: Spell) => `${item.Name} ${(item.Description)? " - " + item.Description : ""}}`,
-                isConfigured
-            ),
+            pickerModel: spellsModel,
             dataSelector: (data) => data.SpellSelection,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Spells",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),
+            onUpdate: () => { spellsModel.Evaluate(); },
             hasContent: ko.computed(() => {
                 const pkg = characterData.SpellSelection();
                 return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
@@ -358,36 +392,40 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createDrawbackPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createDrawbackPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Drawbacks>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.DrawbacksSelection.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
-        
-        return createGenericPicker<SelectionPackageConfigurationModel<Drawbacks>, StringListPreviewModel, TaggedObservableSelectionPackage<Drawbacks>>({
+
+        const drawbacksModel = new SelectionPackageConfigurationModel(
+            "Drawbacks",
+            characterData,
+            (data) => data.DrawbacksSelection,
+            (item: Drawbacks) => truncate(item.Name),
+            (item: Drawbacks) => `${item.Name}${item.Description ? " - " + item.Description : ""}`,
+            isConfigured,
+            undefined,
+            NoteModel.bundle(DrawbacksExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Drawbacks>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Drawbacks>>({
             name: "Drawbacks",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Drawbacks",
-                characterData,
-                (data) => data.DrawbacksSelection,
-                (item: Drawbacks) => item.Name,
-                (item: Drawbacks) => `${item.Name} ${(item.Description)? " - " + item.Description : ""}}`,
-                isConfigured
-            ),
+            pickerModel: drawbacksModel,
             dataSelector: (data) => data.DrawbacksSelection,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Drawbacks",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),
+            onUpdate: () => { drawbacksModel.Evaluate(); },
             hasContent: ko.computed(() => {
                 const pkg = characterData.DrawbacksSelection();
                 return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
@@ -395,36 +433,40 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createCorruptionPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createCorruptionPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Corruption>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.CorruptionSelection.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Effect));
+            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.affliction.Effect).sort());
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
-        
-        return createGenericPicker<SelectionPackageConfigurationModel<Corruption>, StringListPreviewModel, TaggedObservableSelectionPackage<Corruption>>({
+
+        const corruptionModel = new SelectionPackageConfigurationModel(
+            "Corruption",
+            characterData,
+            (data) => data.CorruptionSelection,
+            (item: Corruption) => truncate(`${item.affliction.Effect}${item.affliction.Description ? " - " + item.affliction.Description : ""}`),
+            (item: Corruption) => `${item.affliction.Effect}${item.affliction.Description ? " - " + item.affliction.Description : ""}`,
+            isConfigured,
+            undefined,
+            NoteModel.bundle(CorruptionExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Corruption>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Corruption>>({
             name: "Corruption",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Corruption",
-                characterData,
-                (data) => data.CorruptionSelection,
-                (item: Corruption) => item.Effect,
-                (item: Corruption) => `${item.Effect} ${(item.Description)? " - " + item.Description : ""}}`,
-                isConfigured
-            ),
+            pickerModel: corruptionModel,
             dataSelector: (data) => data.CorruptionSelection,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Corruption",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),
+            onUpdate: () => { corruptionModel.Evaluate(); },
             hasContent: ko.computed(() => {
                 const pkg = characterData.CorruptionSelection();
                 return pkg.ChoiceSelection().length > 0 || pkg.FixedSelection().length > 0;
@@ -432,8 +474,7 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createDeityPickerModel = (characterData: ConfiguredCharacterData) => {
-        // Unique logic stays here
+    export const createDeityPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Deity>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.ReligionSelections.subscribe((newValue) => {
             stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => (x.Pronoun.name)? x.Pronoun.name : "An unknown god"));
@@ -443,54 +484,60 @@ export namespace ConfiguredModals {
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
 
-        return createGenericPicker<SelectionPackageConfigurationModel<Deity>, StringListPreviewModel, TaggedObservableSelectionPackage<Deity>>({
+        const religionModel = new SelectionPackageConfigurationModel(
+            "Religion",
+            characterData,
+            (data) => data.ReligionSelections,
+            (item: Deity) => truncate(item.Pronoun.name ? `${item.Pronoun.name}: ${item.Description}` : "An unknown god"),
+            (item: Deity) => `${item.Pronoun.name}: ${item.Description}`,
+            isConfigured,
+            undefined,
+            NoteModel.bundle(ReligionExplanation)
+        );
+        return createGenericPicker<SelectionPackageConfigurationModel<Deity>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Deity>>({
             name: "Religion",
             characterData,
-            pickerModel: new SelectionPackageConfigurationModel(
-                "Religion",
-                characterData,
-                (data) => data.ReligionSelections,
-                (item: Deity) => (item.Pronoun.name)? item.Pronoun.name : "An unknown god",
-                (item: Deity) => `${item.Pronoun.name}: ${item.Description}`,
-                isConfigured
-            ),
+            pickerModel: religionModel,
             dataSelector: (data) => data.ReligionSelections,
-            createPreview: (modal) => new StringListPreviewModel(
+            createPreview: (modal) => new PreviewModel(
                 "Religion",
-                stringPreview,
+                ko.observable(-1),
+                new StringListPreviewModel(stringPreview),
                 isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
-            )
+            ),
+            onUpdate: () => { religionModel.Evaluate(); }
         });
     };
 
-    export const createNamePickerModel = (characterData: ConfiguredCharacterData) => {
-        let tempPreview = Utility.BundleViewAndModel({} as SimplePreviewModel)
-    
+    export const createNamePickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<CharacterName, PreviewModel<StringPreviewModel>> => {
+        let tempPreview = Utility.BundleViewAndModel({} as PreviewModel<StringPreviewModel>)
+
+        const namePickerModel = new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData);
         const modal = Utility.BundleViewAndModel(
             new CreateObjectModel(
                 "Identity",
-                new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData),
+                namePickerModel,
                 (data) => data.Name,
                 tempPreview,
-                () => true,
-                () => { },
+                () => { namePickerModel.Evaluate(); },
                 characterData
             )
         )
-    
+
         const NameObservable = ko.observable(NameUtility.determineIdentityPreview(characterData))
         characterData.Name.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)))
         characterData.Gender.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)))
-    
+
         const isConfigured = ko.observable(false)
         characterData.JobBackground.subscribe(() => isConfigured(false))
         characterData.Race.subscribe(() => isConfigured(false))
-    
-        tempPreview.Model = new SimplePreviewModel(
+
+        tempPreview.Model = new PreviewModel(
             modal.Model.FriendlyName,
-            NameObservable,
+            ko.observable(-1),
+            new StringPreviewModel(NameObservable),
             isConfigured,
             modal.Model.Randomize.bind(modal.Model),
             modal.Model.EditItem.bind(modal.Model)
@@ -499,7 +546,7 @@ export namespace ConfiguredModals {
 
         return Object.assign(modal, { hasContent: ko.computed(() => true) })
     }
-    
+
     export const createAbilityPickerModel = (
         name: string,
         choices: ObservableArray<number>,

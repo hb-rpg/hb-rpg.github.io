@@ -4,6 +4,26 @@ export var KnockoutBindings;
 (function (KnockoutBindings) {
     const PREVIOUS_MODEL_KEY = 'ko_partial_view_previous_model';
     function initializePartialView() {
+        ko.bindingHandlers.ContentView = {
+            init: function (element) {
+                return { controlsDescendantBindings: true };
+            },
+            update: function (element, valueAccessor, _allBindings, viewModel) {
+                const url = ko.unwrap(valueAccessor());
+                const children = element.getElementsByTagName("*");
+                for (let i = 0; i < children.length; i++)
+                    ko.cleanNode(children[i]);
+                element.innerHTML = '';
+                if (url) {
+                    fetch(Utility.getBaseHTMLUrl(url))
+                        .then(r => r.text())
+                        .then(html => {
+                        element.innerHTML = html;
+                        ko.applyBindingsToDescendants(viewModel, element);
+                    });
+                }
+            }
+        };
         ko.bindingHandlers.PartialView = {
             init: function (element, valueAccessor) {
                 return { controlsDescendantBindings: true };

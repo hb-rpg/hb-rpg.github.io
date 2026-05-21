@@ -1,0 +1,248 @@
+@import "./variables.less";
+
+// --- Elevated card shadow ---
+
+.pop-content {
+    box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.1);
+}
+
+// --- Wizard shell ---
+
+.wizard-container {
+    background: linear-gradient(120deg, @article-color, 60%, @fade-background-color);
+    border-radius: 0.4em;
+    padding: @article-top-padding @article-side-padding;
+    margin: @margin-size auto;
+    font-size: 1em;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.23);
+}
+
+// --- Animated step reveal ---
+
+.wizard-step-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 1s cubic-bezier(1,0,0,1), opacity 2s ease-in-out;
+    opacity: 0;
+    overflow-y: hidden;
+
+    .reveal-section.hoverable-container {
+        padding: 0;
+        margin: 0;
+        transition: padding 1s cubic-bezier(1,0,0,1), opacity 2s ease-out, box-shadow 2s, width 2s ease-in-out, height 1s ease-in-out;
+    }
+
+    &.visible {
+        grid-template-rows: 1fr;
+        opacity: 1;
+
+        .reveal-section.hoverable-container {
+            padding: 1.5em;
+        }
+
+        .reveal-section.hoverable-container {
+            margin: 1.5em;
+        }
+    }
+}
+
+.reveal-section {
+    min-height: 0;
+    transition: opacity 2s ease-out, width 2s ease-in-out, height 1s ease-in-out;
+    overflow-y: hidden;
+}
+
+// --- Wizard chrome ---
+
+.wizard-header {
+    font-size: @title-font-size;
+    margin-bottom: @header-margin-size;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid fade(@pop-color, 20%);
+    padding-bottom: 0.3em;
+}
+
+.wizard-panel {
+    background-color: @article-color;
+    border-radius: 0.2em;
+    padding: @standard-padding;
+    margin-bottom: @margin-size;
+    border: 1px solid fade(@pop-color, 10%);
+}
+
+.wizard-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: @margin-size;
+}
+
+// --- Wizard select / options ---
+
+.wizard-select {
+    -webkit-appearance: none;
+    appearance: none;
+    background: @pop-color;
+    border: 1px solid fade(@pop-color, 30%);
+    border-radius: 0.2em;
+    padding: @standard-padding (@standard-padding * 2);
+    cursor: pointer;
+    min-width: 12em;
+    max-width: 30em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:hover, &:focus {
+        background-color: @hover-color;
+        outline: none;
+        transform: scale(1.02);
+    }
+
+    option { .wizard-option(); }
+    .wizard-button { background-color: transparent; padding: 0; }
+    .button-icon   { display: inline-flex; }
+}
+
+.wizard-option {
+    color: @text-color;
+    padding: @standard-padding;
+    cursor: pointer;
+    border-radius: 0.2em;
+    margin: 0.5em 0;
+}
+
+.wizard-option:hover {
+    background: white;
+}
+
+.wizard-option-container {
+    padding: 0.1em 0.5em;
+    background: @hover-color;
+    border-radius: 0.2em;
+    list-style-type: none;
+}
+
+// --- Card / hoverable panel ---
+
+.hoverable-container {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    padding: 1em;
+    text-align: center;
+    margin: 1.5em;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    transition: all 1s;
+
+    h4 {
+        text-transform: uppercase;
+        margin-right: 1em;
+    }
+
+    .title {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.hoverable-container:hover {
+    outline: 1px solid #ccc;
+    box-shadow: 0 0 1.0em 0.5em rgba(0, 0, 0, 0.10);
+}
+
+@media print {
+    .hoverable-container {
+        border: none !important;
+    }
+}
+
+// --- Bubble widget ---
+
+.bubble-widget {
+    background-color: @article-color;
+    padding: 2em;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .wizard-button {
+        margin: 0.5em;
+    }
+}
+
+// --- Standard content layout inside wizard steps ---
+
+.standard-wizard-styles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: @margin-size;
+
+    .image {
+        display: block;
+        margin-bottom: @standard-padding;
+        border: 1px solid fade(@pop-color, 10%);
+    }
+
+    .description {
+        border-radius: 0.2em;
+        padding: @standard-padding;
+        margin-bottom: @margin-size;
+        border: 1px solid fade(@pop-color, 8%);
+    }
+}
+
+// --- State helpers ---
+
+.grayed-out {
+    background-color: @fade-background-color;
+    color: @faded-text;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
+.transform-smoothly {
+    transition: all 3s ease-in-out;
+}
+
+// --- Divider ---
+
+hr {
+    width: 85%;
+    opacity: 10%;
+    color: @pop-color;
+    margin: 1em 0;
+}
+
+// --- Responsive ---
+
+@media (width <= @max-size-before-element-reaction) {
+    .wizard-container {
+        padding: @standard-padding;
+        font-size: 0.95em;
+    }
+
+    .wizard-header {
+        font-size: 1.3em;
+    }
+
+    .propensity-header {
+        font-size: 1em;
+    }
+
+    .propensity-image {
+        max-width: 7em;
+    }
+
+    .bubble-widget {
+        padding: 1em;
+    }
+}

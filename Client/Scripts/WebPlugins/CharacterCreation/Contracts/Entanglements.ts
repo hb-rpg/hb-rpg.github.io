@@ -1,4 +1,5 @@
 import { Utility } from "../../../WebCore/Utility.js";
+import { EntanglementPreview } from "./EntanglementPreviewModel.js";
 import { DispositionType, PronounType, NameType, EntanglementOrganizationTypesEnum, EntanglementOrganizationTypes, DispositionsEnum } from "./StringTypes.js";
 
 export class Entanglements {
@@ -26,8 +27,10 @@ export class EntanglementAffect {
     {}
 }
 
-export const createEntanglementPreview = (type : EntanglementOrganizationTypesEnum, entanglement? : Entanglements) : string => 
-    (entanglement)? `(${type}) ${entanglement.Identifier.name} - ${entanglement.Attitudes}` : ""
+export const createEntanglementPreview = (type : EntanglementOrganizationTypesEnum, entanglement? : Entanglements) : EntanglementPreview => 
+    (entanglement && entanglement.Identifier.name)? 
+        new EntanglementPreview(type, entanglement.Identifier.name, entanglement.Attitudes) : 
+        new EntanglementPreview("", "", "")
     
 
 export class EntanglementSlots {

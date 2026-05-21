@@ -1,5 +1,6 @@
 import { ko } from "../../../../Framework/Knockout/ko.js";
 import { Utility } from "../../../../WebCore/Utility.js";
+import { EntanglementConceptDescription, EntanglementPicture } from "../../Configuration/EntanglementData.js";
 import { OrganizationEntanglementsGroup, OrganizationPropertyMap, OrganizationTypes, RandomAttitudes, RollReservations } from "../../Contracts/Entanglements.js";
 import { Dispositions, DispositionsEnum } from "../../Contracts/StringTypes.js";
 import { EntanglementUtility } from "../../Utility/EntanglementUtility.js";
@@ -8,6 +9,8 @@ export class EntanglementCreationModel {
     GlobalCharacterData;
     FriendlyName = "Entanglement";
     ViewUrl = "PartialViews/CharacterCreation/EntanglementsConfigurationView.html";
+    PictureUrl = EntanglementPicture;
+    EntanglementDescription = EntanglementConceptDescription;
     isLoading;
     Pickers;
     ConfiguredEntanglements;
@@ -35,6 +38,7 @@ export class EntanglementCreationModel {
         this.isLoading = ko.observable(false);
     }
     Init() {
+        this.errorMessage("");
         this.ClearChildren();
         const storyEntanglements = this.GlobalCharacterData.EntanglementAffects();
         // Initializes the pickers with the high/low roll
@@ -77,6 +81,10 @@ export class EntanglementCreationModel {
         this.chooseRandomly();
         this.Evaluate();
     }
+    errorMessage = ko.observable("");
+    isConfigured() { return this.SortedUnselectedAttitudes().length === 0; }
+    configurationError() { return "Please assign all attitudes."; }
+    onValidationFailed() { this.errorMessage(this.configurationError()); }
     Evaluate() {
         this.ConfiguredEntanglements(this.DetermineEntanglements());
         this.GlobalCharacterData.OrganizationEntanglements(this.ConfiguredEntanglements());

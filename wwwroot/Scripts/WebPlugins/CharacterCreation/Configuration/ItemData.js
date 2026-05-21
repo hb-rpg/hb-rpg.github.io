@@ -2,18 +2,12 @@ import { Utility } from "../../../WebCore/Utility.js";
 import { JobSubsetEnum } from "../Contracts/StringTypes.js";
 import { ChoiceGroup, Item, SelectionPackage } from "../Contracts/TaggedData.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
-import { ancestrySourceTag, backgroundSourceTag, createTaggedData, standardSourceTag } from "../Utility/TagUtility.js";
-const genericCoinFactory = (amount, Description) => {
-    return new Item("Coin", amount, Description, amount);
-};
-const ItemToCoinFactory = (item, Description) => {
-    const amount = (item.Amount) ? item.Amount : 1;
-    const cost = (item.Value) ? item.Value : 0;
-    return genericCoinFactory(amount * cost, Description);
+const genericCoinFactory = (amount, value, Description) => {
+    return new Item(`${value} Coins from selling trinket`, amount, Description, value);
 };
 const TrinketToCoinFactory = (item) => {
     const amount = (item.Amount) ? item.Amount : 0;
-    return genericCoinFactory(amount, "Earned from selling " + item.Name);
+    return genericCoinFactory(amount, item.Value, "Earned from selling " + item.Name);
 };
 export var ItemData;
 (function (ItemData) {
@@ -125,6 +119,11 @@ export var ItemData;
     ItemData.IronSpikes = new Item("Iron Spikes", DiceRoll.eightSidedDieRoll());
     ItemData.Trowel = new Item("Trowel");
     ItemData.SwordsmithWeapon = new Item("Simple or Heavy Melee Weapon", undefined, "Typically a sword (1d6) or great sword (1d6 or 1d8 if proficient)");
+    ItemData.ChainMailArmor = new Item("Chain Mail or Scale Mail Armor", 1, "Medium Armor, Ud6");
+    ItemData.BowfletToolChest = new Item("Small tool chest", undefined, "Contains files, fine wood shavers, and hide glue");
+    ItemData.Scissors = new Item("Scissors");
+    ItemData.FormalWearOutfit = new Item("Formal Wear Outfit", 1, "Shirt, vest, trousers, stockings, hat, belt, and shoes");
+    ItemData.Padlock = new Item("Padlock with key");
     // Money Changer / Assayer / Peddler
     ItemData.FancyClothes = new Item("Set of fancy clothes");
     ItemData.Abacus = new Item("Abacus");
@@ -164,24 +163,24 @@ export var ItemData;
     // --- Trinkets & Special Items ---
     ItemData.BlackArrow = new Item("Arrow, Black", 1, "At the end of the Encounter, you can always find it within 1d6 turns if you search.", 5);
     ItemData.LuckyCopperCoin = new Item("Coin, Lucky Copper", 1, "It always lands on your mental choice of heads or tails.", 5);
-    ItemData.GlowingCrystal = new Item("Crystal, glowing", 1, "Emits bluish light continually. Illuminates an area Close. Unaffected by Darkness spell.", 20);
-    ItemData.CurvedDagger = new Item("Dagger, curved", 1, "1d4 damage. Contains 4 gems (10 coins each). If removed, gems regrow after one week.", 40);
-    ItemData.BountifulFlask = new Item("Flask, Bountiful", 1, "Refills with water for two people/day. If wine is added, refills with wine for one week.", 15);
-    ItemData.GlassMarbles = new Item("Glass Marbles, dozen", 1, "Standard Action to cast. DEX Test or be Down. Returns to pouch with 1 min concentration.", 5);
-    ItemData.SilentHammer = new Item("Silent Hammer", 1, "Makes no sound when used for work. Weapon: Simple Melee & Ranged, 1d6 damage, Range: Nearby.", 10);
-    ItemData.SkeletonKey = new Item("Key, Skeleton", 1, "1 in 4 chance to work on any mundane lock. Can retry the following day.", 20);
-    ItemData.FoldingKnife = new Item("Knife with folding blade", 1, "Easy to conceal. Never dulls, won't break on Critical Failure. 1d2 damage, Range: Nearby.", 10);
-    ItemData.FishCharmNecklace = new Item("Leather Necklace with Lucky Fish Charm", 1, "Advantage on INT Test when fishing or Foraging at a shoreline.", 5);
-    ItemData.LuckyDice = new Item("Lucky Dice, pair", 1, "Once per day, reroll a dice game result and take the better result.", 5);
-    ItemData.Lodestone = new Item("Lodestone on a leather thong", 1, "Points north. Can be attuned to a touched target with 1 min concentration.", 10);
-    ItemData.FloralPerfume = new Item("Perfume, Floral (Ud4)", 1, "Advantage on CHA Tests for info/favors. Lasts 1 hour per application.", 5);
-    ItemData.InsectRing = new Item("Ring, silver with insect motif", 1, "Insects avoid you. Insect creatures must pass WIS Test to attack.", 10);
-    ItemData.SpiderSilkRope = new Item("Rope, spider silk rope, 100’", 1, "Holds 1200 lbs. Never tangles. 8 HP to sever.", 15);
-    ItemData.RosewoodFlute = new Item("Rosewood flute", 1, "Standard Action: Once per day, GM rerolls NPC Reaction Table.", 10);
-    ItemData.MagicSatchel = new Item("Satchel, tooled leather", 1, "Holds 60 lbs (1200 coins) but weighs 10 lbs. Living creatures die after 24 hours.", 20);
-    ItemData.SneezingPowder = new Item("Sneezing powder, packets (Ud6)", 1, "Reaction: Target fails CON Test or sneezes (Disadvantage on Actions). No use in wind.", 10);
-    ItemData.SpringBladeStaff = new Item("Staff, Walking with concealed blade", 1, "Functions as Spear: Simple Melee/Ranged, 1d6 damage, Range: Nearby.", 10);
-    ItemData.JadeMonkeyStatuette = new Item("Lucky Statuette Jade Monkey", 1, "Advantage on one INT Ability Test per day while held.", 10);
+    ItemData.GlowingCrystal = new Item("Crystal, glowing", 1, "This palm sized crystal emits a bluish light continually and can illuminate an area Close when uncovered. The light it emits is unaffected by the Darkness spell.", 20);
+    ItemData.CurvedDagger = new Item("Dagger, curved", 1, "It does standard damage (1d4) but has 4 gems worth 10 coins each. If removed, a new gem will take its place after one week.", 40);
+    ItemData.BountifulFlask = new Item("Flask, Bountiful", 1, "This copper flask continually refills and always has enough water for two people per day. If a bottle of wine is added it will refill with wine for a week.", 15);
+    ItemData.GlassMarbles = new Item("Glass Marbles, dozen", 1, "You can cast marbles as a Standard Action to an area Close. Creatures that move through them must pass a DEX Test or be Down. Marbles Nearby return to their pouch if you hold it open on the ground and concentrate for one minute.", 5);
+    ItemData.SilentHammer = new Item("Silent Hammer", 1, "This work hammer has a head made of an unusual, dark black metal. It makes no sound when hammering nails, spikes, or chisels. Hammer (Simple Melee & Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon.", 10);
+    ItemData.SkeletonKey = new Item("Key, Skeleton", 1, "This key has a 1 in 4 chance to work on any mundane lock. A failed attempt can be tried again on the same lock the following day.", 20);
+    ItemData.FoldingKnife = new Item("Knife with folding blade", 1, "This knife is small and easy to conceal. The blade never dulls and will not break with a Critical Failure. Knife (Light Melee & Ranged, 1d2 damage, Range: Nearby) that can also be thrown.", 10);
+    ItemData.FishCharmNecklace = new Item("Leather Necklace with Lucky Fish Charm", 1, "This charm gives you Advantage on your INT Test when fishing or Foraging at a shoreline to increase your rations.", 5);
+    ItemData.LuckyDice = new Item("Lucky Dice, pair", 1, "In dice games, once per day you can reroll and take the better result.", 5);
+    ItemData.Lodestone = new Item("Lodestone on a leather thong", 1, "The lodestone points north by default but can be attuned to another target you can touch and concentrate on for one minute.", 10);
+    ItemData.FloralPerfume = new Item("Perfume, Floral (Ud4)", 1, "When perfume from this vial is applied, you have Advantage on CHA Tests when seeking information or asking for favors. Each application lasts 1 hour.", 5);
+    ItemData.InsectRing = new Item("Ring, silver with insect motif", 1, "When you wear this ring, insects avoid you. Any insect type creature must pass a WIS Test to attack you.", 10);
+    ItemData.SpiderSilkRope = new Item("Rope, spider silk rope, 100’", 1, "This thin rope can hold the weight of approximately six human-sized beings (1200 lbs). It also never tangles. It takes 8 hp of damage to break/sever.", 15);
+    ItemData.RosewoodFlute = new Item("Rosewood flute", 1, "Once per day, when you play this flute as a Standard Action, the GM will reroll on the NPC Reaction Table if you ask.", 10);
+    ItemData.MagicSatchel = new Item("Satchel, tooled leather with shoulder strap and silver buckle", 1, "This small satchel has twice the capacity of a backpack. It can hold 60 lbs (1200 coins) but never weighs more than 10 pounds. What is put in the satchel is limited by the size of its mouth (12\" diameter). Living creatures cannot survive in the satchel over 24 hours if it is closed.", 20);
+    ItemData.SneezingPowder = new Item("Sneezing powder, packets (Ud6)", 1, "As a Reaction to an opponent being Close, you can blow this powder in their face. If the target fails a CON Ability Test, they will sneeze uncontrollably and have Disadvantage on any Actions until the beginning of your next turn. The powder cannot be used in windy conditions.", 10);
+    ItemData.SpringBladeStaff = new Item("Staff, Walking with concealed spring blade", 1, "This walking staff has a concealed spring blade allowing it to be used as a spear. Spear (Simple Melee and Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon.", 10);
+    ItemData.JadeMonkeyStatuette = new Item("Lucky Statuette Jade Monkey", 1, "While held, this palm sized statuette gives you Advantage on one INT Ability Test per day.", 10);
     ItemData.Pliers = new Item("Pliers", 1);
     ItemData.FineWoodShavers = new Item("Fine wood shavers", 1);
     ItemData.basicTrinketSection = [
@@ -288,31 +287,44 @@ export var ItemData;
         ], [])
     ], []);
     // --- Trinket Selection Package ---
-    const randomizeTrinketSelection = Utility.shuffle(ItemData.basicTrinketSection.map(x => x));
-    const basicTrinketChoice = new ChoiceGroup(1, [randomizeTrinketSelection[0], TrinketToCoinFactory(randomizeTrinketSelection[0])], []);
-    const overrideBasicTrinketSelection = new Map();
-    overrideBasicTrinketSelection.set(basicTrinketChoice, createTaggedData(standardSourceTag, (taggedChoiceBeingOverridden, characterData) => {
-        const raceOverride = ItemData.TrinketUpdates.get(characterData.Race());
-        if (raceOverride)
-            return raceOverride;
-        const jobOverride = ItemData.TrinketUpdates.get(characterData.Job());
-        if (jobOverride)
-            return jobOverride;
-        const JobSubsetOverride = ItemData.TrinketUpdates.get(characterData.JobSubset());
-        if (JobSubsetOverride)
-            return JobSubsetOverride;
-        return taggedChoiceBeingOverridden;
-    }));
-    const TwoTrinketsChoiceSelection = new ChoiceGroup(1, [randomizeTrinketSelection[0], randomizeTrinketSelection[1], TrinketToCoinFactory(randomizeTrinketSelection[0]), TrinketToCoinFactory(randomizeTrinketSelection[1])], []);
-    const ThreeTrinketsChoiceSelection = new ChoiceGroup(1, [randomizeTrinketSelection[0], randomizeTrinketSelection[1], randomizeTrinketSelection[2], TrinketToCoinFactory(randomizeTrinketSelection[0]), TrinketToCoinFactory(randomizeTrinketSelection[1]), TrinketToCoinFactory(randomizeTrinketSelection[2])], []);
-    const LoadstoneOrRandomChoiceSelection = new ChoiceGroup(1, [randomizeTrinketSelection[0], ItemData.Lodestone, TrinketToCoinFactory(randomizeTrinketSelection[0]), TrinketToCoinFactory(ItemData.Lodestone)], []);
-    const TrinketChoice = new ChoiceGroup(1, ItemData.basicTrinketSection, []);
-    ItemData.TrinketUpdates = new Map();
-    ItemData.TrinketUpdates.set("Human", createTaggedData(ancestrySourceTag, TwoTrinketsChoiceSelection));
-    ItemData.TrinketUpdates.set("Dowser", createTaggedData(backgroundSourceTag, LoadstoneOrRandomChoiceSelection));
-    ItemData.TrinketUpdates.set(JobSubsetEnum.ThreeTrinketRandom, createTaggedData(backgroundSourceTag, ThreeTrinketsChoiceSelection)),
-        ItemData.TrinketUpdates.set(JobSubsetEnum.OneTrinketChoice, createTaggedData(backgroundSourceTag, TrinketChoice));
-    ItemData.TrinketSelection = new SelectionPackage([], [basicTrinketChoice], [], overrideBasicTrinketSelection);
+    function getTrinketPackage(race, job, jobSubset) {
+        const shuffled = Utility.shuffle(ItemData.basicTrinketSection.map(x => x));
+        const isHuman = race === "Human";
+        if (jobSubset === JobSubsetEnum.ThreeTrinketRandom) {
+            return new SelectionPackage([], [
+                new ChoiceGroup(1, isHuman
+                    ? [shuffled[0], shuffled[3], TrinketToCoinFactory(shuffled[0]), TrinketToCoinFactory(shuffled[3])]
+                    : [shuffled[0], TrinketToCoinFactory(shuffled[0])], []),
+                new ChoiceGroup(1, isHuman
+                    ? [shuffled[1], shuffled[4], TrinketToCoinFactory(shuffled[1]), TrinketToCoinFactory(shuffled[4])]
+                    : [shuffled[1], TrinketToCoinFactory(shuffled[1])], []),
+                new ChoiceGroup(1, isHuman
+                    ? [shuffled[2], shuffled[5], TrinketToCoinFactory(shuffled[2]), TrinketToCoinFactory(shuffled[5])]
+                    : [shuffled[2], TrinketToCoinFactory(shuffled[2])], []),
+            ], []);
+        }
+        if (jobSubset === JobSubsetEnum.OneTrinketChoice) {
+            return new SelectionPackage([], [
+                new ChoiceGroup(1, ItemData.basicTrinketSection, [])
+            ], []);
+        }
+        if (job === "Dowser") {
+            return new SelectionPackage([], [
+                new ChoiceGroup(1, isHuman
+                    ? [shuffled[0], shuffled[1], ItemData.Lodestone, TrinketToCoinFactory(shuffled[0]), TrinketToCoinFactory(shuffled[1]), TrinketToCoinFactory(ItemData.Lodestone)]
+                    : [shuffled[0], ItemData.Lodestone, TrinketToCoinFactory(shuffled[0]), TrinketToCoinFactory(ItemData.Lodestone)], [])
+            ], []);
+        }
+        if (isHuman) {
+            return new SelectionPackage([], [
+                new ChoiceGroup(1, [shuffled[0], shuffled[1], TrinketToCoinFactory(shuffled[0]), TrinketToCoinFactory(shuffled[1])], [])
+            ], []);
+        }
+        return new SelectionPackage([], [
+            new ChoiceGroup(1, [shuffled[0], TrinketToCoinFactory(shuffled[0])], [])
+        ], []);
+    }
+    ItemData.getTrinketPackage = getTrinketPackage;
     // --- Records ---
     ItemData.RaceRecord = {
         Dwarf: ItemData.DwarfItemSelection,
@@ -414,6 +426,24 @@ export var ItemData;
         [JobSubsetEnum.DisguiseSpecialist]: new SelectionPackage([ItemData.DisguiseKit], [], []),
         [JobSubsetEnum.BurglarSpecialist]: new SelectionPackage([ItemData.LockPicks, ItemData.Crowbar, ItemData.GrapplingHook], [], []),
         [JobSubsetEnum.ThreeTrinketRandom]: none,
-        [JobSubsetEnum.OneTrinketChoice]: none
+        [JobSubsetEnum.OneTrinketChoice]: none,
+        // Additional Artisan subsets
+        [JobSubsetEnum.Armorer]: new SelectionPackage([ItemData.SmithTools, ItemData.ChainMailArmor], [], []),
+        [JobSubsetEnum.Bowyer]: new SelectionPackage([ItemData.BowfletToolChest, ItemData.ShortBowWithArrows], [], []),
+        [JobSubsetEnum.Fletcher]: new SelectionPackage([ItemData.BowfletToolChest, ItemData.ShortBowWithArrows], [], []),
+        [JobSubsetEnum.Tailor]: new SelectionPackage([ItemData.Apron, ItemData.Scissors, ItemData.FormalWearOutfit], [], []),
+        [JobSubsetEnum.Locksmith]: new SelectionPackage([ItemData.Files, ItemData.Saw, ItemData.MasonHammer, ItemData.Padlock, ItemData.LockPicks], [], []),
+        // Additional Crafter subsets
+        [JobSubsetEnum.Cooper]: new SelectionPackage([ItemData.Mallet, ItemData.WideAx, ItemData.DrawKnife, ItemData.Dividers, ItemData.WoodPlaner, ItemData.Cart, ItemData.Mule], [], []),
+        [JobSubsetEnum.Leatherworker]: new SelectionPackage([ItemData.LeatherKit, ItemData.TannedLeather, ItemData.LeatherArmorRoll], [], []),
+        [JobSubsetEnum.Mason]: new SelectionPackage([ItemData.MasonHammer, ItemData.IronSpikes, ItemData.Trowel, ItemData.Level], [], []),
+        [JobSubsetEnum.Swordsmith]: new SelectionPackage([ItemData.SwordsmithWeapon], [], []),
+        // Additional Mercantiler subsets
+        [JobSubsetEnum.Assayer]: new SelectionPackage([ItemData.MortarPestle, ItemData.Reagents], [], []),
+        [JobSubsetEnum.Herbalist]: new SelectionPackage([ItemData.HerbalistKit], [], []),
+        [JobSubsetEnum.Peddler]: new SelectionPackage([ItemData.MerchantBackpack, ItemData.Baubles], [], []),
+        // Additional Laborer subsets
+        [JobSubsetEnum.Fisher]: new SelectionPackage([ItemData.FishingString, ItemData.BrassHooks], [], []),
+        [JobSubsetEnum.Wagoner]: new SelectionPackage([ItemData.OpenWagon, ItemData.Ponies, ItemData.Crossbow, ItemData.Bolts], [], []),
     };
 })(ItemData || (ItemData = {}));
