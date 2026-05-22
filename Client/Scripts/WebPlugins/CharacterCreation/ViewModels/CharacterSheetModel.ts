@@ -103,9 +103,7 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     }
 
     exportAsPDF () {
-        createPdf()
-
-        // print()
+        createPdf(this.GlobalCharacterData)
     }
 
     talkToCharacter() {

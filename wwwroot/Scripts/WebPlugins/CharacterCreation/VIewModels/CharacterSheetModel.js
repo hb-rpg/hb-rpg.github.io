@@ -70,8 +70,7 @@ export class CharacterSheetModel {
         this.showOutput = ko.observable(false);
     }
     exportAsPDF() {
-        createPdf();
-        // print()
+        createPdf(this.GlobalCharacterData);
     }
     talkToCharacter() {
         const npcName = `${this.GlobalCharacterData.Name().Bynames} ${this.GlobalCharacterData.Name().Name} ${this.GlobalCharacterData.Name().Epithets}`;
