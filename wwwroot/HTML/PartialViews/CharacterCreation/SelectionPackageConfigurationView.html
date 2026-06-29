@@ -1,7 +1,7 @@
 
-<!-- explanation: longer context shown after choices (e.g. rule reference) -->
+<!-- explanation: longer context shown before choices (e.g. rule reference) -->
 <!-- ko if: explanation -->
-<div data-bind="PartialView: explanation"></div>
+<div class="big-padding" data-bind="PartialView: explanation"></div>
 <!-- /ko -->
 
 <!-- choices: fixed grants and player-selectable pickers -->
@@ -35,9 +35,9 @@
 <!-- /ko -->
 
 
-<!-- qualifier: short notice shown before choices -->
+<!-- qualifier: short notice shown after choices -->
 <!-- ko if: qualifier -->
-<div data-bind="PartialView: qualifier"></div>
+<div class="small-gap standard-padding centered" data-bind="PartialView: qualifier"></div>
 <!-- /ko -->
 
 <!-- error: validation feedback -->

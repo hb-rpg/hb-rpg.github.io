@@ -1,121 +1,209 @@
-import { PDFDocument, PDFPage, PDFFont, PDFForm, StandardFonts, rgb, grayscale } from 'pdf-lib'
 import { ConfiguredCharacterData } from '../Configuration/CharacterWizardData.js'
 import { flattenAndCombineSelectionPackage } from './UpdateUtility.js'
+import { NameUtility } from './NameUtility.js'
 
-const W = 612
-const H = 792
-const ML = 36
-const MR = 36
-const MT = 36
-const GRAY = grayscale(0.85)
-const BLACK = rgb(0, 0, 0)
-const WHITE = rgb(1, 1, 1)
-
-interface Fonts {
-    bold: PDFFont
-    regular: PDFFont
-    italic: PDFFont
+declare const pdfMake: {
+    createPdf: (docDefinition: any) => { download: (filename: string) => void }
+    vfs: Record<string, string>
+    fonts: Record<string, any>
 }
 
-// ── drawing helpers ──────────────────────────────────────────────────────────
+// ── Font sizes ─────────────────────────────────────────────────────────────────
+const FONT_TITLE          = 16   // "HEARTBREAKER" header
+const FONT_SECTION_HEADER =  9   // section titles (LANGUAGES, SKILLS, etc.) — bold, standalone
+const FONT_LABEL          =  6   // column headers and small labels
+const FONT_BODY           =  8   // cell text
+const FONT_SMALL          =  5   // secondary labels
 
-function label(page: PDFPage, text: string, x: number, y: number, font: PDFFont, size = 6) {
-    page.drawText(text, { x, y, size, font, color: BLACK })
+// ── Page layout ───────────────────────────────────────────────────────────────
+const PAGE_MARGIN        = 36
+const PAGE_MARGIN_TOP    = 54   // taller top margin accommodates the header bar
+const HEADER_TEXT_TOP    = 10
+const HEADER_VERSION_TOP = 16
+
+// ── Spacing ───────────────────────────────────────────────────────────────────
+const COLUMN_GAP          = 8
+const SECTION_GAP         = 4    // tight internal spacing (e.g. between name field + ability table)
+const BETWEEN_SECTION_GAP = 12   // standard gap after every major section
+
+// ── Cell heights ──────────────────────────────────────────────────────────────
+const HEIGHT_IDENTITY_FIELD = 12
+const HEIGHT_STAT_ROW       = 13
+const HEIGHT_STANDARD_ROW   = 16
+const HEIGHT_WRITING_ROW    = 40   // tall rows for hand-writing (narrative, notes)
+const HEIGHT_SPELL_NOTES    = 10
+const HEIGHT_STAT_ROW_MAIN  = 29
+// Portrait height is derived so its single-row table (H + 1pt padding×2 + 1pt borders) equals
+// the 7-row stat/ability table (7×(H+2pt padding) + 4pt borders = 7H+18). Solving: H_p = 7×H_s + 15.
+const HEIGHT_PORTRAIT       = 7 * HEIGHT_STAT_ROW_MAIN + 15
+
+// ── Row counts ────────────────────────────────────────────────────────────────
+const WEAPON_ROWS   = 12
+const GEAR_ROWS     =  6
+const LANGUAGE_ROWS =  5
+const SKILL_ROWS    =  7
+const EDGE_ROWS     =  7
+const DRAWBACK_ROWS =  3
+const SPELL_ROWS    =  7
+const SPELL_COLS    =  7
+const RELIGION_ROWS =  3
+const NOTE_ROWS     =  8
+
+// ── Column widths: top identity/stats/portrait section ───────────────────────
+// Usable column space = 540 content - 2×8 gaps = 524pt → 30/30/40 split
+const IDENTITY_COL_WIDTH = 157   // 30 %
+const STAT_COL_WIDTH     = 157   // 30 %
+// portrait: width '*' → takes remaining ~40 % (≈ 210pt)
+
+// ── Column widths: ability scores (inside identity column) ───────────────────
+const ABILITY_SCORE_COL_WIDTH  = 22
+const ABILITY_DAMAGE_COL_WIDTH = 22
+
+// ── Column widths: gear tables ───────────────────────────────────────────────
+const GEAR_NAME_COL_WIDTH   = 160
+const GEAR_AMOUNT_COL_WIDTH =  40
+
+// ── Column widths: languages ─────────────────────────────────────────────────
+const LANG_NAME_COL_WIDTH      =  80
+const LANG_SPOKEN_COL_WIDTH    =  40
+const LANG_READWRITE_COL_WIDTH =  40
+
+// ── Column widths: skills, edges, drawbacks ──────────────────────────────────
+const LIST_NAME_COL_WIDTH = 100
+
+// ── Column widths: spells ────────────────────────────────────────────────────
+const SPELL_NAME_COL_WIDTH  =  90
+const SPELL_LEVEL_COL_WIDTH =  25
+const SPELL_CAST_COL_WIDTH  =  50
+const SPELL_RANGE_COL_WIDTH =  35
+const SPELL_TEST_COL_WIDTH  =  35
+
+// ── Column widths: entanglements ─────────────────────────────────────────────
+const ENT_LABEL_COL_WIDTH = 115
+
+// ── Column widths: religion ──────────────────────────────────────────────────
+const REL_NAME_COL_WIDTH   =  90
+const REL_DEITY_IMAGE_SIZE =  35
+const REL_IMAGE_COL_WIDTH  =  40
+
+// ── Unified reference column width (~8 chars at body font) ───────────────────
+const REFERENCE_COL_WIDTH = 40
+
+// ── Title font ────────────────────────────────────────────────────────────────
+// Drop a TTF font file at /Fonts/title.ttf to use a custom DnD-style typeface.
+// Falls back to Roboto Bold if the file is not found.
+const FONT_VFS_NAME = 'LucidaSans.ttf'
+const FONT_BOLD_VFS_NAME = 'LucidaSansBold.ttf'
+
+const REGULAR_FONT_PATH     = '/Fonts/LucidaSans/LSANS.ttf'
+const BOLD_FONT_PATH     = '/Fonts/LucidaSans/LSANSD.ttf'
+const FONT_ID       = 'LucidaSans'
+
+// ── Colors ────────────────────────────────────────────────────────────────────
+const HEADER_GRAY        = '#D8D8D8'   // column header rows
+const STRIPE_GRAY        = '#E8E8E8'   // alternating data row tint (slightly darker than before)
+const WHITE              = '#FFFFFF'
+const ENTITY_LABEL_COLOR = '#D8D8D8'   // shared by entanglement label column and religion rank cells
+
+// ── Table layout (thin borders, tight padding) ────────────────────────────────
+const SHEET_LAYOUT = {
+    hLineWidth: () => 0.5,
+    vLineWidth: () => 0.5,
+    hLineColor: () => '#000000',
+    vLineColor: () => '#000000',
+    paddingLeft:   () => 2,
+    paddingRight:  () => 2,
+    paddingTop:    () => 1,
+    paddingBottom: () => 1,
 }
 
-function box(page: PDFPage, x: number, y: number, w: number, h: number, fill = false) {
-    page.drawRectangle({
-        x, y, width: w, height: h,
-        borderColor: BLACK, borderWidth: 0.5,
-        color: fill ? GRAY : WHITE,
-    })
+// ── Table factory ─────────────────────────────────────────────────────────────
+function makeTable(widths: any[], body: any[][], heights?: number[]): any {
+    const tableProps: any = { widths, body, dontBreakRows: true }
+    if (heights) tableProps.heights = heights
+    return { table: tableProps, layout: SHEET_LAYOUT }
 }
 
-let fieldCounter = 0
-let activeFont: PDFFont | undefined
-
-function tf(
-    form: PDFForm,
-    page: PDFPage,
-    x: number, y: number, w: number, h: number,
-    value = '',
-    multiline = false,
-): void {
-    const name = `f${fieldCounter++}`
-    const field = form.createTextField(name)
-    field.setText(value)
-    if (multiline) field.enableMultiline()
-    field.addToPage(page, {
-        x: x + 1, y: y + 1, width: w - 2, height: h - 2,
-        borderWidth: 0,
-        backgroundColor: WHITE,
-        textColor: BLACK,
-        font: activeFont,
-    })
-}
-
-function pageHeader(page: PDFPage, fonts: Fonts, pageNum: number) {
-    const refs = ['Ch 2-3', 'Ch 2-4', 'Ch 2-5']
-    label(page, 'Chapter 2 – Character Creation', ML, H - MT - 8, fonts.bold, 13)
-    label(page, `v. 10/03/2025`, W - MR - 70, H - MT - 8, fonts.regular, 7)
-    label(page, `Character Sheet page ${pageNum}`, W - MR - 80, MT - 10, fonts.italic, 7)
-    label(page, `Character Creation ${refs[pageNum - 1]}`, W - MR - 80, MT - 18, fonts.italic, 7)
-}
-
-// column‑based table helpers
-interface Col { label: string; w: number }
-
-function tableHeader(page: PDFPage, cols: Col[], x: number, y: number, rowH: number, fonts: Fonts) {
-    let cx = x
-    for (const col of cols) {
-        box(page, cx, y, col.w, rowH, true)
-        label(page, col.label, cx + 2, y + 3, fonts.bold, 6)
-        cx += col.w
+// ── Section factory ───────────────────────────────────────────────────────────
+// Bold section title (no cell border) + table below + standard trailing gap.
+function makeSection(title: string, widths: any[], body: any[][]): any {
+    return {
+        stack: [
+            { text: title, bold: true, fontSize: FONT_SECTION_HEADER, margin: [4, 0, 0, 2] },
+            makeTable(widths, body),
+        ],
+        margin: [0, 0, 0, BETWEEN_SECTION_GAP],
     }
 }
 
-function tableRow(
-    form: PDFForm,
-    page: PDFPage,
-    cols: Col[],
-    x: number, y: number, rowH: number,
-    values: string[],
-    shaded = false,
-) {
-    let cx = x
-    cols.forEach((col, i) => {
-        box(page, cx, y, col.w, rowH, shaded)
-        tf(form, page, cx, y, col.w, rowH, values[i] ?? '')
-        cx += col.w
-    })
+// ── Row builders ──────────────────────────────────────────────────────────────
+function columnHeaderRow(labels: string[]): any[] {
+    return labels.map(label => ({ text: label, bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY }))
 }
 
-function sectionLabel(page: PDFPage, text: string, x: number, y: number, w: number, fonts: Fonts) {
-    box(page, x, y, w, 10, true)
-    label(page, text, x + 2, y + 2, fonts.bold, 7)
+function dataRow(values: string[], shaded = false): any[] {
+    return values.map(value => ({ text: value, fontSize: FONT_BODY, fillColor: shaded ? STRIPE_GRAY : WHITE }))
 }
 
-// ── Page 1 ───────────────────────────────────────────────────────────────────
+function emptyRows(count: number, columnCount: number, rowHeight = HEIGHT_STANDARD_ROW): any[][] {
+    return Array.from({ length: count }, (_, i) =>
+        dataRow(Array<string>(columnCount).fill(''), i % 2 === 1)
+            .map(cell => ({ ...cell, minHeight: rowHeight }))
+    )
+}
 
-function drawPage1(page: PDFPage, form: PDFForm, data: ConfiguredCharacterData, fonts: Fonts) {
-    pageHeader(page, fonts, 1)
+// ── Image helpers ─────────────────────────────────────────────────────────────
+async function toDataUrl(path: string | undefined): Promise<string | null> {
+    if (!path) return null
+    try {
+        const response = await fetch(path)
+        if (!response.ok) return null
+        const blob = await response.blob()
+        return new Promise(resolve => {
+            const reader = new FileReader()
+            reader.onloadend = () => resolve(reader.result as string)
+            reader.readAsDataURL(blob)
+        })
+    } catch { return null }
+}
 
-    const topY = H - MT - 30
-    const leftW = 115
+function imageCell(dataUrl: string | null, shaded = false, minHeight = HEIGHT_STANDARD_ROW): any {
+    const fill = shaded ? STRIPE_GRAY : WHITE
+    if (dataUrl) return { image: dataUrl, fit: [REL_DEITY_IMAGE_SIZE, REL_DEITY_IMAGE_SIZE], alignment: 'center', fillColor: fill }
+    return { text: '', fontSize: FONT_BODY, fillColor: fill, minHeight }
+}
 
-    // Identity
-    label(page, 'NAME', ML, topY + 12, fonts.bold, 6)
-    box(page, ML, topY, leftW, 12)
-    tf(form, page, ML, topY, leftW, 12, data.Name().Name ?? '')
+// ── Title font loader ─────────────────────────────────────────────────────────
+async function loadFonts(): Promise<boolean> {
+    pdfMake.vfs[FONT_VFS_NAME] = await getBase64Font(REGULAR_FONT_PATH) 
+    pdfMake.vfs[FONT_BOLD_VFS_NAME] = await getBase64Font(BOLD_FONT_PATH) 
+    
+    pdfMake.fonts[FONT_ID] = { normal: FONT_VFS_NAME, bold: FONT_BOLD_VFS_NAME }
+    return true
+}
 
-    label(page, 'EPITHET / BYNAME', ML, topY - 2, fonts.bold, 6)
-    box(page, ML, topY - 14, leftW, 12)
-    tf(form, page, ML, topY - 14, leftW, 12,
-        [data.Name().Epithets, data.Name().Bynames].filter(Boolean).join(' / '))
+async function getBase64Font(fontPath:string) {
+    
+    const response = await fetch(fontPath)
+    if (!response.ok) throw "Could not retrieve font"
 
-    // Ability scores
-    const abilityNames = ['STRENGTH', 'DEXTERITY', 'CONSTITUTION', 'INTELLIGENCE', 'WISDOM', 'CHARISMA']
-    const abilityVals: (number | undefined)[] = [
+    const bytes = new Uint8Array(await response.arrayBuffer())
+    let base64 = ''
+
+    for (let i = 0; i < bytes.length; i += 512)
+        base64 += String.fromCharCode(...(bytes.subarray(i, i + 512) as unknown as number[]))
+
+    return btoa(base64)
+} 
+
+// ── Page 1: Identity, Abilities, Portrait, Stats, Gear ───────────────────────
+function buildPage1(data: ConfiguredCharacterData): any[] {
+    const items    = flattenAndCombineSelectionPackage(data.ItemSelections(), data)
+    const trinkets = flattenAndCombineSelectionPackage(data.TrinketSelections(), data)
+    const allItems = [...items, ...trinkets]
+
+    const abilityNames  = ['STRENGTH', 'DEXTERITY', 'CONSTITUTION', 'INTELLIGENCE', 'WISDOM', 'CHARISMA']
+    const abilityValues = [
         data.Abilities().Strength,
         data.Abilities().Dexterity,
         data.Abilities().Constitution,
@@ -123,369 +211,309 @@ function drawPage1(page: PDFPage, form: PDFForm, data: ConfiguredCharacterData, 
         data.Abilities().Wisdom,
         data.Abilities().Charisma,
     ]
-    let ay = topY - 32
-    for (let i = 0; i < 6; i++) {
-        box(page, ML, ay, 22, 14, true)
-        label(page, 'SCORE', ML + 3, ay + 8, fonts.regular, 5)
-        box(page, ML + 22, ay, 18, 14)
-        tf(form, page, ML + 22, ay, 18, 14, abilityVals[i] !== undefined ? String(abilityVals[i]) : '')
-        label(page, '#', ML + 28, ay + 8, fonts.regular, 5)
-        label(page, abilityNames[i], ML + 44, ay + 4, fonts.bold, 7)
-        ay -= 17
-    }
 
-    // Portrait box
-    const portX = ML + leftW + 8
-    const portW = 160
-    const portH = 130
-    const portY = topY - portH + 12
-    box(page, portX, portY, portW, portH)
-    label(page, 'PORTRAIT, SYMBOL, OR COAT OF ARMS', portX + 20, portY + portH / 2, fonts.italic, 6)
-
-    // Character stats (right of portrait)
-    const statsX = portX + portW + 6
-    const statsW = W - statsX - MR
     const statRows = [
-        { lbl: 'ANCESTRY', val: data.Race() },
-        { lbl: 'BACKGROUND', val: data.Job() },
-        { lbl: 'LEVEL', val: String(data.Level()) },
-        { lbl: 'CLASS', val: data.Class() },
-        { lbl: 'HIT DICE', val: String(data.HitDie()) },
-        { lbl: 'HIT POINTS', val: String(data.HitPoints()) },
-        { lbl: 'DAMAGE', val: '' },
+        { label: 'ANCESTRY',   value: data.Race()              },
+        { label: 'BACKGROUND', value: data.Job()               },
+        { label: 'LEVEL',      value: ''                       },  // user fills in manually
+        { label: 'CLASS',      value: data.Class()             },
+        { label: 'HIT DICE',   value: String(data.HitDie())    },
+        { label: 'HIT POINTS', value: String(data.HitPoints()) },
+        { label: 'DAMAGE',     value: ''                       },
     ]
-    let sy = topY + 2
-    for (const row of statRows) {
-        label(page, row.lbl, statsX, sy + 14, fonts.bold, 5)
-        box(page, statsX, sy, statsW, 13)
-        tf(form, page, statsX, sy, statsW, 13, row.val)
-        sy -= 16
+
+    const abilityScoreTable = {
+        ...makeTable(
+            ['*', ABILITY_SCORE_COL_WIDTH, ABILITY_DAMAGE_COL_WIDTH],
+            [
+                [
+                    { text: '',       bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, minHeight: HEIGHT_STAT_ROW_MAIN },
+                    { text: 'SCORE',  bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, alignment: 'center', minHeight: HEIGHT_STAT_ROW_MAIN },
+                    { text: 'DAMAGE', bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, alignment: 'center', minHeight: HEIGHT_STAT_ROW_MAIN },
+                ],
+                ...abilityNames.map((name, i) => [
+                    { text: name, bold: true, fontSize: FONT_LABEL, fillColor: ENTITY_LABEL_COLOR, minHeight: HEIGHT_STAT_ROW_MAIN },
+                    { text: abilityValues[i] !== undefined ? String(abilityValues[i]) : '', fontSize: FONT_BODY, minHeight: HEIGHT_STAT_ROW_MAIN },
+                    { text: '', fontSize: FONT_BODY, minHeight: HEIGHT_STAT_ROW_MAIN },
+                ]),
+            ],
+        ),
+        margin: [0, 0, 8, 0],
     }
 
-    // Equipment table
-    const tableY = portY - 20
-    const tableW = W - ML - MR
-    const itemCols: Col[] = [
-        { label: 'NAME', w: 160 },
-        { label: 'DESCRIPTION', w: tableW - 160 - 60 - 40 },
-        { label: 'AMOUNT', w: 40 },
-        { label: 'REFERENCE', w: 60 },
+    return [
+        // ── Top section: 30 % identity | 30 % stats | 40 % portrait ──
+        {
+            columnGap: COLUMN_GAP,
+            margin: [0, 0, 0, BETWEEN_SECTION_GAP],
+            columns: [
+                // Left: ability scores
+                {
+                    width: IDENTITY_COL_WIDTH,
+                    stack: [ abilityScoreTable ],
+                },
+                // Centre: character stats
+                {
+                    width: STAT_COL_WIDTH,
+                    ...makeTable(['*'], statRows.map(row => [{
+                        stack: [
+                            { text: row.label, bold: true, fontSize: FONT_SMALL },
+                            { text: row.value,            fontSize: FONT_BODY  },
+                        ],
+                        minHeight: HEIGHT_STAT_ROW_MAIN,
+                    }])),
+                },
+                // Right: portrait placeholder box + caption below
+                {
+                    width: '*',
+                    stack: [
+                        {
+                            table: {
+                                widths: ['*'],
+                                heights: [HEIGHT_PORTRAIT],
+                                body: [[{ text: '' }]],
+                                dontBreakRows: true,
+                            },
+                            layout: SHEET_LAYOUT,
+                        },
+                        {
+                            text: 'PORTRAIT, SYMBOL, OR COAT OF ARMS',
+                            italics: true, fontSize: FONT_LABEL, alignment: 'center',
+                            margin: [0, 2, 0, 0],
+                        },
+                    ],
+                },
+            ],
+        },
+        makeSection('WEAPONS & GEAR',
+            [GEAR_NAME_COL_WIDTH, '*', GEAR_AMOUNT_COL_WIDTH, REFERENCE_COL_WIDTH],
+            [
+                columnHeaderRow(['NAME', 'DESCRIPTION', 'AMOUNT', 'REFERENCE']),
+                ...Array.from({ length: WEAPON_ROWS }, (_, i) => {
+                    const item = allItems[i]
+                    return dataRow([
+                        item?.Name ?? '',
+                        item?.Description ?? '',
+                        item?.Amount !== undefined ? String(item.Amount) : '',
+                        '',
+                    ], i % 2 === 1)
+                }),
+            ],
+        ),
+        makeSection('ADDITIONAL GEAR',
+            ['*', GEAR_AMOUNT_COL_WIDTH, REFERENCE_COL_WIDTH],
+            [
+                columnHeaderRow(['GEAR', 'AMOUNT', 'REFERENCE']),
+                ...emptyRows(GEAR_ROWS, 3),
+            ],
+        ),
     ]
-    const rowH = 14
-
-    sectionLabel(page, 'WEAPONS & GEAR', ML, tableY + 11, tableW, fonts)
-    tableHeader(page, itemCols, ML, tableY - 8, rowH, fonts)
-
-    const items = flattenAndCombineSelectionPackage(data.ItemSelections(), data)
-    const trinkets = flattenAndCombineSelectionPackage(data.TrinketSelections(), data)
-    const allItems = [...items, ...trinkets]
-
-    const maxRows = 12
-    let iy = tableY - 8 - rowH
-    for (let i = 0; i < maxRows; i++) {
-        const item = allItems[i]
-        tableRow(form, page, itemCols, ML, iy, rowH, [
-            item?.Name ?? '',
-            item?.Description ?? '',
-            item?.Amount !== undefined ? String(item.Amount) : '',
-            '',
-        ], i % 2 === 1)
-        iy -= rowH
-    }
-
-    // Extra blank gear rows
-    const gearCols: Col[] = [
-        { label: 'GEAR', w: 160 },
-        { label: 'AMOUNT', w: 40 },
-        { label: 'REFERENCE', w: tableW - 160 - 40 },
-    ]
-    sectionLabel(page, 'ADDITIONAL GEAR', ML, iy + rowH - 2, tableW, fonts)
-    iy -= 2
-    tableHeader(page, gearCols, ML, iy, rowH, fonts)
-    iy -= rowH
-    for (let i = 0; i < 6; i++) {
-        tableRow(form, page, gearCols, ML, iy, rowH, ['', '', ''], i % 2 === 1)
-        iy -= rowH
-    }
 }
 
-// ── Page 2 ───────────────────────────────────────────────────────────────────
-
-function drawPage2(page: PDFPage, form: PDFForm, data: ConfiguredCharacterData, fonts: Fonts) {
-    pageHeader(page, fonts, 2)
-
-    const startY = H - MT - 30
-    const tableW = W - ML - MR
-    const rowH = 14
-
-    // Languages
-    const langCols: Col[] = [
-        { label: 'LANGUAGE', w: 80 },
-        { label: 'DESCRIPTION', w: tableW - 80 - 40 - 40 - 50 },
-        { label: 'SPOKEN', w: 40 },
-        { label: 'READ/WRITE', w: 40 },
-        { label: 'REFERENCE', w: 50 },
-    ]
-    let y = startY
-    sectionLabel(page, 'LANGUAGES', ML, y, tableW, fonts)
-    y -= 10
-    tableHeader(page, langCols, ML, y, rowH, fonts)
-    y -= rowH
-
+// ── Page 2: Languages, Skills, Edges, Spells ─────────────────────────────────
+function buildPage2(data: ConfiguredCharacterData): any[] {
     const languages = flattenAndCombineSelectionPackage(data.LanguageSelections(), data)
-    const langMax = 5
-    for (let i = 0; i < langMax; i++) {
-        const lang = languages[i]
-        tableRow(form, page, langCols, ML, y, rowH, [
-            lang?.Language?.Name ?? '',
-            lang?.Language?.Description ?? '',
-            lang?.canSpeak ? 'Yes' : '',
-            (lang?.canRead && lang?.canWrite) ? 'Yes' : (lang?.canRead ? 'Read' : lang?.canWrite ? 'Write' : ''),
-            '',
-        ], i % 2 === 1)
-        y -= rowH
-    }
+    const skills    = flattenAndCombineSelectionPackage(data.SkillsSelection(), data)
+    const edges     = flattenAndCombineSelectionPackage(data.EdgeSelections(), data)
+    const spells    = flattenAndCombineSelectionPackage(data.SpellSelection(), data)
 
-    y -= 6
-
-    // Skills
-    const skillCols: Col[] = [
-        { label: 'SKILL', w: 100 },
-        { label: 'DESCRIPTION', w: tableW - 100 - 60 },
-        { label: 'REFERENCE', w: 60 },
+    const spellBody: any[][] = [
+        columnHeaderRow(['SPELL', 'LEVEL', 'SCHOOL', 'CASTING TIME', 'RANGE', 'TEST', 'REFERENCE']),
     ]
-    sectionLabel(page, 'SKILLS', ML, y, tableW, fonts)
-    y -= 10
-    tableHeader(page, skillCols, ML, y, rowH, fonts)
-    y -= rowH
-
-    const skills = flattenAndCombineSelectionPackage(data.SkillsSelection(), data)
-    const skillMax = 7
-    for (let i = 0; i < skillMax; i++) {
-        const skill = skills[i]
-        tableRow(form, page, skillCols, ML, y, rowH, [
-            skill?.Name ?? '',
-            skill?.Description ?? '',
-            '',
-        ], i % 2 === 1)
-        y -= rowH
+    for (let i = 0; i < SPELL_ROWS; i++) {
+        const spell  = spells[i]
+        const shaded = i % 2 === 1
+        spellBody.push(dataRow([spell?.Name ?? '', '', '', '', '', '', spell?.reference ?? ''], shaded))
+        spellBody.push([{
+            text: [
+                { text: 'Notes  ', italics: true, fontSize: FONT_LABEL },
+                { text: spell?.Description ?? '', fontSize: FONT_BODY },
+            ],
+            colSpan: SPELL_COLS,
+            fillColor: shaded ? STRIPE_GRAY : WHITE,
+            minHeight: HEIGHT_SPELL_NOTES,
+        }, ...Array(SPELL_COLS - 1).fill({})])
     }
 
-    y -= 6
-
-    // Edges
-    const edgeCols: Col[] = [
-        { label: 'EDGE', w: 100 },
-        { label: 'DESCRIPTION', w: tableW - 100 - 60 },
-        { label: 'REFERENCE', w: 60 },
+    return [
+        makeSection('LANGUAGES',
+            [LANG_NAME_COL_WIDTH, '*', LANG_SPOKEN_COL_WIDTH, LANG_READWRITE_COL_WIDTH, REFERENCE_COL_WIDTH],
+            [
+                columnHeaderRow(['LANGUAGE', 'DESCRIPTION', 'SPOKEN', 'READ/WRITE', 'REFERENCE']),
+                ...Array.from({ length: LANGUAGE_ROWS }, (_, i) => {
+                    const lang           = languages[i]
+                    const readWriteValue = lang?.canRead && lang?.canWrite ? 'Yes'
+                        : lang?.canRead  ? 'Read'
+                        : lang?.canWrite ? 'Write'
+                        : ''
+                    return dataRow([
+                        lang?.Language?.Name ?? '',
+                        lang?.Language?.Description ?? '',
+                        lang?.canSpeak ? 'Yes' : '',
+                        readWriteValue,
+                        lang?.Language?.reference ?? '',
+                    ], i % 2 === 1)
+                }),
+            ],
+        ),
+        makeSection('SKILLS',
+            [LIST_NAME_COL_WIDTH, '*', REFERENCE_COL_WIDTH],
+            [
+                columnHeaderRow(['SKILL', 'DESCRIPTION', 'REFERENCE']),
+                ...Array.from({ length: SKILL_ROWS }, (_, i) => {
+                    const skill = skills[i]
+                    return dataRow([skill?.Name ?? '', skill?.Description ?? '', skill?.reference ?? ''], i % 2 === 1)
+                }),
+            ],
+        ),
+        makeSection('EDGES',
+            [LIST_NAME_COL_WIDTH, '*', REFERENCE_COL_WIDTH],
+            [
+                columnHeaderRow(['EDGE', 'DESCRIPTION', 'REFERENCE']),
+                ...Array.from({ length: EDGE_ROWS }, (_, i) => {
+                    const edge = edges[i]
+                    return dataRow([edge?.Name ?? '', edge?.Description ?? '', edge?.reference ?? ''], i % 2 === 1)
+                }),
+            ],
+        ),
+        makeSection('SPELLS',
+            [SPELL_NAME_COL_WIDTH, SPELL_LEVEL_COL_WIDTH, '*', SPELL_CAST_COL_WIDTH, SPELL_RANGE_COL_WIDTH, SPELL_TEST_COL_WIDTH, REFERENCE_COL_WIDTH],
+            spellBody,
+        ),
     ]
-    sectionLabel(page, 'EDGES', ML, y, tableW, fonts)
-    y -= 10
-    tableHeader(page, edgeCols, ML, y, rowH, fonts)
-    y -= rowH
-
-    const edges = flattenAndCombineSelectionPackage(data.EdgeSelections(), data)
-    const edgeMax = 7
-    for (let i = 0; i < edgeMax; i++) {
-        const edge = edges[i]
-        tableRow(form, page, edgeCols, ML, y, rowH, [
-            edge?.Name ?? '',
-            edge?.Description ?? '',
-            '',
-        ], i % 2 === 1)
-        y -= rowH
-    }
-
-    y -= 6
-
-    // Spells
-    const spellCols: Col[] = [
-        { label: 'SPELL', w: 90 },
-        { label: 'LEVEL', w: 30 },
-        { label: 'SCHOOL', w: 50 },
-        { label: 'CASTING TIME', w: 55 },
-        { label: 'RANGE', w: 45 },
-        { label: 'TEST', w: 45 },
-        { label: 'REFERENCE', w: tableW - 90 - 30 - 50 - 55 - 45 - 45 },
-    ]
-    const noteH = 10
-    sectionLabel(page, 'SPELLS', ML, y, tableW, fonts)
-    y -= 10
-    tableHeader(page, spellCols, ML, y, rowH, fonts)
-    y -= rowH
-
-    const spells = flattenAndCombineSelectionPackage(data.SpellSelection(), data)
-    const spellMax = 7
-    for (let i = 0; i < spellMax; i++) {
-        const spell = spells[i]
-        tableRow(form, page, spellCols, ML, y, rowH, [
-            spell?.Name ?? '', '', '', '', '', '', '',
-        ], i % 2 === 1)
-        y -= rowH
-        // Notes sub-row spanning full width
-        box(page, ML, y, tableW, noteH, false)
-        label(page, 'Notes', ML + 2, y + 2, fonts.italic, 6)
-        tf(form, page, ML + 28, y, tableW - 28, noteH, spell?.Description ?? '')
-        y -= noteH
-    }
 }
 
-// ── Page 3 ───────────────────────────────────────────────────────────────────
+// ── Page 3: Entanglements, Religion, Drawbacks, Notes ────────────────────────
 
-function drawPage3(page: PDFPage, form: PDFForm, data: ConfiguredCharacterData, fonts: Fonts) {
-    pageHeader(page, fonts, 3)
+type EntanglementKey = 'Colleagues' | 'Family' | 'CivicAuthorities' | 'ReligiousAuthorities' | 'Master' | 'Neighbors' | 'ShadowGroups'
 
-    const startY = H - MT - 30
-    const tableW = W - ML - MR
-    const rowH = 16
+const ENTANGLEMENT_ROWS: { lines: [string, string]; dataKey: EntanglementKey | null }[] = [
+    { lines: ['COLLEAGUES',                  'ATTITUDE:'], dataKey: 'Colleagues'            },
+    { lines: ['FAMILY/CLAN',                 'ATTITUDE:'], dataKey: 'Family'                },
+    { lines: ['LOCAL CIVIC AUTHORITIES',     'ATTITUDE:'], dataKey: 'CivicAuthorities'      },
+    { lines: ['LOCAL RELIGIOUS AUTHORITIES', 'ATTITUDE:'], dataKey: 'ReligiousAuthorities'  },
+    { lines: ['MASTER/MENTOR',               'ATTITUDE:'], dataKey: 'Master'                },
+    { lines: ['NEIGHBORS/LOCAL INHABITANTS', 'ATTITUDE:'], dataKey: 'Neighbors'             },
+    { lines: ['SHADOW GROUPS',               'ATTITUDE:'], dataKey: 'ShadowGroups'          },
+    { lines: ['OTHER/SPECIAL',               'ATTITUDE:'], dataKey: null                    },
+    { lines: ['OTHER/SPECIAL',               'ATTITUDE:'], dataKey: null                    },
+]
 
-    // Entanglements
-    type EntKey = 'Colleagues' | 'Family' | 'CivicAuthorities' | 'ReligiousAuthorities' | 'Master' | 'Neighbors' | 'ShadowGroups'
-    const entRows: { lbl: string; key: EntKey | null }[] = [
-        { lbl: 'COLLEAGUES\nATTITUDE (#):', key: 'Colleagues' },
-        { lbl: 'FAMILY/CLAN\nATTITUDE (#):', key: 'Family' },
-        { lbl: 'LOCAL CIVIC AUTHORITIES\nATTITUDE (#):', key: 'CivicAuthorities' },
-        { lbl: 'LOCAL RELIGIOUS AUTHORITIES\nATTITUDE (#):', key: 'ReligiousAuthorities' },
-        { lbl: 'MASTER/MENTOR\nATTITUDE (#):', key: 'Master' },
-        { lbl: 'NEIGHBORS/LOCAL INHABITANTS\nATTITUDE (#):', key: 'Neighbors' },
-        { lbl: 'SHADOW GROUPS\nATTITUDE (#):', key: 'ShadowGroups' },
-        { lbl: 'OTHER/SPECIAL\nATTITUDE (#):', key: null },
-        { lbl: 'OTHER/SPECIAL\nATTITUDE (#):', key: null },
+const RELIGION_RANK_LABELS = ['Primary', 'Secondary', 'Tertiary']
+
+type DeityImages = { symbol: string | null; rune: string | null }
+
+function buildPage3(data: ConfiguredCharacterData, deityImages: DeityImages[]): any[] {
+    const deities       = flattenAndCombineSelectionPackage(data.ReligionSelections(), data)
+    const drawbacks     = flattenAndCombineSelectionPackage(data.DrawbacksSelection(), data)
+    const entanglements = data.OrganizationEntanglements()
+
+    // ── Entanglements ──────────────────────────────────────────────────────────
+    const entanglementBody: any[][] = [
+        columnHeaderRow(['ENTANGLEMENTS', 'YOUR NARRATIVE', 'REFERENCE']),
     ]
-
-    const entCols: Col[] = [
-        { label: 'ENTANGLEMENTS', w: 115 },
-        { label: 'YOUR NARRATIVE', w: tableW - 115 - 70 },
-        { label: 'REFERENCE', w: 70 },
-    ]
-
-    let y = startY
-    sectionLabel(page, 'ENTANGLEMENTS', ML, y, tableW, fonts)
-    y -= 10
-    tableHeader(page, entCols, ML, y, rowH, fonts)
-    y -= rowH
-
-    const ents = data.OrganizationEntanglements()
-    for (let i = 0; i < entRows.length; i++) {
-        const { lbl, key } = entRows[i]
-        const ent = key ? ents[key] : undefined
-        const narrative = ent ? `${ent.Attitudes ?? ''}` : ''
-
-        // Label cell (gray)
-        box(page, ML, y, entCols[0].w, rowH, true)
-        // Split label lines
-        const lines = lbl.split('\n')
-        label(page, lines[0], ML + 2, y + rowH - 7, fonts.bold, 6)
-        if (lines[1]) label(page, lines[1], ML + 2, y + 2, fonts.regular, 5)
-
-        // Narrative text field
-        box(page, ML + entCols[0].w, y, entCols[1].w, rowH, i % 2 === 1)
-        tf(form, page, ML + entCols[0].w, y, entCols[1].w, rowH, narrative)
-
-        // Reference text field
-        box(page, ML + entCols[0].w + entCols[1].w, y, entCols[2].w, rowH, false)
-        tf(form, page, ML + entCols[0].w + entCols[1].w, y, entCols[2].w, rowH, '')
-
-        y -= rowH
+    for (let i = 0; i < ENTANGLEMENT_ROWS.length; i++) {
+        const { lines, dataKey }  = ENTANGLEMENT_ROWS[i]
+        const entanglement        = dataKey ? (entanglements as any)[dataKey] : undefined
+        const attitude            = entanglement ? String(entanglement.Attitudes ?? '') : ''
+        const shaded              = i % 2 === 1
+        entanglementBody.push([
+            {
+                stack: [
+                    { text: lines[0], bold: true, fontSize: FONT_LABEL },
+                    { text: `${lines[1]} ${attitude}`.trim(), fontSize: FONT_SMALL },
+                ],
+                fillColor: ENTITY_LABEL_COLOR,
+                minHeight: HEIGHT_WRITING_ROW,
+            },
+            { text: '', fontSize: FONT_BODY, fillColor: shaded ? STRIPE_GRAY : WHITE, minHeight: HEIGHT_WRITING_ROW },
+            { text: '', fontSize: FONT_BODY, fillColor: shaded ? STRIPE_GRAY : WHITE, minHeight: HEIGHT_WRITING_ROW },
+        ])
     }
 
-    y -= 8
-
-    // Religion
-    const deities = flattenAndCombineSelectionPackage(data.ReligionSelections(), data)
-    const religionRows = ['Primary*', 'Secondary', 'Tertiary']
-    const relCols: Col[] = [
-        { label: 'RELIGION (DEITY)', w: 90 },
-        { label: 'SYMBOL', w: 60 },
-        { label: 'RUNE', w: 60 },
-        { label: 'PORTFOLIO & NOTES', w: tableW - 90 - 60 - 60 - 70 },
-        { label: 'REFERENCE', w: 70 },
+    // ── Religion ───────────────────────────────────────────────────────────────
+    const religionBody: any[][] = [
+        columnHeaderRow(['RELIGION (DEITY)', 'SYMBOL', 'RUNE', 'PORTFOLIO & NOTES', 'REFERENCE']),
     ]
-    sectionLabel(page, 'RELIGION', ML, y, tableW, fonts)
-    y -= 10
-    tableHeader(page, relCols, ML, y, rowH, fonts)
-    y -= rowH
-
-    for (let i = 0; i < 3; i++) {
-        const deity = deities[i]
-        const rowLbl = religionRows[i]
-
-        box(page, ML, y, relCols[0].w, rowH, true)
-        label(page, rowLbl, ML + 2, y + 4, fonts.bold, 6)
-
-        let rx = ML + relCols[0].w
-        box(page, rx, y, relCols[1].w, rowH)
-        tf(form, page, rx, y, relCols[1].w, rowH, deity?.SymbolPath ?? '')
-        rx += relCols[1].w
-
-        box(page, rx, y, relCols[2].w, rowH)
-        tf(form, page, rx, y, relCols[2].w, rowH, deity?.RunePath ?? '')
-        rx += relCols[2].w
-
-        box(page, rx, y, relCols[3].w, rowH)
-        tf(form, page, rx, y, relCols[3].w, rowH, deity?.Description ?? '', true)
-        rx += relCols[3].w
-
-        box(page, rx, y, relCols[4].w, rowH)
-        tf(form, page, rx, y, relCols[4].w, rowH, '')
-
-        y -= rowH
+    for (let i = 0; i < RELIGION_ROWS; i++) {
+        const deity  = deities[i]
+        const images = deityImages[i] ?? { symbol: null, rune: null }
+        const shaded = false
+        religionBody.push([
+            { text: RELIGION_RANK_LABELS[i], bold: true, fontSize: FONT_LABEL, fillColor: ENTITY_LABEL_COLOR, minHeight: HEIGHT_STANDARD_ROW },
+            imageCell(images.symbol, shaded, HEIGHT_STANDARD_ROW),
+            imageCell(images.rune,   shaded, HEIGHT_STANDARD_ROW),
+            { text: deity?.Description ?? '',   fontSize: FONT_BODY, fillColor: shaded ? STRIPE_GRAY : WHITE, minHeight: HEIGHT_STANDARD_ROW },
+            { text: deity?.reference ?? '',     fontSize: FONT_BODY, fillColor: shaded ? STRIPE_GRAY : WHITE, minHeight: HEIGHT_STANDARD_ROW },
+        ])
     }
-    label(page, '* Some classes or backgrounds, like Warlock, only allow a Primary.', ML, y + rowH - 20, fonts.italic, 6)
 
-    y -= 10
-
-    // Drawback
-    const drawbacks = flattenAndCombineSelectionPackage(data.DrawbacksSelection(), data)
-    const db = drawbacks[0]
-    sectionLabel(page, 'DRAWBACK', ML, y, tableW, fonts)
-    y -= 10
-    box(page, ML, y, tableW, rowH)
-    tf(form, page, ML, y, tableW, rowH, db ? `${db.Name}: ${db.Description}` : '')
-    y -= rowH + 6
-
-    // Notes & Treasure
-    sectionLabel(page, 'NOTES & TREASURE', ML, y, tableW, fonts)
-    y -= 10
-    for (let i = 0; i < 8; i++) {
-        box(page, ML, y, tableW, 14)
-        tf(form, page, ML, y, tableW, 14, '')
-        y -= 14
-    }
+    return [
+        makeSection('ENTANGLEMENTS',
+            [ENT_LABEL_COL_WIDTH, '*', REFERENCE_COL_WIDTH],
+            entanglementBody,
+        ),
+        makeSection('RELIGION',
+            [REL_NAME_COL_WIDTH, REL_IMAGE_COL_WIDTH, REL_IMAGE_COL_WIDTH, '*', REFERENCE_COL_WIDTH],
+            religionBody,
+        ),
+        makeSection('DRAWBACKS',
+            [LIST_NAME_COL_WIDTH, '*', REFERENCE_COL_WIDTH],
+            [
+                columnHeaderRow(['DRAWBACK', 'DESCRIPTION', 'REFERENCE']),
+                ...Array.from({ length: DRAWBACK_ROWS }, (_, i) => {
+                    const db = drawbacks[i]
+                    return dataRow([db?.Name ?? '', db?.Description ?? '', db?.reference ?? ''], i % 2 === 1)
+                }),
+            ],
+        ),
+        makeSection('NOTES & TREASURE',
+            ['*'],
+            emptyRows(NOTE_ROWS, 1, HEIGHT_WRITING_ROW),
+        ),
+    ]
 }
 
-// ── Entry point ──────────────────────────────────────────────────────────────
-
+// ── Entry point ───────────────────────────────────────────────────────────────
 export async function createPdf(data: ConfiguredCharacterData): Promise<void> {
-    fieldCounter = 0
-
-    const pdfDoc = await PDFDocument.create()
-    const [bold, regular, italic] = await Promise.all([
-        pdfDoc.embedFont(StandardFonts.HelveticaBold),
-        pdfDoc.embedFont(StandardFonts.Helvetica),
-        pdfDoc.embedFont(StandardFonts.HelveticaOblique),
+    const [titleFontLoaded, rawDeities] = await Promise.all([
+        loadFonts(),
+        Promise.resolve(flattenAndCombineSelectionPackage(data.ReligionSelections(), data)),
     ])
-    const fonts: Fonts = { bold, regular, italic }
-    activeFont = regular
-    const form = pdfDoc.getForm()
 
-    const page1 = pdfDoc.addPage([W, H])
-    const page2 = pdfDoc.addPage([W, H])
-    const page3 = pdfDoc.addPage([W, H])
+    const deityImages: DeityImages[] = await Promise.all(
+        Array.from({ length: RELIGION_ROWS }, (_, i) => {
+            const deity = rawDeities[i]
+            return Promise.all([toDataUrl(deity?.SymbolPath), toDataUrl(deity?.RunePath)])
+                .then(([symbol, rune]) => ({ symbol, rune }))
+        })
+    )
 
-    drawPage1(page1, form, data, fonts)
-    drawPage2(page2, form, data, fonts)
-    drawPage3(page3, form, data, fonts)
+    const titleFontName = FONT_ID
+    const fullName      = NameUtility.determineFullNameFromCharacterName(data.Name())
 
-    const pdfBytes = await pdfDoc.save()
-
-    const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: 'application/pdf' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `${data.Name().Name ?? 'character'}_sheet.pdf`
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
+    pdfMake.createPdf({
+        pageSize: 'LETTER',
+        pageMargins: [PAGE_MARGIN, PAGE_MARGIN_TOP, PAGE_MARGIN, PAGE_MARGIN],
+        defaultStyle: { font: FONT_ID, fontSize: FONT_BODY, lineHeight: 1 },
+        header: () => ({
+            columns: [
+                { text: fullName, bold: true, fontSize: FONT_TITLE, font: titleFontName, margin: [PAGE_MARGIN, HEADER_TEXT_TOP, 0, 0] },
+                { text: 'v. 10/03/2025', fontSize: FONT_SMALL, alignment: 'right', margin: [0, HEADER_VERSION_TOP, PAGE_MARGIN, 0] },
+            ],
+        }),
+        footer: (currentPage: number) => ({
+            stack: [
+                { text: `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
+                { text: `Character Creation ${ ['Ch 2-3', 'Ch 2-4', 'Ch 2-5'][currentPage - 1] }`, fontSize: FONT_SMALL, italics: true },
+            ],
+            alignment: 'right',
+            margin: [0, SECTION_GAP, PAGE_MARGIN, 0],
+        }),
+        content: [
+            ...buildPage1(data),
+            ...buildPage2(data),
+            ...buildPage3(data, deityImages),
+        ],
+    }).download(`${fullName}_sheet.pdf`)
 }

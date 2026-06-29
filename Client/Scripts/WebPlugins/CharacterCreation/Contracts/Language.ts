@@ -1,5 +1,5 @@
 export class Language {
-    constructor(public Name : string, public Description : string, public Popularity: number) {}
+    constructor(public Name : string, public Description : string, public Popularity: number, public reference? : string) {}
 }
 
 export class LearnedLanguage {

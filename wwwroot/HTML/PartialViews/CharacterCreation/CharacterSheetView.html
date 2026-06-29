@@ -1,8 +1,12 @@
 <div class="character-background-image standard-wizard-styles">
     <div class="character-sheet-container">
         <header class="header-section">
-            <h1>HEARTBREAKER CHARACTER DESIGN</h1>
+            <h1>HEARTBREAKER CHARACTER CREATOR</h1>
         </header>
+
+        <div class="centered big-padding">
+            <span class="width-cannot-dominate-screen" data-bind="text: CharacterGenIntro"></span>
+        </div>
 
         <!-- ko foreach: modalPickers -->
             <div class="wizard-step-wrapper" data-bind="css: { visible: $parent.sectionVisible[$index()]}, if: $parent.sectionHasContent[$index()]">
@@ -12,7 +16,8 @@
 
     <div class="centered remove-when-print space-around">
         <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>
+        <button class="wizard-button" data-bind="click: Randomize">Randomize</button>
         <!-- <button class="wizard-button" data-bind="click: talkToCharacter">Talk to Character</button> -->
         <!-- <button class="wizard-button" data-bind="click: createAnCharacterImage">Create Character Image</button> -->
     </div>
-        </div>
+</div>

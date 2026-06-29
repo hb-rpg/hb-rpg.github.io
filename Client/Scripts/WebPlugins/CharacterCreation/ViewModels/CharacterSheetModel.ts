@@ -135,8 +135,12 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     Init (data?: ResolveURLData<void>) {
         return Promise.all(this.modalPickers.map(x=>x.Model.Init())).then(()=>Promise.resolve())
     }
+
     Evaluate () {return}
-    Randomize () {return}
+
+    Randomize () {
+        this.modalPickers.forEach(picker => picker.Model.Randomize())
+    }
 
 }
 

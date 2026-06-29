@@ -93,7 +93,9 @@ export class CharacterSheetModel {
         return Promise.all(this.modalPickers.map(x => x.Model.Init())).then(() => Promise.resolve());
     }
     Evaluate() { return; }
-    Randomize() { return; }
+    Randomize() {
+        this.modalPickers.forEach(picker => picker.Model.Randomize());
+    }
 }
 function extractStepObservable(model) {
     return model.Model.previewViewModel.Model.StepNumber;

@@ -2,10 +2,12 @@ export class Language {
     Name;
     Description;
     Popularity;
-    constructor(Name, Description, Popularity) {
+    reference;
+    constructor(Name, Description, Popularity, reference) {
         this.Name = Name;
         this.Description = Description;
         this.Popularity = Popularity;
+        this.reference = reference;
     }
 }
 export class LearnedLanguage {

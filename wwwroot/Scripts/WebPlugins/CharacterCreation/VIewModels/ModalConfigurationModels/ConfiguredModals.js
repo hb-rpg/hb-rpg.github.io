@@ -1,6 +1,8 @@
 import { ko } from "../../../../Framework/Knockout/ko.js";
 import { CareerData } from "../../Configuration/CareerData.js";
 import { Races } from "../../Configuration/DispositionData.js";
+import { AbilitiesToArray } from "../../Contracts/Abilities.js";
+import { DiceRoll } from "../../Utility/DiceRoll.js";
 import { EntanglementOrganizationTypesEnum } from "../../Contracts/StringTypes.js";
 import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects, updateBackgroundSpells, updateEdgesSpells, updateBackgroundCorruption, updateBackgroundDrawbacks, updateRaceDrawbackData } from "../../Utility/UpdateUtility.js";
 import { PreviewModel, StringPreviewModel, StringListPreviewModel, LanguagePreviewModel, AbilityPreviewModel, EntanglementPreviewContainerModel } from "../Preview/PreviewModel.js";
@@ -110,12 +112,23 @@ export var ConfiguredModals;
     };
     ConfiguredModals.createAbilityScoresPickerModel = (characterData) => {
         const abilitiesModel = new AbilityScoresModel(characterData);
+        // Derives configured state from actual data so that cancelling the modal (which
+        // doesn't write to characterData.Abilities) correctly reverts the preview to
+        // "not configured". Uses a writable computed so that the eager IsConfigured(true)
+        // call in PreviewModel.Edit() is silently ignored.
+        const isConfigured = ko.computed({
+            read: () => {
+                const arr = AbilitiesToArray(characterData.Abilities());
+                return arr.length === DiceRoll.ABILITY_SCORE_AMOUNT && arr.every(v => v > 0);
+            },
+            write: (_value) => { }
+        });
         return createGenericPicker({
             name: "Ability Scores",
             characterData,
             pickerModel: abilitiesModel,
             dataSelector: (data) => data.Abilities,
-            createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new AbilityPreviewModel(characterData.Abilities), ko.observable(false), modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
+            createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new AbilityPreviewModel(characterData.Abilities), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { abilitiesModel.Evaluate(); }
         });
     };

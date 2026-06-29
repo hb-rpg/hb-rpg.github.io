@@ -3,7 +3,8 @@ import { ko } from "../../../../Framework/Knockout/ko.js";
 import { CareerData } from "../../Configuration/CareerData.js";
 import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
 import { Races } from "../../Configuration/DispositionData.js";
-import { Abilities } from "../../Contracts/Abilities.js";
+import { Abilities, AbilitiesToArray } from "../../Contracts/Abilities.js";
+import { DiceRoll } from "../../Utility/DiceRoll.js";
 import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
 import { EntanglementOrganizationTypesEnum, JobType, RaceType } from "../../Contracts/StringTypes.js";
@@ -187,6 +188,19 @@ export namespace ConfiguredModals {
 
     export const createAbilityScoresPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<Abilities, PreviewModel<AbilityPreviewModel>> => {
         const abilitiesModel = new AbilityScoresModel(characterData);
+
+        // Derives configured state from actual data so that cancelling the modal (which
+        // doesn't write to characterData.Abilities) correctly reverts the preview to
+        // "not configured". Uses a writable computed so that the eager IsConfigured(true)
+        // call in PreviewModel.Edit() is silently ignored.
+        const isConfigured = ko.computed({
+            read: () => {
+                const arr = AbilitiesToArray(characterData.Abilities());
+                return arr.length === DiceRoll.ABILITY_SCORE_AMOUNT && arr.every(v => v > 0);
+            },
+            write: (_value: boolean) => {}
+        }) as unknown as Observable<boolean>;
+
         return createGenericPicker<AbilityScoresModel, PreviewModel<AbilityPreviewModel>, Abilities>({
             name: "Ability Scores",
             characterData,
@@ -196,7 +210,7 @@ export namespace ConfiguredModals {
                 modal.FriendlyName,
                 ko.observable(-1),
                 new AbilityPreviewModel(characterData.Abilities),
-                ko.observable(false),
+                isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),

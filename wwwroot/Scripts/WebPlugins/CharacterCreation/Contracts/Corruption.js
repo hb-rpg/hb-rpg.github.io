@@ -1,17 +1,21 @@
 export class CorruptionAffliction {
     Effect;
     Description;
-    constructor(Effect, Description) {
+    reference;
+    constructor(Effect, Description, reference) {
         this.Effect = Effect;
         this.Description = Description;
+        this.reference = reference;
     }
 }
 export class CorruptionSeverity {
     Effect;
     Description;
-    constructor(Effect, Description) {
+    reference;
+    constructor(Effect, Description, reference) {
         this.Effect = Effect;
         this.Description = Description;
+        this.reference = reference;
     }
 }
 export class Corruption {

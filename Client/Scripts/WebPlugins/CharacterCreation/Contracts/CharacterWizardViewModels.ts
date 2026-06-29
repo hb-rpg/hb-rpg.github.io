@@ -26,6 +26,7 @@ export interface IAnyCharacterPickerModal {
     hasContent: Computed<boolean>
     Model: {
         Init(): Promise<void>
+        Randomize(): void
         previewViewModel: {
             Model: {
                 IsConfigured: Observable<boolean>
