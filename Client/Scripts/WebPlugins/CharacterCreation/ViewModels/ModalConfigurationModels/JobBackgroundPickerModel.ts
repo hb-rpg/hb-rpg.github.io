@@ -11,7 +11,7 @@ import { getCharacterCreatorPicturePath, tryGetCharacterCreatorPicturePath } fro
 // TODO: replace PictureUrl with a background-specific placeholder image
 const BackgroundPlaceholder = {
     PictureUrl: getCharacterCreatorPicturePath("Copy of CH 10 Treasure John Dickson Batten Fairy_tales_from_the_Arabian_nights_-_Batten_illustration_at_page_306 2.jpg"),
-    Description: "Choose a Profession and then a Job to define your character's history and starting configuration. Your background determines starting equipment, skills, edges, languages, and social entanglements. See the rulebook for more details."
+    Description: "Choose a Profession and a specific Job to define your character's history before they ever picked up a sword or cast a spell. Whether you ground your character's roots in the sweat of a laborer, the sweat and cold steel of a mercenary or a knight, or the hidden shadows of a rogue, your background represents the life you left behind. See the rulebook for more details."
 }
 
 // Configure which profession you are 

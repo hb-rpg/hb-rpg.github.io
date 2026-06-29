@@ -33,11 +33,11 @@ export var ItemData;
     ItemData.Sword = new Item("Sword", 1, "Simple Melee, 1d6 damage");
     // --- Ranged Weapon Options ---
     ItemData.CrossbowWithBolts = new Item("Crossbow and bolts", DiceRoll.eightSidedDieRoll(), "Simple Ranged, 1d6 damage, Range: Nearby");
-    ItemData.DaggerRanged = new Item("Dagger", 1, "Light Melee & Ranged, 1d4 damage, Range: Nearby");
+    // export const DaggerRanged = new Item("Dagger", 1, "Light Melee & Ranged, 1d4 damage, Range: Nearby");
     ItemData.Javelins = new Item("Javelins", DiceRoll.eightSidedDieRoll(), "Light Ranged, 1d4 damage, Range: Nearby");
     ItemData.ShortBowWithArrows = new Item("Short Bow and arrows", DiceRoll.eightSidedDieRoll(), "Simple Ranged, 1d6 damage, Range: Nearby");
     ItemData.SlingWithStones = new Item("Sling and stones", DiceRoll.eightSidedDieRoll(), "Light Ranged, 1d4 damage, Range: Nearby");
-    ItemData.SpearRanged = new Item("Spear", 1, "Simple Melee & Ranged, 1d6 damage, Range: Nearby");
+    // export const SpearRanged = new Item("Spear", 1, "Simple Melee & Ranged, 1d6 damage, Range: Nearby");
     // Dwarf
     ItemData.Apron = new Item("Sturdy leather work apron");
     ItemData.Nails = new Item("Iron nails", 48);
@@ -283,7 +283,7 @@ export var ItemData;
             // Melee Sub-options
             ItemData.Axe, ItemData.DaggerMelee, ItemData.HammerMelee, ItemData.SpearMelee, ItemData.Staff, ItemData.Sword,
             // Ranged Sub-options
-            ItemData.CrossbowWithBolts, ItemData.DaggerRanged, ItemData.Javelins, ItemData.ShortBowWithArrows, ItemData.SlingWithStones, ItemData.SpearRanged
+            ItemData.CrossbowWithBolts, ItemData.Javelins, ItemData.ShortBowWithArrows, ItemData.SlingWithStones
         ], [])
     ], []);
     // --- Trinket Selection Package ---

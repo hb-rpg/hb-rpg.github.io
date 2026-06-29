@@ -38,11 +38,11 @@ export namespace ItemData {
 
     // --- Ranged Weapon Options ---
     export const CrossbowWithBolts = new Item("Crossbow and bolts", DiceRoll.eightSidedDieRoll(), "Simple Ranged, 1d6 damage, Range: Nearby");
-    export const DaggerRanged = new Item("Dagger", 1, "Light Melee & Ranged, 1d4 damage, Range: Nearby");
+    // export const DaggerRanged = new Item("Dagger", 1, "Light Melee & Ranged, 1d4 damage, Range: Nearby");
     export const Javelins = new Item("Javelins", DiceRoll.eightSidedDieRoll(), "Light Ranged, 1d4 damage, Range: Nearby");
     export const ShortBowWithArrows = new Item("Short Bow and arrows", DiceRoll.eightSidedDieRoll(), "Simple Ranged, 1d6 damage, Range: Nearby");
     export const SlingWithStones = new Item("Sling and stones", DiceRoll.eightSidedDieRoll(), "Light Ranged, 1d4 damage, Range: Nearby");
-    export const SpearRanged = new Item("Spear", 1, "Simple Melee & Ranged, 1d6 damage, Range: Nearby");
+    // export const SpearRanged = new Item("Spear", 1, "Simple Melee & Ranged, 1d6 damage, Range: Nearby");
 
     // Dwarf
     export const Apron = new Item("Sturdy leather work apron");
@@ -354,7 +354,7 @@ export namespace ItemData {
                 // Melee Sub-options
                 Axe, DaggerMelee, HammerMelee, SpearMelee, Staff, Sword,
                 // Ranged Sub-options
-                CrossbowWithBolts, DaggerRanged, Javelins, ShortBowWithArrows, SlingWithStones, SpearRanged
+                CrossbowWithBolts, Javelins, ShortBowWithArrows, SlingWithStones
             ], [])
         ],
         []
