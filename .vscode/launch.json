@@ -17,6 +17,21 @@
             "program": "${file}",
             "cwd": "${workspaceFolder}",
         },
-    
+        {
+            "name": "PDF Harness server",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/Tools/serve-harness.mjs",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**"],
+            // Auto-open the harness page once the server logs its URL.
+            "serverReadyAction": {
+                "pattern": "http://localhost:([0-9]+)",
+                "uriFormat": "http://localhost:%s/",
+                "action": "openExternally"
+            }
+        },
+
     ]
 }
