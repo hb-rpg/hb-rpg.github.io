@@ -1,8 +1,23 @@
 // ── Table factory ─────────────────────────────────────────────────────────────
+// The tallest `minHeight` declared on any cell in a row, or 'auto' if none set one.
+function rowMinHeight(row) {
+    let max = 0;
+    for (const cell of row)
+        if (cell && typeof cell === 'object' && typeof cell.minHeight === 'number')
+            max = Math.max(max, cell.minHeight);
+    return max > 0 ? max : 'auto';
+}
 export function makeTable(widths, body, heights) {
-    const tableProps = { widths, body, dontBreakRows: true };
-    if (heights)
-        tableProps.heights = heights;
+    const tableProps = {
+        widths,
+        body,
+        dontBreakRows: true,
+        // pdfmake never reads a cell's `minHeight`; row height comes solely from the table-level
+        // `heights`. When the caller doesn't pass an explicit one, synthesize it per row from the
+        // cells' `minHeight` so those annotations take effect (the value is a minimum — taller
+        // content still grows the row).
+        heights: heights ?? ((row) => rowMinHeight(body[row])),
+    };
     return { table: tableProps, layout: SHEET_LAYOUT };
 }
 // ── Section factory ───────────────────────────────────────────────────────────

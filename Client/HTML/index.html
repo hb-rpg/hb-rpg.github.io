@@ -6,7 +6,17 @@
     <title>Heartbreaker</title>
     <link rel="stylesheet" href="/CSS/project.css">
     <link rel="icon" type="image/png" href="/Images/favicon.ico"/>
+    <!--
+      Order matters. These are CLASSIC scripts (no type="module") and must run before the
+      ES modules: knockout defines the global `ko`; pdfmake defines the global `pdfMake`;
+      vfs_fonts attaches its default fonts; PDFConstants.js is a non-module script whose
+      top-level consts (FONT_ID, RELIGION_ROWS, REGULAR_FONT_PATH, SHEET_LAYOUT, …) become
+      the global lexical bindings the PDF builders read at runtime.
+    -->
     <script type='text/javascript' src="/Scripts/Framework/Knockout/knockout.js"></script>
+    <script src="/Scripts/pdfmake.min.js"></script>
+    <script src="/Scripts/vfs_fonts.js"></script>
+    <script src="/Scripts/WebPlugins/CharacterCreation/Configuration/PDFConstants.js"></script>
     <script type="module" src="/Scripts/WebCore/Entry.js"></script>
   </head>
   <body>

@@ -27,7 +27,7 @@ const HEIGHT_PORTRAIT = 213; // fixed picture height (was 7×29+15 = 218)
 // 7×(H_s+2pt padding) + 4pt borders == H_p + 2pt padding + 1pt borders  →  H_s = (H_p − 15) / 7.
 const HEIGHT_STAT_ROW_MAIN = (HEIGHT_PORTRAIT - 15) / 7;
 // ── Row counts ────────────────────────────────────────────────────────────────
-const GEAR_ROWS = 18;
+const EXTRA_GEAR_ROWS = 5;
 const LANGUAGE_ROWS = 5;
 const SKILL_ROWS = 7;
 const EDGE_ROWS = 7;

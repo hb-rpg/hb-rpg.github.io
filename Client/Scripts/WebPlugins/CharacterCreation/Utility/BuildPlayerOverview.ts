@@ -23,20 +23,28 @@ export function buildPlayerOverview(data: ConfiguredCharacterData): Content[] {
 // Left column: ability-score table (name / score / damage).
 function buildAbilityColumn(abilities: Abilities): Column {
     const abilityRowHeader: Content[] = [
-        { text: '',       bold: true, fontSize: FONT_LABEL, border: [true, true, false, true] },
-        { text: 'SCORE',  bold: true, fontSize: FONT_LABEL, border: [false, true, true, true] },
+        { text: 'SCORE',       bold: true, fontSize: FONT_LABEL, border: [true, true, false, true] },
+        { text: '',  bold: true, fontSize: FONT_LABEL, border: [false, true, true, true] },
         // { text: 'DAMAGE', bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, alignment: 'center', border: [false, true, true, true] },
     ]
     const filledAbilityRows: Content[][] = []
 
-    for (const name of Object.keys(AbilityNames) as (keyof Abilities)[]) {
+    const abilityKeys = Object.keys(AbilityNames)
+
+    for (const name of abilityKeys as (keyof Abilities)[]) {
         const abilityValue = abilities[name]
 
         if (abilityValue == undefined) throw "Unexpected value " + name + " in ability pdf builder"
+        
+        const borderStyleLeft : [boolean, boolean, boolean, boolean] = (name == abilityKeys[abilityKeys.length - 1])? 
+            [true, false, false, true] : [true, false, false, true]
+        
+        const borderStyleRight : [boolean, boolean, boolean, boolean] = (name == abilityKeys[abilityKeys.length - 1])? 
+            [false, false, true, true] : [false, false, true, true]
 
         filledAbilityRows.push([
-            { text: name.toUpperCase(), bold: true, fontSize: FONT_LABEL, border: [false, false, false, false] },
-            { text: abilityValue, fontSize: FONT_BODY, border: [false, false, false, false] },
+            { text: name.toUpperCase(), bold: true, fontSize: FONT_LABEL, border: borderStyleLeft },
+            { text: abilityValue, fontSize: FONT_BODY, border: borderStyleRight },
             // { text: '', fontSize: FONT_BODY, border: [false, false, false, false] }
         ])
     }

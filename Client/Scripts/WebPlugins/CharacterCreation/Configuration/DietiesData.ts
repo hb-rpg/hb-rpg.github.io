@@ -19,7 +19,7 @@ export namespace ReligionData {
     export const Gestas = new Deity(
         {name:"Gestas", id: Utility.idGenerator.newID()},
         "Gestas represents luck, games of chance, and trickery. Gestas is especially honored by gamblers, thespians, vagrants, and rogues. For Theurgic Spellcasters, Gestas provides aid to followers casting Divination (magic that is used for discovering or revealing information) and Illusion spells (magic that is used to trick the senses and perceptions).",
-        resolveDeityPath("Gestas coin.jpg"), resolveDeityPath("Gestas coin frown rune.jpg")
+        resolveDeityPath("Gestas coin.jpg"), resolveDeityPath("Gestas smile frown rune.jpg")
     );
 
     export const Ghoelb = new Deity(
@@ -43,7 +43,7 @@ export namespace ReligionData {
     export const Moloch = new Deity(
         {name:"Moloch", id: Utility.idGenerator.newID()},
         "Moloch represents darkness, revenge, death, and grief. In religious tradition, Moloch was imprisoned in a maze as a sacrifice to a minotaur. The minotaur spared Moloch and helped them escape. Like Ghoelb, Moloch is often invoked for curses against hated rivals and enemies. Moloch is the gatekeeper for the realms of the afterlife. Moloch is especially honored by warriors, barbarians, Orcs, Ixians, Minotaurs, and necromancers. Followers often tattoo a teardrop below one or both eyes. Moloch is exclusively worshiped by some warriors, cultists, and spellcasters seeking forbidden necromantic lore. For Theurgic Spellcasters, Moloch provides aid to followers casting Necromancy spells (magic that manipulates life force) and Illusion spells (magic that is used to trick the senses and perceptions).",
-        resolveDeityPath("Moloch minotaur rune.jpg"), resolveDeityPath("Desing_Minotaur.jpg")
+        resolveDeityPath("Desing_Minotaur.jpg"), resolveDeityPath("Moloch minotaur rune.jpg")
     );
 
     export const Tubal = new Deity(

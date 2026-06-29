@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Harness — Character Sheet</title>
+    <style>
+      html, body { margin: 0; height: 100%; font-family: sans-serif; }
+      #pdf { width: 100%; height: 95vh; border: 0; }
+      #error { color: #b00; white-space: pre-wrap; padding: 8px 12px; margin: 0; }
+    </style>
+
+    <!--
+      Order matters. These are CLASSIC scripts (no type="module") and must run before the
+      ES modules: knockout defines the global `ko` (re-exported by ko.js, used throughout
+      ConfiguredCharacterData); pdfmake defines the global `pdfMake`; vfs_fonts attaches its
+      default fonts; PDFConstants.js is a non-module script whose top-level consts (FONT_ID,
+      RELIGION_ROWS, SHEET_LAYOUT, …) become global lexical bindings the builders read.
+    -->
+    <script src="/Scripts/Framework/Knockout/knockout.js"></script>
+    <script src="/Scripts/pdfmake.min.js"></script>
+    <script src="/Scripts/vfs_fonts.js"></script>
+    <script src="/Scripts/WebPlugins/CharacterCreation/Configuration/PDFConstants.js"></script>
+
+    <script type="module" src="/Scripts/Framework/PDFs/Harness/HarnessEntry.js"></script>
+  </head>
+  <body>
+    <iframe id="pdf" title="Generated character sheet"></iframe>
+    <pre id="error"></pre>
+  </body>
+</html>

@@ -1,9 +1,26 @@
-import type { ImageNode, PdfMake, StackNode, Table, TableCell, TableNode, TextNode, Width } from './Types.js'
+import type { ImageNode, PdfMake, StackNode, Table, TableCell, TableHeights, TableNode, TextNode, Width } from './Types.js'
 
 // ── Table factory ─────────────────────────────────────────────────────────────
-export function makeTable(widths: Width[], body: TableCell[][], heights?: number[]): TableNode {
-    const tableProps: Table = { widths, body, dontBreakRows: true }
-    if (heights) tableProps.heights = heights
+// The tallest `minHeight` declared on any cell in a row, or 'auto' if none set one.
+function rowMinHeight(row: TableCell[]): number | 'auto' {
+    let max = 0
+    for (const cell of row)
+        if (cell && typeof cell === 'object' && typeof cell.minHeight === 'number')
+            max = Math.max(max, cell.minHeight)
+    return max > 0 ? max : 'auto'
+}
+
+export function makeTable(widths: Width[], body: TableCell[][], heights?: TableHeights): TableNode {
+    const tableProps: Table = {
+        widths,
+        body,
+        dontBreakRows: true,
+        // pdfmake never reads a cell's `minHeight`; row height comes solely from the table-level
+        // `heights`. When the caller doesn't pass an explicit one, synthesize it per row from the
+        // cells' `minHeight` so those annotations take effect (the value is a minimum — taller
+        // content still grows the row).
+        heights: heights ?? ((row: number) => rowMinHeight(body[row])),
+    }
     return { table: tableProps, layout: SHEET_LAYOUT }
 }
 

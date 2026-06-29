@@ -38,7 +38,7 @@ export function buildPlayerGear(data: ConfiguredCharacterData) : Content[] {
                 [GEAR_NAME_COL_WIDTH, '*', GEAR_AMOUNT_COL_WIDTH, REFERENCE_COL_WIDTH],
                 [
                     columnHeaderRow(['NAME', 'DESCRIPTION', 'AMOUNT', 'REFERENCE']),
-                    ...Array.from({ length: GEAR_ROWS }, (_, i) => {
+                    ...Array.from({ length: allItems.length + EXTRA_GEAR_ROWS }, (_, i) => {
                         const item = allItems[i]
                         return dataRow([
                             item?.Name ?? '',

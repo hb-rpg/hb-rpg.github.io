@@ -31,6 +31,7 @@ export interface IAnyCharacterPickerModal {
             Model: {
                 IsConfigured: Observable<boolean>
                 StepNumber: Observable<number>
+                Randomize: Function
             }
         }
     }

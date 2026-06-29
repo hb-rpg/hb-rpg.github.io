@@ -139,7 +139,11 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     Evaluate () {return}
 
     Randomize () {
-        this.modalPickers.forEach(picker => picker.Model.Randomize())
+        // Route through the preview model's Randomize (the same path the per-section dice
+        // button uses) so each section is flagged IsConfigured, which unlocks/reveals the
+        // following sections. Calling picker.Model.Randomize() directly fills in the data
+        // but leaves IsConfigured false, so the sections never unlock.
+        this.modalPickers.forEach(picker => picker.Model.previewViewModel.Model.Randomize())
     }
 
 }

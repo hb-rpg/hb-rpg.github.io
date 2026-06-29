@@ -30,7 +30,7 @@ const HEIGHT_PORTRAIT       = 213   // fixed picture height (was 7×29+15 = 218)
 const HEIGHT_STAT_ROW_MAIN  = (HEIGHT_PORTRAIT - 15) / 7
 
 // ── Row counts ────────────────────────────────────────────────────────────────
-const GEAR_ROWS   = 18
+const EXTRA_GEAR_ROWS   = 5
 const LANGUAGE_ROWS =  5
 const SKILL_ROWS    =  7
 const EDGE_ROWS     =  7

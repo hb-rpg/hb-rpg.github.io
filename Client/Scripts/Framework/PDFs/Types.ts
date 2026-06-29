@@ -69,9 +69,14 @@ export interface TableNode extends NodeBase {
 /** A table column is any content node that may additionally declare a width. */
 export type Column = ContentNode & { width?: Width }
 
+/** Row heights: one value for all rows, a per-row array, or a per-row function.
+ *  pdfmake treats each value as a *minimum* (taller content still expands the row);
+ *  'auto' (or a missing array entry) lets the row size to its content. */
+export type TableHeights = number | number[] | ((row: number) => number | 'auto')
+
 export interface Table {
     widths?: Width[]
-    heights?: number[]
+    heights?: TableHeights
     body: TableCell[][]
     dontBreakRows?: boolean
 }

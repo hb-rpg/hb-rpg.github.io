@@ -19,18 +19,23 @@ export function buildPlayerOverview(data) {
 // Left column: ability-score table (name / score / damage).
 function buildAbilityColumn(abilities) {
     const abilityRowHeader = [
-        { text: '', bold: true, fontSize: FONT_LABEL, border: [true, true, false, true] },
-        { text: 'SCORE', bold: true, fontSize: FONT_LABEL, border: [false, true, true, true] },
+        { text: 'SCORE', bold: true, fontSize: FONT_LABEL, border: [true, true, false, true] },
+        { text: '', bold: true, fontSize: FONT_LABEL, border: [false, true, true, true] },
         // { text: 'DAMAGE', bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, alignment: 'center', border: [false, true, true, true] },
     ];
     const filledAbilityRows = [];
-    for (const name of Object.keys(AbilityNames)) {
+    const abilityKeys = Object.keys(AbilityNames);
+    for (const name of abilityKeys) {
         const abilityValue = abilities[name];
         if (abilityValue == undefined)
             throw "Unexpected value " + name + " in ability pdf builder";
+        const borderStyleLeft = (name == abilityKeys[abilityKeys.length - 1]) ?
+            [true, false, false, true] : [true, false, false, true];
+        const borderStyleRight = (name == abilityKeys[abilityKeys.length - 1]) ?
+            [false, false, true, true] : [false, false, true, true];
         filledAbilityRows.push([
-            { text: name.toUpperCase(), bold: true, fontSize: FONT_LABEL, border: [false, false, false, false] },
-            { text: abilityValue, fontSize: FONT_BODY, border: [false, false, false, false] },
+            { text: name.toUpperCase(), bold: true, fontSize: FONT_LABEL, border: borderStyleLeft },
+            { text: abilityValue, fontSize: FONT_BODY, border: borderStyleRight },
             // { text: '', fontSize: FONT_BODY, border: [false, false, false, false] }
         ]);
     }
