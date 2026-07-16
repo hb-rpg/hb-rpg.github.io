@@ -68,16 +68,16 @@ const REL_IMAGE_COL_WIDTH = 40;
 // ── Unified reference column width (~8 chars at body font) ───────────────────
 const REFERENCE_COL_WIDTH = 40;
 // ── Title font ────────────────────────────────────────────────────────────────
-// Drop a TTF font file at /Fonts/title.ttf to use a custom DnD-style typeface.
+// Drop a TTF font file at /Fonts/title.TTF to use a custom DnD-style typeface.
 // Falls back to Roboto Bold if the file is not found.
-const FONT_VFS_NAME = 'LucidaSans.ttf';
-const FONT_BOLD_VFS_NAME = 'LucidaSansBold.ttf';
-const FONT_ITALIC_VFS_NAME = 'LucidaSansItalic.ttf';
-const FONT_BOLD_ITALIC_VFS_NAME = 'LucidaSansBoldItalic.ttf';
-const REGULAR_FONT_PATH = '/Fonts/LucidaSans/LSANS.ttf';
-const BOLD_FONT_PATH = '/Fonts/LucidaSans/LSANSD.ttf';
-const ITALIC_FONT_PATH = '/Fonts/LucidaSans/LSANSI.ttf';
-const BOLD_ITALIC_FONT_PATH = '/Fonts/LucidaSans/LSANSDI.ttf';
+const FONT_VFS_NAME = 'LucidaSans.TTF';
+const FONT_BOLD_VFS_NAME = 'LucidaSansBold.TTF';
+const FONT_ITALIC_VFS_NAME = 'LucidaSansItalic.TTF';
+const FONT_BOLD_ITALIC_VFS_NAME = 'LucidaSansBoldItalic.TTF';
+const REGULAR_FONT_PATH = '/Fonts/LucidaSans/LSANS.TTF';
+const BOLD_FONT_PATH = '/Fonts/LucidaSans/LSANSD.TTF';
+const ITALIC_FONT_PATH = '/Fonts/LucidaSans/LSANSI.TTF';
+const BOLD_ITALIC_FONT_PATH = '/Fonts/LucidaSans/LSANSDI.TTF';
 const FONT_ID = 'LucidaSans';
 // ── Colors ────────────────────────────────────────────────────────────────────
 const HEADER_GRAY = '#D8D8D8'; // column header rows
