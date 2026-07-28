@@ -39,14 +39,20 @@ export async function buildCharacterSheetDocDefinition(data: ConfiguredCharacter
                 { text: 'v. 10/03/2025', fontSize: FONT_SMALL, alignment: 'right', margin: [0, HEADER_VERSION_TOP, PAGE_MARGIN, 0] },
             ],
         }),
-        footer: (currentPage: number) => ({
-            stack: [
-                { text: `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
-                { text: `Character Creation ${ ['Ch 2-3', 'Ch 2-4', 'Ch 2-5'][currentPage - 1] }`, fontSize: FONT_SMALL, italics: true },
-            ],
-            alignment: 'right',
-            margin: [0, SECTION_GAP, PAGE_MARGIN, 0],
-        }),
+        footer: (currentPage: number) => {
+            // Gear now prints as several sections, so a loaded character can spill past the three
+            // chapters the sheet used to fit in — leave the reference blank on any overflow page
+            // rather than printing "undefined".
+            const chapter = ['Ch 2-3', 'Ch 2-4', 'Ch 2-5'][currentPage - 1]
+            return {
+                stack: [
+                    { text: `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
+                    { text: chapter ? `Character Creation ${chapter}` : '', fontSize: FONT_SMALL, italics: true },
+                ],
+                alignment: 'right',
+                margin: [0, SECTION_GAP, PAGE_MARGIN, 0],
+            }
+        },
         content: [
             ...buildPlayerOverview(data),
             ...buildPlayerGear(data),

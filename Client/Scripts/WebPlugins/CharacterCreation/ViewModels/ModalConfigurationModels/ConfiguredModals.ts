@@ -8,7 +8,7 @@ import { DiceRoll } from "../../Utility/DiceRoll.js";
 import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
 import { EntanglementOrganizationTypesEnum, JobType, RaceType } from "../../Contracts/StringTypes.js";
-import { TaggedObservableSelectionPackage, StoryModel, Item, TaggedCharacterData } from "../../Contracts/TaggedData.js";
+import { TaggedObservableSelectionPackage, StoryModel, GameItem, TaggedCharacterData } from "../../Contracts/TaggedData.js";
 import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects, updateBackgroundSpells, updateEdgesSpells, updateBackgroundCorruption, updateBackgroundDrawbacks, updateRaceDrawbackData } from "../../Utility/UpdateUtility.js";
 import { PreviewModel, StringPreviewModel, StringListPreviewModel, LanguagePreviewModel, AbilityPreviewModel, EntanglementPreviewContainerModel } from "../Preview/PreviewModel.js";
 import { AbilityScoresModel } from "../AbilityScoresModel.js";
@@ -218,7 +218,7 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createEquipmentPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Item>, PreviewModel<StringListPreviewModel>> => {
+    export const createEquipmentPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<GameItem>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.ItemSelections.subscribe((newValue) => {
             stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
@@ -232,11 +232,11 @@ export namespace ConfiguredModals {
             "Equipment",
             characterData,
             (data) => data.ItemSelections,
-            (item: Item) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
-            (item: Item) => `${item.Name}${item.Description ? " - " + item.Description : ""}${item.Amount ? " x" + item.Amount : ""}`,
+            (item: GameItem) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
+            (item: GameItem) => `${item.Name}${item.Description ? " - " + item.Description : ""}${item.Amount ? " x" + item.Amount : ""}`,
             isConfigured
         );
-        return createGenericPicker<SelectionPackageConfigurationModel<Item>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Item>>({
+        return createGenericPicker<SelectionPackageConfigurationModel<GameItem>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<GameItem>>({
             name: "Equipment",
             characterData,
             pickerModel: equipmentModel,
@@ -289,7 +289,7 @@ export namespace ConfiguredModals {
         });
     };
 
-    export const createTrinketPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Item>, PreviewModel<StringListPreviewModel>> => {
+    export const createTrinketPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<GameItem>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.TrinketSelections.subscribe((newValue) => {
             stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => x.Name).sort());
@@ -303,13 +303,13 @@ export namespace ConfiguredModals {
             "Trinket",
             characterData,
             (data) => data.TrinketSelections,
-            (item: Item) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
-            (item: Item) => `${item.Name}${item.Description ? " - " + item.Description : ""}${item.Amount ? " x" + item.Amount : ""}`,
+            (item: GameItem) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
+            (item: GameItem) => `${item.Name}${item.Description ? " - " + item.Description : ""}${item.Amount ? " x" + item.Amount : ""}`,
             isConfigured,
             NoteModel.bundle(TrinketQualifier),
             NoteModel.bundle(TrinketExplanation)
         );
-        return createGenericPicker<SelectionPackageConfigurationModel<Item>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Item>>({
+        return createGenericPicker<SelectionPackageConfigurationModel<GameItem>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<GameItem>>({
             name: "Trinket",
             characterData,
             pickerModel: trinketModel,

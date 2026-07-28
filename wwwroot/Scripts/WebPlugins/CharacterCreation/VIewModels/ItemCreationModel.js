@@ -1,4 +1,5 @@
 import { ko } from "../../../Framework/Knockout/ko.js";
+import { createBaseItem } from "../Utility/BuildItems.js";
 export class ItemCreationModel {
     possibleItems;
     FriendlyName = "Items";
@@ -31,8 +32,8 @@ export class ItemCreationModel {
     }
     createItem() {
         const newItem = {
-            Tags: [{}],
-            Payload: { Name: this.createdItemName(), Source: "Custom" }
+            Tags: [{ Source: "Custom" }],
+            Payload: createBaseItem(this.createdItemName())
         };
         this.chosenItem(newItem);
         return newItem;

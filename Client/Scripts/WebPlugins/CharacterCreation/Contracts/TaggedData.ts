@@ -42,7 +42,7 @@ export type StoryModel<StoryType> = {
     Other? : string
 
     // Below handled by update functions
-    // Items? : SelectionPackage<Item>
+    // Items? : SelectionPackage<GameItem>
     // Edges? : SelectionPackage<Edges> 
     // Skills? : SelectionPackage<Skill>
     // Spells? : SelectionPackage<Spell>
@@ -90,15 +90,14 @@ export type SyllableModel = {
     Syllable : string
 }
 
-export class Item {
-    constructor(public Name: string, public Amount?: number, public Description?: string, public Value? : number, public Encumbrance = 0, public Notes? : string) {}
-}
-
-
 export type RangeType = "Close" | "Nearby" | "Far Away";
 export type ArmorType = "Light Armor" | "Heavy Armor" | "Medium Armor" | "Small Shield" | "Large Shield" | "Helmet"
 export enum ItemTypes {Armor, Container, Melee, Ranged, Ration, Wealth, NonArmorWearables, Rope, Animal, TransportEquipment, Consumable, Tool, Ammo}
-export type DiceRollTypes = "Ud6" | "Ud4" | "Ud8"
+
+// Weapons roll damage dice (1dX); armor, powders and other expendables burn down a usage die (UdX).
+export type DamageDieTypes = "1d2" | "1d4" | "1d6" | "1d8"
+export type UsageDieTypes = "Ud4" | "Ud6" | "Ud8"
+export type DiceRollTypes = DamageDieTypes | UsageDieTypes
 
 export interface BaseItem {
   Name: string;
@@ -112,27 +111,31 @@ export interface BaseItem {
 export interface MeleeWeapon extends BaseItem {
   Type: ItemTypes.Melee;
   WeaponType: string;
-  Damage: DiceRollTypes;
+  Damage: DamageDieTypes;
+  // Set on weapons that can also be thrown (knives, spears, hammers).
+  Range?: RangeType;
 }
 
 export interface RangedWeapon extends BaseItem {
   Type: ItemTypes.Ranged;
   WeaponType: string;
-  Damage: DiceRollTypes;
+  Damage: DamageDieTypes;
   Range: RangeType;
   Ammo: number;
+  AmmoType?: string;
 }
 
 export interface Ammo extends BaseItem {
   Type: ItemTypes.Ammo;
   ForWeapon: string;
-  Damage: DiceRollTypes;
+  Damage: DamageDieTypes;
 }
 
 export interface Armor extends BaseItem {
   Type: ItemTypes.Armor;
   ArmorType : ArmorType,
-  Defense : number,
+  Defense? : number,
+  UsageDie? : UsageDieTypes,
   Limit? : string,
 }
 
@@ -177,6 +180,30 @@ export interface Animals extends BaseItem {
 export interface Tool extends BaseItem {
     Type: ItemTypes.Tool,
 }
+
+// Items that fit none of the categories above (odd trinkets, one-off props). `Type` is declared
+// as `undefined` rather than omitted so `GameItem` stays a discriminated union.
+export interface UncategorizedItem extends BaseItem {
+    Type?: undefined,
+}
+
+// The item type every selection package, picker and PDF section works with. Switching on `.Type`
+// narrows to the specific shape, so the sheet can read Damage/Range/Servings without casts.
+export type GameItem =
+    | MeleeWeapon
+    | RangedWeapon
+    | Ammo
+    | Armor
+    | NonArmorWearables
+    | Consumable
+    | RationItem
+    | WealthItem
+    | ContainerItem
+    | RopeLikerItem
+    | TransportEquipment
+    | Animals
+    | Tool
+    | UncategorizedItem
 
 
 export interface BaseTag {

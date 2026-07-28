@@ -1,16 +1,21 @@
-import { Ammo, Animals, Armor, ArmorType, BaseItem, ContainerItem, DiceRollTypes, ItemTypes, MeleeWeapon, NonArmorWearables, RangeType, RangedWeapon, RationItem, RopeLikerItem, Tool, TransportEquipment, WealthItem } from "../Contracts/TaggedData";
+import { Ammo, Animals, Armor, ArmorType, BaseItem, Consumable, ContainerItem, DamageDieTypes, ItemTypes, MeleeWeapon, NonArmorWearables, RangeType, RangedWeapon, RationItem, RopeLikerItem, Tool, TransportEquipment, UncategorizedItem, WealthItem } from "../Contracts/TaggedData.js";
+
+// Every factory takes the fields that define the item positionally and everything else — amount,
+// description, value, encumbrance, notes — through one `options` bag. Encumbrance defaults to 0
+// (the rules track it per-container, not per-item, for most starting gear).
+type Options<ItemType extends BaseItem, Required extends keyof ItemType> =
+  Partial<Omit<ItemType, Required | "Type">>
 
 export function createBaseItem(
   name: string,
-  encumbrance: number,
-  options?: Partial<Omit<BaseItem, "Name" | "Encumbrance">>
-): BaseItem {
+  options?: Options<BaseItem, "Name">
+): UncategorizedItem {
   return {
     Name: name,
-    Encumbrance: encumbrance,
     Amount: options?.Amount ?? 1,
     Description: options?.Description,
     Value: options?.Value,
+    Encumbrance: options?.Encumbrance ?? 0,
     Notes: options?.Notes,
   };
 }
@@ -18,46 +23,45 @@ export function createBaseItem(
 export function createMeleeWeapon(
   name: string,
   weaponType: string,
-  damage: DiceRollTypes,
-  encumbrance: number,
-  options?: Partial<Omit<MeleeWeapon, "Name" | "WeaponType" | "Damage" | "Encumbrance" | "Type">>
+  damage: DamageDieTypes,
+  options?: Options<MeleeWeapon, "Name" | "WeaponType" | "Damage">
 ): MeleeWeapon {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Melee,
     WeaponType: weaponType,
     Damage: damage,
+    Range: options?.Range,
   };
 }
 
 export function createRangedWeapon(
   name: string,
   weaponType: string,
-  damage: DiceRollTypes,
+  damage: DamageDieTypes,
   range: RangeType,
   ammo: number,
-  encumbrance: number,
-  options?: Partial<Omit<RangedWeapon, "Name" | "WeaponType" | "Damage" | "Range" | "Ammo" | "Encumbrance" | "Type">>
+  options?: Options<RangedWeapon, "Name" | "WeaponType" | "Damage" | "Range" | "Ammo">
 ): RangedWeapon {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Ranged,
     WeaponType: weaponType,
     Damage: damage,
     Range: range,
     Ammo: ammo,
+    AmmoType: options?.AmmoType,
   };
 }
 
 export function createAmmoItem(
   name: string,
   forWeapon: string,
-  damage: DiceRollTypes,
-  encumbrance: number,
-  options?: Partial<Omit<Ammo, "Name" | "ForWeapon" | "Damage" | "Encumbrance" | "Type">>
+  damage: DamageDieTypes,
+  options?: Options<Ammo, "Name" | "ForWeapon" | "Damage">
 ): Ammo {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Ammo,
     ForWeapon: forWeapon,
     Damage: damage,
@@ -67,38 +71,45 @@ export function createAmmoItem(
 export function createArmorItem(
   name: string,
   armorType: ArmorType,
-  defense: number,
-  encumbrance: number,
-  options?: Partial<Omit<Armor, "Name" | "ArmorType" | "Defense" | "Encumbrance" | "Type">>
+  options?: Options<Armor, "Name" | "ArmorType">
 ): Armor {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Armor,
     ArmorType: armorType,
-    Defense: defense,
+    Defense: options?.Defense,
+    UsageDie: options?.UsageDie,
     Limit: options?.Limit,
   };
 }
 
 export function createWearableItem(
   name: string,
-  encumbrance: number,
-  options?: Partial<Omit<NonArmorWearables, "Name" | "Encumbrance" | "Type">>
+  options?: Options<NonArmorWearables, "Name">
 ): NonArmorWearables {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.NonArmorWearables,
+  };
+}
+
+export function createConsumableItem(
+  name: string,
+  options?: Options<Consumable, "Name">
+): Consumable {
+  return {
+    ...createBaseItem(name, options),
+    Type: ItemTypes.Consumable,
   };
 }
 
 export function createRationItem(
   name: string,
   servings: number,
-  encumbrance: number,
-  options?: Partial<Omit<RationItem, "Name" | "Servings" | "Encumbrance" | "Type">>
+  options?: Options<RationItem, "Name" | "Servings">
 ): RationItem {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Ration,
     Servings: servings,
   };
@@ -108,11 +119,10 @@ export function createWealthItem(
   name: string,
   wealthType: string,
   valuePerUnit: number,
-  encumbrance: number,
-  options?: Partial<Omit<WealthItem, "Name" | "WealthType" | "ValuePerUnit" | "Encumbrance" | "Type">>
+  options?: Options<WealthItem, "Name" | "WealthType" | "ValuePerUnit">
 ): WealthItem {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Wealth,
     WealthType: wealthType,
     ValuePerUnit: valuePerUnit,
@@ -122,11 +132,10 @@ export function createWealthItem(
 export function createContainerItem(
   name: string,
   capacity: string[],
-  encumbrance: number,
-  options?: Partial<Omit<ContainerItem, "Name" | "Capacity" | "Encumbrance" | "Type">>
+  options?: Options<ContainerItem, "Name" | "Capacity">
 ): ContainerItem {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Container,
     Capacity: capacity,
     CurrentItems: options?.CurrentItems ?? [],
@@ -136,11 +145,10 @@ export function createContainerItem(
 export function createRopeItem(
   name: string,
   length: number,
-  encumbrance: number,
-  options?: Partial<Omit<RopeLikerItem, "Name" | "Length" | "Encumbrance" | "Type">>
+  options?: Options<RopeLikerItem, "Name" | "Length">
 ): RopeLikerItem {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Rope,
     Length: length,
   };
@@ -148,33 +156,30 @@ export function createRopeItem(
 
 export function createTransportItem(
   name: string,
-  encumbrance: number,
-  options?: Partial<Omit<TransportEquipment, "Name" | "Encumbrance" | "Type">>
+  options?: Options<TransportEquipment, "Name">
 ): TransportEquipment {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.TransportEquipment,
   };
 }
 
 export function createAnimalItem(
   name: string,
-  encumbrance: number,
-  options?: Partial<Omit<Animals, "Name" | "Encumbrance" | "Type">>
+  options?: Options<Animals, "Name">
 ): Animals {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Animal,
   };
 }
 
 export function createToolItem(
   name: string,
-  encumbrance: number,
-  options?: Partial<Omit<Tool, "Name" | "Encumbrance" | "Type">>
+  options?: Options<Tool, "Name">
 ): Tool {
   return {
-    ...createBaseItem(name, encumbrance, options),
+    ...createBaseItem(name, options),
     Type: ItemTypes.Tool,
   };
 }

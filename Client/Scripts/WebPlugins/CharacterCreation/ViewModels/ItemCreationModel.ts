@@ -1,27 +1,28 @@
 import { Observable } from "../../../Framework/Knockout/knockout.js";
 import { ko } from "../../../Framework/Knockout/ko.js";
-import { Item, MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
+import { GameItem, MultiTaggedCharacterData } from "../Contracts/TaggedData.js";
+import { createBaseItem } from "../Utility/BuildItems.js";
 
-export class ItemCreationModel implements IWizardModel<void, Item, Item | undefined> {
+export class ItemCreationModel implements IWizardModel<void, GameItem, GameItem | undefined> {
     FriendlyName = "Items"
     ViewUrl = "PartialViews/CharacterCreation/ItemCreationView.html"
     isLoading: Observable<boolean>;
     
-    chosenItem : Observable<MultiTaggedCharacterData<Item>>
+    chosenItem : Observable<MultiTaggedCharacterData<GameItem>>
     createdItemName : Observable<string>
 
     isCustom : Observable<boolean>
 
-    constructor (public possibleItems : MultiTaggedCharacterData<Item>[]) {
+    constructor (public possibleItems : MultiTaggedCharacterData<GameItem>[]) {
         
-        this.chosenItem = ko.observable<MultiTaggedCharacterData<Item>>(this.possibleItems[0])
+        this.chosenItem = ko.observable<MultiTaggedCharacterData<GameItem>>(this.possibleItems[0])
         this.createdItemName = ko.observable("")
 
         this.isCustom = ko.observable(false)
         this.isLoading = ko.observable(false)
     }
     
-    Init (chosenItem? : Item) {
+    Init (chosenItem? : GameItem) {
         if (chosenItem === undefined) return Promise.resolve()
 
         const itemData = this.possibleItems.find((taggedItem)=>taggedItem.Payload.Name == chosenItem.Name)
@@ -35,16 +36,16 @@ export class ItemCreationModel implements IWizardModel<void, Item, Item | undefi
             return Promise.resolve()
         }
 
-        this.chosenItem(itemData as MultiTaggedCharacterData<Item> )
+        this.chosenItem(itemData as MultiTaggedCharacterData<GameItem> )
 
         return Promise.resolve()
     }
 
     createItem() {
-        const newItem = {
-            Tags:[{}],
-            Payload:{Name: this.createdItemName(), Source: "Custom"}
-        } as MultiTaggedCharacterData<Item>
+        const newItem : MultiTaggedCharacterData<GameItem> = {
+            Tags:[{Source: "Custom"}],
+            Payload: createBaseItem(this.createdItemName())
+        }
 
         this.chosenItem(newItem)
 
@@ -54,6 +55,6 @@ export class ItemCreationModel implements IWizardModel<void, Item, Item | undefi
     Evaluate () {
         if (this.isCustom()) return this.createItem().Payload 
 
-        return (this.chosenItem() as MultiTaggedCharacterData<Item>).Payload
+        return (this.chosenItem() as MultiTaggedCharacterData<GameItem>).Payload
     }
 }

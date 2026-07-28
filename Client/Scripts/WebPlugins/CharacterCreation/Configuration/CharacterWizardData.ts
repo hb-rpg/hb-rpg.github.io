@@ -1,4 +1,4 @@
-import { CharacterTags, ChoiceGroup, Item, OverrideChoiceLambda, SelectionPackage, StoryModel, TaggedCharacterData, TaggedObservableSelectionPackage } from "../Contracts/TaggedData.js"
+import { CharacterTags, ChoiceGroup, GameItem, OverrideChoiceLambda, SelectionPackage, StoryModel, TaggedCharacterData, TaggedObservableSelectionPackage } from "../Contracts/TaggedData.js"
 import { RaceType, JobType, JobSubset, JobSubsetEnum, ProfessionType } from "../Contracts/StringTypes.js"
 import { ko } from "../../../Framework/Knockout/ko.js"
 import { Races } from "../Configuration/DispositionData.js"
@@ -42,8 +42,8 @@ export class ConfiguredCharacterData {
     Abilities : Observable<Abilities>
     LanguageSelections: Observable<TaggedObservableSelectionPackage<LearnedLanguage>>
     
-    ItemSelections : Observable<TaggedObservableSelectionPackage<Item>>
-    TrinketSelections : Observable<TaggedObservableSelectionPackage<Item>>
+    ItemSelections : Observable<TaggedObservableSelectionPackage<GameItem>>
+    TrinketSelections : Observable<TaggedObservableSelectionPackage<GameItem>>
 
     OrganizationEntanglements : Observable<OrganizationEntanglementsGroup>
     EntanglementAffects : ObservableArray<TaggedCharacterData<EntanglementAffect>>
