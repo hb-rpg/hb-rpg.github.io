@@ -8,7 +8,9 @@ import { createTaggedData, backgroundSourceTag } from "../Utility/TagUtility.js"
 
 export namespace ReligionData {
     
-    const resolveDeityPath = (pictureName : string) => getCharacterCreatorPicturePath("/Deity Symbols and Runes/" + pictureName)
+    // No leading slash: getCharacterCreatorPicturePath already prefixes "/Images/CharacterCreator/",
+    // and a leading slash here produced a broken double-slash URL ("…CharacterCreator//Deity…").
+    const resolveDeityPath = (pictureName : string) => getCharacterCreatorPicturePath("Deity Symbols and Runes/" + pictureName)
     
     export const Enoch = new Deity(
         {name:"Enoch", id: Utility.idGenerator.newID()},
@@ -88,11 +90,11 @@ export namespace ReligionData {
     
     export const jobOverride = new Map<JobSubset, Deity>([
         [JobSubsetEnum.ElderGod, Ghoelb],
-        [JobSubsetEnum.Lich, new Deity({id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName()}, "Your master’s main drive is to destroy the boundary between life and death.", "Your master’s main drive is to destroy the boundary between life and death.")],     // Associated via Necromancy lore
+        [JobSubsetEnum.Lich, new Deity({id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName()}, "Your master’s main drive is to destroy the boundary between life and death.")],     // Associated via Necromancy lore
         [JobSubsetEnum.Moloch, Moloch],   // Direct mapping
         [JobSubsetEnum.Kain, Kain],       // Direct mapping
-        [JobSubsetEnum.IxianArchon, new Deity({id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({Race: "Ixian"})}, "This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge", "This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge")], // Associated via Law/Order/Bureaucracy
-        [JobSubsetEnum.IxianRaver, new Deity({id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({Race: "Ixian"})}, "This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda", "This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda")]  // Associated via Disorder/Chaos
+        [JobSubsetEnum.IxianArchon, new Deity({id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({Race: "Ixian"})}, "This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge")], // Associated via Law/Order/Bureaucracy
+        [JobSubsetEnum.IxianRaver, new Deity({id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({Race: "Ixian"})}, "This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda")]  // Associated via Disorder/Chaos
     ]);
     
     export const jobLanguageOverride = new Map<ChoiceGroup<Deity>, TaggedCharacterData<OverrideChoiceLambda<Deity>>>()

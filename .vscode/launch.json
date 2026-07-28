@@ -25,6 +25,8 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "skipFiles": ["<node_internals>/**"],
+            // Compile the harness TypeScript into wwwroot/Scripts before serving.
+            "preLaunchTask": "tsc build",
             // Auto-open the harness page once the server logs its URL.
             "serverReadyAction": {
                 "pattern": "http://localhost:([0-9]+)",

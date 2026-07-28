@@ -7,7 +7,9 @@ import { getCharacterCreatorPicturePath } from "../Utility/RoutingUtility.js";
 import { createTaggedData, backgroundSourceTag } from "../Utility/TagUtility.js";
 export var ReligionData;
 (function (ReligionData) {
-    const resolveDeityPath = (pictureName) => getCharacterCreatorPicturePath("/Deity Symbols and Runes/" + pictureName);
+    // No leading slash: getCharacterCreatorPicturePath already prefixes "/Images/CharacterCreator/",
+    // and a leading slash here produced a broken double-slash URL ("…CharacterCreator//Deity…").
+    const resolveDeityPath = (pictureName) => getCharacterCreatorPicturePath("Deity Symbols and Runes/" + pictureName);
     ReligionData.Enoch = new Deity({ name: "Enoch", id: Utility.idGenerator.newID() }, "Enoch represents law, order, light, oathkeepers, learning, and writing. Enoch is especially honored by bureaucrats, mercantilers, scholars, arcane spellcasters, and city dwellers. It was Enoch who came up with the plans for the gods to capture Ghoelb. For Theurgic Spellcasters, Enoch provides aid to followers casting Divination spells (magic that is used for discovering or revealing information).", resolveDeityPath("Enoch lamp.jpg"), resolveDeityPath("Enoch lamp rune.jpg"));
     ReligionData.Gestas = new Deity({ name: "Gestas", id: Utility.idGenerator.newID() }, "Gestas represents luck, games of chance, and trickery. Gestas is especially honored by gamblers, thespians, vagrants, and rogues. For Theurgic Spellcasters, Gestas provides aid to followers casting Divination (magic that is used for discovering or revealing information) and Illusion spells (magic that is used to trick the senses and perceptions).", resolveDeityPath("Gestas coin.jpg"), resolveDeityPath("Gestas smile frown rune.jpg"));
     ReligionData.Ghoelb = new Deity({ name: "Ghoelb", id: Utility.idGenerator.newID() }, "Ghoelb is a primeval entity that is the embodiment of disorder, malevolent chaos and the void. Ghoelb was imprisoned in an extraplanar realm by the other gods but is still able to maintain communication and provide assistance to followers. Commoners only invoke Ghoelb for the darkest of curses against hated rivals. Ghoelb is only worshiped by doomsday cultists, warlocks, and spellcasters seeking forbidden lore. For Theurgic Spellcasters, Ghoelb provides aid to followers casting Conjuration (magic that manifests materials or creatures) and Illusion spells (magic that is used to trick the senses and perceptions).", resolveDeityPath("Golb spiral.jpg"), resolveDeityPath("Golb spiral rune.jpg"));
@@ -28,11 +30,11 @@ export var ReligionData;
      */
     ReligionData.jobOverride = new Map([
         [JobSubsetEnum.ElderGod, ReligionData.Ghoelb],
-        [JobSubsetEnum.Lich, new Deity({ id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName() }, "Your master’s main drive is to destroy the boundary between life and death.", "Your master’s main drive is to destroy the boundary between life and death.")], // Associated via Necromancy lore
+        [JobSubsetEnum.Lich, new Deity({ id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName() }, "Your master’s main drive is to destroy the boundary between life and death.")], // Associated via Necromancy lore
         [JobSubsetEnum.Moloch, ReligionData.Moloch], // Direct mapping
         [JobSubsetEnum.Kain, ReligionData.Kain], // Direct mapping
-        [JobSubsetEnum.IxianArchon, new Deity({ id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({ Race: "Ixian" }) }, "This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge", "This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge")], // Associated via Law/Order/Bureaucracy
-        [JobSubsetEnum.IxianRaver, new Deity({ id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({ Race: "Ixian" }) }, "This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda", "This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda")] // Associated via Disorder/Chaos
+        [JobSubsetEnum.IxianArchon, new Deity({ id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({ Race: "Ixian" }) }, "This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge")], // Associated via Law/Order/Bureaucracy
+        [JobSubsetEnum.IxianRaver, new Deity({ id: Utility.idGenerator.newID(), name: NameUtility.GeneratePersonName({ Race: "Ixian" }) }, "This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda")] // Associated via Disorder/Chaos
     ]);
     ReligionData.jobLanguageOverride = new Map();
     const jobOverrideLambda = (taggedChoiceBeingOverridden, characterData) => {

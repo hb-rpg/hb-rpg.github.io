@@ -91,8 +91,93 @@ export type SyllableModel = {
 }
 
 export class Item {
-    constructor(public Name: string, public Amount?: number, public Description?: string, public Value? : number) {}
+    constructor(public Name: string, public Amount?: number, public Description?: string, public Value? : number, public Encumbrance = 0, public Notes? : string) {}
 }
+
+
+export type RangeType = "Close" | "Nearby" | "Far Away";
+export type ArmorType = "Light Armor" | "Heavy Armor" | "Medium Armor" | "Small Shield" | "Large Shield" | "Helmet"
+export enum ItemTypes {Armor, Container, Melee, Ranged, Ration, Wealth, NonArmorWearables, Rope, Animal, TransportEquipment, Consumable, Tool, Ammo}
+export type DiceRollTypes = "Ud6" | "Ud4" | "Ud8"
+
+export interface BaseItem {
+  Name: string;
+  Amount?: number;
+  Description?: string;
+  Value?: number;
+  Encumbrance: number;
+  Notes? : string
+}
+
+export interface MeleeWeapon extends BaseItem {
+  Type: ItemTypes.Melee;
+  WeaponType: string;
+  Damage: DiceRollTypes;
+}
+
+export interface RangedWeapon extends BaseItem {
+  Type: ItemTypes.Ranged;
+  WeaponType: string;
+  Damage: DiceRollTypes;
+  Range: RangeType;
+  Ammo: number;
+}
+
+export interface Ammo extends BaseItem {
+  Type: ItemTypes.Ammo;
+  ForWeapon: string;
+  Damage: DiceRollTypes;
+}
+
+export interface Armor extends BaseItem {
+  Type: ItemTypes.Armor;
+  ArmorType : ArmorType,
+  Defense : number,
+  Limit? : string,
+}
+
+export interface NonArmorWearables extends BaseItem {
+    Type: ItemTypes.NonArmorWearables;
+}
+
+export interface Consumable extends BaseItem {
+    Type: ItemTypes.Consumable
+}
+
+export interface RationItem extends BaseItem {
+  Type: ItemTypes.Ration;
+  Servings: number;
+}
+
+export interface WealthItem extends BaseItem {
+  Type: ItemTypes.Wealth;
+  WealthType : string
+  ValuePerUnit: number;
+}
+
+export interface ContainerItem extends BaseItem {
+    Type: ItemTypes.Container,
+    Capacity: string[]
+    CurrentItems : BaseItem[]
+}
+
+export interface RopeLikerItem extends BaseItem {
+    Type: ItemTypes.Rope,
+    Length : number
+}
+
+export interface TransportEquipment extends BaseItem {
+    Type: ItemTypes.TransportEquipment,
+}
+
+export interface Animals extends BaseItem {
+    Type: ItemTypes.Animal,
+}
+
+export interface Tool extends BaseItem {
+    Type: ItemTypes.Tool,
+}
+
 
 export interface BaseTag {
     Type?: TagType;

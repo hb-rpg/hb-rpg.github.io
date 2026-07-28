@@ -22,12 +22,14 @@ const HEIGHT_STAT_ROW       = 13
 const HEIGHT_STANDARD_ROW   = 16
 const HEIGHT_WRITING_ROW    = 40   // tall rows for hand-writing (narrative, notes)
 const HEIGHT_SPELL_NOTES    = 10
-// Portrait box is the source of truth: set it to the picture's rendered height in pt.
-// At the ~210pt portrait column width, H_portrait ≈ 210 × picHeightPx / picWidthPx.
-const HEIGHT_PORTRAIT       = 213   // fixed picture height (was 7×29+15 = 218)
-// Row height derived so the 7-row stat/ability tables exactly equal the portrait box:
-// 7×(H_s+2pt padding) + 4pt borders == H_p + 2pt padding + 1pt borders  →  H_s = (H_p − 15) / 7.
-const HEIGHT_STAT_ROW_MAIN  = (HEIGHT_PORTRAIT - 15) / 7
+// The stat/ability rows match a plain gear (`dataRow`) row: one line of body text plus the
+// sheet's top/bottom cell padding. The portrait is then sized off that row height so the three
+// top-section columns line up — row height is the source of truth, not the portrait.
+const STAT_ROW_COUNT        = 7    // header/name row + 6 abilities (also the 7 stat fields)
+const HEIGHT_STAT_ROW_MAIN  = FONT_BODY + 2   // + 2 = SHEET_LAYOUT paddingTop(1) + paddingBottom(1)
+// The 7-row table is taller than a single portrait cell by its accumulated per-row padding and
+// border lines (~15pt); pad the portrait by that so the three top-section columns bottom-align.
+const HEIGHT_PORTRAIT       = HEIGHT_STAT_ROW_MAIN * STAT_ROW_COUNT + 15
 
 // ── Row counts ────────────────────────────────────────────────────────────────
 const EXTRA_GEAR_ROWS   = 5

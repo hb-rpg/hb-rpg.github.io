@@ -39,6 +39,18 @@
         },
       },
       {
+        "label": "tsc build",
+        "type": "shell",
+        "command": "npx tsc",
+        "problemMatcher": ["$tsc"],
+        "group": "build",
+        "presentation":
+        {
+          "reveal": "silent",
+          "panel": "dedicated",
+        },
+      },
+      {
         "label": "Build Blog",
         "type": "shell",
         "command": "powershell -NoExit -File  ${workspaceFolder}\\Tools\\Windows\\Build-Pages.ps1 '${workspaceFolder}\\Client\\Blog\\' '${workspaceFolder}\\wwwroot\\HTML\\GeneratedViews\\'",

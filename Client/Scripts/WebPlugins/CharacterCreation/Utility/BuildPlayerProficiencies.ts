@@ -10,22 +10,32 @@ export function buildPlayerProficiencies(data: ConfiguredCharacterData): Content
     const edges     = flattenAndCombineSelectionPackage(data.EdgeSelections(), data)
     const spells    = flattenAndCombineSelectionPackage(data.SpellSelection(), data)
 
-    const spellBody: TableCell[][] = [
-        columnHeaderRow(['SPELL', 'LEVEL', 'SCHOOL', 'CASTING TIME', 'RANGE', 'TEST', 'REFERENCE']),
-    ]
-    for (let i = 0; i < SPELL_ROWS; i++) {
-        const spell  = spells[i]
-        const shaded = i % 2 === 1
-        spellBody.push(dataRow([spell?.Name ?? '', '', '', '', '', '', spell?.reference ?? ''], shaded))
-        spellBody.push([{
-            text: [
-                { text: 'Notes  ', italics: true, fontSize: FONT_LABEL },
-                { text: spell?.Description ?? '', fontSize: FONT_BODY },
-            ],
-            colSpan: SPELL_COLS,
-            fillColor: shaded ? STRIPE_GRAY : WHITE,
-            minHeight: HEIGHT_SPELL_NOTES,
-        }, ...Array<TableCell>(SPELL_COLS - 1).fill({ text: '' })])
+    // Only casters get a magic section — skip it entirely when the character has no spells.
+    const spellSection: Content[] = []
+    if (spells.length > 0) {
+        const spellBody: TableCell[][] = [
+            columnHeaderRow(['SPELL', 'LEVEL', 'SCHOOL', 'CASTING TIME', 'RANGE', 'TEST', 'REFERENCE']),
+        ]
+        for (let i = 0; i < SPELL_ROWS; i++) {
+            const spell  = spells[i]
+            const shaded = i % 2 === 1
+            spellBody.push(dataRow([spell?.Name ?? '', '', '', '', '', '', spell?.reference ?? ''], shaded))
+            spellBody.push([{
+                text: [
+                    { text: 'Notes  ', italics: true, fontSize: FONT_LABEL },
+                    { text: spell?.Description ?? '', fontSize: FONT_BODY },
+                ],
+                colSpan: SPELL_COLS,
+                fillColor: shaded ? STRIPE_GRAY : WHITE,
+                minHeight: HEIGHT_SPELL_NOTES,
+            }, ...Array<TableCell>(SPELL_COLS - 1).fill({ text: '' })])
+        }
+        spellSection.push(
+            makeSection('SPELLS',
+                [SPELL_NAME_COL_WIDTH, SPELL_LEVEL_COL_WIDTH, '*', SPELL_CAST_COL_WIDTH, SPELL_RANGE_COL_WIDTH, SPELL_TEST_COL_WIDTH, REFERENCE_COL_WIDTH],
+                spellBody,
+            ),
+        )
     }
 
     return [
@@ -69,9 +79,6 @@ export function buildPlayerProficiencies(data: ConfiguredCharacterData): Content
                 }),
             ],
         ),
-        makeSection('SPELLS',
-            [SPELL_NAME_COL_WIDTH, SPELL_LEVEL_COL_WIDTH, '*', SPELL_CAST_COL_WIDTH, SPELL_RANGE_COL_WIDTH, SPELL_TEST_COL_WIDTH, REFERENCE_COL_WIDTH],
-            spellBody,
-        ),
+        ...spellSection,
     ]
 }

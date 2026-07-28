@@ -244,7 +244,7 @@ export namespace ItemData {
     export const WagonBolts = new Item("Crossbow bolts", DiceRoll.sixSidedDieRoll(), "Usage Die: Ud6");
 
     // --- Combat & Weaponry ---
-    export const    SpikedMaceHoly = new Item("Spiked Mace", 1, "Simple Melee (1d6). Dispenses holy water (Ud4, 1d4 damage).");
+    export const SpikedMaceHoly = new Item("Spiked Mace", 1, "Simple Melee (1d6). Dispenses holy water (Ud4, 1d4 damage).");
     export const HolySymbol = new Item("Holy Symbol");
     export const VariantHolySymbol = new Item("Variant Holy Symbol", 1, "An older or sectarian version of a holy symbol.");
     export const SpearLance = new Item("Spear/Light Lance", 1, "Light Melee (1d6). Includes detachable banner.");

@@ -9,19 +9,18 @@ export function buildPlayerOverview(data) {
             columnGap: COLUMN_GAP,
             margin: [0, 0, 0, BETWEEN_SECTION_GAP],
             columns: [
-                buildAbilityColumn(abilities),
+                buildAbilityColumn(abilities, data.Name().Name ?? ''),
                 buildStatsColumn(data),
                 buildPortraitColumn(),
             ],
         },
     ];
 }
-// Left column: ability-score table (name / score / damage).
-function buildAbilityColumn(abilities) {
-    const abilityRowHeader = [
-        { text: 'SCORE', bold: true, fontSize: FONT_LABEL, border: [true, true, false, true] },
-        { text: '', bold: true, fontSize: FONT_LABEL, border: [false, true, true, true] },
-        // { text: 'DAMAGE', bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, alignment: 'center', border: [false, true, true, true] },
+// Left column: character name row on top, then the ability-score table (name / score).
+function buildAbilityColumn(abilities, characterName) {
+    const nameHeaderRow = [
+        { text: 'NAME', bold: true, fontSize: FONT_LABEL, border: [true, true, false, true] },
+        { text: characterName, fontSize: FONT_BODY, border: [false, true, true, true] },
     ];
     const filledAbilityRows = [];
     const abilityKeys = Object.keys(AbilityNames);
@@ -39,7 +38,7 @@ function buildAbilityColumn(abilities) {
             // { text: '', fontSize: FONT_BODY, border: [false, false, false, false] }
         ]);
     }
-    const rows = [abilityRowHeader, ...filledAbilityRows];
+    const rows = [nameHeaderRow, ...filledAbilityRows];
     return {
         width: IDENTITY_COL_WIDTH,
         stack: [{
@@ -62,11 +61,12 @@ function buildStatsColumn(data) {
     ];
     return {
         width: STAT_COL_WIDTH,
-        ...makeTable(['*'], statRows.map(row => [{
-                stack: [
-                    { text: row.label, bold: true, fontSize: FONT_SMALL },
+        ...makeTable(['*'], statRows.map((row, i) => [{
+                text: [
+                    { text: row.label + '  ', bold: true, fontSize: FONT_LABEL },
                     { text: row.value, fontSize: FONT_BODY },
                 ],
+                fillColor: i % 2 === 1 ? STRIPE_GRAY : WHITE,
             }]), Array(statRows.length).fill(HEIGHT_STAT_ROW_MAIN)),
     };
 }
