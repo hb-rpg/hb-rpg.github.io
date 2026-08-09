@@ -25,6 +25,8 @@ export interface StyleProperties {
     fillColor?: string
     alignment?: Alignment
     margin?: Margin
+    /** Force the node onto a fresh page, before or after it renders. */
+    pageBreak?: 'before' | 'after'
 }
 
 /** Extra properties a content node may carry when it is used as a table cell. */

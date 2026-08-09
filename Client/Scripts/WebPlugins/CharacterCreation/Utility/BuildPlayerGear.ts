@@ -24,9 +24,9 @@ const GEAR_SECTIONS: { title: string, types: ItemTypes[] }[] = [
 const GEAR_COLUMNS: Width[] = [GEAR_NAME_COL_WIDTH, '*', GEAR_AMOUNT_COL_WIDTH, REFERENCE_COL_WIDTH]
 const GEAR_HEADERS = ['NAME', 'DESCRIPTION', 'AMOUNT', 'REFERENCE']
 
-// The mechanical facts now live in typed fields rather than prose, so rebuild the sentence the
-// description column used to carry: stats first, then whatever flavour text the item has.
-function describeItem(item: GameItem): string {
+// The mechanical facts an item carries, as separate phrases. Exported because the DM quick
+// reference prints them inline in parentheses, without the flavour text describeItem appends.
+export function itemStats(item: GameItem): string[] {
     const stats: string[] = []
 
     switch (item.Type) {
@@ -50,9 +50,9 @@ function describeItem(item: GameItem): string {
         case ItemTypes.Ration:
             stats.push(`${item.Servings} serving${item.Servings === 1 ? '' : 's'}`)
             break
-        case ItemTypes.Wealth:
-            if (item.ValuePerUnit) stats.push(`${item.ValuePerUnit} coins per ${item.WealthType.toLowerCase()}`)
-            break
+        // case ItemTypes.Wealth:
+        //     if (item.ValuePerUnit) stats.push(`${item.ValuePerUnit} coins per ${item.WealthType.toLowerCase()}`)
+        //     break
         case ItemTypes.Container:
             if (item.Capacity.length > 0) stats.push(`Holds ${item.Capacity.join(' / ')}`)
             break
@@ -61,7 +61,12 @@ function describeItem(item: GameItem): string {
             break
     }
 
-    return [stats.join(', '), item.Description].filter(text => text).join('. ')
+    return stats
+}
+
+// The description column's sentence: stats first, then whatever flavour text the item has.
+function describeItem(item: GameItem): string {
+    return [itemStats(item).join(', '), item.Description].filter(text => text).join('. ')
 }
 
 function gearRows(items: GameItem[], extraRows = 0): TableCell[][] {
@@ -76,12 +81,13 @@ function gearRows(items: GameItem[], extraRows = 0): TableCell[][] {
     })
 }
 
-// ── Page 1 (bottom): gear, grouped by category ───────────────────────────────
-export function buildPlayerGear(data: ConfiguredCharacterData) : Content[] {
+// Everything the character carries, as one name-sorted list: items plus trinkets, with any "coin"
+// trinkets folded into a single coin pile instead of listed one by one. Exported so the DM quick
+// reference works from exactly the same inventory the gear sections print.
+export function collectGear(data: ConfiguredCharacterData): GameItem[] {
     const items    = flattenAndCombineSelectionPackage(data.ItemSelections(), data)
     const trinkets = flattenAndCombineSelectionPackage(data.TrinketSelections(), data)
 
-    // Fold any "coin" trinkets into the adventurer's coin pile instead of listing each separately.
     const earnedCoins = trinkets
         .filter(isCoinTrinket)
         .reduce((sum, trinket) => sum + (trinket.Amount ?? 0) * (trinket.Value ?? 0), 0)
@@ -104,7 +110,12 @@ export function buildPlayerGear(data: ConfiguredCharacterData) : Content[] {
         }
     }
 
-    const allItems = gear.sort((a, b) => a.Name.localeCompare(b.Name))
+    return gear.sort((a, b) => a.Name.localeCompare(b.Name))
+}
+
+// ── Page 1 (bottom): gear, grouped by category ───────────────────────────────
+export function buildPlayerGear(data: ConfiguredCharacterData) : Content[] {
+    const allItems = collectGear(data)
     const claimedTypes = GEAR_SECTIONS.flatMap(section => section.types)
 
     // A section the character owns nothing for is left off the sheet entirely.

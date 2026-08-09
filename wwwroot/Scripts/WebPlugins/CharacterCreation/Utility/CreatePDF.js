@@ -1,10 +1,12 @@
 import { flattenAndCombineSelectionPackage } from './UpdateUtility.js';
+import { ReligionData } from '../Configuration/DietiesData.js';
 import { NameUtility } from './NameUtility.js';
 import { loadFonts, pdfMake, toDataUrl } from '../../../Framework/PDFs/Helpers.js';
 import { buildPlayerOverview } from './BuildPlayerOverview.js';
 import { buildPlayerGear } from './BuildPlayerGear.js';
 import { buildPlayerProficiencies } from './BuildPlayerProficiencies.js';
 import { buildPlayerBackground } from './BuildPlayerBackground.js';
+import { buildDMQuickReference } from './BuildDMQuickReference.js';
 // ── Document definition ─────────────────────────────────────────────────────────
 // Assembles the full pdfmake document definition (fonts + deity images + content).
 // Split out from createPdf so callers (e.g. the PDF test harness) can render the sheet
@@ -12,7 +14,8 @@ import { buildPlayerBackground } from './BuildPlayerBackground.js';
 export async function buildCharacterSheetDocDefinition(data) {
     const [titleFontLoaded, rawDeities] = await Promise.all([
         loadFonts(),
-        Promise.resolve(flattenAndCombineSelectionPackage(data.ReligionSelections(), data)),
+        // "None" slots carry no imagery, so drop them here to keep image rows aligned with buildPlayerBackground
+        Promise.resolve(ReligionData.realDeities(flattenAndCombineSelectionPackage(data.ReligionSelections(), data))),
     ]);
     const deityImages = await Promise.all(Array.from({ length: RELIGION_ROWS }, (_, i) => {
         const deity = rawDeities[i];
@@ -31,14 +34,17 @@ export async function buildCharacterSheetDocDefinition(data) {
                 { text: 'v. 10/03/2025', fontSize: FONT_SMALL, alignment: 'right', margin: [0, HEADER_VERSION_TOP, PAGE_MARGIN, 0] },
             ],
         }),
-        footer: (currentPage) => {
+        footer: (currentPage, pageCount) => {
             // Gear now prints as several sections, so a loaded character can spill past the three
             // chapters the sheet used to fit in — leave the reference blank on any overflow page
             // rather than printing "undefined".
             const chapter = ['Ch 2-3', 'Ch 2-4', 'Ch 2-5'][currentPage - 1];
+            // The quick reference is appended last and always starts a fresh page, so the final
+            // page is it — name it rather than calling it another sheet page.
+            const isQuickReference = currentPage === pageCount;
             return {
                 stack: [
-                    { text: `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
+                    { text: isQuickReference ? 'DM Quick Reference' : `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
                     { text: chapter ? `Character Creation ${chapter}` : '', fontSize: FONT_SMALL, italics: true },
                 ],
                 alignment: 'right',
@@ -50,6 +56,7 @@ export async function buildCharacterSheetDocDefinition(data) {
             ...buildPlayerGear(data),
             ...buildPlayerProficiencies(data),
             ...buildPlayerBackground(data, deityImages),
+            ...buildDMQuickReference(data),
         ],
     };
 }

@@ -85,6 +85,17 @@ export namespace ReligionData {
     ];
 
     /**
+     * Sentinel for a deity slot the player deliberately left empty. Deliberately kept out of
+     * possibleDeities so the deity image test and the Inquisitor "Dog of X" byname generator
+     * only ever see real gods; jobOverrideLambda appends it for non-religious careers.
+     */
+    export const NoDeity = new Deity({name: "None", id: Utility.idGenerator.newID()}, "");
+
+    export const isNoDeity = (deity : Deity) => deity === NoDeity
+
+    export const realDeities = (deities : Deity[]) => deities.filter((deity)=>!isNoDeity(deity))
+
+    /**
      * Maps specific Job Subsets (Warlocks/Unique classes) to their patron Deity
      */
     
@@ -114,10 +125,18 @@ export namespace ReligionData {
             return createTaggedData(backgroundSourceTag, new ChoiceGroup<Deity>(1, [mappedDeity], taggedChoiceBeingOverridden.Payload.selectedValues))
         }
 
-        return taggedChoiceBeingOverridden
+        // Religious careers are expected to be devout, so every slot must hold a real god.
+        if (characterData.Profession() === "Religious") return taggedChoiceBeingOverridden
+
+        // Everyone else may leave slots empty, e.g. two gods and a "None".
+        // Reuses the same selectedValues array reference as the branch above for the same reason.
+        return createTaggedData(backgroundSourceTag, new ChoiceGroup<Deity>(
+            defaultPickCount, [...possibleDeities, NoDeity], taggedChoiceBeingOverridden.Payload.selectedValues))
     }
 
-    const defaultReligionPicker = new ChoiceGroup(3, possibleDeities, [])
+    const defaultPickCount = 3
+
+    const defaultReligionPicker = new ChoiceGroup(defaultPickCount, possibleDeities, [])
 
     const overrideMap = new Map()
     overrideMap.set(defaultReligionPicker, createTaggedData(backgroundSourceTag, jobOverrideLambda))

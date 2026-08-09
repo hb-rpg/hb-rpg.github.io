@@ -12,14 +12,16 @@ export class SelectionPackageConfigurationModel {
     IsConfigured;
     qualifier;
     explanation;
+    isRepeatable;
     ViewUrl = "PartialViews/CharacterCreation/SelectionPackageConfigurationView.html";
     isLoading;
     fixedChoices;
     selectableChoices;
     choicesMappingToSelectedViewModels;
     constructor(FriendlyName, GlobalCharacterData, SelectionPackageAccessor, DetermineName, DetermineDescription, IsConfigured, qualifier, // short notice shown before choices (e.g. "determined at startup")
-    explanation // longer context shown after choices (e.g. rule reference)
-    ) {
+    explanation, // longer context shown after choices (e.g. rule reference)
+    // Options that remain selectable after one picker takes them (e.g. a "None" sentinel)
+    isRepeatable) {
         this.FriendlyName = FriendlyName;
         this.GlobalCharacterData = GlobalCharacterData;
         this.SelectionPackageAccessor = SelectionPackageAccessor;
@@ -28,6 +30,7 @@ export class SelectionPackageConfigurationModel {
         this.IsConfigured = IsConfigured;
         this.qualifier = qualifier;
         this.explanation = explanation;
+        this.isRepeatable = isRepeatable;
         this.fixedChoices = ko.observableArray([]);
         this.selectableChoices = ko.observableArray([]);
         // This is so you don't lose references to the original unflattened selection
@@ -100,7 +103,7 @@ export class SelectionPackageConfigurationModel {
         return selectionPackage();
     }
     createItemSelectionPicker(choices, name, sourceOfTruth) {
-        const objectConfig = new LockableObjectPickerModel(`${choices.Tags.Source} ${name}`, sourceOfTruth, this.GlobalCharacterData, choices.Payload.options[0], this.DetermineName, this.DetermineDescription);
+        const objectConfig = new LockableObjectPickerModel(`${choices.Tags.Source} ${name}`, sourceOfTruth, this.GlobalCharacterData, choices.Payload.options[0], this.DetermineName, this.DetermineDescription, this.isRepeatable);
         const objectConfigViewModel = Utility.BundleViewAndModel(objectConfig);
         return objectConfigViewModel;
     }

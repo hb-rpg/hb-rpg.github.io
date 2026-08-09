@@ -1,5 +1,9 @@
 import { makeTable } from '../../../Framework/PDFs/Helpers.js';
 import { AbilityNames } from '../Contracts/Abilities.js';
+import { JobSubsetEnum } from '../Contracts/StringTypes.js';
+// Both top-section tables are STAT_ROW_COUNT rows of HEIGHT_STAT_ROW_MAIN, so tinting them off
+// the same row index keeps their stripes running level across the column gap.
+const stripeFill = (rowIndex) => rowIndex % 2 === 1 ? STRIPE_GRAY : WHITE;
 // ── Page 1 (top): Identity, Abilities, Portrait, Stats ───────────────────────
 export function buildPlayerOverview(data) {
     const abilities = data.Abilities();
@@ -38,7 +42,8 @@ function buildAbilityColumn(abilities, characterName) {
             // { text: '', fontSize: FONT_BODY, border: [false, false, false, false] }
         ]);
     }
-    const rows = [nameHeaderRow, ...filledAbilityRows];
+    const rows = [nameHeaderRow, ...filledAbilityRows]
+        .map((row, i) => row.map(cell => ({ ...cell, fillColor: stripeFill(i) })));
     return {
         width: IDENTITY_COL_WIDTH,
         stack: [{
@@ -50,23 +55,32 @@ function buildAbilityColumn(abilities, characterName) {
 }
 // Centre column: character stat fields (ancestry, class, hit points, etc.).
 function buildStatsColumn(data) {
+    // The subset (Jeweler, Freelance, …) is what actually shaped the character's trinkets and
+    // story, so it belongs beside the career. Careers that offer no subsets carry None, which
+    // must not print. The parenthetical sits a size down because at FONT_BODY the longest
+    // pairing overruns STAT_COL_WIDTH, and a wrapped row would grow past HEIGHT_STAT_ROW_MAIN —
+    // a minimum, not a cap — knocking this table out of line with the abilities and portrait.
+    const subset = data.JobSubset();
+    const background = subset !== JobSubsetEnum.None
+        ? [{ text: data.Job(), fontSize: FONT_BODY }, { text: ` (${subset})`, fontSize: FONT_SMALL }]
+        : [{ text: data.Job(), fontSize: FONT_BODY }];
     const statRows = [
-        { label: 'ANCESTRY', value: data.Race() },
-        { label: 'BACKGROUND', value: data.Job() },
-        { label: 'LEVEL', value: '' }, // user fills in manually
-        { label: 'CLASS', value: data.Class() },
-        { label: 'HIT DICE', value: String(data.HitDie()) },
-        { label: 'HIT POINTS', value: String(data.HitPoints()) },
-        { label: 'DAMAGE', value: '' },
+        { label: 'ANCESTRY', value: [{ text: data.Race(), fontSize: FONT_BODY }] },
+        { label: 'BACKGROUND', value: background },
+        { label: 'LEVEL', value: [] }, // user fills in manually
+        { label: 'CLASS', value: [{ text: data.Class(), fontSize: FONT_BODY }] },
+        { label: 'HIT DICE', value: [{ text: String(data.HitDie()), fontSize: FONT_BODY }] },
+        { label: 'HIT POINTS', value: [{ text: String(data.HitPoints()), fontSize: FONT_BODY }] },
+        { label: 'DAMAGE', value: [] },
     ];
     return {
         width: STAT_COL_WIDTH,
         ...makeTable(['*'], statRows.map((row, i) => [{
                 text: [
                     { text: row.label + '  ', bold: true, fontSize: FONT_LABEL },
-                    { text: row.value, fontSize: FONT_BODY },
+                    ...row.value,
                 ],
-                fillColor: i % 2 === 1 ? STRIPE_GRAY : WHITE,
+                fillColor: stripeFill(i),
             }]), Array(statRows.length).fill(HEIGHT_STAT_ROW_MAIN)),
     };
 }

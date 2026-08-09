@@ -1,4 +1,5 @@
 import { flattenAndCombineSelectionPackage } from './UpdateUtility.js';
+import { ReligionData } from '../Configuration/DietiesData.js';
 import { columnHeaderRow, dataRow, emptyRows, imageCell, makeSection } from '../../../Framework/PDFs/Helpers.js';
 const ENTANGLEMENT_ROWS = [
     { lines: ['COLLEAGUES', 'ATTITUDE:'], dataKey: 'Colleagues' },
@@ -13,7 +14,8 @@ const ENTANGLEMENT_ROWS = [
 ];
 const RELIGION_RANK_LABELS = ['Primary', 'Secondary', 'Tertiary'];
 export function buildPlayerBackground(data, deityImages) {
-    const deities = flattenAndCombineSelectionPackage(data.ReligionSelections(), data);
+    // Slots the player set to "None" are dropped, so a non-religious character gets no RELIGION section at all
+    const deities = ReligionData.realDeities(flattenAndCombineSelectionPackage(data.ReligionSelections(), data));
     const drawbacks = flattenAndCombineSelectionPackage(data.DrawbacksSelection(), data);
     const entanglements = data.OrganizationEntanglements();
     // ── Entanglements ──────────────────────────────────────────────────────────
@@ -56,7 +58,7 @@ export function buildPlayerBackground(data, deityImages) {
     }
     return [
         makeSection('ENTANGLEMENTS', [ENT_LABEL_COL_WIDTH, '*', REFERENCE_COL_WIDTH], entanglementBody),
-        makeSection('RELIGION', [REL_NAME_COL_WIDTH, REL_IMAGE_COL_WIDTH, REL_IMAGE_COL_WIDTH, '*', REFERENCE_COL_WIDTH], religionBody),
+        ...(deities.length > 0 ? [makeSection('RELIGION', [REL_NAME_COL_WIDTH, REL_IMAGE_COL_WIDTH, REL_IMAGE_COL_WIDTH, '*', REFERENCE_COL_WIDTH], religionBody)] : []),
         makeSection('DRAWBACKS', [LIST_NAME_COL_WIDTH, '*', REFERENCE_COL_WIDTH], [
             columnHeaderRow(['DRAWBACK', 'DESCRIPTION', 'REFERENCE']),
             ...Array.from({ length: DRAWBACK_ROWS }, (_, i) => {

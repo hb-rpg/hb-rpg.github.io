@@ -3,6 +3,7 @@ import { ko } from "../../../../Framework/Knockout/ko.js";
 import { CareerData } from "../../Configuration/CareerData.js";
 import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
 import { Races } from "../../Configuration/DispositionData.js";
+import { ReligionData } from "../../Configuration/DietiesData.js";
 import { Abilities, AbilitiesToArray } from "../../Contracts/Abilities.js";
 import { DiceRoll } from "../../Utility/DiceRoll.js";
 import { Edges } from "../../Contracts/Edges.js";
@@ -491,22 +492,28 @@ export namespace ConfiguredModals {
     export const createDeityPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<TaggedObservableSelectionPackage<Deity>, PreviewModel<StringListPreviewModel>> => {
         const stringPreview = ko.observableArray<string>([]);
         characterData.ReligionSelections.subscribe((newValue) => {
-            stringPreview(flattenAndCombineSelectionPackage(newValue, characterData).map(x => (x.Pronoun.name)? x.Pronoun.name : "An unknown god"));
+            const worshipped = ReligionData.realDeities(flattenAndCombineSelectionPackage(newValue, characterData));
+            stringPreview(worshipped.length > 0
+                ? worshipped.map(x => (x.Pronoun.name)? x.Pronoun.name : "An unknown god")
+                : ["None"]);
         });
 
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
+        // Moving into or out of the Religious profession changes whether "None" is on offer
+        characterData.Profession.subscribe(() => isConfigured(false));
 
         const religionModel = new SelectionPackageConfigurationModel(
             "Religion",
             characterData,
             (data) => data.ReligionSelections,
-            (item: Deity) => truncate(item.Pronoun.name ? `${item.Pronoun.name}: ${item.Description}` : "An unknown god"),
+            (item: Deity) => truncate(item.Pronoun.name ? item.Description : "An unknown god"),
             (item: Deity) => `${item.Pronoun.name}: ${item.Description}`,
             isConfigured,
             undefined,
-            NoteModel.bundle(ReligionExplanation)
+            NoteModel.bundle(ReligionExplanation),
+            ReligionData.isNoDeity
         );
         return createGenericPicker<SelectionPackageConfigurationModel<Deity>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Deity>>({
             name: "Religion",

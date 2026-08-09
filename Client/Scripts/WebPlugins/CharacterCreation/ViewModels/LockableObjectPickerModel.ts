@@ -24,6 +24,9 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
         public DefaultValue : ObjectSelectionType,
         public determineSelectionPreview : (selectedValue : ObjectSelectionType) => string,
         public determineWidgetPreview : (selectedValue : ObjectSelectionType) => string,
+        // Values that stay in the shared pool after being picked, so sibling pickers can pick them
+        // too (e.g. the "None" deity, which any number of slots may hold).
+        public isRepeatable? : (value : ObjectSelectionType) => boolean,
     ) {
         this.selectedUIValueObservable = ko.observable<ObjectSelectionType | undefined>(undefined);
         this.chosenValue = ko.observable<ObjectSelectionType>(this.DefaultValue);
@@ -33,10 +36,13 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
         this.selectedUIValueObservable.subscribe((newValue)=>{
             if (this.isLocked()) return
             if (newValue === undefined) return
-            const index = this.UnselectedValues().indexOf(newValue)
-            if (index == -1) return
 
-            this.UnselectedValues.splice(index, 1)
+            if (!this.isRepeatable?.(newValue)) {
+                const index = this.UnselectedValues().indexOf(newValue)
+                if (index == -1) return
+
+                this.UnselectedValues.splice(index, 1)
+            }
 
             this.chosenValue(newValue)
             this.isLocked(true)
@@ -45,6 +51,8 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
 
         this.isLocked.subscribe((isLocked)=>{
             if (isLocked) return
+            // Repeatable values were never taken out of the pool, so putting them back would duplicate them
+            if (this.isRepeatable?.(this.chosenValue())) return
             this.UnselectedValues.push(this.chosenValue() as ObjectSelectionType)
         })
 
@@ -75,7 +83,10 @@ export class LockableObjectPickerModel<ObjectSelectionType> implements ICharacte
     
     Randomize () {
         this.clear()
-        this.selectedUIValueObservable(Utility.RandomElement(this.UnselectedValues()))
+        // Prefer real options over sentinels like "None" so a randomized character gets real content
+        const realOptions = this.UnselectedValues().filter((value)=>!this.isRepeatable?.(value))
+        const pool = realOptions.length > 0 ? realOptions : this.UnselectedValues()
+        this.selectedUIValueObservable(Utility.RandomElement(pool))
         return this.chosenValue()
     }
     Evaluate () {

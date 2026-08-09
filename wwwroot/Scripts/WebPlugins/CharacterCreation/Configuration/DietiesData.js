@@ -26,6 +26,14 @@ export var ReligionData;
         ReligionData.Enoch, ReligionData.Gestas, ReligionData.Ghoelb, ReligionData.Hiram, ReligionData.Juba, ReligionData.Moloch, ReligionData.Tubal, ReligionData.Weut, ReligionData.Abala, ReligionData.Asherah, ReligionData.Kain
     ];
     /**
+     * Sentinel for a deity slot the player deliberately left empty. Deliberately kept out of
+     * possibleDeities so the deity image test and the Inquisitor "Dog of X" byname generator
+     * only ever see real gods; jobOverrideLambda appends it for non-religious careers.
+     */
+    ReligionData.NoDeity = new Deity({ name: "None", id: Utility.idGenerator.newID() }, "");
+    ReligionData.isNoDeity = (deity) => deity === ReligionData.NoDeity;
+    ReligionData.realDeities = (deities) => deities.filter((deity) => !ReligionData.isNoDeity(deity));
+    /**
      * Maps specific Job Subsets (Warlocks/Unique classes) to their patron Deity
      */
     ReligionData.jobOverride = new Map([
@@ -48,9 +56,15 @@ export var ReligionData;
             //    new blank copy 
             return createTaggedData(backgroundSourceTag, new ChoiceGroup(1, [mappedDeity], taggedChoiceBeingOverridden.Payload.selectedValues));
         }
-        return taggedChoiceBeingOverridden;
+        // Religious careers are expected to be devout, so every slot must hold a real god.
+        if (characterData.Profession() === "Religious")
+            return taggedChoiceBeingOverridden;
+        // Everyone else may leave slots empty, e.g. two gods and a "None".
+        // Reuses the same selectedValues array reference as the branch above for the same reason.
+        return createTaggedData(backgroundSourceTag, new ChoiceGroup(defaultPickCount, [...ReligionData.possibleDeities, ReligionData.NoDeity], taggedChoiceBeingOverridden.Payload.selectedValues));
     };
-    const defaultReligionPicker = new ChoiceGroup(3, ReligionData.possibleDeities, []);
+    const defaultPickCount = 3;
+    const defaultReligionPicker = new ChoiceGroup(defaultPickCount, ReligionData.possibleDeities, []);
     const overrideMap = new Map();
     overrideMap.set(defaultReligionPicker, createTaggedData(backgroundSourceTag, jobOverrideLambda));
     ReligionData.ReligionSelection = new SelectionPackage([], [defaultReligionPicker], [], overrideMap);

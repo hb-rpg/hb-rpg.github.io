@@ -82,6 +82,12 @@ const REL_IMAGE_COL_WIDTH  =  40
 // ── Unified reference column width (~8 chars at body font) ───────────────────
 const REFERENCE_COL_WIDTH = 40
 
+// ── DM quick reference ────────────────────────────────────────────────────────
+// The quick reference is flowing prose rather than tables, so it needs paragraph spacing and
+// looser leading than the cramped one-line rows the rest of the sheet is built from.
+const QUICK_REF_LINE_GAP    = 6
+const QUICK_REF_LINE_HEIGHT = 1.2
+
 // ── Title font ────────────────────────────────────────────────────────────────
 // Drop a TTF font file at /Fonts/title.TTF to use a custom DnD-style typeface.
 // Falls back to Roboto Bold if the file is not found.

@@ -1,11 +1,13 @@
 import { ConfiguredCharacterData } from '../Configuration/CharacterWizardData.js'
 import { flattenAndCombineSelectionPackage } from './UpdateUtility.js'
+import { ReligionData } from '../Configuration/DietiesData.js'
 import { NameUtility } from './NameUtility.js'
 import { loadFonts, pdfMake, toDataUrl } from '../../../Framework/PDFs/Helpers.js';
 import { buildPlayerOverview } from './BuildPlayerOverview.js'
 import { buildPlayerGear } from './BuildPlayerGear.js'
 import { buildPlayerProficiencies } from './BuildPlayerProficiencies.js'
 import { buildPlayerBackground, DeityImages } from './BuildPlayerBackground.js'
+import { buildDMQuickReference } from './BuildDMQuickReference.js'
 import type { DocumentDefinition } from '../../../Framework/PDFs/Types.js'
 
 // ── Document definition ─────────────────────────────────────────────────────────
@@ -15,7 +17,8 @@ import type { DocumentDefinition } from '../../../Framework/PDFs/Types.js'
 export async function buildCharacterSheetDocDefinition(data: ConfiguredCharacterData): Promise<DocumentDefinition> {
     const [titleFontLoaded, rawDeities] = await Promise.all([
         loadFonts(),
-        Promise.resolve(flattenAndCombineSelectionPackage(data.ReligionSelections(), data)),
+        // "None" slots carry no imagery, so drop them here to keep image rows aligned with buildPlayerBackground
+        Promise.resolve(ReligionData.realDeities(flattenAndCombineSelectionPackage(data.ReligionSelections(), data))),
     ])
 
     const deityImages: DeityImages[] = await Promise.all(
@@ -39,14 +42,17 @@ export async function buildCharacterSheetDocDefinition(data: ConfiguredCharacter
                 { text: 'v. 10/03/2025', fontSize: FONT_SMALL, alignment: 'right', margin: [0, HEADER_VERSION_TOP, PAGE_MARGIN, 0] },
             ],
         }),
-        footer: (currentPage: number) => {
+        footer: (currentPage: number, pageCount: number) => {
             // Gear now prints as several sections, so a loaded character can spill past the three
             // chapters the sheet used to fit in — leave the reference blank on any overflow page
             // rather than printing "undefined".
             const chapter = ['Ch 2-3', 'Ch 2-4', 'Ch 2-5'][currentPage - 1]
+            // The quick reference is appended last and always starts a fresh page, so the final
+            // page is it — name it rather than calling it another sheet page.
+            const isQuickReference = currentPage === pageCount
             return {
                 stack: [
-                    { text: `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
+                    { text: isQuickReference ? 'DM Quick Reference' : `Character Sheet page ${currentPage}`, fontSize: FONT_SMALL, italics: true },
                     { text: chapter ? `Character Creation ${chapter}` : '', fontSize: FONT_SMALL, italics: true },
                 ],
                 alignment: 'right',
@@ -58,6 +64,7 @@ export async function buildCharacterSheetDocDefinition(data: ConfiguredCharacter
             ...buildPlayerGear(data),
             ...buildPlayerProficiencies(data),
             ...buildPlayerBackground(data, deityImages),
+            ...buildDMQuickReference(data),
         ],
     }
 }

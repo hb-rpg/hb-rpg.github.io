@@ -24,7 +24,9 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
         public DetermineDescription : (item: SelectionType)=>string,
         private IsConfigured : Observable<boolean>,
         public qualifier?: IPartialViewModel<NoteModel>,    // short notice shown before choices (e.g. "determined at startup")
-        public explanation?: IPartialViewModel<NoteModel>  // longer context shown after choices (e.g. rule reference)
+        public explanation?: IPartialViewModel<NoteModel>,  // longer context shown after choices (e.g. rule reference)
+        // Options that remain selectable after one picker takes them (e.g. a "None" sentinel)
+        public isRepeatable?: (item: SelectionType) => boolean
     ) {
         this.fixedChoices = ko.observableArray<ObjectPreview>([])
         this.selectableChoices = ko.observableArray<IPartialViewModel<IRandomizeWizardModel<SelectionType>>>([])
@@ -132,7 +134,8 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
                 this.GlobalCharacterData,
                 choices.Payload.options[0],
                 this.DetermineName,
-                this.DetermineDescription
+                this.DetermineDescription,
+                this.isRepeatable
             )
             
         const objectConfigViewModel = Utility.BundleViewAndModel<void, LockableObjectPickerModel<SelectionType>>(objectConfig)

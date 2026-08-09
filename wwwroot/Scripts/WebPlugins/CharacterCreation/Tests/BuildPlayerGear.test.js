@@ -59,7 +59,7 @@ describe('description column', () => {
         expect(describe_(ItemData.CrossbowWithBolts))
             .toMatch(/^Simple Ranged, 1d6, Nearby, \d+ bolts$/);
         expect(describe_(ItemData.UtilityKnife))
-            .toBe('Light Melee, 1d2, Thrown: Nearby. Can be thrown.');
+            .toBe('Light Melee, 1d2, Thrown: Nearby.');
     });
     test('armor prints its usage die', () => {
         expect(describe_(ItemData.Gambeson)).toBe('Light Armor, Ud4');

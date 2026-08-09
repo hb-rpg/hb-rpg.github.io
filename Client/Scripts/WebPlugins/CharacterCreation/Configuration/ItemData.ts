@@ -26,7 +26,7 @@ export namespace ItemData {
     // several items and listed side by side in the package that grants it.
 
     // ── Melee weapons ─────────────────────────────────────────────────────────
-    export const UtilityKnife = createMeleeWeapon("Knife", "Light", "1d2", {Range: "Nearby", Description: "Can be thrown."});
+    export const UtilityKnife = createMeleeWeapon("Knife", "Light", "1d2", {Range: "Nearby"});
     export const Axe = createMeleeWeapon("Axe", "Simple", "1d6", {Range: "Nearby"});
     export const DaggerMelee = createMeleeWeapon("Dagger", "Light", "1d4", {Range: "Nearby"});
     export const HammerMelee = createMeleeWeapon("Hammer", "Simple", "1d6", {Range: "Nearby"});

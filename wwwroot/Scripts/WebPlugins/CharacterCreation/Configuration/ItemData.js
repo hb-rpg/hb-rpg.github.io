@@ -18,7 +18,7 @@ export var ItemData;
     // describe as several things ("crossbow and bolts", "toolbox containing…") is defined here as
     // several items and listed side by side in the package that grants it.
     // ── Melee weapons ─────────────────────────────────────────────────────────
-    ItemData.UtilityKnife = createMeleeWeapon("Knife", "Light", "1d2", { Range: "Nearby", Description: "Can be thrown." });
+    ItemData.UtilityKnife = createMeleeWeapon("Knife", "Light", "1d2", { Range: "Nearby" });
     ItemData.Axe = createMeleeWeapon("Axe", "Simple", "1d6", { Range: "Nearby" });
     ItemData.DaggerMelee = createMeleeWeapon("Dagger", "Light", "1d4", { Range: "Nearby" });
     ItemData.HammerMelee = createMeleeWeapon("Hammer", "Simple", "1d6", { Range: "Nearby" });
