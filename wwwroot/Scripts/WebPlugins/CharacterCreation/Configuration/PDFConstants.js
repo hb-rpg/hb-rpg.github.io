@@ -29,13 +29,14 @@ const HEIGHT_STAT_ROW_MAIN = FONT_BODY + 2; // + 2 = SHEET_LAYOUT paddingTop(1) 
 // border lines (~15pt); pad the portrait by that so the three top-section columns bottom-align.
 const HEIGHT_PORTRAIT = HEIGHT_STAT_ROW_MAIN * STAT_ROW_COUNT + 15;
 // ── Row counts ────────────────────────────────────────────────────────────────
-const EXTRA_GEAR_ROWS = 5;
+const EXTRA_GEAR_ROWS = 5; // blank write-in rows under the catch-all OTHER subsection
+const EXTRA_SUBSECTION_ROWS = 2; // blank write-in rows under each themed gear subsection
 const LANGUAGE_ROWS = 5;
 const SKILL_ROWS = 7;
 const EDGE_ROWS = 7;
 const DRAWBACK_ROWS = 3;
 const SPELL_ROWS = 7;
-const SPELL_COLS = 7;
+const SPELL_COLS = 8;
 const RELIGION_ROWS = 3;
 const NOTE_ROWS = 8;
 // ── Column widths: top identity/stats/portrait section ───────────────────────
@@ -46,8 +47,8 @@ const STAT_COL_WIDTH = 157; // 30 %
 // ── Column widths: ability scores (inside identity column) ───────────────────
 const ABILITY_SCORE_COL_WIDTH = 22;
 const ABILITY_DAMAGE_COL_WIDTH = 22;
-// ── Column widths: gear tables ───────────────────────────────────────────────
-const GEAR_NAME_COL_WIDTH = 160;
+// ── Column widths: gear table ────────────────────────────────────────────────
+// The item column is '*' — name and description share it, so it takes what's left.
 const GEAR_AMOUNT_COL_WIDTH = 40;
 // ── Column widths: languages ─────────────────────────────────────────────────
 const LANG_NAME_COL_WIDTH = 80;
@@ -58,6 +59,7 @@ const LIST_NAME_COL_WIDTH = 100;
 // ── Column widths: spells ────────────────────────────────────────────────────
 const SPELL_NAME_COL_WIDTH = 90;
 const SPELL_LEVEL_COL_WIDTH = 25;
+const SPELL_RITUAL_COL_WIDTH = 30;
 const SPELL_CAST_COL_WIDTH = 50;
 const SPELL_RANGE_COL_WIDTH = 35;
 const SPELL_TEST_COL_WIDTH = 35;

@@ -7,6 +7,8 @@ export const EdgesExplanation = "Your Ancestry and Background have already deter
 
 export const SkillsExplanation = "Skills are the lesser but still valuable knacks and practical abilities your character has picked up through practice and cultural immersion — not as potent as Edges but no less useful in the right situation. Full details and mechanics for all Skills can be found in Ch. 6 – Edges & Skills."
 
+export const SpellsExplanation = "Magic comes in two traditions — Arcane spells that are studied and mastered, and Theurgic ones granted by a deity. You begin with a handful of Level 0 and Level 1 spells set by your Background and Edges; as you gain ranks in Arcana or Theurgy you learn more of them, reach higher spell levels, and your Spellcasting Usage Die grows from Ud4 up to Ud12. Push that die past its limit and the magic exacts its price in depletion and corruption. See the rulebook for more details."
+
 export const TrinketQualifier = "Note: Trinket choices are determined at startup."
 
 export const TrinketExplanation = "Choose a Trinket — a small personal item that carries potential story weight far beyond its modest monetary value. Use it as a springboard for roleplay and ask yourself how your character came to possess it, as your Ancestry, Class, and Background may influence what you receive or how it is resolved. Your GM may use your trinket as a hook for adventures and encounters, so consider its origins carefully."

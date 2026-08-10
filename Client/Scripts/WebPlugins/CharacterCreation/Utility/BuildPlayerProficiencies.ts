@@ -2,6 +2,18 @@ import { ConfiguredCharacterData } from '../Configuration/CharacterWizardData.js
 import { flattenAndCombineSelectionPackage } from './UpdateUtility.js'
 import { columnHeaderRow, dataRow, makeSection } from '../../../Framework/PDFs/Helpers.js';
 import type { Content, TableCell } from '../../../Framework/PDFs/Types.js';
+import type { Spell } from '../Contracts/Spell.js';
+import { MagicSchoolAbbreviation } from '../Contracts/Magic.js';
+
+// Spells can belong to more than one school (e.g. Scare is Enchantment and Necromancy).
+function formatSchools(spell?: Spell): string {
+    return (spell?.School ?? []).map(school => MagicSchoolAbbreviation[school]).join(', ')
+}
+
+// Abilities are stored in full ("Wisdom") but shown as the table's 3-letter form, matching BuildDMQuickReference.
+function formatTest(spell?: Spell): string {
+    return (spell?.Test ?? []).map(ability => ability.slice(0, 3).toUpperCase()).join('/')
+}
 
 // ── Page 2: Languages, Skills, Edges, Spells ─────────────────────────────────
 export function buildPlayerProficiencies(data: ConfiguredCharacterData): Content[] {
@@ -14,12 +26,22 @@ export function buildPlayerProficiencies(data: ConfiguredCharacterData): Content
     const spellSection: Content[] = []
     if (spells.length > 0) {
         const spellBody: TableCell[][] = [
-            columnHeaderRow(['SPELL', 'LEVEL', 'SCHOOL', 'CASTING TIME', 'RANGE', 'TEST', 'REFERENCE']),
+            columnHeaderRow(['SPELL', 'LEVEL', 'SCHOOL', 'RITUAL', 'CASTING TIME', 'RANGE', 'TEST', 'REFERENCE']),
         ]
         for (let i = 0; i < SPELL_ROWS; i++) {
             const spell  = spells[i]
             const shaded = i % 2 === 1
-            spellBody.push(dataRow([spell?.Name ?? '', '', '', '', '', '', spell?.reference ?? ''], shaded))
+            spellBody.push(dataRow([
+                spell?.Name ?? '',
+                spell?.Level?.toString() ?? '',
+                formatSchools(spell),
+                // Blank, not "No", on the write-in rows that pad the table out to SPELL_ROWS.
+                spell ? (spell.IsRitual ? 'Yes' : 'No') : '',
+                spell?.CastingTime ?? '',
+                spell?.Range ?? '',
+                formatTest(spell),
+                spell?.reference ?? '',
+            ], shaded))
             spellBody.push([{
                 text: [
                     { text: 'Notes  ', italics: true, fontSize: FONT_LABEL },
@@ -32,7 +54,7 @@ export function buildPlayerProficiencies(data: ConfiguredCharacterData): Content
         }
         spellSection.push(
             makeSection('SPELLS',
-                [SPELL_NAME_COL_WIDTH, SPELL_LEVEL_COL_WIDTH, '*', SPELL_CAST_COL_WIDTH, SPELL_RANGE_COL_WIDTH, SPELL_TEST_COL_WIDTH, REFERENCE_COL_WIDTH],
+                [SPELL_NAME_COL_WIDTH, SPELL_LEVEL_COL_WIDTH, '*', SPELL_RITUAL_COL_WIDTH, SPELL_CAST_COL_WIDTH, SPELL_RANGE_COL_WIDTH, SPELL_TEST_COL_WIDTH, REFERENCE_COL_WIDTH],
                 spellBody,
             ),
         )

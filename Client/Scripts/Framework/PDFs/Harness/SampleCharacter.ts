@@ -13,10 +13,11 @@ import { ConfiguredCharacterData } from '../../../WebPlugins/CharacterCreation/C
 import { createTaggedData, standardSourceTag } from '../../../WebPlugins/CharacterCreation/Utility/TagUtility.js'
 import type { TaggedObservableSelectionPackage } from '../../../WebPlugins/CharacterCreation/Contracts/TaggedData.js'
 import { CharacterName } from '../../../WebPlugins/CharacterCreation/Contracts/CharacterName.js'
-import { Abilities } from '../../../WebPlugins/CharacterCreation/Contracts/Abilities.js'
+import { Abilities, AbilityNames } from '../../../WebPlugins/CharacterCreation/Contracts/Abilities.js'
 import { Skill } from '../../../WebPlugins/CharacterCreation/Contracts/Skill.js'
 import { Edges } from '../../../WebPlugins/CharacterCreation/Contracts/Edges.js'
 import { Spell } from '../../../WebPlugins/CharacterCreation/Contracts/Spell.js'
+import { CastingTime, MagicSchool, SpellDuration, SpellRange } from '../../../WebPlugins/CharacterCreation/Contracts/Magic.js'
 import { Drawbacks } from '../../../WebPlugins/CharacterCreation/Contracts/Drawbacks.js'
 import { Language, LearnedLanguage } from '../../../WebPlugins/CharacterCreation/Contracts/Language.js'
 import { Entanglements, OrganizationEntanglementsGroup } from '../../../WebPlugins/CharacterCreation/Contracts/Entanglements.js'
@@ -60,8 +61,29 @@ export function makeSampleCharacter(): ConfiguredCharacterData {
 
     // ── Spells ───────────────────────────────────────────────────────────────────
     addFixed(character.SpellSelection(),
-        new Spell('Spark', 'A jolt of force that staggers the target.', 'Ch 6-1'),
-        new Spell('Mend', 'Knit minor wounds and broken gear.', 'Ch 6-3'),
+        new Spell({
+            Name: 'Spark',
+            Description: 'A jolt of force that staggers the target.',
+            Level: 0,
+            School: [MagicSchool.Evocation],
+            CastingTime: CastingTime.OneTurn,
+            Range: SpellRange.Nearby,
+            Duration: SpellDuration.Instantaneous,
+            Test: [AbilityNames.Dexterity],
+            reference: 'Ch 6-1',
+        }),
+        new Spell({
+            Name: 'Mend',
+            Description: 'Knit minor wounds and broken gear.',
+            Level: 1,
+            School: [MagicSchool.Transmutation],
+            IsRitual: true,
+            CastingTime: CastingTime.OneRound,
+            Range: SpellRange.Touch,
+            Duration: SpellDuration.Permanent,
+            Test: [],
+            reference: 'Ch 6-3',
+        }),
     )
 
     // ── Drawbacks ────────────────────────────────────────────────────────────────

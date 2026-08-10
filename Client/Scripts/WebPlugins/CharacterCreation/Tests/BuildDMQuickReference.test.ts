@@ -83,7 +83,7 @@ describe('card', () => {
 
     test('the conditional spell block still leaves exactly one closing row', () => {
         const data = characterWith([])
-        addFixed(data.SpellSelection(), new Spell('Spark', 'A jolt of force that staggers the target.'))
+        addFixed(data.SpellSelection(), new Spell({ Name: 'Spark', Description: 'A jolt of force that staggers the target.' }))
 
         const closing = body(data).filter(([cell]) => cell.border?.[3] && !cell.border?.[1])
         expect(closing).toHaveLength(1)
@@ -149,7 +149,7 @@ describe('feature blocks', () => {
 
     test('the spell block prints for a caster', () => {
         const data = characterWith([])
-        addFixed(data.SpellSelection(), new Spell('Spark', 'A jolt of force that staggers the target.'))
+        addFixed(data.SpellSelection(), new Spell({ Name: 'Spark', Description: 'A jolt of force that staggers the target.' }))
 
         expect(lines(data)).toContain('SPELLS')
         expect(lines(data)).toContain('Spark – A jolt of force that staggers the target.')

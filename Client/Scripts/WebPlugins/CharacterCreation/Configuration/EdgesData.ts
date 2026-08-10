@@ -23,7 +23,7 @@ export namespace EdgesData {
     export const InfernalHeritage = new Edges("Infernal Heritage", "Physical expressions of Ixian lineage (wings, hooves, etc).");
     export const FireResistance = new Edges("Fire Resistance", "Fire has less chance to harm you.");
     export const Flight = new Edges("Flight", "You have small but functional bat wings.");
-    export const StandardSpell = new Edges("Standard Spell", "You know and can cast a spell at will.");
+    export const StandardSpell = new Edges("Innate Spell", "You know and can cast a spell at will.");
 
     // Universal / Shared Edges
     export const LowLightVision = new Edges("Low Light Vision", "See in daylight and dim conditions.");

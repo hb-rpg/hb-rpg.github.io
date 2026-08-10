@@ -35,6 +35,17 @@ export function makeSection(title, widths, body) {
 export function columnHeaderRow(labels) {
     return labels.map(label => ({ text: label, bold: true, fontSize: FONT_LABEL, fillColor: HEADER_GRAY }));
 }
+// A full-width title row that groups the data rows beneath it inside one table — used where
+// several categories share a single table instead of each getting its own section. It sits at the
+// same font size as `columnHeaderRow` so the two ride at the same height, but stays unbolded so
+// the column labels remain the emphasized ones. pdfmake still wants the spanned columns present
+// as (empty) cells.
+export function groupHeaderRow(title, columnCount) {
+    return [
+        { text: title, fontSize: FONT_LABEL, fillColor: HEADER_GRAY, colSpan: columnCount },
+        ...Array(columnCount - 1).fill({ text: '' }),
+    ];
+}
 export function dataRow(values, shaded = false) {
     return values.map(value => ({ text: value, fontSize: FONT_BODY, fillColor: shaded ? STRIPE_GRAY : WHITE }));
 }

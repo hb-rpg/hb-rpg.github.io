@@ -32,11 +32,22 @@ import { CreateObjectModel } from "../CreateObjectModel.js";
 import { LockableObjectPickerModel } from "../LockableObjectPickerModel.js";
 import { NamePickerModel } from "./NamePickerModel.js";
 import { NoteModel } from "../NoteModel.js";
-import { EdgesExplanation, SkillsExplanation, TrinketQualifier, TrinketExplanation, LanguageExplanation, DrawbacksExplanation, CorruptionExplanation, ReligionExplanation } from "../../Configuration/ConceptIntroductions.js";
+import { EdgesExplanation, SkillsExplanation, SpellsExplanation, TrinketQualifier, TrinketExplanation, LanguageExplanation, DrawbacksExplanation, CorruptionExplanation, ReligionExplanation } from "../../Configuration/ConceptIntroductions.js";
 import { EntanglementPreview } from "../../Contracts/EntanglementPreviewModel.js";
 
 const truncate = (text: string, max = 80): string =>
     text.length > max ? text.slice(0, max) + "…" : text
+
+// "Mending (Level 0, Ritual) - You are able to fix…". The qualifiers sit right after the name so
+// they survive truncation in the dropdown. Spells with no assigned level omit that part.
+const describeSpell = (spell: Spell): string => {
+    const qualifiers: string[] = []
+    if (spell.Level !== undefined) qualifiers.push(`Level ${spell.Level}`)
+    if (spell.IsRitual) qualifiers.push("Ritual")
+
+    const suffix = qualifiers.length > 0 ? ` (${qualifiers.join(", ")})` : ""
+    return `${spell.Name}${suffix}${spell.Description ? " - " + spell.Description : ""}`
+}
 
 export namespace ConfiguredModals {
     export const createAncestryPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<RaceType, PreviewModel<StringPreviewModel>> => {
@@ -382,9 +393,11 @@ export namespace ConfiguredModals {
             "Spells",
             characterData,
             (data) => data.SpellSelection,
-            (item: Spell) => truncate(`${item.Name}${item.Description ? " - " + item.Description : ""}`),
-            (item: Spell) => `${item.Name}${item.Description ? " - " + item.Description : ""}`,
-            isConfigured
+            (item: Spell) => truncate(describeSpell(item)),
+            (item: Spell) => describeSpell(item),
+            isConfigured,
+            undefined,
+            NoteModel.bundle(SpellsExplanation)
         );
         return createGenericPicker<SelectionPackageConfigurationModel<Spell>, PreviewModel<StringListPreviewModel>, TaggedObservableSelectionPackage<Spell>>({
             name: "Spells",

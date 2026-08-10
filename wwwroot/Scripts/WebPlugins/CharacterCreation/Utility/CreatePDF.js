@@ -35,9 +35,9 @@ export async function buildCharacterSheetDocDefinition(data) {
             ],
         }),
         footer: (currentPage, pageCount) => {
-            // Gear now prints as several sections, so a loaded character can spill past the three
-            // chapters the sheet used to fit in — leave the reference blank on any overflow page
-            // rather than printing "undefined".
+            // The gear table grows with whatever the character carries, so a loaded character can
+            // spill past the three chapters the sheet used to fit in — leave the reference blank on
+            // any overflow page rather than printing "undefined".
             const chapter = ['Ch 2-3', 'Ch 2-4', 'Ch 2-5'][currentPage - 1];
             // The quick reference is appended last and always starts a fresh page, so the final
             // page is it — name it rather than calling it another sheet page.

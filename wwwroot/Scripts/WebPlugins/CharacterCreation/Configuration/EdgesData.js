@@ -18,7 +18,7 @@ export var EdgesData;
     EdgesData.InfernalHeritage = new Edges("Infernal Heritage", "Physical expressions of Ixian lineage (wings, hooves, etc).");
     EdgesData.FireResistance = new Edges("Fire Resistance", "Fire has less chance to harm you.");
     EdgesData.Flight = new Edges("Flight", "You have small but functional bat wings.");
-    EdgesData.StandardSpell = new Edges("Standard Spell", "You know and can cast a spell at will.");
+    EdgesData.StandardSpell = new Edges("Innate Spell", "You know and can cast a spell at will.");
     // Universal / Shared Edges
     EdgesData.LowLightVision = new Edges("Low Light Vision", "See in daylight and dim conditions.");
     EdgesData.Sneaky = new Edges("Sneaky", "Good at hiding and moving stealthily.");
