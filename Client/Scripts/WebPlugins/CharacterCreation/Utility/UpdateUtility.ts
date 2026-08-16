@@ -214,6 +214,9 @@ export interface PickerOptions<PickerModelType extends (IWizardModel<void, ItemT
     onUpdate: (data: ConfiguredCharacterData) => void;
     // This lambda tells the factory how to build the specific preview model
     createPreview: (modal: CreateObjectModel<ItemType, PreviewModelType>) => PreviewModelType;
+    // Same observable the preview binds to. Set only when the step is saved or randomized, so
+    // cancelling the modal leaves the step showing as unconfigured.
+    isConfigured: Observable<boolean>;
     hasContent?: Computed<boolean>;
 }
 
@@ -223,7 +226,7 @@ export const createGenericPicker = <
     ItemType>
     (options: PickerOptions<TModel, TPreview, ItemType>) =>
 {
-    const { name, characterData, pickerModel, dataSelector, createPreview } = options;
+    const { name, characterData, pickerModel, dataSelector, createPreview, isConfigured } = options;
 
     const combinedOnUpdate = (data: ConfiguredCharacterData) => {
         options.onUpdate(data);
@@ -236,7 +239,8 @@ export const createGenericPicker = <
         dataSelector,
         tempPreview,
         combinedOnUpdate,
-        characterData
+        characterData,
+        isConfigured
     );
 
     const modalBundle = Utility.BundleViewAndModel(objectConfigurationViewModel);

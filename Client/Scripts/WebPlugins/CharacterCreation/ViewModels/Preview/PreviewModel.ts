@@ -69,8 +69,11 @@ export class PreviewModel<T extends IHTMLInjectable<void, void>> implements ICon
         randomize: Function,
         edit: Function
     ) {
-        this.Randomize = () => { this.IsConfigured(true); randomize(); };
-        this.Edit = () => { this.IsConfigured(true); edit(); };
+        // IsConfigured is bound by the view but never written here: it means "this step has been
+        // committed at least once", so only the save/randomize paths in CreateObjectModel set it.
+        // Setting it on open made cancelling the modal look like a successful configuration.
+        this.Randomize = () => { randomize(); };
+        this.Edit = () => { edit(); };
         this.contentViewModel = { ViewUrl: data.ViewUrl, Model: data };
     }
 }

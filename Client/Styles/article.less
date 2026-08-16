@@ -14,6 +14,13 @@
     font-size: 5em;
     font-weight: bold;
 
+    // Zooming in shrinks the viewport in CSS pixels while this headline stays
+    // 5em, so past a point it spills out of the article. Drop it rather than
+    // let it overflow.
+    @media (width <= @max-size-before-hero-text-overflows) {
+        display: none;
+    }
+
     .emphasize {
         margin-left: 2em;
         background-color: @colorA;

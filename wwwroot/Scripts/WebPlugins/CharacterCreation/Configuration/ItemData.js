@@ -3,12 +3,21 @@ import { JobSubsetEnum } from "../Contracts/StringTypes.js";
 import { ChoiceGroup, SelectionPackage } from "../Contracts/TaggedData.js";
 import { createAmmoItem, createAnimalItem, createArmorItem, createBaseItem, createConsumableItem, createContainerItem, createMeleeWeapon, createRangedWeapon, createRationItem, createRopeItem, createToolItem, createTransportItem, createWealthItem, createWearableItem } from "../Utility/BuildItems.js";
 import { DiceRoll } from "../Utility/DiceRoll.js";
+import { ancestrySourceTag, createTaggedData } from "../Utility/TagUtility.js";
 const genericCoinFactory = (amount, value, Description) => {
     return createWealthItem(`${value} Coins from selling trinket`, "Coin", value ?? 0, { Amount: amount, Value: value, Description });
 };
+// Memoized so a given trinket's "sell it instead" option is the same object every time the
+// package is rebuilt — flattenAndFilterSelectionPackage matches choices by identity.
+const trinketCoinCache = new Map();
 const TrinketToCoinFactory = (item) => {
+    const cached = trinketCoinCache.get(item);
+    if (cached !== undefined)
+        return cached;
     const amount = (item.Amount) ? item.Amount : 0;
-    return genericCoinFactory(amount, item.Value, "Earned from selling " + item.Name);
+    const coins = genericCoinFactory(amount, item.Value, "Earned from selling " + item.Name);
+    trinketCoinCache.set(item, coins);
+    return coins;
 };
 export var ItemData;
 (function (ItemData) {
@@ -42,7 +51,8 @@ export var ItemData;
     ItemData.BarbAxe = createMeleeWeapon("Axe", "Simple", "1d6");
     ItemData.BarbMace = createMeleeWeapon("Mace or Hammer", "Simple", "1d6");
     ItemData.BarbGreatSword = createMeleeWeapon("Great Sword", "Heavy", "1d6", { Description: "1d8 damage if you have Armaments" });
-    ItemData.SwordsmithWeapon = createMeleeWeapon("Simple or Heavy Melee Weapon", "Simple or Heavy", "1d6", { Description: "Typically a sword (1d6) or great sword (1d8 if proficient)" });
+    ItemData.GreatSword = createMeleeWeapon("Great Sword", "Heavy", "1d8", { Description: "1d6 damage unless you are proficient with Heavy Melee Weapons" });
+    ItemData.GreatClub = createMeleeWeapon("Great Club", "Heavy", "1d8");
     ItemData.BrassKnuckles = createMeleeWeapon("Brass Knuckles", "Light", "1d2", { Description: "+1 damage (1d4+1 with Brawler)" });
     ItemData.Sap = createMeleeWeapon("Sap", "Simple", "1d4", { Description: "Potential for knockout." });
     ItemData.JesterClub = createMeleeWeapon("Jester's club", "Light", "1d4", { Description: "Decorated with bells" });
@@ -60,11 +70,13 @@ export var ItemData;
     // ── Ammunition ────────────────────────────────────────────────────────────
     ItemData.Bolts = createAmmoItem("Bolts", "Crossbow", "1d6", { Amount: DiceRoll.sixSidedDieRoll() });
     ItemData.WagonBolts = createAmmoItem("Crossbow bolts", "Crossbow", "1d6", { Amount: DiceRoll.sixSidedDieRoll(), Description: "Usage Die: Ud6" });
+    ItemData.Arrows = createAmmoItem("Arrows", "Bow", "1d6", { Amount: DiceRoll.sixSidedDieRoll(), Description: "Usage Die: Ud6" });
     // ── Armor & shields ───────────────────────────────────────────────────────
     ItemData.OrcArmor = createArmorItem("Light Armor", "Light Armor", { Description: "Made of hides and piecemeal metal and leather armor salvaged parts." });
     ItemData.FurArmor = createArmorItem("Layers of smelly furs with sewn on bones", "Light Armor", { UsageDie: "Ud6" });
     ItemData.LeatherArmorRoll = createArmorItem("Leather Armor", "Light Armor", { UsageDie: "Ud4", Amount: DiceRoll.fourSidedDieRoll() });
-    ItemData.ChainMailArmor = createArmorItem("Chain Mail or Scale Mail Armor", "Medium Armor", { UsageDie: "Ud6" });
+    ItemData.ChainMailArmor = createArmorItem("Chain Mail Armor", "Medium Armor", { UsageDie: "Ud6" });
+    ItemData.ScaleMailArmor = createArmorItem("Scale Mail Armor", "Medium Armor", { UsageDie: "Ud6" });
     ItemData.Gambeson = createArmorItem("Leather Gambeson", "Light Armor", { UsageDie: "Ud4" });
     ItemData.SmallShield = createArmorItem("Small Shield", "Small Shield", { UsageDie: "Ud4", Limit: "1 attack/Round" });
     // ── Worn (non-armor) ──────────────────────────────────────────────────────
@@ -92,7 +104,7 @@ export var ItemData;
     ItemData.EyeGoggles = createWearableItem("Glass-lensed Eye Goggles");
     // ── Provisions ────────────────────────────────────────────────────────────
     ItemData.StandardRations = createRationItem("Rations", DiceRoll.fourSidedDieRoll());
-    ItemData.ElfRations = createRationItem("Rations", 1, { Description: "Bread and wax wrapped honeycomb (replaces standard rations)" });
+    ItemData.ElfRations = createRationItem("Rations (bread & honeycomb)", 1, { Description: "Bread and wax wrapped honeycomb (replaces standard rations)" });
     ItemData.Cheese = createRationItem("Hard cheese", 1);
     ItemData.Bread = createRationItem("Bread", 2);
     ItemData.DriedMeat = createRationItem("Dried meat", 1);
@@ -166,7 +178,8 @@ export var ItemData;
     ItemData.Whetstone = createToolItem("Whetstone");
     ItemData.Nails = createToolItem("Iron nails", { Amount: 48 });
     ItemData.IronSpikes = createToolItem("Iron Spikes", { Amount: DiceRoll.eightSidedDieRoll() });
-    ItemData.Files = createToolItem("Small files");
+    ItemData.Files = createToolItem("Files");
+    ItemData.SmallFiles = createToolItem("Small files");
     ItemData.Saw = createToolItem("Jeweler's saw");
     ItemData.Loupe = createToolItem("Jeweler's loupe");
     ItemData.Pliers = createToolItem("Pliers");
@@ -263,13 +276,27 @@ export var ItemData;
     ];
     const none = new SelectionPackage([], [], []);
     // --- Selection Packages ---
+    // The universal Step-5 weapon choice, extracted so an Ancestry override can target this exact
+    // ChoiceGroup by identity (flattenAndFilterSelectionPackage keys overrides on the choice's Payload).
+    ItemData.UniversalWeaponChoice = new ChoiceGroup(1, [
+        // Melee Sub-options
+        ItemData.Axe, ItemData.DaggerMelee, ItemData.HammerMelee, ItemData.SpearMelee, ItemData.Staff, ItemData.Sword,
+        // Ranged Sub-options
+        ItemData.CrossbowWithBolts, ItemData.Javelins, ItemData.ShortBowWithArrows, ItemData.SlingWithStones
+    ], []);
+    // Orcs "select a Heavy Melee Weapon that matches your Personal Weapon Skill selection rather than
+    // rolling." This override replaces the universal weapon options with the four heavy weapons the Orc
+    // proficiency covers, so the player picks the one matching their chosen proficiency.
+    const orcHeavyWeaponLambda = (taggedChoice) => createTaggedData(ancestrySourceTag, new ChoiceGroup(1, [ItemData.GreatSword, ItemData.BattleAxe, ItemData.Warhammer, ItemData.GreatClub], taggedChoice.Payload.selectedValues));
+    const orcWeaponOverride = new Map();
+    orcWeaponOverride.set(ItemData.UniversalWeaponChoice, createTaggedData(ancestrySourceTag, orcHeavyWeaponLambda));
     ItemData.DwarfItemSelection = new SelectionPackage([ItemData.Apron, ItemData.Nails, ItemData.Hammer, ItemData.Whiskey, ItemData.Gems], [], []);
     ItemData.ElfItemSelection = new SelectionPackage([ItemData.LinenHaversack, ItemData.ElfRations, ItemData.Wine], [], [ItemData.StandardRations, ItemData.Water]);
     ItemData.HumanItemSelection = new SelectionPackage([ItemData.LinenHaversack, ItemData.WateredWine], [], [ItemData.Water]);
     ItemData.HalflingItemSelection = new SelectionPackage([ItemData.ClayPipe, ItemData.TobaccoPouch, ItemData.WalkingStick, ItemData.Handkerchief, ItemData.Cheese, ItemData.Bread, ItemData.DriedMeat], [new ChoiceGroup(1, [ItemData.BerryWine, ItemData.DarkBeer], [])], [ItemData.StandardRations, ItemData.Water]);
-    ItemData.OrcItemSelection = new SelectionPackage([ItemData.OrcArmor, ItemData.Dagger, ItemData.BeltPouch, ItemData.Whetstone, ItemData.Teeth], [], []);
+    ItemData.OrcItemSelection = new SelectionPackage([ItemData.OrcArmor, ItemData.Dagger, ItemData.BeltPouch, ItemData.Whetstone, ItemData.Teeth], [], [], orcWeaponOverride);
     ItemData.IxianItemSelection = new SelectionPackage([ItemData.LeatherHaversack, ItemData.LeatherGloves], [], []);
-    ItemData.JewelerItemSelection = new SelectionPackage([ItemData.Satchel, ItemData.Loupe, ItemData.Files, ItemData.Saw], [new ChoiceGroup(1, [ItemData.Ring, ItemData.Bracelet, ItemData.Necklace, ItemData.Pendant], [])], []);
+    ItemData.JewelerItemSelection = new SelectionPackage([ItemData.Satchel, ItemData.Loupe, ItemData.SmallFiles, ItemData.Saw], [new ChoiceGroup(1, [ItemData.Ring, ItemData.Bracelet, ItemData.Necklace, ItemData.Pendant], [])], []);
     ItemData.BarbarianItemSelection = new SelectionPackage([ItemData.FurArmor, ItemData.BeltPouch, ItemData.FacePaint, ItemData.SharpStones], [
         new ChoiceGroup(1, [ItemData.Mushrooms, ItemData.SpecialLeaves], []),
         new ChoiceGroup(1, [ItemData.BarbSword, ItemData.BarbAxe, ItemData.BarbMace, ItemData.BarbGreatSword], [])
@@ -291,20 +318,23 @@ export var ItemData;
     ], [
         // Choice 1: The Cloak Style
         new ChoiceGroup(1, [ItemData.HoodedCloak, ItemData.CloakAndHat], []),
-        // Choice 2: The Weapon Category (Melee vs Ranged)
-        // Note: Since ChoiceGroup usually picks from a flat list,
-        // you might handle the 1-3 vs 4-6 roll in your logic
-        // by presenting this group:
-        new ChoiceGroup(1, [
-            // Melee Sub-options
-            ItemData.Axe, ItemData.DaggerMelee, ItemData.HammerMelee, ItemData.SpearMelee, ItemData.Staff, ItemData.Sword,
-            // Ranged Sub-options
-            ItemData.CrossbowWithBolts, ItemData.Javelins, ItemData.ShortBowWithArrows, ItemData.SlingWithStones
-        ], [])
+        // Choice 2: The Weapon (Melee vs Ranged). Extracted to a named const so Ancestry
+        // overrides (e.g. Orc heavy weapons) can target it by identity.
+        ItemData.UniversalWeaponChoice
     ], []);
     // --- Trinket Selection Package ---
-    function getTrinketPackage(race, job, jobSubset) {
-        const shuffled = Utility.shuffle(ItemData.basicTrinketSection.map(x => x));
+    // The trinkets a character is offered are drawn once and then held for the life of that
+    // character (see TrinketQualifier, "Trinket choices are determined at startup").
+    // Utility.shuffle mutates, so hand it a copy of the pool.
+    function drawTrinkets() {
+        return Utility.shuffle(ItemData.basicTrinketSection.slice());
+    }
+    ItemData.drawTrinkets = drawTrinkets;
+    // Ancestry / job / subset decide how the draw is *offered* — a Human sees two candidates
+    // where others see one, a Dowser is also offered the Lodestone, a Fence's ThreeTrinketRandom
+    // needs six — never which trinkets it contains. ConfiguredCharacterData therefore passes the
+    // character's original `shuffled` back in on every rebuild instead of letting it re-roll.
+    function getTrinketPackage(race, job, jobSubset, shuffled = drawTrinkets()) {
         const isHuman = race === "Human";
         if (jobSubset === JobSubsetEnum.ThreeTrinketRandom) {
             return new SelectionPackage([], [
@@ -353,10 +383,17 @@ export var ItemData;
     ItemData.JobTypeToItem = {
         "Apprentice Artisan": none,
         "Apprentice Bureaucrat": new SelectionPackage([ItemData.Ink, ItemData.Quill, ItemData.Paper, ItemData.CourierSatchel], [], []),
-        "Free Laborer": new SelectionPackage([ItemData.RidingHorse, ItemData.Saddle, ItemData.Bridle, ItemData.Saddlebags, ItemData.Grain], [], []),
-        "Apprentice Crafter": new SelectionPackage([...smithKit, ItemData.SteelDagger], [], []),
+        // Free Laborer / Crafter bases are empty: each subset lists its own full gear (only the
+        // default subset — Ambler / Smith — restates it), so an additive base would double it
+        // or leak the default's gear onto siblings (e.g. a Fisher receiving Ambler's horse).
+        "Free Laborer": none,
+        "Apprentice Crafter": none,
         "Apprentice Mercantiler": new SelectionPackage([ItemData.FancyClothes, ItemData.Satchel, ItemData.Abacus, ItemData.LeadStylus, ItemData.Ledger], [], []),
-        "Escaped Peasant/Thrall": new SelectionPackage([ItemData.RaggedClothes, ItemData.Twine, ItemData.Shackles], [], [ItemData.TravelingClothes, ItemData.LeatherBelt, ItemData.LeatherBoots, ItemData.UtilityKnife, ItemData.Sack, ItemData.HempTwine, ItemData.Coins, ItemData.StandardRations, ItemData.Water, ItemData.HoodedCloak, ItemData.CloakAndHat]),
+        // Escaped Thralls "do not receive any Gear from Ancestry and Class or Step 5". The override
+        // strips the universal fixed gear AND every universal weapon/cloak choice option (options are
+        // removed by reference in flattenAndFilterSelectionPackage), leaving them with only the rags.
+        "Escaped Peasant/Thrall": new SelectionPackage([ItemData.RaggedClothes, ItemData.Twine, ItemData.Shackles], [], [ItemData.TravelingClothes, ItemData.LeatherBelt, ItemData.LeatherBoots, ItemData.UtilityKnife, ItemData.Sack, ItemData.HempTwine, ItemData.Coins, ItemData.StandardRations, ItemData.Water, ItemData.HoodedCloak, ItemData.CloakAndHat,
+            ItemData.Axe, ItemData.DaggerMelee, ItemData.HammerMelee, ItemData.SpearMelee, ItemData.Staff, ItemData.Sword, ItemData.CrossbowWithBolts, ItemData.Javelins, ItemData.ShortBowWithArrows, ItemData.SlingWithStones]),
         Acrobat: new SelectionPackage([ItemData.PerformanceOutfit, ItemData.JugglingClubs], [], []),
         Contortionist: new SelectionPackage([ItemData.PerformanceOutfit, ItemData.JugglingClubs], [], []),
         Jester: new SelectionPackage([ItemData.PerformanceOutfit, ItemData.JesterClub], [], []),
@@ -398,14 +435,21 @@ export var ItemData;
         [JobSubsetEnum.None]: none,
         [JobSubsetEnum.Jeweler]: ItemData.JewelerItemSelection,
         [JobSubsetEnum.Arbalist]: new SelectionPackage([ItemData.ToolChest, ItemData.Pliers, ItemData.Files, ItemData.FineWoodShavers, ItemData.Crossbow, ItemData.Bolts], [], []),
-        [JobSubsetEnum.Scrivener]: new SelectionPackage([ItemData.Ink, ItemData.Quill, ItemData.Paper, ItemData.CourierSatchel], [], []),
+        // Writing kit comes from the "Apprentice Bureaucrat" JobType base (shared by every
+        // bureaucrat); the default Scrivener subset must not restate it or it doubles.
+        [JobSubsetEnum.Scrivener]: none,
         [JobSubsetEnum.Advocate]: none,
         [JobSubsetEnum.Cartographer]: none,
         [JobSubsetEnum.Inspector]: new SelectionPackage([ItemData.SimpleSword, ItemData.BadgeOfOffice], [], []),
         [JobSubsetEnum.Interpreter]: none,
+        // Rat Catcher gains its own traps/cage/dog and explicitly does NOT get the other
+        // Bureaucrats' writing kit, so it overrides that shared JobType base gear away.
+        [JobSubsetEnum.RatCatcher]: new SelectionPackage([ItemData.RatTraps, ItemData.Cage, ItemData.ViciousDog], [], [ItemData.Ink, ItemData.Quill, ItemData.Paper, ItemData.CourierSatchel]),
         [JobSubsetEnum.Smith]: new SelectionPackage([...smithKit, ItemData.SteelDagger], [], []),
         [JobSubsetEnum.Carpenter]: new SelectionPackage([ItemData.Mallet, ItemData.Adze, ItemData.WoodPlaner, ItemData.Level], [], []),
-        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([ItemData.FancyClothes, ItemData.Abacus, ItemData.LeadStylus, ItemData.Ledger], [], []),
+        // Accounting kit comes from the "Apprentice Mercantiler" JobType base (shared by every
+        // mercantiler); the default MoneyChanger subset must not restate it or it doubles.
+        [JobSubsetEnum.MoneyChanger]: none,
         [JobSubsetEnum.Ambler]: new SelectionPackage([ItemData.RidingHorse, ItemData.Saddle, ItemData.Bridle, ItemData.Saddlebags, ItemData.Grain], [], []),
         [JobSubsetEnum.Chef]: new SelectionPackage([ItemData.ChefKnives, ItemData.CuttingBoard, ItemData.MortarPestle], [], []),
         // Laborer & Service Subsets
@@ -444,16 +488,19 @@ export var ItemData;
         [JobSubsetEnum.ThreeTrinketRandom]: none,
         [JobSubsetEnum.OneTrinketChoice]: none,
         // Additional Artisan subsets
-        [JobSubsetEnum.Armorer]: new SelectionPackage([...smithKit, ItemData.ChainMailArmor], [], []),
-        [JobSubsetEnum.Bowyer]: new SelectionPackage([ItemData.BowfletToolChest, ItemData.Files, ItemData.FineWoodShavers, ItemData.HideGlue, ItemData.ShortBowWithArrows], [], []),
-        [JobSubsetEnum.Fletcher]: new SelectionPackage([ItemData.BowfletToolChest, ItemData.Files, ItemData.FineWoodShavers, ItemData.HideGlue, ItemData.ShortBowWithArrows], [], []),
+        // Armorer's toolbox is hammers/files/gloves/apron (no chisels or tongs — those are the
+        // Smith's), and the armor is a choice of medium chain mail OR scale mail.
+        [JobSubsetEnum.Armorer]: new SelectionPackage([ItemData.SmithToolbox, ItemData.MasonHammer, ItemData.Files, ItemData.LeatherGloves, ItemData.Apron], [new ChoiceGroup(1, [ItemData.ChainMailArmor, ItemData.ScaleMailArmor], [])], []),
+        [JobSubsetEnum.Bowyer]: new SelectionPackage([ItemData.BowfletToolChest, ItemData.Files, ItemData.FineWoodShavers, ItemData.HideGlue, ItemData.ShortBowWithArrows, ItemData.Arrows], [], []),
+        [JobSubsetEnum.Fletcher]: new SelectionPackage([ItemData.BowfletToolChest, ItemData.Files, ItemData.FineWoodShavers, ItemData.HideGlue, ItemData.ShortBowWithArrows, ItemData.Arrows], [], []),
         [JobSubsetEnum.Tailor]: new SelectionPackage([ItemData.Apron, ItemData.Scissors, ItemData.FormalWearOutfit], [], []),
-        [JobSubsetEnum.Locksmith]: new SelectionPackage([ItemData.Files, ItemData.Saw, ItemData.MasonHammer, ItemData.Padlock, ItemData.LockPicks], [], []),
+        [JobSubsetEnum.Locksmith]: new SelectionPackage([ItemData.SmallFiles, ItemData.Saw, ItemData.MasonHammer, ItemData.Padlock, ItemData.LockPicks], [], []),
         // Additional Crafter subsets
         [JobSubsetEnum.Cooper]: new SelectionPackage([ItemData.Mallet, ItemData.WideAx, ItemData.DrawKnife, ItemData.Dividers, ItemData.WoodPlaner, ItemData.Cart, ItemData.Mule], [], []),
         [JobSubsetEnum.Leatherworker]: new SelectionPackage([ItemData.LeatherKit, ItemData.Punches, ItemData.Awls, ItemData.Cutters, ItemData.TannedLeather, ItemData.LeatherArmorRoll], [], []),
         [JobSubsetEnum.Mason]: new SelectionPackage([ItemData.MasonHammer, ItemData.IronSpikes, ItemData.MasonTrowel, ItemData.Level], [], []),
-        [JobSubsetEnum.Swordsmith]: new SelectionPackage([ItemData.SwordsmithWeapon], [], []),
+        // Swordsmith's masterwork is the character's choice of a Simple or Heavy melee weapon.
+        [JobSubsetEnum.Swordsmith]: new SelectionPackage([], [new ChoiceGroup(1, [ItemData.Sword, ItemData.GreatSword], [])], []),
         // Additional Mercantiler subsets
         [JobSubsetEnum.Assayer]: new SelectionPackage([ItemData.MortarPestle, ItemData.Reagents], [], []),
         [JobSubsetEnum.Herbalist]: new SelectionPackage([ItemData.HerbalistKit], [], []),

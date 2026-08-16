@@ -136,12 +136,12 @@ export const flattenAndCombineSelectionPackage = (selectionPackage, characterDat
     return result;
 };
 export const createGenericPicker = (options) => {
-    const { name, characterData, pickerModel, dataSelector, createPreview } = options;
+    const { name, characterData, pickerModel, dataSelector, createPreview, isConfigured } = options;
     const combinedOnUpdate = (data) => {
         options.onUpdate(data);
     };
     let tempPreview = Utility.BundleViewAndModel({});
-    const objectConfigurationViewModel = new CreateObjectModel(name, pickerModel, dataSelector, tempPreview, combinedOnUpdate, characterData);
+    const objectConfigurationViewModel = new CreateObjectModel(name, pickerModel, dataSelector, tempPreview, combinedOnUpdate, characterData, isConfigured);
     const modalBundle = Utility.BundleViewAndModel(objectConfigurationViewModel);
     tempPreview.Model = createPreview(objectConfigurationViewModel);
     tempPreview.ViewUrl = tempPreview.Model.ViewUrl;

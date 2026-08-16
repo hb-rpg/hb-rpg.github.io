@@ -33,6 +33,23 @@
 
 @max-size-before-element-reaction: 500px;
 
+// Width at which a step's Select/Roll row can no longer sit on one line:
+// ~4em label + 4em gap + 12em button + 4em gap + 12em button at a 12px base.
+@step-actions-stack-width: 480px;
+
+// The configured step header (Step N / name / edit + dice) needs ~280px on one
+// line; below this it stacks rather than dropping the buttons to a second row.
+@step-preview-stack-width: 340px;
+
+// The home page hero is a fixed 5em headline, so it needs roughly this much
+// width before "an classic style." runs past the article border (and drags a
+// horizontal scrollbar onto the page with it).
+@max-size-before-hero-text-overflows: 950px;
+
+// The footer tagline and contact links sit side by side; below this they get
+// squeezed into a few characters per line, so stack them instead.
+@max-size-before-footer-stacks: 800px;
+
 @video-game-character-amount: 50;
 
 // @pathToImages: "\\Images\\00 - Art for CharGen-20251126T183321Z-1-001\\00 - Art for CharGen\\";

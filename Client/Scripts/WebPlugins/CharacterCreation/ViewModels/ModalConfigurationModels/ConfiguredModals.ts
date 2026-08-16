@@ -4,8 +4,7 @@ import { CareerData } from "../../Configuration/CareerData.js";
 import { ConfiguredCharacterData } from "../../Configuration/CharacterWizardData.js";
 import { Races } from "../../Configuration/DispositionData.js";
 import { ReligionData } from "../../Configuration/DietiesData.js";
-import { Abilities, AbilitiesToArray } from "../../Contracts/Abilities.js";
-import { DiceRoll } from "../../Utility/DiceRoll.js";
+import { Abilities } from "../../Contracts/Abilities.js";
 import { Edges } from "../../Contracts/Edges.js";
 import { Skill } from "../../Contracts/Skill.js";
 import { EntanglementOrganizationTypesEnum, JobType, RaceType } from "../../Contracts/StringTypes.js";
@@ -52,11 +51,15 @@ const describeSpell = (spell: Spell): string => {
 export namespace ConfiguredModals {
     export const createAncestryPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<RaceType, PreviewModel<StringPreviewModel>> => {
         const ancestryModel = new AncestryViewModel(characterData, Races);
+
+        const isConfigured = ko.observable(false);
+
         return createGenericPicker<AncestryViewModel, PreviewModel<StringPreviewModel>, RaceType>({
             name: "Ancestry",
             characterData,
             pickerModel: ancestryModel,
             dataSelector: (data) => data.Race,
+            isConfigured,
             onUpdate: (data) => {
                 ancestryModel.Evaluate();
                 updateRaceItemsData(data, "Ancestry");
@@ -70,7 +73,7 @@ export namespace ConfiguredModals {
                 modal.FriendlyName,
                 ko.observable(-1),
                 new StringPreviewModel(characterData.Race as Observable<string>),
-                ko.observable(false),
+                isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             )
@@ -102,6 +105,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: edgesModel,
             dataSelector: (data) => data.EdgeSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Edges",
                 ko.observable(-1),
@@ -142,6 +146,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: skillsModel,
             dataSelector: (data) => data.SkillsSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Skills",
                 ko.observable(-1),
@@ -171,16 +176,20 @@ export namespace ConfiguredModals {
             CareerData.JobToStoryData,
             CareerData.JobSubsetData
         );
+
+        const isConfigured = ko.observable(false);
+
         return createGenericPicker<JobBackgroundPickerModel, PreviewModel<StringPreviewModel>, StoryModel<JobType>>({
             name: "Background",
             characterData,
             pickerModel: backgroundModel,
             dataSelector: (data) => data.JobBackground,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 modal.FriendlyName,
                 ko.observable(-1),
                 new StringPreviewModel(displayLabel),
-                ko.observable(false),
+                isConfigured,
                 modal.Randomize.bind(modal),
                 modal.EditItem.bind(modal)
             ),
@@ -201,23 +210,14 @@ export namespace ConfiguredModals {
     export const createAbilityScoresPickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<Abilities, PreviewModel<AbilityPreviewModel>> => {
         const abilitiesModel = new AbilityScoresModel(characterData);
 
-        // Derives configured state from actual data so that cancelling the modal (which
-        // doesn't write to characterData.Abilities) correctly reverts the preview to
-        // "not configured". Uses a writable computed so that the eager IsConfigured(true)
-        // call in PreviewModel.Edit() is silently ignored.
-        const isConfigured = ko.computed({
-            read: () => {
-                const arr = AbilitiesToArray(characterData.Abilities());
-                return arr.length === DiceRoll.ABILITY_SCORE_AMOUNT && arr.every(v => v > 0);
-            },
-            write: (_value: boolean) => {}
-        }) as unknown as Observable<boolean>;
+        const isConfigured = ko.observable(false);
 
         return createGenericPicker<AbilityScoresModel, PreviewModel<AbilityPreviewModel>, Abilities>({
             name: "Ability Scores",
             characterData,
             pickerModel: abilitiesModel,
             dataSelector: (data) => data.Abilities,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 modal.FriendlyName,
                 ko.observable(-1),
@@ -253,6 +253,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: equipmentModel,
             dataSelector: (data) => data.ItemSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Equipment",
                 ko.observable(-1),
@@ -289,6 +290,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: entanglementModel,
             dataSelector: (data) => data.OrganizationEntanglements,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Entanglement",
                 ko.observable(-1),
@@ -326,6 +328,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: trinketModel,
             dataSelector: (data) => data.TrinketSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Trinket",
                 ko.observable(-1),
@@ -367,6 +370,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: languageModel,
             dataSelector: (data) => data.LanguageSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Language",
                 ko.observable(-1),
@@ -404,6 +408,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: spellsModel,
             dataSelector: (data) => data.SpellSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Spells",
                 ko.observable(-1),
@@ -445,6 +450,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: drawbacksModel,
             dataSelector: (data) => data.DrawbacksSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Drawbacks",
                 ko.observable(-1),
@@ -486,6 +492,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: corruptionModel,
             dataSelector: (data) => data.CorruptionSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Corruption",
                 ko.observable(-1),
@@ -533,6 +540,7 @@ export namespace ConfiguredModals {
             characterData,
             pickerModel: religionModel,
             dataSelector: (data) => data.ReligionSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(
                 "Religion",
                 ko.observable(-1),
@@ -548,6 +556,10 @@ export namespace ConfiguredModals {
     export const createNamePickerModel = (characterData: ConfiguredCharacterData): CharacterPickerModal<CharacterName, PreviewModel<StringPreviewModel>> => {
         let tempPreview = Utility.BundleViewAndModel({} as PreviewModel<StringPreviewModel>)
 
+        const isConfigured = ko.observable(false)
+        characterData.JobBackground.subscribe(() => isConfigured(false))
+        characterData.Race.subscribe(() => isConfigured(false))
+
         const namePickerModel = new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData);
         const modal = Utility.BundleViewAndModel(
             new CreateObjectModel(
@@ -556,17 +568,14 @@ export namespace ConfiguredModals {
                 (data) => data.Name,
                 tempPreview,
                 () => { namePickerModel.Evaluate(); },
-                characterData
+                characterData,
+                isConfigured
             )
         )
 
         const NameObservable = ko.observable(NameUtility.determineIdentityPreview(characterData))
         characterData.Name.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)))
         characterData.Gender.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)))
-
-        const isConfigured = ko.observable(false)
-        characterData.JobBackground.subscribe(() => isConfigured(false))
-        characterData.Race.subscribe(() => isConfigured(false))
 
         tempPreview.Model = new PreviewModel(
             modal.Model.FriendlyName,

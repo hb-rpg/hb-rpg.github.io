@@ -370,7 +370,7 @@ export var CareerData;
         "Ruffian/Enforcer": [JobSubsetEnum.None],
         // OTHERS
         "Apprentice Artisan": [JobSubsetEnum.Jeweler, JobSubsetEnum.Arbalist, JobSubsetEnum.Armorer, JobSubsetEnum.Bowyer, JobSubsetEnum.Fletcher, JobSubsetEnum.Tailor, JobSubsetEnum.Locksmith],
-        "Apprentice Bureaucrat": [JobSubsetEnum.Scrivener, JobSubsetEnum.Advocate, JobSubsetEnum.Cartographer, JobSubsetEnum.Inspector, JobSubsetEnum.Interpreter],
+        "Apprentice Bureaucrat": [JobSubsetEnum.Scrivener, JobSubsetEnum.Advocate, JobSubsetEnum.Cartographer, JobSubsetEnum.Inspector, JobSubsetEnum.Interpreter, JobSubsetEnum.RatCatcher],
         "Free Laborer": [JobSubsetEnum.Ambler, JobSubsetEnum.Chef, JobSubsetEnum.Farmer, JobSubsetEnum.Fisher, JobSubsetEnum.Herder, JobSubsetEnum.Wagoner],
         "Apprentice Crafter": [JobSubsetEnum.Smith, JobSubsetEnum.Carpenter, JobSubsetEnum.Cooper, JobSubsetEnum.Leatherworker, JobSubsetEnum.Mason, JobSubsetEnum.Swordsmith],
         "Apprentice Mercantiler": [JobSubsetEnum.MoneyChanger, JobSubsetEnum.Assayer, JobSubsetEnum.Brewer, JobSubsetEnum.Herbalist, JobSubsetEnum.Peddler, JobSubsetEnum.Vintner],

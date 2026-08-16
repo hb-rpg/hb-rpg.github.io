@@ -15,7 +15,7 @@
         "**/.vs": true,
         "**/package-lock.json": true,
         "**/*.user": true,
-        // "wwwroot/" : true,
+        "wwwroot/" : true,
         "package.json" : true,
         // "NemoEsuriat.csproj" : true,
         "NemoEsuriat.sln" : true,

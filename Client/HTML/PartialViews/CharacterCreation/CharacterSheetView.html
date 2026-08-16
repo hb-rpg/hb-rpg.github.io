@@ -15,7 +15,8 @@
         <!-- /ko -->
 
     <div class="centered remove-when-print space-around">
-        <button class="wizard-button" data-bind="click: exportAsPDF">Export As PDF</button>
+        <button class="wizard-button" data-bind="click: exportAsPDF, disable: !allConfigured(),
+            attr: { title: allConfigured() ? 'Export your character sheet as a PDF' : 'Finish configuring every step to enable export' }">Export As PDF</button>
         <button class="wizard-button" data-bind="click: Randomize">Randomize</button>
         <!-- <button class="wizard-button" data-bind="click: talkToCharacter">Talk to Character</button> -->
         <!-- <button class="wizard-button" data-bind="click: createAnCharacterImage">Create Character Image</button> -->

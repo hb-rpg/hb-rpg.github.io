@@ -64,7 +64,9 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
             .slice()
             .sort((a, b) => this.DetermineName(a.Payload).localeCompare(this.DetermineName(b.Payload)))
             .map((fixedChoice) => new ObjectPreview(
-                `${fixedChoice.Tags.Source} ${this.FriendlyName}`,
+                // Make clear this item was granted by an earlier step (Ancestry,
+                // Background, ...) rather than chosen here, e.g. "Granted by Ancestry".
+                `Granted by ${fixedChoice.Tags.Source}`,
                 this.DetermineDescription(fixedChoice.Payload)
             )))
         
@@ -80,12 +82,17 @@ export class SelectionPackageConfigurationModel<SelectionType> implements IChara
                 // Adjust split count if the filter filters out all of the options
                 let splitCount = Math.min(choices.Payload.pickCount, possibleChoices().length)
 
+                // Read from a copy rather than popping the live array: cancelling the modal never
+                // calls Evaluate, so draining selectedValues here would lose the saved picks for
+                // good. Skipped when the step isn't configured, so an upstream change (which
+                // resets IsConfigured) discards the now-stale picks instead of restoring them.
+                const savedValues = this.IsConfigured() ? choices.Payload.selectedValues.slice() : []
+
                 for (let i = 0; i < splitCount; i++) {
                     const SelectionViewModel = this.createItemSelectionPicker(choices, this.FriendlyName, possibleChoices)
 
-                    if (choices.Payload.selectedValues.length > 0 && this.IsConfigured()) {
-                        const choice = choices.Payload.selectedValues.pop()
-                        SelectionViewModel.Model.Init(choice)
+                    if (i < savedValues.length) {
+                        SelectionViewModel.Model.Init(savedValues[i])
                     } else {
                         SelectionViewModel.Model.Init()
                     }

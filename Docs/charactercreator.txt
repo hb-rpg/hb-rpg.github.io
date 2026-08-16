@@ -1,0 +1,3595 @@
+
+
+First Level Characters ###
+▶ CHARACTER CREATION OVERVIEW
+This is an overview of the 8 Steps to create your character. Additional details of each Step are provided in the separate  sections that follow.  Review and complete all of the headings like this one with the “▶” recording the results of your rolls or selections on the Character Sheet.
+If you cannot make a quick selection, roll dice as indicated for a random result. If you do not like that result, then make a selection or roll again. If you are unhappy with your selections after playing one or two sessions, discuss changing some of the selections with your GM or generate an entirely new character.
+Step 1 - Ancestry, Level, Hit Die and Hit Points 
+Select one of six Ancestries: Dwarf, Elf, Halfling, Human, Ixian, or Orc. 
+Your character begins as a commoner at Level 0. You have 1 Hit Die and you start with 4 Hit Points.
+You may also select a gender and/or gender expression for your character for flavor. 
+Step 2 - Background 
+Select a Background from the six groups. Backgrounds are grouped related to Classes but you are free to select from any of the groups. At 1st Level, you will be able to select a Class Your Background indicates your character’s experiences and life before starting a life of adventure. 
+Your Background selection may affect your Entanglements in Step 4.   
+Your Background selection may add or reduce your Starting Equipment in Step 5. 
+Step 3 - Ability Scores 
+Your character’s starting mental and physical potential is represented by a score of 2 to 12 for six Abilities: Strength, Dexterity, Constitution, Wisdom, and Charisma. You may roll to randomly generate the Ability Scores or assign preset scores from an array. 
+Step 4 - Entanglements 
+Your character has a past that can impact their present and future opportunities in both positive and negative ways. Your previous selection Background often affects Entanglements.
+Step 5 - Starting Equipment 
+Your character starts with a standard set of gear as well as a significant trinket that they inherited or acquired in the recent past. Your selection of Ancestry and Background may increase or decrease your starting gear. 
+Step 6 - Languages 
+Your Ancestry and Background selections determine your starting languages. This step allows you some final selections or adjustments to your character’s literacy. Unless noted otherwise, you can either choose another language to speak or the ability to read & write a language you already know how to speak.  
+The common languages are Dwerg, Infernal, Istya, Kaduz, Nulya, Kelinya, Muluk, Sindar, Sulya, and Sylvan.
+Step 7 - Religion 
+In the default setting for Heartbreaker, your character and most folks you encounter will be polytheistic and venerate the deity that represents the issue for which they are seeking intercession. You should select a primary deity that aligns with your character’s purpose and one or two secondary deities you character would also honor regularly. 
+Warlocks are an exception to this and they are typically devoted to a singular powerful entity who is jealous and does not allow the Warlock to honor or venerate anyone else. 
+Step 8 - Corruption 
+Magic is dangerous to both practitioners and often those in the general vicinity. If indicated by your Background, you must roll for the effect of some magical corruption that is afflicting your character. 
+
+
+
+
+
+
+
+Character Sheet page 1
+
+
+
+
+
+
+
+Character Sheet page 2
+
+
+Character Sheet page 3
+
+▶ Step 1 Overview - Ancestry, Level, Hit Die and Hit Points
+Ancestry is your species and cultural heritage. Roll 1d6 or choose an Ancestry from the table below. 
+Each Ancestry comes with a package of standard features in the following categories: Edges, Spells, Skills, Languages, Gear, Names, and Other. If a category is not included, there is no feature.
+You start at Level 0. “Level” indicates your experience and you gain new abilities at new levels. Your starting character is a commoner who has experienced a calling or catalyst to begin a life of adventure.
+To facilitate quick decisions during character creation, only a brief description providing the flavor and purpose of the Edge, Spell, and Skill are provided. Full details and mechanics are intentionally left out to avoid “analysis paralysis” or confusion of rule concepts that a new player may not understand yet. Full details are provided in Ch. 6 -  Edges & Skills and Ch. 7 - Spellcasting & Spells. 
+You have 1 Hit Die. “Hit Die” is abbreviated HD and is one measure of your toughness and size.  
+You start with 4 Hit Points. “Hit Points” is abbreviated HP and is a measure of how much damage you can endure. 
+Indicate a gender and/or gender expression for your character. There is no impact on your character in terms of game mechanics in regards to their gender.  
+
+Edges are powerful abilities that are innate to that Ancestry and/or gained through extensive training. 
+Spells are any divine, profane, or arcane powers you have been taught, discovered, or are innate to your Ancestry. 
+Skills are less powerful knacks and abilities learned through practice and cultural immersion from your Ancestry. 
+Languages indicate the typical spoken tongue learned by your character based on their Ancestry. Your character cannot read or write the indicated language(s) unless specifically noted or gained in a later Step.
+Gear indicates items your character will have in addition to those from Step 5 - Starting Equipment. Note these items on your character sheet. Later steps may add or remove items.
+Names indicate common names, bynames, and epithets for your Ancestry. A byname typically refers to a geographical origin or relationship, infamous relative, or clan. An epithet is typically a descriptive characteristic, habit, or quality. Your character may aspire to some chosen epithet or have been unwillingly assigned an undesirable one that will require some significant event or accomplishment to change.
+Other is included for any other special features related to your Ancestry.
+Roll
+Ancestry
+Roll
+Ancestry
+1
+Dwarf - crafting and mining folk
+4
+Human - survivors of the lost empire
+2
+Elf - primeval forest dwellers or elder progenitors 
+5
+Ixian - extraplanar newcomers
+3
+Halfling - agrarian farmers and brewers
+6
+Orc - fierce nomads and raiders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+spot illustration of all six ancestries and relative height ###
+
+
+
+Roll of 1  - DWARF
+Dwarves are hardy, independent mountain folk respected for their crafting ability skills with stone and metal. They are suspicious of outsiders but fiercely loyal to their clan and those who have earned their trust and friendship.  Dwarves often trade their products, services, and protection with nearby halfling settlements for food, beer, and craft goods that they do not manufacture for themselves.
+
+Dwarf ###
+Edges
+Dwarves are bull headed. You have the Determined Edge.
+Determined - When hurt badly, you get tougher and fight harder. 
+And roll 1d6 or choose one of the following Edges.
+1-2:   Low Light Vision - You can see in daylight and in dim conditions.
+3-4:  Under Sense - You rarely lose your way underground.
+5-6:  Pack Mule - You can carry 1.5 times as much as normal.
+Skills
+Dwarven Weapon Proficiency - You are proficient with a traditional dwarf heavy weapon. Roll 1d6 or choose the type.
+1-3:   Battleaxe 
+4-6:  Warhammer 
+Languages
+You can speak one of the following languages. Roll 1d6 or choose. 
+1-3:    Dwerg is spoken by dwarves who live in the mountains and deep underground. 
+4-6:  Kaduz is spoken by dwarves who live in hills or near the surface in hilly areas.
+Gear
+You have a sturdy leather work apron, 4 dozen iron nails, a small hammer (Light Melee Weapon, 1d4 damage) and a flask of whiskey (Ud4). You also have a belt pouch with 1d6 gems worth 2 coins each. 
+Names
+Names - Alaric/Alarsi,  Hilmar/Hilma, Kurgaz/Kirgi, Therin/Therri
+Bynames (of) - Cavernfall, Iron Hills, Rockfall, Silverlake,  Thunderpeak
+Epithets (the) - Brightbraid, Dour, Gatecrasher, Gemfinder, Lightbearer, Stonehands, Tanglebeard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dwarf spot illustration ###
+
+
+
+
+Roll of 2 - ELF
+Elves are graceful, long lived people who love nature, live in forests, and are skilled with bows. They are an ancient people with deep knowledge of all handcrafts and arcane magic. Many elves tend to be isolationist. Sylvan elves fiercely defend their ever dwindling forest realm. High elves study and research esoteric arcane lore in remote sanctuaries, oblivious to outside events.  
+
+Elf ###
+Edges
+When attacked and harmed, Elves become dangerous foes. You have the Edge Dire Focus.
+Dire Focus - When hurt badly, you become sharper and more dextrous. 
+And roll 1d6 or choose one of the following Edges: 
+1-2:   Low Light Vision - You can see in daylight and in dim conditions.
+3-4:  Sylvan Step - You can move unseen and unheard in the woods.
+5-6:  Elven Accuracy - You do more damage with ranged attacks.
+Skills
+Elven children carry bows as soon as they can walk. You have the following Elven Weapon Proficiency Edge.
+Elven Weapon Proficiency - You are proficient with long bows. 
+Languages
+You can speak one of the following languages. Roll 1d6 or choose. 
+1-3:  Sindar is an ancient language spoken by the nigh extinct high elves who live in ancient, remote,  mountain citadels and by dragons. 
+4-6: Sylvan is spoken by elves who live in the primeval forests of the continent.
+Gear
+You have woven linen haversack. The rations (Ud4) that you receive in Step 5 - Starting Equipment is bread and wax wrapped honeycomb and the flask of water is a flask of wine (Ud4).  You also have a pouch with some interesting stones or acorns. 
+Names
+Names - Ailer/Ailre,  Feredir/Feredi, Kaeler/Kaelara, Rael/Raelorna
+Bynames (of) - Blue Glade, Crystal Hall, Elderwood, Sorrow Grove, Viney Hollow
+Epithets (the) - Brighteyes, Dreamer, Longshot, Swift, Treewhisperer 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Elf spot illustration ###
+
+
+
+
+
+Roll of 3 - HALFLING
+Halflings are small statured, husky, agrarian folk with fierce hearts who live in hills and wooded plains. They are well known for making quality cheeses, berry wines and growing a sweet variety of tobacco. Halflings are also commonly called “Stouts” which could be a reference to their build or the dark ales that they brew.
+
+Halfling ###
+Edges
+A halfling receiving extra nourishment can excel. You have the Second Breakfast Edge.
+Second Breakfast - You perform better when well fed. 
+And roll 1d6 or choose one of the following Edges.
+1-2:   Sneaky - You are good at hiding and moving stealthily.
+3-4:  Elusive - You are good at getting away from foes.
+4-6:  Durable - You are surprisingly resistant to serious wounds.
+Skills 
+Halflings are typically skilled in cooking or agriculture and many will have the Free Laborer Background with the Chef, Farmer, Fisher, Herder or Wagoner Skill. Even without these, Halflings are exposed and have some amount of experience in the following. Choose or roll 1d6. 
+1-3:   House Servant - You can prepare traditional dishes and bake basic breads, sew, and clean. 
+4-6:  Farmhand - You know the basics about planting crops, harvesting crops, and tending domesticated livestock.
+Languages
+You speak one of the following languages. Choose or roll 1d6. 
+1-2:     Kaduz is a language shared with hill dwarves. 
+3:        Nulya is spoken by humans in the old northern empire cities. 
+4-5:   Sulya is spoken by the human herders of the southern plains. 
+6:        Sylvan is spoken by elves who live in the primeval forests of the continent. 
+Gear
+You have a clay pipe, a tobacco pouch (Ud4), a walking stick (Light Melee Weapon, 1d4 damage), and a pocket handkerchief.  For Step 5 - Starting Equipment, your rations (Ud4) are hard cheese, bread, and dried meat and the flask of water is a flask of berry wine or dark beer (Ud4).
+Names
+Names - Alda/Aleda, Dort/Dora, Jard/Jara, Tully/Tilly, Ullo/Ully
+Bynames (of) - Burrowell, Carrot Top, Deepcreek, Overhill, Sweetearth
+Epithets (the) - Baldfoot, Curlytop, Stumpertoes, Quickfingers
+
+
+
+
+
+
+
+
+
+
+Halfling spot illustration ###
+
+
+
+
+
+Roll of 4 - HUMAN 
+Humans have a limitless desire to explore and control their environment. Their once vast empire has collapsed however and while some seek to restore that glory, others just strive to avoid sinking back into barbarity. Humans are typically friendly but capricious.  They are known to ally and freely intermingle with almost all others.
+
+
+Human ###
+Edges
+Humans seem to thrive in almost any condition. You have the Adaptable Edge.
+Adaptable  - You are unusually good at many unexpected tasks.
+Languages
+You speak two of the following languages. Choose or roll 1d10 twice. If you roll a duplicate you may choose to be able to read & write that language or you may reroll for another option. 
+1-2:     Nulya is spoken by those in and around the old empire cities of the North. 
+3-4:    Sulya is spoken by the farmers and herders of the Southern grasslands. 
+5-6:    Istya is spoken by raiders from the Eastern continent and the lands they have occupied in recent decades. 
+7-8:    Muluk is spoken by Orcs and nomadic barbarians from the West. 
+9-10:  Sylvan is spoken by elves who live in the primeval forests. 
+Gear
+You have a linen haversack. In Step 5 - Starting Equipment, the flask of water is a watered down wine (Ud4). In Step 5 - Starting Equipment, roll twice on the Trinket table and choose the one you prefer.
+Names
+Names - Erowld/Erowla, Gethin/Geta, Ilton/Iltara, Jaran/Jara
+Bynames (of) - Blasted Heath, Oldtown, Rotten Dock, Southend
+Epithets (the) - Gaptooth, Lanky, Tall, Whistler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Human spot illustration ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+full page map of former human empire or other spot illustration showing names of places from Ancestry Bynames ###
+
+
+
+
+Roll of 5 - Ixian
+Ixians are humanoids of extraplanar, profane origin. You are of extraplanar origin, are descended from an extraplanar immigrant, or offspring of one of these with mixed or full fiendish blood. This heritage can be expressed by black eyes, dark red or blue skin, curved black nails, cloven hooves, a tail, bony protrusions at joints, and/or horns. 
+The emergence of Ixians coincided with the fall of the human empire and several calamitous events. Ixians are regarded with suspicion if not outright aggression by most others. It is not uncommon for an Ixian to disguise their origin unless they are belligerent or powerful enough to fend off aggressors.
+
+Ixian ###
+Edges 
+Infernal Heritage - You have features expressing your Ixian heritage that could be glowing eyes, cloven hooves, a tail, and many others.  See the table on the following page to determine your specific features.
+And roll 1d6 or choose one of the following Edges.
+1-2:   Fire Resistance - Fire has less chance to harm you.
+3-4:  Flight - You have small but functional bat wings.
+5-6:  Innate Spell - You know and can cast a spell at will.
+Spells
+If you have the Innate Spellcasting Edge, you can cast an Arcane spell. Roll 1d6 or choose one of the following. The spell ability you choose does not require a Spellcasting Ud Check. This spell ability also does not require any verbal, somatic, or material components. You can cast this spell repeatedly until you fail a Spell Check. After the failed Spell Check, you cannot cast it again until after a Full Rest.
+This spell ability is in addition to those spells you know and can cast when or if you take the Arcana Edge. 
+1-2:  Change Self - You can alter your appearance as a disguise.
+3-4: Fire Bolt - You can shoot a ball of fire from your hands or eyes.
+5-6: Darkness - Non-magical light is temporarily suppressed.
+Languages
+You speak Infernal which is spoken by extraplanar creatures from profane realms and necromancers. You also speak one of the following two languages. Choose or roll 1d6. 
+1-3:  Nulya is the language of the old empire and northern human cities. 
+4-6: Istya is the language of occupying foreign invaders in the East. 
+Gear
+You have a leather haversack and a pair of leather gloves.
+Names
+Names - Asar/Asise, G’tar/G’tari, Maleus/Malari, Thios/Thias
+Bynames (of) - Dark Moon, Ilaria Citadel, Red Tower, Qualanth
+Epithets (the) - Bat, Burner, Demonspawn, Dread, Laughing, Sharpteeth, Whiptail
+Other
+Since you are seen as a profane creature to religious orthodoxy of Kelinya, put your lowest roll on Local Religious Authorities in Step 4 - Entanglements. Also, Inquisitors seem to show up at inopportune moments to harass you. 
+As an Ixian, you have the Drawback Profane Aspect.
+Profane Aspect -  You are more susceptible to divine spells and detection. Non-Ixian commoners who see expressions of your Infernal Heritage (horns, hooves, tail, wings, etc.) or are aware of it are fearful, causing you to have Disadvantage on all CHA Tests involving interactions with them other than intimidation. You have Advantage on CHA Tests to intimidate those who can see or are aware of your Infernal Heritage. Interactions with spellcasters & those who know you personally will be unaffected by your condition. 
+Also, you know the secret horror that drove your people to leave Ixia and come to Yrath.
+
+
+
+Ixian Infernal Heritage Traits
+Roll or choose for each of the following traits common for Ixians. Unless noted otherwise, they are all cosmetic for starting characters and do not affect gameplay except in the reactions from NPCs. At higher levels, a Ixian character can choose the Infernal Heritage Evolved Edge multiple times to access new effects and abilities from these traits.
+Skin Color - Your skin color typically ranges from blue to orange. On Ixia, your skin color was indicative of the social caste to which you belonged. Roll 1d6 or choose.
+Skin Patterns - A pattern in black contrasts your base skin color. The skin patterns are  indicative of the House or Family that your ancestors on Ixia came from . Roll 1d6 or choose.
+1:  Blue - High caste.
+2: Humanlike - You are probably not a full blooded Ixian.
+3: Orange - Middle caste.
+4: Purple - Low caste.
+5: Red - Middle caste.
+6: Translucent - Low caste. Your skin is transparent making your veins, arteries, muscles, and bones visible. Extended exposure to intense sunlight is painful and any damage it would inflict is doubled. 
+1:  Argyle
+2: Half - Roll twice more ignoring this result. The left and right half will have the indicated pattern. You are probably of mixed blood from two Ixian Houses.
+3: None - You are probably not a full flooded Ixian.
+4: Rorschach
+5: Spirals (typically geometric)
+6: Stripes - horizontal, vertical, or diagonal black lines of equal or varying thickness 
+Skin Texture - Ixian’s have a wide range of skin textures based on ancestral magical adaptations. Roll 1d6 or choose. 
+Smell - Your body exudes an odor that is easily detectable to anyone Close. Roll 1d6 or choose.
+1:  Dry and cracked
+2: Moist
+3: Normal
+4: Scaly
+5: Smooth
+6: Spiky - Not enough to cause additional damage yet.
+1:  Amonia
+2: Brimstone/Sulfur
+3: Lavender - Does not alarm commoners.
+4: Rotten Meat
+5: Rosemary - Does not alarm commoners.
+6: Sandalwood - Does not alarm commoners.
+
+
+Horns - Horns can be sharpened and can become broken or chipped. Removal or grinding them down to the quick is extremely painful and causes 2 points of damage that does not heal until after the horns regenerate which requires a Full Rest. Roll 1d6 or choose.
+Tail - Unless noted otherwise, tails make riding a horse without a modified saddle uncomfortable in the short term and painful in the long term. A tail will also require you to wear modified clothing for a comfortable or functional fit. Roll 1d8 or choose.
+1:  Bighorn Sheep - top of head and spiral
+2: Eland - tapering spirals from top of head
+3: Ibex - Back curving horns from top of head
+4: Musk Ox - thick horns from top of head tapering down below ears then forward
+5: None - You are probably not a full blooded Ixian.
+6: Stubs/Vestigial - short 2” nubs
+
+
+1: Hairless
+2: Long
+3-4: None - You are probably not a full blooded Ixian.
+5: Scaly 
+6: Short
+7: Spiky 
+8: Vestigial - makes riding a horse bearable.
+Eyes - You have striking coloration on your eyes. Roll 1d6 or choose from those listed below. If you want to be of mixed blood roll 1d6 or choose a second time to have heterochromia (two different colored eyes).
+Other - Roll 2d6 ignoring any duplicate except None (it is possible to have no “Other” Infernal Traits). Some of these traits will also require you to wear modified clothing for a comfortable or functional fit.
+1:  Black - Sclera, iris, and pupil (entire eye).
+2: Golden - Reflective iris with goatlike or catlike pupils.
+3: Humanlike - You are probably not a full blooded Ixian.
+4: Red - With black, “x” shaped, slit pupils.
+5: Silver - Reflective metallic iris with a diamond pupil. 
+6: White - iris and sclera with a pinpoint, colored pupil.
+1:  Bony Joint Protrusions
+2: Cloven Hooves
+3: Hard Curved Black Nails
+4: None - You are probably not a full blooded Ixian.
+5: Oversize Teeth
+6: Vestigial Wings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+spot illustration of Ixian horn types ###
+
+
+
+
+Roll of 6 - ORC
+Orcs are an aggressive, hunter gatherer people known for their ferocity. They are loyal to their clan and respectful of raw power which they will obey or abide unless opposed to the clan's objectives or safety. 
+Young orcs often see exploring and looting as a right of passage until they grow older and more settled. Their history and encounters with elves, halflings, and dwarves have often been contentious and violent.
+
+
+Orc ###
+Edges
+A wounded Orc is a dangerous Orc. You have the Vengeful Edge.
+Vengeful - When an opponent hurts you badly, you can charge and attack that opponent. 
+ And roll 1d6 or choose one of the following Edges: 
+1-2:    Brute 1 - You are tough and can take more damage. Increase your Hit Dice by 1.
+3-4:   Low Light Vision - You can see in daylight and in dim conditions.
+5-6:   Orc Savagery - You can do more damage in melee combat.
+Skills 
+Personal Weapon - You are proficient with a single, two handed, Heavy Melee Weapon. Roll 1d6 or choose one of the following. 
+1-2:   Great Swords
+3-4:  Battleaxe
+5:      Warhammer/Maul
+6:      Great Club
+Languages
+You speak Muluk which is also spoken by nomadic barbarians from the West. You also speak one of the following two languages. Choose or roll 1d6. 
+1-3:  Sulya is spoken by farmers and herders of the Southern grasslands. 
+4-6: Istya is the language of occupying foreign invaders in the East & allied orc tribes.  
+Gear
+You have Light Armor (Ud4) made of hides and piecemeal metal and leather armor salvaged parts. You have  a dagger (Light Melee Weapon, 1d4 damage), and a large leather belt pouch with a whetstone and 4d6 teeth (Orcish currency equivalent to 1 coin per 2 teeth).
+In Step 5 - Starting Equipment, select a Heavy Melee Weapon that matches your Personal Weapon Skill selection above rather than rolling. Heavy Melee Weapons do 1d8 damage or more.
+Names
+Names - Bagrak/Bagra, Durgat/Dyrgat, Gorm/Gyrm, Skrot/Skroti
+Bynames (of) - Dark Moon, Death Crag, Red River, Screaming Caves
+Epithets (the) - Biter, Bonebreaker, Notched Axe, Scarface, White Eyes
+
+
+
+
+
+
+Orc spot illustration of common weapons and armor ###
+
+
+
+
+
+
+
+
+
+
+
+Orc Raiders  ###
+
+
+
+
+
+
+
+
+
+
+Downtime  ###
+
+▶ Step 2 Overview - Background
+Your Background indicates your character’s experiences and life before starting a life of adventure. Often it will provide prompts and suggested catalysts for why your character began a life of adventure.
+There are six Background groups that loosely correlate to each Class which you choose later at 1st Level. You are not required to choose the Class related to your Background. Within each grouping, there are six or more specific Background choices. 
+You may select a Background from any one of the six groups or roll 1d6 twice. The first roll is to determine the group. The second roll is to determine the Background within that group. Some Backgrounds (Artisan, Bureaucrat, Crafter, Laborer, and Vagabond) have additional options that you can choose from or roll a third 1d6 for a random selection.
+Each Background package comes with some standard features in the following categories: Edges, Spells, Skills, Languages, Gear, Names, and Other. If a category is not included, there is no feature.
+To facilitate quick decisions during character creation, only a brief description providing the flavor and purpose of the Edge, Spell, and Skill are provided. Full details and mechanics are intentionally left out to avoid “analysis paralysis” or confusion of rule concepts that a new player may not understand yet. Full details are provided in Ch. 6 -  Edges & Skills and Ch. 7 - Spellcasting & Spells. 
+Edges are powerful abilities that are innate or through extensive training in the Background. Reroll or make a different selection if you already have one of the indicated Edges from a previous Step. A brief but incomplete description is provided for the Edges. See Ch. 6 - Edges & Skills for full details.
+Spells are any divine, profane, or arcane powers you have been taught or discovered from your Background. A brief but incomplete description is provided for any Spells. See Ch. 7 - Spellcasting & Spells for full details.
+Skills are less powerful knacks and abilities related to the Background learned through practice. A brief but incomplete description is provided for the Skills. See Ch. 6 - Edges & Skills for full details.
+Gear indicates items added, changed, or removed from those indicated in Step 5 - Starting Equipment. Some of the Backgrounds reflect hardship and gear and money may be reduced or eliminated. Note these items on a separate sheet of scratch paper to resolve for when you get to Step 5. For additional information or any special characteristics of your Gear, see Ch 3 - Equipment.
+Languages are included if there is some special language skill related to your character’s Background. Your character cannot read or write the indicated language(s) unless specifically noted or gained in a later Step.
+Names indicate common names, bynames, and epithets related to your Background. An epithet is typically a descriptive characteristic, habit, or quality. Your character may aspire to some chosen epithet or have been unwillingly assigned an undesirable one that will require some significant event or accomplishment to change.
+Other details include any special features regarding your Background. It will detail income and employment you may pursue. It will also provide requirements or suggestions regarding your Background’s effect on Entanglements that are determined in Step 4. Some Backgrounds, like Warlock, Adept, and Arcane Apprentice require you to select a Master who instructed you in the arcane mysteries.  
+Roll 1
+Background Class Group
+1
+Go to the 1-Skilled & Laborer (Adventurer) Type Backgrounds table and select or roll 1d6 for a specific Background. Optionally, you can make another selection or roll 1d6 again for additional Adventurer Backgrounds. 
+2
+Go to the 2-Performer & Scholarly (Bard) Type Backgrounds table and select or roll 1d6 for a specific Background. 
+3
+Go to the 3-Religious (Cleric) Type Backgrounds table and select or roll 1d6 for a specific Background. 
+4
+Go to the 4-Martial (Fighter) Type Backgrounds table and select or roll 1d6 for a specific Background. 
+5
+Go to the 5-Arcane (Magic User) Type Backgrounds table and select or roll 1d6 for a specific Background. 
+6
+Go to the 6-Rogue (Thief) Type Backgrounds table and select or roll 1d6 for a specific Background. 
+
+
+
+
+
+
+
+
+
+
+
+spot illustration related to backgrounds or gear  ###
+
+
+
+▶ 1 - Skilled & Laborer (Adventurer) Type Backgrounds
+Roll 2
+Select or roll 1d6 to determine your Skilled/Laborer Type Background. You can roll 1d6 a third time for more options
+1
+Former Apprentice Artisan, Jeweler - You can make and repair jewelry.
+
+
+Roll 3
+Additional Artisan Backgrounds (Optional)
+
+
+1
+Jeweler - as above
+
+
+2
+Arbalist - You can make and repair crossbows.
+
+
+3
+Armorer - You can make and repair armor.
+
+
+4
+Bowyer & Fletcher - You can make and repair bows and arrows.
+
+
+5
+Clothier - You are a skilled tailor that can design and make complex outfits. 
+
+
+6
+Locksmith - You can make and repair locks (and pick them).
+2
+Former Apprentice Bureaucrat, Scrivener - You can draft, translate, and forge contracts and legal documents.
+
+
+Roll 3
+Additional Bureaucrat Backgrounds (Optional)
+
+
+1
+Scrivener - as above
+
+
+2
+Advocate/Beadle - You are a lobbyist and lawyer.
+
+
+3
+Cartographer - You know geography and can make maps.
+
+
+4
+Interpreter - You can speak many languages and often assist merchants and diplomats.
+
+
+5
+Rat Catcher - You trap and capture vermin that ruin food and cause diseases.
+
+
+6
+Reeve/Inspector - You used to enforce local regulations and collect fines.
+3
+Former Apprentice Crafter, Smith - You can fabricate and repair items made of iron and steel.
+
+
+Roll 3
+Additional Crafter Backgrounds (Optional)
+
+
+1
+Smith - as above
+
+
+2
+Carpenter - You can make and repair timber structures.
+
+
+3
+Cooper/Wheelwright - You can make and repair wood items with metal components.
+
+
+4
+Leatherworker - You can make and repair leather goods like boots, belts, and Light Armor.
+
+
+5
+Mason - You can make and repair stone and masonry structures.
+
+
+6
+Swordsmith - You can make and repair swords and other weapons including Heavy Melee Weapons.
+4
+Former Apprentice Mercantiler, Money Changer - You can record and evaluate complex (or duplicitous) accounting.
+
+
+Roll 3
+Additional Crafter Backgrounds (Optional)
+
+
+1
+Money Changer - as above
+
+
+2
+Assayer - You can evaluate the quality and value of mineral ore as well as locate it.
+
+
+3
+Brewer - You can evaluate the quality and value of beer as well as make it.
+
+
+4
+Herbalist - You are familiar with the properties and uses of natural herbs as well as how to locate them.
+
+
+5
+Peddler - You are skilled with bartering and trading, especially smaller items you acquire.
+
+
+6
+Vintner - You can evaluate the quality and value of wine as well as make it.
+5
+Former Free Laborer, Ambler - You are skilled at breaking, training, and riding horses.
+
+
+Roll 3
+Additional Free Laborer Backgrounds (Optional)
+
+
+1
+Ambler - as above
+
+
+2
+Chef - You can prepare traditional dishes, breads, and pastries.
+
+
+3
+Farmer - You can evaluate a crop’s value and quality and know when and how to plant it.
+
+
+4
+Fisher - You can sail small vessels close to shore and skilled with fishing and related skills like tying knots.
+
+
+5
+Herder - You can evaluate herd animals and know how to raise them and treat common ailments.
+
+
+6
+Wagoner - You are skilled at operating and maintaining a wagon to transport goods.
+6
+Vagabond, Escaped Peasant/Thrall - You have escaped a life of servitude. You have one of the following basic skills.
+
+
+Roll 3
+Vagabond, Escapade Peasant/Thrall Skills
+
+
+1-2
+Farmhand - You know the basics about crops and domesticated livestock.
+
+
+3
+House Servant - You can prepare basic meals and common household tasks like sewing.
+
+
+4-5
+Laborer - You are good at clearing land, digging ditches, and maintenance of wood and stone structures.
+
+
+6
+Sailor Conscript  - You were pressed into service as a sailor but learned how to sail & navigate small vessels.   
+
+
+Roll of 1 - FORMER APPRENTICE ARTISAN, JEWELER*
+You were discharged by your master or absconded with a set of tools. They were either cruel and stingy, jealous of your genius, or blamed you for something valuable that disappeared.
+
+Apprentice Jeweler ###
+Skills
+Jeweler - You can evaluate, appraise, repair, and make** jewelry and decorations out of fine metals like gold, silver, platinum, & gems.
+Gear
+You have a satchel with a loupe, small files, and a jeweler’s saw. You also have a ring, bracelet, or chain necklace with a pendant worth 10 coins that you made to complete your apprenticeship.
+Other
+Since you were discharged, put your lowest roll on Master in Step 4 - Entanglements.  
+If your reputation is not widely known, an Artisan can take up a job with a new master in a large city and make 40 coins per week. 
+*  Additional Artisan options can be selected such as those listed below. Roll 1d6 or choose. Unless noted otherwise, the features above apply to the additional Artisan trades indicated below. 
+1: Jeweler - As above.
+2: Arbalist - You can make & repair** crossbows including arbalests. You have a small tool chest with pliers, files, and fine wood shavers. You also have a crossbow (Simple Ranged Weapon, 1d6 damage, Range Nearby) and bolts (Ud6) that you made to complete your apprenticeship.
+3: Armorer - You can make & repair** armors and shields. You have a wood toolbox with hammers, files, leather gloves, and an apron. You also have a suit of medium chain mail or scale mail armor (Ud6) that you made to complete your apprenticeship.
+4: Bowyer & Fletcher - You can make bows & arrows but not crossbows. You have a small tool chest with files, fine wood shavers, and hide glue. You also have a short bow (Simple Ranged Weapon, 1d6 damage, Range Nearby) and arrows (Ud6) that you made to complete your apprenticeship.
+5. Clothier - You are a tailor who can make complex clothing and outfits. You have an apron and a set of scissors. You have a fancy formal wear outfit (shirt, vest, trousers, stockings, hat, belt, and shoes) that you made to complete your apprenticeship.
+6: Locksmith - You can make & repair** keys and locks. You are also able to pick locks. You have small files, a jewelers saw, a small hammer, a padlock, its key, and a set of lock picks.
+** You can make & repair with time, appropriate tools, and/or a shop. See Ch 3 - Equipment for additional information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Artisan spot illustration like studio of apprentices ###
+
+
+
+APPRENTICE ARTISAN PORTRAITS
+
+
+
+
+Arbalist ###
+Armorer  ###
+Bowyer & Fletcher ###
+Locksmith ###
+
+
+
+Bowyer & Fletcher ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 2 - FORMER APPRENTICE BUREAUCRAT, SCRIVENER*
+Some legal documents being transcribed had a critical error and you were blamed even though you pointed out that the original documents had the same error. To save face, your master blamed you.  You were either discharged or left in the night with your supplies.
+
+Apprentice Scrivener ###
+Spells
+Through your training and study, you can cast the Level 1 Arcane Spell Comprehend Languages. You can only cast this spell as a Ritual until you take the Arcana or Theurgy Edge. This spell is known or can be prepared in addition to any other spells known when you take the Arcana or Theurgy Edge.
+Comprehend Languages - You can speak, read, and write an unknown language for the duration of the spell.
+Skills
+Scrivener/Scribe - You can draft, translate, and forge documents. 
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can speak, read & write Kelinya, the ancient language of the old empire used by most religious groups and government officials. 
+If  you can already speak, read, & write Kelinya, then roll 1d10 or select another language from the list in Step 6 - Languages that you can speak, read, and write.  This is in addition to the language gained in that step.
+Gear
+You have a bottle of ink, quill, paper, and a fine tooled leather courier satchel.
+Other
+Since you were discharged, put your lowest roll on Master or Colleagues in Step 4 - Entanglements. 
+If your reputation is not widely known, a Bureaucrat can take up a job with a new master in a large city and make 40 coins per week.
+*  Additional Bureaucrat options can be selected such as those listed below. Roll 1d6 or choose. Unless noted otherwise, the features above apply to the additional Bureaucrat trades indicated below. 
+1: Scribe - As above.
+2: Advocate/Beadle - You know laws, regulations, governmental hierarchy, officials, and how to navigate these organizations and their systems.  You have also learned to read & write the language(s) gained from your Ancestry. For Step 4 - Entanglements, put your highest roll on Local Authorities.  
+3: Cartographer - You are skilled at making maps and have an excellent understanding of local geography (25 mile radius)and regional geography (100 mile radius) and a good knowledge of national geography (500 mile radius). You have also learned to read & write the language(s) gained from your Ancestry. 
+4: Inspector/Reeve - You had some authority to enforce local regulations, ordinances, and collect fines and fees from crafters and farmers until you were accused of taking bribes and discharged. You still have a sword (Simple Melee Weapon, 1d6 damage) and badge of office. With the badge, you can try to bluff that you are still an official agent. You have also learned to read & write the language(s) gained from your Ancestry.
+5: Interpreter - You typically assist merchants, traders, and sometimes foreign dignitaries from distant lands to communicate and do business. Often you are privy to valuable knowledge or overhear something said by those who do not think you can understand what they are saying. From time to time, you have been able to sell or use this valuable knowledge to your advantage. For Step 4 - Entanglements, put your highest roll in Local Authorities or Shadow Groups.
+You have also learned to read & write the language(s) gained from your Ancestry. You also have the Polyglot Skill.
+Polyglot - Roll d10 three additional in Step 6 - Languages, or select three more languages that you can speak. 
+
+6: Rat Catcher - In small towns and larger settlements your trade is so ubiquitous that you can often access areas unnoticed. You have the Sneaky Edge and the Snares Skill. 
+Snares - You can detect and make snares, often with makeshift materials to hard or hinder creatures up to human size.
+Your anonymity has opened underworld contacts and opportunities for you. In Step 4 - Entanglements, put your highest in Shadow Groups. For Gear, you have rat traps, a cage, and a small, vicious dog that obeys simple, one word commands and can assist in locating and killing small vermin.  See Ch. 8 - NPCs & Monsters for the dog’s statistics. You do not gain the Skills, Language, and Gear features indicated above for other Bureaucrats.
+
+
+
+APPRENTICE BUREAUCRAT PORTRAITS
+
+
+
+
+Advocate/Beadle  ###
+Cartographer ###
+Inspector/Reeve ###
+Rat Catcher ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 3 - APPRENTICE CRAFTER, SMITH*
+You have always loved working with your hands and making things that you saw in your mind. After a lengthy apprenticeship, you had a major falling out with your master. It may have been due to their jealousy or that of another apprentice. There could also have been a real or imagined violation of trust. Now you are on the streets. 
+           
+
+Smith ###
+Skills 
+Smith - With proper tools and a shop, you can evaluate, make, and repair** most fabricated metal items.  You cannot make Heavy Armor & Heavy Weapons though you are still able to evaluate & repair them. 
+Gear
+You have a wooden toolbox with hammers, chisels, files, tongs, leather gloves, and an apron. You also have a steel dagger (Light Melee Weapon, 1d4 damage).
+Other
+Since you were discharged, put your lowest roll on Master or Colleagues in Step 4 - Entanglements. 
+In another town, a Crafter can take up a job with a master and make 40 coins per week.  
+*   Additional Crafter options can be selected such as those listed below. Roll 1d6 or choose. Unless noted otherwise, the features above apply to the additional Crafter trades indicated below. 
+1: Smith - As above.         
+2: Carpenter - You can evaluate, make & repair** timber structures. For Gear, you have a mallet and adze that can both be used as a Light Melee Weapon (1d4 damage). You also have a wood planer and a level.
+3: Cooper/Wheelwright - You can evaluate, make & repair** complex wood items with metal components like wardrobes, barrels, carts, wagons, and wheels. For Gear, you have a mallet and wide bladed ax that can both be used as a Light Melee Weapon (1d4 damage). You have a draw knife, adjustable dividers, and a planer. You also have a rickety, two wheeled cart and an old gentle mule.
+4: Leatherworker - You can make & repair** leather goods like boots & light armor. For Gear, you have a small kit of leather working tools including punches, awls, cutters and a roll of tanned leather. You also have a set of leather armor (Light Armor, Ud4) that you made as part of your apprenticeship.
+5: Mason - You can evaluate, make & repair** stone and masonry structures. For Gear, you have a hammer that can also be used as a Light Melee Weapon (1d4 damage). You also have iron spikes (Ud8), trowel, and a level.
+6: Swordsmith - You are able to evaluate, make & repair** swords and other melee weapons including heavy melee weapons.  You have your choice of a Simple or Heavy Melee Weapon that you made. It will typically be a sword (Simple Melee Weapon, 1d6 damage) or great sword (Heavy Melee Weapon 1d6 damage or 1d8 if you are proficient).
+** You can make & repair with time, appropriate tools, and/or a shop. See additional information in Ch 3 - Equipment.
+
+
+
+
+
+
+
+
+APPRENTICE CRAFTER PORTRAITS
+     
+
+
+
+Carpenter  ###
+Leatherworker  ###
+Mason ###
+Swordsmith  ###
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 4 - APPRENTICE MERCANTILER, MONEY CHANGER*
+You were good with numbers and organization even as a small child. Years were spent apprenticing to learn how to value various precious currencies, as well as the math and processes to track complex monetary transactions and calculate interest. A client or local authorities accused your master’s business of inaccurate exchanges, money laundering, or evasion of taxes and fees. Someone had to be blamed and it fell to you. Now you are out on the street.
+
+               Apprentice Money Changer ###
+Skills
+Money Changer - You can do complex accounting including hiding sources and distributions of funds. 
+Fence - You can buy, sell, or locate any good or service, legal and illicit. 
+Gear
+You have a set of fancy clothes and a leather satchel, abacus, lead stylus, and a bound ledger.
+Other
+Since you were discharged, put your lowest roll on Master or Colleagues in Step 4 - Entanglements. 
+In another town, a Mercantiler can take up a job with a master and make 40 coins per week.  
+If you have been working with shady characters to cheat exchange rates or avoid taxes and fees, put your highest roll on Shadow Groups for Step 4 - Entanglements.
+*  Additional Mercantile options can be selected such as those listed below. Roll 1d6 or choose. Unless noted otherwise, the features above apply to the additional Mercantiler trades indicated below. 
+1: Money Changer - As above. 
+2: Assayer - You can evaluate the quality and value of mineral ore and are also familiar with where they can be located. You do not have the Fence Skill. For Gear, you have a mortar & pestle, and small kit of reagents to test samples.
+3: Brewer - You know how to evaluate the quality & value of beer. If you have proper equipment & ingredients you can also brew beer. You do not have the Fence Skill.
+4: Herbalist - You are familiar with the properties and uses of natural herbs, where to find them, how to harvest/preserve them, and their value. You do not have the Fence Skill.
+5: Peddler - You are skilled at bartering and trading. You have the Fence Skill as described above. You have a double capacity backpack (holds 1200 coins or 60 lbs). It is filled with baubles and miscellaneous small equipment worth approximately 40 coins. 
+6: Vintner - You know how to evaluate the quality & value of wine. If you have proper equipment & ingredients you can also make wine. You do not have the Fence Skill. You do not have the Fence Skill.
+
+
+
+
+
+
+
+APPRENTICE MERCANTILER PORTRAITS
+
+
+
+
+
+
+
+
+
+Assayer ###
+Brewer  ###
+Herbalist ###
+Peddler  ###
+
+
+
+
+
+
+
+
+
+Roll of 5 - FREE LABORER, AMBLER*
+You worked on the manor of a local lord training and breaking horses. You were discharged due to jealousy of other laborers or because the lord believed that you injured their prize stallion.
+
+
+
+Ambler ###
+Skills
+Ambler/Equitation - You are skilled at breaking, training, and riding horses. You are able to evaluate a horse’s value and temperament as well as treat them for common, minor maladies. You receive Advantage on all related Ability Tests including actions such as calming a frightened horse, performing precision riding feats, and jumping.
+Gear
+You have a riding horse with a saddle, bridle, and saddlebags with grain (Ud4). You can choose a quiet, mild tempered horse or a hot-blooded horse who is more aggressive. In either case, the horse will respond to single word, verbal commands. See Ch. 8 - NPCs & Monsters for the horse’s statistics.
+Other
+Since you were discharged, put your lowest roll on Master or Colleagues in Step 4 - Entanglements. 
+In another town, a Free Laborer can take up a job with a master and make 30 coins per week.   
+*  Additional Laborer options can be selected such as those listed below. Roll 1d6 or choose. Unless noted otherwise, the features above apply to the additional Laborer trades indicated below. 
+1:  Ambler - As above.
+2:  Chef - You can prepare traditional dishes, breads, and pastries. You can identify and evaluate the value & quality of ingredients. For Gear, you have a set of knives, a cutting board, and a mortar & pestle. You can make 1 coin per day in a kitchen or tavern.
+3:  Farmer - You know when to plant and about a crop’s value & quality and you are also fairly good at predicting the inland weather for up to seven days. 
+4: Fisher - You can sail small vessels in rivers and close to the coast and are skilled with knots and fishing gear. You are also fairly good at predicting coastal weather for up to seven days. For Gear, you have 20’ of fine, strong string and brass hooks (Ud6). 
+5: Herder - You know about care and valuation of herd animals and treatment of common herd animal ailments. You also have a small, loyal dog that obeys one word commands and can assist in herding animals. See Ch. 8 - NPCs & Monsters for the dog’s statistics.
+6: Wagoner - You drive a wagon to transport goods for various farmers and mercantile groups. You have an open wagon that is drawn by two mild tempered ponies. Life on the roads is often dangerous so you acquired a crossbow (Light Ranged Weapon, 1d6 damage, Range Nearby) and bolts (Ud6).
+
+
+
+
+
+
+
+
+
+
+FREE LABORER PORTRAITS
+
+
+
+
+Chef  ###
+Farmer ###
+Fisher ###
+Herder  ###
+
+
+
+
+
+
+
+Ambler ###
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 6 - VAGABOND, ESCAPED THRALL
+Through debt or birth, you were locked into servitude. Through providence or assistance of a friend, you have escaped and finally broke the chains that bind and got the boot off of your neck. This may be your only chance to have a life you choose.
+
+ Vagabond - Escaped Thrall ##
+Edges
+Crucible - That which has not killed you has made you stronger. Choose or roll 1d6 to increase your 1-3: STR or 4-6: CON by +1.
+Skills
+Choose or Roll 1d6 for your skill.
+1:        House Servant - You can prepare traditional dishes and bake basic breads, sew, and clean. Jealousy from another thrall or some relationship with the master’s family made it unbearable to remain.
+2-3:  Farmhand - You know the basics about planting crops, harvesting crops, and tending domesticated livestock. Cattle got into the newly planted crops and you were blamed and punished.
+4-5:  Laborer - You are good at clearing land, digging ditches, and simple maintenance of wood and stone structures. One of the master’s children was injured at a building site and you were blamed and punished for it.
+6:     Sailor (Conscript) - You were pressed into service as a sailor at a young age. 
+You have Skill Sailor - You have basic sailing skills, can sail small vessels in rivers and close to the coast and are skilled with knots and ropemaking. You are also fairly good at predicting coastal weather for up to seven days.
+Gear
+You do not receive any of the Gear from Ancestry and Class or Step 5 - Starting Equipment. For Gear, you have a shirt and pants, both of which are ragged and dirty. You have no shoes. You have 3’ of twine to keep your pants up and an open wooden pillory or pair of iron shackles with about 12 inches of chain. 
+Other
+Since you are an escapee from forced servitude, put your lowest roll on Master or Local Authorities for Step 4 - Entanglements. If you left friends or family behind to be free you may feel a pull to return and help them. 
+If your background remains unknown, you can make 20 coins per week with your Skill. In another town, you can take up a job with an unscrupulous new master that is aware of your status but you will only be able to get free meals and sleep in the shed. If there is a reward for you or if they become nervous, they may turn you into authorities.  
+
+
+
+
+
+
+
+
+VAGABOND BACKGROUND PORTRAITS
+
+
+
+
+
+
+House Servant ###
+Farmhand ###
+Laborer ###
+Conscript Sailor ###
+
+
+
+
+
+
+
+
+
+
+
+▶ 2 - Performer & Scholarly (Bard) Type Backgrounds
+Roll 2
+Select or roll 1d6 to determine your Performer/Scholarly Type Background. 
+1
+Acrobat - You are gifted with balance and coordination. You juggle, tumble, and other physical feats.
+2
+Contortionist - You have flexible joints and can fit into or through narrow, and confined spaces.
+3
+Jester - You have a stinging but insightful wit that you are compelled to share, even to your occasional detriment.
+4
+Minstrel - You can compose and perform songs and music vocally and with instruments.
+5
+Scholar - You have studied and have a love of contemporary knowledge and ancient lore.   
+6
+Storyteller/Thespian - You are skilled at authoring, recounting, and performing contemporary and traditional stories.   
+
+
+
+Roll of 1 - ACROBAT
+You are a daredevil that has great balance and have been climbing and jumping from dangerous heights since you were a child. You joined a group of travelling entertainers a few years ago and have been living on the road with them. Recently, you had to leave because of professional jealousy, a relationship gone bad, or accusations of stealing from the till or a customer.
+
+Acrobat ###
+Edges
+You have miraculously escaped some situations and falls that would have injured or killed anyone else. You have the Lucky Edge. 
+Lucky* - You are unusually more successful in actions and events.
+* If you already have the Lucky Edge, you can have the Evasion Edge.
+Evasion - Your dextrous ability can help you avoid damage from traps, magical devices, and spells.
+Skills
+Coordination - While training with the troupe, you have also developed great balance and hand-eye coordination. You can juggle and perform feats such as handstands as well as walk on your hands.
+Tumbling - You are skilled at feats related to jumping, climbing, falling, and balancing. You can make a controlled fall twice as far as others without sustaining damage. You can make both a standing and running jump further than most. 
+Gear
+You have a bright and decorative performance outfit, possibly with decorations like small bells, sequins, lace, and tassels. You also have a set of 5 wooden juggling clubs or daggers that can also be used as Light Melee and Ranged Weapons (1d4 damage, Range Nearby).
+Names
+Epithets (the) - Cat, Daring, Incredible, Juggler, Tumbler
+Other
+Because you had to leave, put your lowest roll on Colleagues or Local Authorities for Step 4 - Entanglements. Itinerant performers tend to attract and harbor criminals. For Entanglements, you may want to consider putting a high roll in Shadow Groups. 
+You can perform on  street corners and earn 20 coins per week or, with a new troupe, 30 coins per week in addition to food and a place to sleep. 
+With the Critical Success of an INT, WIS, or CHA Ability Test, you can draw in a big crowd and earn double the amount that week. With a Critical Failure, you earn half the amount that week.
+
+
+
+Roll of 2 - CONTORTIONIST
+Since you were a child, you were able to bend the joints of your limbs in disturbing configurations. The head of a travelling group of entertainers invited you to join them for a life of adventure. Recently, you had to leave because of professional jealousy, a relationship gone bad, or accusations of stealing from the till or a customer.
+
+Contortionist ###
+Skills
+Contortionist - You excel at fitting into cramped spaces, squeezing through narrow spaces, and escaping shackles and bindings.
+Coordination - While training with the troupe, you have also developed great balance and hand-eye coordination. You can juggle and perform feats such as handstands as well as walk on your hands. 
+Gear
+You have a decorative, fitted performance outfit that allows for uninhibited mobility. You also have a set of 5 wooden juggling clubs or daggers that can also be used as Light Melee and Ranged Weapons (1d4 damage, Range Nearby). 
+Names
+Epithets (the) - Astonishing, Bent, Freak, Twister, Uncanny, Oddity
+Other
+Because you had to leave, put your lowest roll on Colleagues or Local Authorities for Step 4 - Entanglements. Itinerant performers tend to attract and harbor criminals. For Entanglements, you may want to consider putting a high roll in Shadow Groups. 
+You can perform on  street corners and earn 20 coins per week or, with a new troupe, 30 coins per week in addition to food and a place to sleep.  
+With the Critical Success of an INT, WIS, or CHA Ability Test, you can draw in a big crowd and earn double the amount that week. With a Critical Failure, you earn half the amount that week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Contortionist,  fair, or performance related spot illustration ###
+
+
+
+
+
+
+
+
+
+
+Roll of 3 - JESTER
+Your sharp wit has cut too close to the truth and insulted your lord or someone important to them so you have been sent packing. 
+
+Jester ###
+Edges
+Cutting Words - You can often gain insight into an individual’s motivations and disrupt their concentration and focus.
+Skills
+You have additional specialized training for entertainment. Choose or or roll 1d6.
+1-3    Coordination - You have developed great balance and hand-eye coordination. You can juggle and perform feats such as handstands as well as walk on your hands
+4-6   Tumbling - You are skilled at feats related to jumping, climbing, falling, and balancing. You can make a controlled fall twice as far as others without sustaining damage. You can make both a standing and running jump further than most. 
+Gear
+You have a bright and decorative performance outfit, possibly with decorations like small bells, sequins, lace, and tassels. You also have a wooden club (Light Melee Weapon, 1d4 damage) with bells and a decorative face.
+Names
+Epithets (the) - Buffoon, Clown, Fool, Joker, Knifetongue, Witty
+Other
+You can perform on a street corner, dispensing comedic observations to those passing by and earn 10 coins per week or, with the proprietor’s permission, 20 coins per week with drinks and meals at an inn or tavern. 
+With the Critical Success of an INT, WIS, or CHA Ability Test, you can draw in a big crowd and earn double the amount that week. With a Critical Failure, you earn half the amount that week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jester related spot illustration at a court ###
+
+
+
+
+
+
+Roll of 4 - MINSTREL
+Your love of music and performing led you to running away from the dreary life that you seemed destined to live. You have increased your musical and performing skills by hanging out with other musicians in bars and taverns or travelling through town. A disagreement or misunderstanding with some locals or another rival musician has led you to start a new adventure and explore the world. 
+           
+Minstrel ###
+Skills
+Musical Performer - You read and write musical notation. You can sing and currently know how to play five instruments. Typical examples are woodwinds (flute, shawm, bagpipes), strings (violin, lute, harp, hurdy-gurdy), and percussion (tabor, tambourine, drums). 
+Gear
+You have a bright and decorative performance outfit, possibly with decorations like feathers, sequins, lace, metal buttons, and tassels as well as a fancy hat with a tassel or large feather. You also have one instrument that you know how to play and its leather carrying case.
+Names
+Epithets (the) - Bard, Heartstealer, Minstrel, Nightingale, Performer
+Other
+You can perform on a street corner and earn 20 coins per week or, with the proprietor’s permission, 30 coins per week with free drinks and meals at an inn or tavern. 
+Once per week, with a successful CHA Ability Test, you can draw a crowd in an establishment and earn double the money in addition to free drinks and food for yourself. 
+With the Critical Success of an INT, WIS, or CHA Ability Test, you can draw in a big crowd and earn double the amount that week. With a Critical Failure, you earn half the amount that week.
+When rolling for Step 5 - Entanglements, consider placing a higher value on Colleagues and develop a backstory for a close relationship with another performer or a low value and develop a backstory for another performer who is your competitor. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Minstrel related spot illustration of performance or Instruments ###
+
+
+
+
+
+
+Roll of 5 - SCHOLAR
+You have always loved and been drawn to stories and ways to gain more knowledge. At a young age, you learned to read from a relative or a mentor who noted your intelligence and hunger for knowlege. You were then apprenticed to another Scholar to learn and research. Now that your apprenticeship is complete, you wanted to seek out new lore in the world rather than research minutiae and sit in a dark room reading dusty scrolls and tomes.
+
+Scholar ###
+Spells
+Through your training and study, you can cast the Level 1 Arcane Spell Comprehend Languages. You can only cast this spell as a Ritual until you take the Arcana or Theurgy Edge. This spell is known or can be prepared in addition to any other spells known when you take the Arcana or Theurgy Edge.
+Comprehend Languages - You can speak, read, and write an unknown language for the duration of the spell.
+Skills
+Choose or roll 1d6 twice for two Skills ignoring any duplicates or Skills that you have already gained from your Ancestry or Class. 
+1:  Oratory - With a brief presentation, you can try to change the target’s attitude toward an idea or person.
+2:  Probabilities - You can usually determine the likelihood of an occurrence mathematically.
+3:  Esoterica - You can typically understand, identify, and evaluate arcane formula (spells) devices, accouterments, activities, and beings (like golems, homunculi, and other magically created creatures).
+4:  Historic Lore - You can typically recall lore about historical events, heroes, and past civilizations.
+5:  Nature Lore - You can typically recall lore about geography, geology, plants, animals, and weather.
+6: Theology - You can typically identify, and know how to respond to supernatural objects, activities, and profane/divine beings like all types of Ixians, angels, and spirits.
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you rolled or choose to know how to speak in Step 6 - Languages. 
+Gear 
+Bottle of ink, quill, paper, and fine tooled leather courier satchel.
+Names
+Epithets (the) - Academic, Bookworm, Inquirer, Quizzard, Scholastic, Seeker
+Other
+Depending upon your Skills, you should be able to obtain employment as a researcher or tutor for 20 coins per week. You will and also have food, drink, and a place to sleep if you are in residence or live-in. 
+
+
+
+Roll of 6 - STORYTELLER/THESPIAN
+
+Storyteller/Thespian  ###
+Day to day life is a colorless drudgery but the stories of feats performed by gods and heroes of old are your passion. You were labelled a daft daydreamer and beaten for laziness so ran off to join a travelling troupe of actors, storytellers and entertainers. With the troupe, you have learned new lore as well as how to perform in front of crowds. Recently, you had to leave because of professional jealousy, a relationship gone bad, or accusations of stealing from the till or a customer.
+Skills
+Your speaking talents and training has given you the Oratory Skill. 
+Oratory - With a brief presentation, you can try to change the target's attitude toward an idea or person.
+Choose or Roll 1d6 for one additional skill. 
+1-3:  Costume & Makeup - You can make costumes, prosthetics, and makeup to disguise yourself or someone else.
+4-6:  Religious Lore - You know the stories of creation and the sagas of the gods and heroes by heart.
+Gear
+You have a bright and decorative performance outfit, possibly with decorations like feathers, sequins, lace, metal buttons, and tassels.  
+If you have the Costume & Makeup Skill, you also have a small wooden chest Disguise Kit that includes two additional sets of clothes, costume jewelry, fake beards/ mustaches, fake eyebrows, two wigs and a makeup kit with a brass mirror, makeup pots. 
+Names
+Epithets (the) - Entertainer, Griot, Memory, Owl, Raconteur, Rymer, Wordsmith
+Other
+You can perform on the roads with a new troupe 20 coins per week and also have food, drink, and a place to sleep. 
+With the Critical Success of an INT, WIS, or CHA Ability Test, you can draw in a big crowd and earn double the amount that week. With a Critical Failure, you earn half the amount that week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thespian related spot illustration ###
+
+
+
+
+▶ 3 - Religious (Cleric) Type Backgrounds
+Roll 2
+Select or roll 1d6 to determine your Religious Type Background.
+1
+Accursed - You have been tainted through your interest and study of arcane, profane, and divine power.
+2
+Acolyte - You have studied lore and deeper mysteries of the profane and divine realms at a temple or  monastery.
+3
+Cultist - Dark powers have whispered in your mind and revealed forbidden lore to you.
+4
+Inquisitor - You are a zealot who roots out heresy and corruption of the divine tenets and orthodoxy.
+5
+Pariah - Powers have communicated to you through visions and dreams showing you corruption in the orthodoxy.       
+6
+Touched/Anchorite - You have been chosen for a divine purpose and given powers that concern local authorities.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insert full page spot illustration or religious related spot illustration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 1 - ACCURSED
+You have been tainted mentally or physically through your study and interest in arcane, profane, and divine powers.  Many locals believe your affliction indicates a taint on your soul. Only you know the truth.
+
+Accursed ###
+Spells
+You can prepare and cast one Level 0 Theurgy Spell and know and can cast a Level 0 Arcane Spell. 
+For the Theurgy Spell, roll 1d6 or choose for a spell you can prepare. Preparation of this Theurgy spell is in addition to those you can prepare when or if you take the Theurgy Edge.
+1-2:    Detect Magic - You can sense the power and presence of magic.
+3-4:   Endure Elements - You are resistant to damage from elemental forces like fire, ice, and electricity for the duration of the spell.
+5-6:  Taint Food and Drink - Your touch can spoil food and beverages.
+For the Arcane Spell, roll 1d6 or choose one of the following spells that you will know. You know this Arcane spell in addition to those known when or if you take the Arcana Edge.  
+1-2:   Change Self - You can alter your appearance as a disguise.
+3-4:  Mage Hand - You can manipulate items at a distance as if with your hand.
+5-6:  Mending - You can repair a break or tear in an object.
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can speak, read & write Infernal which is spoken by extraplanar creatures from profane realms and necromancers. If you can already speak, read, & write Infernal, then roll 1d10 or select another language from the table in Step 6 - Languages that you can speak. 
+Gear
+You have an eccentric collection of small arcane, divine, and profane trinkets as well as a few books of similarly strange theories and writings regarding these types of powers.
+Other
+You have been in close proximity to some form of corrupting magic at some point in your life inadvertently or through your studies. 
+For Step 4 - Entanglements, put your lowest roll in Local Religious Authorities or Neighbors. If bad events occur near you, locals may drive you off or an Inquisitor may come to investigate and probably arrest you.
+Also, Magic is dangerous, especially to one without proper training. In Step 8 - Corruption, roll 1d20 to determine the effect and 1d6 to determine the severity/persistence. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 2 - ACOLYTE
+You have spent time studying the deeper mysteries of the divine world. You may have been sent to the temple or monastery for any number of reasons. Your family may have wanted you educated or as an offering because they are religious. They may have been too poor to feed you or you may have been an orphan or foundling.  
+
+Acolyte ###
+Spells
+You have studied the lore of the profane and divine realms and their effect on your world. You can prepare and cast one Level 0 Theurgy Spell.  Preparation of this spell is in addition to those you can prepare when or if you take the Theurgy Edge. Roll 1d6 or choose one of the following. 
+1-2:  Detect Profane/Divine - You can sense creatures that are undead or of extraplanar origin.
+3-4: Healing Hand  - Your touch can heal minor wounds.
+5-6: Light/Darkness - You can create illumination or darkness in an area or on a target.
+Skills
+Temples and monasteries provide religious education as well as practical skills to help generate funds to maintain their organization.
+Roll 1d10 or choose one of the Skills below ignoring any Skills that you have already gained from your Ancestry or Class. 
+
+1:        Brewer - You know how to evaluate the quality & value of beer. If you have proper equipment & ingredients you can also brew beer.
+
+2:      Farmer - You know when to plant and about a crop’s value & quality and you are also fairly good at predicting the inland weather for up to seven days. 
+
+3:      Herder - You know about care and valuation of herd animals and treatment of common herd animal ailments. 
+4-6:  Oratory - With a brief presentation, you can try to change the target’s attitude toward an idea or person.
+7-9:  Theology - You can typically understand, identify, and deal with supernatural objects, activities, and profane/divine beings like all types of Ixians, angels, and spirits.
+10:     Vintner - You know how to evaluate the quality & value of wine. If you have proper equipment & ingredients you can also make wine. You do not have the Fence Skill.
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you roll or choose to know how to speak in Step 6 - Languages. 
+Gear
+You have a prayer mat, candles (Ud6), and book of psalms or prayers.  Instead of the traveling clothes, leather belt, and leather boots indicated in Step 5 - Starting Equipment, you have a coarse spun robe, a rope belt, and sandals.
+Names
+Epithets (the) - Drowsy, Flatulent, Haughty, Pious, Silent, Stern 
+
+
+
+Other
+For Step 4 - Entanglements, put your highest roll in either Local Religious Authorities or Neighbors if you have been helping locals.
+With the approval of the local temple, you can perform blessings and ceremonies commemorating birth, adulthood, marriage, and death for commoners and earn 30 coins per week.
+
+
+
+
+
+
+
+
+Acolyte related spot illustration like monks working the fields ###
+
+
+
+
+
+
+
+Roll of 3 - CULTIST
+Dark powers whisper in your mind and have led you down a path of intriguing and often disturbing research. You now have the urge to seek out deeper forbidden lore and find others with similar interests.
+
+           Cultist ###
+Edges
+You have studied secret profane lore and are beginning to unlock its immense power. You have the Hex 1 Edge.
+Hex 1 - You can make a nearby opponent, that you can see, weaker.  that you can use to make your enemies ill. 
+Spells
+You can prepare and cast one Level 0 Theurgy Spell. Roll 1d6 or choose. You can prepare this spell in addition to any other spells known when or if you take the Theurgy Edge.
+1-2:  Detect Profane/Divine - You can sense creatures that are undead or of extraplanar origin.
+3-4: Harming Hand  - Your touch can cause minor wounds.
+5-6: Light/Darkness - You can create illumination or darkness in an area or on a target.
+Languages
+You speak, read, and write Infernal which is spoken by extraplanar creatures from profane realms and necromancers. If you can already speak, read, & write Infernal, then roll 1d10 or select another language from the table in Step 6 - Languages that you can speak. 
+Gear
+You have a prayer mat, candles (Ud6), and a forbidden book of  prayers to profane powers.  You also either have a secret tattoo or an unholy symbol of a profane power but otherwise appear to be an Acolyte of a more acceptable divine power. 
+Instead of the traveling clothes, leather belt, and leather boots indicated in Step 5 - Starting Equipment, you have a coarse spun robe, a rope belt, and sandals.
+Names
+Epithets (the) - Dark, Odd, Mumbler, Silent, Watcher
+Other
+For Step 4 - Entanglements, put your lowest roll in Local Religious Authorities if you have not kept your beliefs and power secret. Put your highest roll in a group consisting of like-minded cultists. This could be Colleagues (a heretical religious cell in a monastery), Family, Master, or Shadow Groups. If the interests and studies of you and your cell become known, Inquisitors will hunt you.
+If you maintain the secrecy of your cultish beliefs, you can impersonate an Acolyte. With the approval of the local temple, you can perform blessings and ceremonies commemorating birth, adulthood, marriage, and death for commoners and earn 30 coins per week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cultist related spot illustration ###
+
+
+
+Roll of 4 - INQUISITOR
+When profane powers or heresy make themselves known, one must root it out, no matter what the cost. Even as a child, you could sense wickedness. You may have been sent to the temple or monastery for any number of reasons. Your family may not have wanted you because you made them uncomfortable or they were too poor to feed you. They may have sent you as an offering because they are religious. You may have been an orphan or foundling. With your training complete, you can join an order or seek out evil as a free agent.
+
+
+           
+Inquisitor ###
+Edges
+Through your training and rituals, you have the Edge Grace.
+Grace - You have armor like divine protection.
+Spells
+You can prepare and cast the Level 0 Theurgy Spell, Detect Profane/Divine. You can prepare this spell in addition to any other spells known when or if you take the Theurgy Edge.
+Detect Profane/Divine - You can sense creatures that are undead or of extraplanar origin.
+Skills
+Through your training you have gained one of the following Skills. Roll 1d6 or choose.
+1-2:    Esoterica - You can typically understand, identify, and evaluate arcane formula (spells) devices, accouterments, activities, and beings (like golems, homunculi, and other magically created creatures).
+3-4:  Oratory - With a brief presentation, you can try to change the target’s attitude toward an idea or person.
+5-6:  Theology - You can typically identify, and know how to respond to supernatural objects, activities, and profane/divine beings like all types of Ixians, angels, and spirits.
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you roll or choose to know how to speak in Step 6 - Languages. 
+Gear
+You have a special robe and exotic hat typical for Inquisitors as well as a holy symbol and a spiked mace (d6) that can dispense holy water (Ud4, d4) separately or with a successful melee attack. 
+Names
+Epithets (the) - Dog of (deity), Hound, Merciless
+Other
+For Step 4 - Entanglements, put your highest roll in Local Religious Authorities and your lowest roll in Neighbors due to their paranoia that you will accuse them of something. 
+If you seek employment with a local temple to investigate heresy and other corruption, you can earn 30 coins per week with free drinks and meals at their facility when not travelling. 
+
+
+
+
+
+    Inquisitor water sprinkler ###
+
+
+Roll of 5 - PARIAH
+Powers have communicated to you through visions and dreams. You have been shown that current religious teachings have been corrupted. You have discussed flawed teachings with local religious leaders and instead of mending their ways, you are being persecuted.
+
+            Pariah ###
+Spells
+You know and can cast the Level 0 Theurgy Spell Guidance. 
+Guidance - You can perform an action in a way you know is more likely to be successful due to signs from a powerful being or deity..
+You can also cast the Level 2 Theurgy Spell Augury, but only as a Ritual unless you have the Theurgy Edge. 
+Augury - You can see potential outcomes and events in the near future.
+You can prepare these spells in addition to any other spells known when or if you take the Theurgy Edge.
+Skills
+Theology - You can typically understand, identify, and deal with supernatural objects, activities, and profane/divine beings like all types of Ixians, angels, and spirits.
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you roll or choose to know how to speak in Step 6 - Languages. 
+Gear
+You have a prayer mat, candles (Ud6), and both an older, variant holy symbol and book of psalms or prayers. You also have some type of aid in divination such as dice, cards, small bones, or sticks. 
+Instead of the traveling clothes, leather belt, and leather boots indicated in Step 5 - Starting Equipment, you have a coarse spun robe, a rope belt, and sandals.
+Names
+Epithets (the) - Annoying, Blasphemer, Seer, Truthfinder
+Other
+For Step 4 - Entanglements, put your lowest roll in Local Religious Authorities. If you persist in your “heretical beliefs”, Inquisitors may be sent to quiet or arrest you. If you have been in contact with others with deviant religious beliefs or practices, put a high roll in Shadow Groups. 
+If you maintain the secrecy of your unorthodox beliefs, you can impersonate an Acolyte in another town. With the approval of the local temple, you can perform blessings and ceremonies commemorating birth, adulthood, marriage, and death for commoners and earn 30 coins per week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 6 - TOUCHED/ANCHORITE
+You have been chosen for a divine purpose and have not hidden your calling. You have been helping the disadvantaged in your community and gaining acclaim in the region. This has caused consternation with the local religious authorities who want you to be their puppet.
+
+
+          Touched ###
+Edges
+Through your prayer and meditation of the divine, you have the Edge Grace.
+Grace - You have armor like divine protection.
+Spells
+You can prepare and cast one Level 0 Theurgy Spell. Roll 1d6 or choose. Preparation of this spell is in addition to those you can prepare when or if you take the Theurgy  Edge.
+1-2:   Create Water - You can manifest clear, clean drinking water.
+3-4:  Healing Hand  - Your touch can heal minor wounds.
+5-6:  Purify Food and Drink - Your blessing can restore spoiled food and beverages
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you roll or choose to know how to speak in Step 6 - Languages.
+Gear
+You have a prayer mat, candles (Ud6), holy symbol, prayer beads, and an older, variant book of psalms or prayers.  
+In Step 5 - Starting Equipment, instead of the traveling clothes, leather belt, and leather boots, you have a coarse spun robe, a rope belt, and sandals.
+Names
+Epithets (the) - Blessed, Chosen, Freak, Touched
+Other
+For Step 4 - Entanglements, put your highest roll on Neighbors. Put your lowest roll in either Local Authorities or Local Religious Authorities.   If you persist in following your calling, Inquisitors may be sent to question you.
+
+
+
+
+
+
+Divine Smite or other spot illustration related to Touched ###
+
+
+
+
+
+
+
+
+
+▶ 4 - Martial (Fighter) Type Backgrounds
+Roll 2
+Select or roll 1d6 to determine your Martial Type Background.
+1
+Armiger - You have extensive martial training and recognition as a knight with accompanying privileges.
+2
+Barbarian - You have learned to fight in the crucible of the unsettled hinterlands where might is right.
+3
+Mercentary/Hedge Knight/Bandit - You have the training but lost or was never granted knighthood.
+4
+Prizefighter - You are trained to fight competitively with your head, hands, feet, knees, and elbows.
+5
+Ruffian/Enforcer - You have learned and been trained to hit hard and first to take what you or your master wants. 
+6
+Woodard/Warden - You patrol, maintain, harvest, and protect your lord’s wooded lands.
+
+
+
+Roll of 1 - ARMIGER
+Through long training you have earned the right to bear arms. A lord knighted you and you were allowed to establish a coat of arms.  
+
+
+Armiger ###
+Edges
+You have received extensive training in service to a knight.  You have the Armaments Edge.
+Armaments - You are proficient with all weapons and armors. Heavy weapons and armor are less effective for those that are not proficient. 
+Skills
+Heraldry - You know the coat of arms for all local families and knights and can usually have more successful interactions.
+Gear
+You have a small riding horse with a saddle, saddlebags, and feed (Ud4). See Ch. 8 - NPCs & Monsters for the horse’s statistics.
+You have a leather gambeson* (Light Armor, Ud4). 
+* If you already have Light Armor, then instead add a Small Shield (Ud4 on 1 attack per Round) with your coat of arms. 
+You have a spear/light lance (Light Melee Weapon, 1d6) with a detachable banner painted with your coat of arms. 
+In addition, roll 1d6 or choose another weapon.
+1: Sword (Simple Melee Weapon 1d6)
+2: Axe (Simple Melee Weapon 1d6)
+3: Mace or Hammer (Simple Melee Weapon 1d6)
+4: Great Sword (Heavy Melee Weapon 1d8)
+6: Warhammer (Heavy Melee Weapon 1d8)
+6: Battle Axe (Heavy Melee Weapon 1d8)
+Names
+You can use the honorific “Sir or Madam” before your name.
+Epithets (the) - xxx
+
+
+
+Other
+For Step 4 - Entanglements, put your highest roll in Master or Local Authorities. Choose or roll 1d6 to determine the standing with your lord.
+1-3:   Active Service - Your lord may call upon your services for free 1d6 weeks a year to practice, guard, fight, or aid in the collection of taxes.  You also have some limited law enforcement rights you may exercise with discretion within your lord’s domain. They have granted you earnings from a 30 acre land holding. Every three months, it earns 8d6x10 coins but has 4d6x10 expenses. If you are present and actively managing the holding, make these rolls with Advantage. If there is negative income, that money is owed to the lord and must be paid within 1 year or the holding is forfeit. 
+4-6: Freelance - Your lord may call upon your services 1d6 weeks a year to practice, guard, fight, or aid in the collection of taxes.  While in service you receive meals, housing (though it is often a tent), and 40 coins per week. If you do not heed your lord’s call to service you must pay a fine of 100 coins per week of service missed within 1 year. Failure may result in forfeiture in which you lose your knighthood and be imprisoned.
+You can hire yourself out as a personal guard to a person of importance or a mercenary sergeant. The money is good but it can be dangerous. Each week you work, make a STR, DEX, and CON Test. You make 30 coins for each successful Test or 60 coins for each Critical Success.  Each Critical Failure indicates you were injured and requires you roll on the Wounded Table with Advantage. A member of your band will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mounted Armiger ###
+
+
+
+
+
+
+
+
+
+Roll of 2 - BARBARIAN
+In the hinterlands, fighting is much less constrained and life is simple. You have travelled to more settled areas out of curiosity, wanderlust, or because you were banished. 
+
+
+Barbarian ###
+Edges
+You have learned to work yourself into a mental frenzy through a chant, ritual cutting, or taking mind altering substances. You have the Berserk Edge.
+Berserk - When in this frenzied state, you can make lightning fast attacks on multiple melee opponents.
+Skills
+Life in a nomadic tribe exposes one to some core skills that are needed for survival. Roll 1d6 or choose.
+1-3:    Scout - You are good at foraging, tracking and making it harder for others to track you. 
+4-6:  Healer – You can identify mundane ailments and provide aid to stabilize the wounded and reduce long term effects of injuries.
+Languages
+You cannot read or write any languages that you know how to speak. In Step 6 - Languages, you have the option to know how to read & write one of the languages you speak.
+Gear
+You have layers of smelly furs with sewn on bones for protection (Light Armor, Ud6).
+You also have a belt pouch with face paint and sharp stones to cut yourself or optionally mushrooms (Ud6) or some special leaves (Ud6) that you chew/ingest to help you go into your berserk frenzy. 
+Finally, you also have a weapon. Roll 1d6 or choose one of the following weapons.
+1: Sword (Simple Melee Weapon 1d6 damage)
+2: Axe (Simple Melee Weapon 1d6 damage)
+3: Mace or Hammer (Simple Melee Weapon 1d6 damage)
+4: Great Sword (Heavy Melee Weapon 1d6, 1d8 damage if you have Armaments)
+6: Warhammer (Heavy Melee Weapon 1d6, 1d8 damage if you Armaments)
+6: Battle Axe (Heavy Melee Weapon 1d6, 1d8 damage if you have Armaments)
+Names
+Epithets (the) - Farwander, Seeker, Untamed, Wild
+
+
+Other
+For Step 5 - Starting Equipment, reduce your starting coins to 0.  
+As a barbarian, you face difficulties in “civilized” areas and have the Drawback Outlander.
+Outlander - You have difficulties dealing with commoners in “civilized” areas until you learn some couth and wash regularly (and reach 3rd level). Conversely, you can often be successful in some dealings with commoners through intimidation. You are also typically better when dealing with barbarians from the region of your origin sometimes even if you are traditional enemies because they are happy to see a familiar face. 
+Clan and tribal bonds are strong and emotional. For Step 4 - Entanglements, put a high roll Family. If you were banished or exiled, put a low roll on Family or Local Authorities (the chief/elders). Develop a narrative of why you left or were banished. Typical reasons for banishment may be due to murder, real or imagined injury or betrayal of the clan or your family.    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barbarian related spot illustration like village  ###
+
+
+
+
+
+
+Roll of 3 - MERCENARY/HEDGE KNIGHT/BANDIT 
+Though you have extensive martial training, extenuating circumstances have led you to make hard choices and sometimes those choices have not turned out so well. You may have been knighted but either left your lord’s service in disgrace or your lord has been captured/slain by their foes and you are exiled. 
+You possibly were trained in the field without any relationship to a particular lord or knight but have talent, just no allegiance through bad luck or choice.
+
+Mercenary ###
+Edges
+You have received extensive training in service to a knight or skilled warrior. You have the Armaments Edge. 
+Armaments - You are proficient with all weapons and armors. Heavy weapons and armor are less effective for those that are not proficient. 
+Skills
+Roll 1d6 or choose one of the following.
+1-2:   Ambush - You can do a lot of damage to a surprised opponent.
+3:      Fence - You can buy, sell, or locate any good or service, legal and illicit. 
+4:      Heraldry - You know the coat of arms for all local families and knights and can usually have more successful interactions
+5-6:  Observant – You are good at noticing and recalling details. 
+Gear
+You have a leather gambeson* (Light Armor, Ud4). 
+* If you already have Light Armor, then instead add a Small Shield (Ud4 on 1 attack per Round). 
+In addition, roll 1d6 or choose another weapon.
+1: Sword (Simple Melee Weapon 1d6, 1d8 damage if you have Weapon Mastery)
+2: Axe (Simple Melee Weapon 1d6, 1d8 damage if you have Weapon Mastery)
+3: Mace or Hammer (Simple Melee Weapon 1d6, 1d8 damage if you have Weapon Mastery)
+4: Great Sword (Heavy Melee Weapon 1d8, 1d10 damage if you have Weapon Mastery & Armaments)
+6: Warhammer (Heavy Melee Weapon 1d8, 1d10 damage if you have Weapon Mastery & Armaments)
+6: Battle Axe (Heavy Melee Weapon 1d8, 1d10 damage if you have Weapon Mastery & Armaments)
+Names
+Epithets (the) - Faithless, Fox, Marauder, Outlaw
+Other 
+If you were associated with a knight or lord, choose or roll 1d6 to determine the current circumstance.
+1-3:   Lord Slain/Captured - Your lord has been slain or captured. If your allegiance to that lord is known, those who overthrew your lord will hunt you when you are within 100 miles of their domain. For Step 4 - Entanglements, put your lowest roll in Local Authorities. If you are able to free your captured lord or aid in helping their heirs regain their holdings, you will be handsomely rewarded with lands and titles.
+4-6:  Disgraced - You left your lord for real or imagined betrayal, theft, or harm to their heirs. Your former lord and their henchmen will hunt you when you are within 100 miles of their domain to have you slain or imprisoned. For Step 4 - Entanglements, put your two lowest rolls in Master and Local Authorities.
+If you keep your former allegiances hidden or never had any, you may work as a hedge knight, mercenary,or bandit. 
+Hedge Knight - You can swear fealty to a new lord and serve them 1d6 weeks a year to practice, guard, fight, or aid in the collection of taxes.  While in service you receive meals, housing (though it is often a tent), and 30 coins per week.  If you do not heed your lord’s call to service you must pay a fine of 100 coins per week of service missed within 1 year. Failure may result in forfeiture in which you lose your knighthood and be imprisoned.
+Mercenary - You can hire out your fighting services to lords, merchants, cities, or other authorities. While in service you receive meals, housing (though it is often a tent), and payment in coins and incidental looting as indicated below.
+Bandit - You waylay the rich as they travel through forested roads or on trade routes through secluded hills. Banditry will provide you with meals though you often sleep on the ground. Looting provides income as indicated below. For Step 4 - Entanglements, put your lowest roll in Local Authorities.
+Making money as a Mercenary or Bandit can be lucrative but is  dangerous. Each week you work, make a STR, DEX, and INT Test. You make 10 coins for each successful Test or 20 coins for each Critical Success.  Each Critical Failure indicates you were injured and requires you roll on the Wounded Table with Advantage. A member of your band will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured.
+
+
+
+Mercenary Bandit spot illustration  ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 4 - PRIZEFIGHTER
+You fight competitively and have many scars to prove it.  
+
+Prizefighter ###
+Edges
+Your training has made you a formidable unarmed fighter. Choose or roll 1d6 for one of the following Edges.
+1-3:   Brawler 1 - Your punches, kicks, headbutt, and improvised attacks cause more damage.
+4-6: Brute 1 - You are tough and can take more damage.  Increase your Hit Dice by 1.
+Skills
+Roll 1d6 or choose from the following Skills.
+1-3:   Martial Evaluation - You can size up the martial prowess of a foe.
+4-6:  Healer – You can aid another who is wounded and help prevent complications. You can also typically identify ailments and poisons as well as know the best treatment. 
+Gear
+You have Brass Knuckles (1d2+1 or 1d4+1 damage with Brawler 1 for your punches) that also increase your chance to do some serious damage to an opponent.
+Names
+Epithets (the) - Bull, Crooknose, Hammerhands, Killer, Stonehead
+Other
+Competition fighting is often tainted by criminal elements. For Step 4 - Entanglements, put one of your higher rolls in Shadow Groups.  
+You may optionally start with 10d6 additional coins from a recent win but you owe a local crime boss twice that amount and it is due in 1d4 months.  Determine the reason for the debt.  It could be from you or a close family/friend's debts from gambling or addiction. If you do not settle that debt in time, reduce the reaction in Shadow Groups by three steps.
+Each week you work as a Prizefighter, make a STR, DEX, and CON Test. You make 15 coins for each successful Test or 30 coins for each Critical Success.  Each Critical Failure indicates you were injured and requires you roll on the Wounded Table with Advantage. A coach with the Healer skill will help you to mitigate any results of Crippled or Disfigured.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Prizefighter spot illustration of gear or bout ###
+
+
+
+
+Roll of 5 - RUFFIAN/ENFORCER
+The trick to being a successful bully is to hit hard, fast, and first. You run with a rough crowd that typically takes what they want for themselves or work as enforcers for others.
+
+
+Ruffian ###
+Edges
+Your rough life has taught you vicious fighting tactics. Roll 1d6 or choose one of the following Edges. 
+1-3:   Ambush - You can do a lot of damage to a surprised opponent.
+4-6:  Stunning Blow - You can often stun an opponent with a blunt weapon, an improvised weapon, or an unarmed attack. 
+Skills
+Roll 1d6 or choose.
+1-3:   Martial Evaluation - You can size up the martial prowess of a foe.
+4-6:  Size Up Mark - You can usually tell if someone is faster and/or smarter than you and how much money they may be carrying.
+Gear
+Roll 1d6 or choose 
+1-3: You have Brass Knuckles (1d2+1 damage) that also increase your chance to do some serious damage to an opponent.
+4-6: Sap (Simple Melee Weapon 1d4 damage) that can sometimes knock an opponent unconscious.
+Names
+Epithets (the) - Bully, Jerk, Meathead, Slow, Viper
+Other
+Ruffians can make a lot of money quickly but typically get involved with criminal elements. 
+For Step 4 - Entanglements, put your two highest rolls in Colleagues (your gang) and Shadow Groups. Put your lowest roll in Local Authorities.  
+In Step 5 - Starting Equipment, increase your starting coins x4.
+Making money as a ruffian or enforcer is lucrative but dangerous. Each week you work as an enforcer, make a STR, DEX, and WIS Test. You make 10 coins for each successful Test or 20 coins for each Critical Success.  Each Critical Failure indicates you were injured and requires you roll on the Wounded Table with Advantage. A member of your crew will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured.
+
+
+
+
+
+
+
+
+
+
+
+
+Ruffian spot illustration like brass knuckles or teeth ###
+
+
+
+
+
+
+
+Roll of 6 - WOODARD/WARDEN
+You patrol, maintain, harvest and protect your lord’s wooded lands from poachers and those who would steal timber.
+
+
+                                                                                    Woodard ###   
+Edges
+You can move without easily being seen, heard, or tracked. You have the Sneaky Edge. 
+Sneaky* - You are good at hiding and moving stealthily.
+*If you already have the Sneaky Edge, you have Sentinel.
+Sentinel - You are always alert and can respond even when surprised.
+Skills
+Scout - You are good at tracking and foraging. 
+Gear
+You have a large sack with 20’ of rope, a dozen wood stakes, and a 15’x15’ square of water resistant canvas that can all be made into a shelter. 
+You have a hand axe (Simple Melee Weapon 1d4 damage) and a bow or crossbow (Simple Ranged Weapon 1d6 damage, Range: Nearby), arrows or bolts (Ud8), and quiver. 
+You also have a small riding horse with saddle, saddlebags, and feed (Ud4).  See Ch. 8 - NPCs & Monsters for the horse’s statistics.
+Names
+Epithets (the) - Forester, Protector, Warder
+Other
+For Step 4 - Entanglements, put your highest roll in Master or Local Authorities. You also have some limited law enforcement rights you may exercise with discretion within your lord’s domain. Choose or roll 1d6 to determine the standing with your lord.
+1-3:   Active Service - Your lord may call upon your services 1d6 weeks a year as a yeoman archer or scout to guard, fight, or drill. While in service you receive meals, housing (though it is often a tent), and 20 coins per week. If you do not heed your lord’s call to service you must pay a fine of 70 coins per week of service missed within 1 year. Failure to settle or pay this debt will result in your discharge and possibly imprisonment.
+4-6:  Discharged - You have been discharged due to not performing required service or because your master believes you were either inept or in league with poachers. For Step 4 - Entanglements, put your lowest roll in Master or Local Authorities. If you were indeed involved in malfeasance, put one of your higher rolls in Shadow Groups. If you stay in the area (25 mile radius) of your lord's domain, the lord will seek to have you arrested.
+        
+
+
+
+
+
+
+
+
+Woodard spot illustration gear, game (rabbit pheasant)###
+
+
+
+
+
+
+
+
+
+
+
+THIS PAGE INTENTIONALLY BLANK
+insert full page spot illustration or gallery
+of fighter backgrounds
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+▶ 5 - Arcane (Magic User) Type Backgrounds
+Roll 2
+Select or roll 1d6 to determine your Arcane Type Background.
+1
+Adept/Arcane Apprentice - Your talent was recognized & you have received formal arcane training from a master.
+2
+Alchemy Apprentice - You are trained in arcane mysteries of transformation of elements and natural forces.
+3
+Arcane Researcher - You are trained in the research practices of arcane theory and lore.   
+4
+Charlatan - You have some self taught arcane talent but have also learned the importance of presentation.
+5
+Dowser - You have an innate ability to locate and detect things, but much more than just water.
+6
+Warlock - You have made a pact with a powerful master who trains you and grants you arcane powers.
+
+
+
+Roll of 1 - ADEPT/ ARCANE APPRENTICE 
+You have always wanted to control those imaginary forces around us. You exhibited talent at an early age and were apprenticed to an arcane spellcaster, typically a Magic User with the title of Wizard.  It is not unheard of for powerful Ixian Ravers, Ixian Archons, and dragons to also take on apprentices.
+
+Arcane Apprentice ###
+Edges
+You know and can cast one Level 0 and one Level 1 Arcana Spell. You know and can cast these spells in addition to any other spells known when or if you take the Arcana Edge.
+Roll 1d6 or choose the Level 0 Arcane Spell. 
+1-2:    Detect Magic - You can sense the power and presence of magic.
+3-4:   Light/Darkness - You can create illumination or darkness in an area or on a target.
+5-6:  Prestidigitation - You can do minor magic tricks like light a candle or clean a dirty dish, for example.
+If you roll a Level 0 Spell you already know and can cast, select another from the list or take Mage Hand.
+Mage Hand - You can manipulate items at a distance as if with your hand.
+Roll 1d6 or choose the Level 1 Arcane Spell. 
+1-2:   Charm Person - You can make someone act like a close friend.
+3-4:   Magic Missile - You can shoot energy darts that never miss.
+5-6:  Summon - You can make an allied creature appear to aid you.
+If you roll a Level 1 Spell you already know and can cast, select another from the list or take Floating Disk.
+Floating Disk - You can create an invisible platform that can carry around 300 pounds a few feet off the ground that follows you.
+
+
+
+Skills
+Esoterica - You can typically understand, identify, and evaluate arcane formula (spells) devices, accouterments, activities, and beings (like golems, homunculi, and other magically created creatures).
+Languages
+From your studies you have learned to speak, read & write the language(s) gained from your Ancestry as well as Sindar, the language of High Elves, Dragons and most Arcane researchers. 
+If you can already speak, read, & write Sindar, then roll 1d6 or select from the following.
+1-3:   Kelinya is the ancient language of the old empire used by most religious groups & government officials.
+4-6:  Infernal is spoken by extraplanar creatures from profane realms and necromancers.
+
+
+Gear
+You have a small trunk of research books and notes and a carved yew staff (Simple Melee Weapon, 1d4 damage) from your master.
+Names
+Epithets (the) - color Sorcerer, color Wizard, Mysterious,  
+Other
+For Step 4 - Entanglements, put your highest roll or lowest roll in Master after deciding whether you left their service voluntarily, left their service in disgrace, are still serving them, or if they died or disappeared mysteriously. 
+Choose or roll 1d6 to determine the nature of your current or former master. 
+1: Ixian Raver* - This master was mean and selfish and would use you for dangerous tasks and experiments in exchange for providing you with arcane knowledge. If you choose this Master, you must select Infernal in Step 6 - Languages if you do not already have it. When rolling for Corruption, you may exchange the result for Glowing Eyes. You may also choose to make it permanent.
+2: Ixian Archon* - This master was somewhat cool and aloof and their agenda was opaque though there definitely was an agenda.  If you choose this Master, you must select Infernal in Step 6 - Languages if you do not already have it. When rolling for Corruption, you may exchange the result for Cloven Hooves or Horns. You may choose to make either of these Corruptions permanent. If you are an Ixian and already have horns, your horns grow more pronounced and can be used as weapons. See Enhanced Infernal Features.
+3: Dragon - Your master was mercurial and their mind was often alien to you. They are possessive and though you are on your own now, your master still expects you to make contact from time to time and do them favors. Failure to contact and serve them at least once a year will be fatal. Through arcane means, your master made you resistant to fire so you would not accidentally die too easily if they were in a bad mood. Fire Resistance - Reduce all fire damage you sustain by half.
+4: Lich - Your master’s main drive was to conquer the boundary between life and death. To save you from insanity due to forbidden lore revealed to you, your master placed the protective ward on that grants you Undead Fearlessness. Undead Fearlessness - You are immune to fear caused by undead. When rolling for Corruption, you may exchange the result for Skeletal. You may choose to make this Corruption permanent.
+5-6: Wizard - Aware of the dangers of magic personally, your master taught you safer ways to practice arcane lore and avoid corruption. You have Advantage on any current and future rolls you make for Corruption but may still select to make the result permanent if you so choose. 
+* Ixian Raver and Ixian Archon masters magically bind their apprentices to not reveal their true profane nature which they keep disguised. If you reveal it, you become Unconscious for 1d6 days and the two spells above that you know are wiped from your mind. This occurs even if this master has died, disappeared, or you have left them/been discharged. If you left them or were discharged, you are still alive so they are obviously not that mad at you and are keeping the door open that you may return and be or service to them again some day.
+Magic is often dangerous to those nearby as well as the caster. Most commoners steer clear of arcane spellcasters. Some desperate souls seek out magical assistance and pay for your magical assistance. See Ch 3 - Equipment, Arcane Services. If this becomes public knowledge, roll any NPC Reactions with Local Authorities with Disadvantage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arcane Apprentice spot illustrations dragon or lich teaching? ###
+
+
+
+
+
+
+Roll of 2 - ALCHEMY APPRENTICE 
+Discovering eternal life, turning lead to gold, ...now those are good career goals. You have found that many forms of power can be controlled and unleashed with the use of primal elements. You left your master because they would not reveal the deeper lore that you sought. Alternately, your master may have died in a mysterious explosion that completely destroyed their laboratory, equipment, and library. 
+
+
+
+Alchemist ###
+Edges
+Through years of study and research, you have the Edge Alchemy.
+Alchemy  - You can identify and manipulate elements to transform them and create new substances with powerful properties.
+Spells
+Through your extensive training, study, and research you can cast some Arcane Spells. You know and can cast one Level 0 Arcane Spell and one Level 1 Arcane Spell. You know and can prepare these Spells in addition to any other spells if you take the Arcana or Theurgy Edge.
+Level 0 Spell - Roll 1d6 or choose.
+1-2:   Detect Poison & Disease - You can sense and identify toxins and sometimes discern its strength and possible treatment.
+3-4:  Endure Elements - You are immune to extreme temperatures.
+5-6:  Mending - You can repair a break or tear in an object.
+Level 1 Spell - You know and can cast the Level 1 Arcane Spell Identify. Unless you have the Arcana Edge, you can only cast this spell as a Ritual. 
+Identify - You can determine one function, use, and means of operation of an item each time you cast this spell.
+Skills
+Esoterica - You can typically understand, identify, and evaluate arcane formula (spells) devices, accouterments, activities, and beings (like golems, homunculi, and other magically created creatures).
+Languages
+From your studies you have learned to speak, read & write the language(s) gained from your Ancestry as well as Sindar, the language of High Elves, Dragons and most Arcane researchers. 
+If you can already speak, read, & write Sindar, then roll 1d6 or select from the following.
+1-3:   Kelinya is the ancient language of the old empire used by most religious groups & government officials.
+4-6:  Infernal is spoken by extraplanar creatures from profane realms and necromancers.
+Gear
+You have a bottles of various colors of ink, a set of quills, a leather bound journal partially filled with alchemical formulae, glass-lensed eye goggles, a silk scarf to protect from inhalation of dangerous chemicals and a small, wooden case with lab glassware and testing agents (Ud8). 
+Names
+Epithets (the) - Arcanist, Drincanmaster, Firestarter, Mixologist
+Other
+Alchemists jealously protect their knowledge. Since your master is dear or you left, for Step 4 - Entanglements, put your lowest rolls in Master and Colleagues.
+Alchemists are in high demand and you can make 40 coins per week in a large city if you can procure equipment, materials, and set up a lab. The local and regional Alchemy Guild will require substantial membership dues and fees, especially if another guild Alchemist is within 5 miles. If you try to circumvent the guild requirements or do unapproved freelance work, there may be “accidents” or other repercussions.
+
+
+
+Roll of 3  - ARCANE RESEARCHER
+You were apprenticed to a sage or an academy of arcane study in a large city. Your research tasks seemed to focus on inane or at best abstruse trivial matters of arcana. You began your own lines of research and discovered powerful arcane formulae on your own. Your forbidden research and experimentation was discovered by your master or another apprentice and you were discharged.
+
+
+
+
+Arcane Researcher ###
+Edges
+Through your extensive training, study, and research you can cast two Level 0 Arcane Spells. You know and can cast these Spells in addition to any other spells known if you take the Arcana Edge.
+Roll 1d6 or choose your first Level 0 Arcane Spell from the table below. 
+1-2:   Arcane Mark - You can write a visible or invisible message on a surface.
+3-4:  Mage Hand - You can manipulate items at a distance as if with your hand.
+5-6:  Mending - You can repair a break or tear in an object.
+
+Roll 1d6 or choose your second Level 0 Arcane Spell from the table below. 
+1-2:   Change Self - You can alter your appearance as a disguise.
+3-4:  Daze - You can cause a  target to become confused and lose some of their actions.
+5-6:  Detect Magic - You can sense the power and presence of magic.
+Skills
+Esoterica - You can typically understand, identify, and evaluate arcane formula (spells) devices, accouterments, activities, and beings (like golems, homunculi, and other magically created creatures).
+Languages
+From your studies you have learned to speak, read & write the language(s) gained from your Ancestry as well as Sindar, the language of High Elves, Dragons and most Arcane researchers. 
+If you can already speak, read, & write Sindar, then roll 1d6 or select from the following.
+1-3:   Kelinya is the ancient language of the old empire used by most religious groups & government officials.
+4-6:  Infernal is spoken by extraplanar creatures from profane realms and necromancers.
+Gear
+You have a bottle of ink, a set of quills, a leather bound book partially filled with arcane formulae, spells, and your research notes.
+Names
+Epithets (the) - Bookworm, Curious, Eccentric, Loremaster, Odd, Quizzard
+Other
+For Step 4 - Entanglements, put your lowest roll on Master or Colleagues.  In another town, you can take up a job with a new master in a large city and make 1d4 coins per day. 
+Also, Magic is dangerous, especially to one without proper training.  In Step 8 - Corruption, roll 1d20 to determine the effect and 1d6 to determine the severity/persistence. 
+
+
+
+
+
+
+
+
+Arcane Researcher spot illustration of books and devices  ###
+
+
+
+
+
+
+
+Roll of 4 - CHARLATAN
+You like to be the center of attention and make flashy entrances and exits. Your claims of divination, teleportation, invisibility, and speaking with spirits may be exaggerations, but that does not hurt anyone.
+Edges 
+Through stolen bits of lore you have gained the Edge Ritual Spell that allows you to cast a powerful spell but you do not fully understand the mechanisms of how it is powered. 
+Ritual Spell - You can cast one Level 1 or Level 2 Arcane or Theurgy Spell but only as a Ritual unless you have the prerequisite spellcasting Edge. You know and can this spell in addition to any other spells known when or if you take the Arcana or Theurgy  Edge.
+Roll 1d10 or choose from the following.
+1:    Augury (2nd Level Theurgy) - You can see potential outcomes and events in the near future
+2:   Charm Person (1st Level Arcane) - You can make someone act like a close friend.
+3:   Cure Wounds (1st Level Theurgy) - Your touch can heal serious wounds.
+4:   Detect Thoughts (2nd Level Arcane) - You can sense conscious thoughts of an intelligent target.
+5:   Invisibility (2nd Level Arcane) - You can make yourself visually undetectable.
+6:   Levitate (2nd Level Arcane) - With an invisible force, you can raise and move yourself or a heavy target. 
+7:   Locate Object (2nd Level Theurgy & Arcane) - You can sense the direction & distance of a person/object.
+8:   Rope Trick (2nd Level Arcane) - You can create a floating rope to access another dimension if climbed.
+9:   Sleep (1st Level Arcane) - You can make foes fall into a deep slumber.
+10:  Speak with Dead (2nd Level Theurgy & Arcane) - You can compel a corpse or skeleton to answer questions to things it knew in life.
+Spells
+You know and can cast two Level 0 Arcane Spells. You know and can cast these spells in addition to any other spells known when or if you take the Arcana Edge.
+Roll 1d6 or choose your first Level 0 Arcane Spell from the table below. 
+1-2:   Change Self - You can alter your appearance as a disguise.
+3-4:  Message - You can whisper into someone’s ear that you can see that is far away.
+5-6:  Minor Illusion - You can create a temporary image.
+Roll 1d6 or choose your second Level 0 Arcane Spell from the table below. 
+1-2:   Daze - You can cause a  target to become confused and lose some of their actions.
+3-4:  Dancing Lights - You can create moving lights that are within your line of sight.
+5-6:  Mage Hand - You can manipulate items at a distance as if with your hand.
+Skills
+Formulate Flash Powder - With proper materials and equipment*, you can make Flash Powder (Ud4).
+* Alchemist's Lab and Alchemist’s Primal Elements. See Ch 3 - Equipment, Tools & Kits.
+Size Up Mark - You can usually tell if someone is faster and/or smarter than you and how much money they may be carrying.
+Language
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you roll or choose to know how to speak in Step 6 - Languages. 
+Gear
+You have a fancy, flashy cape, black, thigh-high leather boots, a decorated wand, a deck of divination cards, and Flash Powder (Ud4).
+
+
+
+Names
+Epithets (the) - Amazing, Arcanist, Medium, Third Eye, Trickster
+
+
+Other
+Until recently, you were travelling with a group of entertainers and performers. You had to leave because of professional jealousy, a relationship gone bad, or accusations of stealing from the till or a customer. 
+Itinerant performers also tend to harbor criminals. For Step 4 - Entanglements, put your lowest roll on Colleagues or Local Authorities. You may want to consider putting a high roll in Shadow Groups. 
+You can perform on a street corner and earn 1 coin a day or, with a new troupe, 1-2 coins in addition to food and a place to sleep. 
+
+
+
+
+
+Charlatan ###
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 5 - DOWSER
+You seem to have a knack for finding things, especially water but have learned to expand this sensitivity to detect other things.
+
+
+
+Dowser ###
+Edges
+Dowsing - You can typically locate nearby water, buried metals & gemstone, graves, hollows, & secret doors, and compartments. With a dowsing rod, you are even better at locating these things.
+Nondetection - Despite your special ability, it is difficult for others to locate you through scrying or similar magical means or spells.
+Spells
+Through your extensive training, study, and research you know and can cast two Level 0 Arcane Spells. You know these Spells in addition to any other spells known or that you can prepare when or if you take the Arcana or Theurgy Edge.
+You can cast Detect Water.
+Detect Water - You can detect water in your vicinity and if it is safe to drink, brackish, saline, or tainted.
+
+You also know and can cast one additional Level 0 Arcane Spell. Roll 1d6 or choose.
+1-2:   Detect Magic - You can sense the power and presence of magic.
+3-4:  Detect Poison & Disease - You can sense and identify toxins and sometimes discern its strength and possible treatment.
+5-6:  Orientation - You can determine North or the distance and direction of an item that you have previously attuned to.
+Skills
+Fabricate Dowsing Rods - With proper materials and tools, you can fabricate sensitive copper or ash wood dowsing rods in one day for ¼ the typical cost indicated in Ch 2 - Equipment, Tools & Kits. 
+Gear
+You have a pair of Copper Dowsing Rods that can make your dowsing ability even more accurate. 
+In Step 5 - Starting Equipment,  you may choose the Lodestone as your Trinket instead of rolling.
+Names
+Epithets (the) - Finder, Lodestone, True
+Other
+Though you have helped neighbors choose a productive water well location and locate a missing child, your uncanny ability unnerves them and makes them distrustful of you. For Step 4 - Entanglements, do not put your highest roll in Neighbors. 
+You can use your dowsing talents to make 2d10 coins per week in an urban area or a rural area with a lot more travel.
+
+
+
+
+
+
+
+
+
+
+
+
+Dowsing rod spot illustration ###
+
+
+
+
+
+
+
+
+
+
+
+
+THIS PAGE INTENTIONALLY BLANK
+insert full page spot illustration of ???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roll of 6  - WARLOCK 
+You speak with your familiar and the voice in your head more than you speak with people and that makes them nervous.  It does not help that you also dress like it is Hallow’s Eve. Those people have nothing to be nervous about, yet.  
+
+
+
+
+Warlock ###
+
+
+Edges
+Familiar - You have attracted, trained, and have a deep connection with a small, unusually intelligent animal that can follow simple commands and can communicate “yes” and “no” to your questions.
+Spells
+You know and can cast two Level 0 Arcane Spells. You know and can cast these spells in addition to any other spells known when or if you take the Arcana Edge.
+Roll 1d6 or choose your first Level 0 Arcane Spell from the table below.
+1-2:    Chill Touch - A target takes necrotic damage and cannot heal.
+3-4:   Detect Profane/Divine - You can sense creatures that are undead or of extraplanar origin.
+5-6:   Infestation - You can create a swarm of parasites or pests to harass and attack a target.
+Roll 1d6 or choose your second Level 0 Arcane Spell from the table below. 
+1-2:    Blade Ward - You take less damage from melee attacks
+3-4:   Detect Magic - You can sense the power and presence of magic.
+5-6:   Minor Illusion - You can create a temporary image or sound.
+Languages
+From your studies you have learned to read & write the language(s) gained from your Ancestry. 
+You can also read & write the additional language you rolled or choose to know how to speak in Step 6 - Languages. 
+Gear
+You also have a set of black clothing, as well as a small portable kennel (suitable for your familiar), and a small sack of feed (Ud6) for your familiar. 
+Roll 1d6 or choose your familiar. See Ch. 8 - NPCs & Monsters for your familiar’s complete statistics and description.
+1:   Bat - Bats can fly and sense items in complete darkness.
+2:  Black Cat - Cats are stealthy, have a powerful sense of smell, and can see in low light conditions.
+3:  Rat - Rats are stealthy and can fit into/move through tight spaces. They also have a powerful sense of smell and can see in low light conditions.
+4:  Raven - Ravens can fly and speak simple phrases.
+5:  Snake - Snakes have a poisonous bite and can fit into/move through tight spaces. They can also see in complete darkness
+6:  Large Spider - Spiders can move (climb) on vertical surfaces and have a poisonous bite.
+Names
+Epithets (the) - Darkling, Emo, Skulker
+
+
+Other
+You prefer black (or very dark shades of gray) for all of your clothing.  You have been pursuing the sponsorship or apprenticeship from a profane and/or extraplanar being. 
+If you locate this being and negotiate your servitude, select Magic User as your Class when you advance to 1st Level and you will gain the Arcana 1 Edge. 
+Choose or roll 1d6 to determine the nature of the current candidate you have targeted as a master. 
+1: Ixian Raver - This master is mean and selfish and uses you for dangerous tasks and experiments in exchange for providing you with arcane knowledge. If you choose this Master, you must select Infernal in Step 6 - Languages if you do not already have it. When rolling for Corruption, you may exchange the result for Glowing Eyes. You may also choose to make it permanent. Finally, you can read, write, & speak Infernal.
+2: Ixian Archon - This master is somewhat cool and aloof and their agenda is opaque though there definitely is an agenda. If you choose this Master, you must select Infernal in Step 6 - Languages if you do not already have it. When rolling for Corruption, you may exchange the result for Cloven Hooves. If you are an Ixian and already have horns, your horns grow more pronounced and can be used as weapons. See Enhanced Infernal Features.
+3: Elder God - Ghoelb is a primeval, elder force or “god” of malevolent chaos and disorder. They will typically give you a task to covertly do something to cause distrust and fear to initiate infighting within a community or with an adjacent community.  
+When you roll Spellcasting Ud for Conjuration spells, reroll any 1s, once. Also, you cannot receive Corruption for any Illusion spell.
+When rolling for Corruption, you may exchange the result for Translucent. You may also choose to make it permanent.
+4: Lich - Your master’s main drive is to destroy the boundary between life and death. To save you from insanity due to forbidden lore revealed to you, your master placed a protective ward on you that grants Undead Fearlessness. 
+Undead Fearlessness - You are immune to fear caused by undead. 
+When rolling for Corruption, you may exchange the result for Skeletal. You may choose to make this Corruption permanent.
+5: Moloch - They are a god of darkness, revenge, and grief. In your mind they take the form of a Minotaur. You are often tasked to covertly avenge wrongs or punish those that have escaped justice.
+Moloch grants you proficiency with all axes.
+When you roll Spellcasting Ud for Necromancy spells, reroll any 1s, once.
+When rolling for Corruption, you may exchange the result for Weep Blood. You may also choose to make it permanent.
+6: Kain - They are a god of war and oathbreakers and death in battle. They appear in your mind as a bald warrior with a bloody or painted face.  You are often tasked with aiding oathbreakers or properly burying or burning those who have died in battle.
+Kain grants you proficiency with all swords.
+When you roll Spellcasting Ud for Abjuration spells, reroll any 1s, once.
+When rolling for Corruption, you may exchange the result for Hairless. You may also choose to make it permanent.
+For all Warlock masters, you can pick, and will know and can cast the Arcane spells of your choice as you increase in level and take Arcana X. 
+As you gain new spells by (re)taking Arcana X, your master can teach you an Arcane form of any Theurgy spell if you wish to choose them. 
+Your master seldom appears in physical form on your plane of existence. Rather, they speak with you telepathically though it is on their terms. They do not regularly respond  to your queries. You can reach out to them once per day and have a 1 in 6 chance of them responding. They mainly speak to you when they have some often inexplicable task that you are required to perform, about once every three months.
+Repeated failure to perform required tasks in a timely manner will cause your master to  punish and abandon you for at least 6 months. You become Unconscious for 1d6 days and the two Level 0 spells above that you know and any Arcane versions of any Theurgy Spells they granted you are wiped from your mind. 
+Because of your strange appearance and mannerisms, most commoners steer clear of you. Past actions have also caused suspicion with local authorities. For Step 4 - Entanglements, put your lowest three rolls in Neighbors, Local Authorities, and Local Religious Authorities.  Reeves and Inquisitors may keep you under surveillance, pester, or attempt to arrest you if they have evidence. 
+
+
+
+
+
+
+
+
+
+
+▶ 6 - Rogue (Thief) Type Backgrounds
+Roll 2
+Select or roll 1d6 to determine your Rogue Type Background.
+1
+Fence - You can buy, sell, or locate anything.
+2
+Gambler - You have a seemingly uncanny ability to know when to place bets on games of chance.
+3
+Scoundrel - You make your way with guile, wits, and quick reflexes, often to the detriment of others.
+4
+Sharp - You are quick thinking and sharp eyes have made you a valued member of your crew.
+5
+Spy - You can talk or sneak your way into almost anywhere, for a price.
+6
+Street Urchin - Being abandoned has made you quick, resilient, and resourceful.   
+
+
+
+Roll of 1 -FENCE 
+You can buy, sell, or locate ANYTHING. Your activities have drawn the attention and ire of local authorities lately and it is time to relocate.
+
+
+Fence ###
+Skills
+Fence - You can buy, sell, or locate any good or service, legal and illicit. 
+Size Up Mark - You can usually tell if someone is faster and/or smarter than you and how much money they may be carrying.
+Gear
+You have a leather satchel, abacus, lead stylus, and a bound ledger. You also have an emergency fund and start with 20 additional coins.
+Names
+Epithets (the) - Broker, Fixer, Mover, Receiver
+Other
+For Step 4 -Entanglements, put your highest roll in Shadow Groups and your lowest in Local Authorities.
+You have collected interesting items that you have come across in your daily business. In Step 5 - Starting Equipment, roll on the Trinkets table three times to receive 3 different random trinkets or take 1 trinket of your choice from the entire list. 
+Making money as a fence can be lucrative but often has legal complications. Each week you work, make an INT, WIS, and CHA Test. You make 10 coins for each successful Test or 20 coins for each Critical Success.  Any Critical Failure indicates your dealings were discovered by victims or local authorities and you have to pay a bribe or fine of 2d10 coins. Failure to pay the bribe or find will result in a warrant for your arrest and you will be hounded by local authorities and reeves.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spot illustration of fenced goods ###
+
+
+Roll of 2 - GAMBLER 
+You have a seemingly uncanny ability to know when to place bets on games of chance. This has not made you popular at local taverns. After a few unpleasant encounters with sore losers it appears to be time to move on to new hunting grounds.
+
+
+     
+Gambler ###
+Edges
+Through years of playing assorted and diverse games of chance you have developed an expert at understanding the odds and winning those games. You have the Expert Gamester Edge.
+Expert Gamester - You excel in games of chance and spotting a cheater.
+Gear
+You have a set of dice, deck of cards, and a thimblerig set (shell game, three shells and a pea).  
+Skills
+Probabilities - You can usually determine the likelihood of an occurrence mathematically.
+Other
+Your activities can create a sense of camaraderie or enmity. In Step 4 - Entanglements, put one of  your lowest or highest rolls in Colleagues to have a nemesis or a friendly partner. Gambling tends to become a tool for criminal organizations. Put one of your lowest or highest rolls in Shadow Groups to have an ally that uses you to run rigged gambling scams or that you have become crossways with. 
+You have an addictive or compulsive personality disorder as a Drawback. Roll 1d10 twice. Select a single Drawback from the two results indicated below. If you wish, you can also just choose Compulsion, Gambling. See Ch. 5 - Advancement, Drawbacks for full descriptions of those indicated below. 
+1:       Addiction, Alcohol - You need to drink every day and it is typically to excess.
+2:      Addiction, Tobacco - You need to smoke every day and have trouble with endurance activities.
+3:      Addiction, Psychoactive Substances - You need to get high daily but then do not make good decisions.
+4-5: Compulsion, Gambling - You must gamble or make a wager every day or have trouble thinking.
+6:      Compulsion, Kleptomania - You must steal or palm something every day or have trouble thinking.
+7:      Compulsion, Pyromania - You must ignite something that is not yours every day or be distracted. 
+8:      Insomnia - You have trouble sleeping and even when you do, it is often not restorative.
+9:      Spendthrift - You are loose with your money and tend to overpay and undersell things. 
+10:     Wanted - You are wanted for a crime or large outstanding debt that may or may not be yours.
+Making money as a gambler can be lucrative but you often face danger from those who lose to you excessively. Each week you work, make an INT, WIS, and CHA Test. You make 10 coins for each successful Test or 40 coins for each Critical Success.  Any Critical Success or Critical Failure indicates that you were attacked by some loser. Roll on the Wounded Table with Advantage. A friend will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured rolls on the Wounded Table. 
+Optionally, you may choose to have fallen afoul of a local criminal group. If so, reduce Shadow Groups by two steps.
+
+
+
+
+
+
+
+
+
+Gambler related spot like dice or coin stacks or cards ###
+
+
+
+Roll of 3 - SCOUNDREL
+You make your way through guile, wits, and quick reflexes, often to the detriment of others. You may work with an informal gang, a thieves guild, or tag along with itinerant entertainment troupes to find victims. 
+
+Scoundrel ###
+Edges
+Your dexterous hands are adept at swiping and concealing items and picking pockets or cutting purses and escaping quickly when you are detected. You have the Edges Elusive and Filcher .
+Elusive - You are good at getting away from foes.
+Filcher - You can usually pick pockets and cut purses undetected.
+Skills
+Oratory - With a brief presentation, you can try to change the target's attitude toward an idea or person.
+Gear
+The cloak you receive in Step 5 - Starting Equipment is gray or neutral colored, and has long sleeves for concealing palmed items or weapons. You also have two narrow daggers in a concealed, forearm, thigh, or calf sheath. Daggers are Light Melee and Ranged Weapons (1d4 damage, Range Nearby). 
+Names
+Epithets (the) - Cheat, Fox, Villain, Wily
+Other
+Your possessions are cause for suspicion but there is no proof. For Step 4 - Entanglements, put your highest roll on Shadow Groups or Colleagues. Put your lowest roll on Local Authorities.
+Making money as a pickpocket can be lucrative but is dangerous. Each week you work, make a DEX, WIS, and CHA Test. You make 10 coins for each successful Test or 20 coins for each Critical Success.  Any Critical Failure indicates you were discovered and attacked by victims or local authorities receiving injuries that require you roll on the Wounded Table with Advantage. If the result is KO’d (knocked out), you are arrested and need to escape or face fines or more severe punishments. A  member of your band will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured rolls on the Wounded Table.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spot illustration related to scoundrels cons and pick pocketing ###
+
+
+
+Roll of 4 - SHARP 
+You have good eyes and your gang or guild likes to use you as a lookout.
+
+
+         
+
+Sharp ###
+Edges
+You are always on alert and swift to identify danger and respond. You have the Sentinel Edge.
+Sentinel - You are always alert and can respond even when surprised.
+Skills
+Observant* – You are good at noticing and recalling details. 
+* If you already have the Observant Skill, you may select Vigilant.
+Vigilant - Your cautious nature lets you usually act first. 
+Gear 
+The clothing you receive in Step 5 - Starting equipment is neutral colored, unremarkable clothing with long sleeves. You also have a narrow dagger in a concealed sheath on your forearm, thigh, calf, or shoulder. Daggers are Light Melee and Ranged Weapons (1d4 damage, Range Nearby). 
+Names
+Epithets (the) - Eye, Watcher
+Other
+For Step 4 - Entanglements, put your highest roll on Shadow Groups or Colleagues. Put your lowest roll on Local Authorities.
+Making money as a lookout for a crew can be lucrative but is dangerous. Each week you work, make a DEX, INT, and CHA Test. You make 10 coins for each successful Test or 20 coins for each Critical Success.  Any Critical Failure indicates you were discovered and attacked by victims or local authorities receiving injuries that require you roll on the Wounded Table with Advantage. If the result is KO’d (knocked out), you are arrested and need to escape or face fines or more severe punishments. A member of your band will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured rolls on the Wounded Table.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spot illustration of ambush or gear related to a Sharp ###
+
+
+
+
+
+
+
+Roll of 5 - SPY
+You can talk or sneak your way into almost anywhere, for a price. You have found patrons who need your skills to keep track of their opponents or obtain secret documents. 
+
+Spy ###
+Edges
+You are adept at avoiding notice or getting into secured locations. Roll 1d6 or choose.
+1-3:   Burglar - You are good at climbing and picking locks.
+4-6:  Sneaky - You are good at hiding and moving stealthily.
+Skills
+In your clandestine activities, you have developed some specialized skills. Roll 1d6 or choose. 
+1-2:    Costume & Makeup - You can make costumes, prosthetics, and makeup to disguise yourself or someone else.
+3-4:   Observant* – You are good at noticing and recalling details.  
+5-6:  Oratory - With a brief presentation, you can try to change the target's attitude toward an idea or person.
+* If you already have the Observant Skill, you may select Vigilant.
+Vigilant - Your cautious nature lets you usually act first. 
+Gear
+In Step 5 - Starting Equipment, the cloak you receive is a dark, hooded cloak with long sleeves. 
+If you have the Costume & Makeup Skill, you also have a small wooden chest Disguise Kit that includes two additional sets of clothes, costume jewelry, fake beards/ mustaches, fake eyebrows, two wigs and a makeup kit with a brass mirror, makeup pots. 
+If you have the Burglar Edge, you also have a set of lock picks, a crowbar and a grappling hook with 50’ of light rope that can only hold the weight of approximately one human-sized being.
+Names
+Epithets (the) - Fox, Shadow, Silent, Quiet
+Other
+You have a mentor or handler that helps connect you to clients. In Step 4 - Entanglements, put your highest roll on Shadow Groups or Master. Put your lowest roll on Local Authorities. 
+Making money as a spy is lucrative but especially dangerous since you often work alone. Each week you work, make a DEX, INT, and CHA Test. You make 15 coins for each successful Test or 30 coins for each Critical Success.  Any Critical Failure indicates you were discovered and attacked by victims or local authorities receiving injuries that require you roll on the Wounded Table with Advantage. If the result is KO’d (knocked out), you are arrested and need to escape or face fines or more severe punishments. Your mentor or handler will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured rolls on the Wounded Table.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spot illustration of gear for Spies ###
+
+
+
+
+Roll of 6 - STREET URCHIN
+Life on the street has been rough but has made you quick and sharp. You are on your own because you were abandoned, kicked out of your home, or your parents are dead/missing. You may work with an informal gang, a thieves guild, or tag along with itinerant entertainment troupes to find victims.
+
+Street Urchin ###
+Edges
+Your dexterous hands are adept at swiping and concealing items and picking pockets or cutting purses and escaping quickly when you are detected. You have the Edges Elusive and Filcher .
+Elusive* - You are good at getting away from foes.
+Filcher* - You can usually pick pockets and cut purses undetected.
+* If you already have one of the Edges above, you can choose Sneaky. 
+Sneaky - You are good at hiding and moving stealthily.
+Skills
+Observant* – You are good at noticing and recalling details. 
+Size Up Mark* - You can usually tell if someone is faster and/or smarter than you and how much money they may be carrying.
+* If you already have one of the above Skills, you may select Vigilant.
+Vigilant - Your cautious nature lets you usually act first. 
+Gear
+In Step 5 - Starting Equipment, you have no leather boots and cloak/hooded cloak. Also, reduce any starting coins from  Ancestry, Class, Background, and Step 5 to 0.
+Names
+Epithets (the) - Fleet, Wily, Youngblood
+Other
+You have been working with an informal gang. For Step 4 - Entanglements, put your highest roll on Shadow Groups or Colleagues and your lowest on Local Authorities.
+You are not an adult yet. You have the Youth Drawback.
+Youth - You are an adolescent who is not fully developed for this dangerous world. Choose or roll 1d6 twice for adjustments to your Ability Scores.
+Roll 1
+Roll 2
+1-3:   Increase your Dexterity (DEX) by +1
+4-6:  Increase your Intelligence (INT) by +1. 
+1-3:   Decrease your Strength (STR) by -1.
+4-6:  Decrease your Wisdom (WIS) by -1.
+Making money as a lookout, spy, or thief as a Street Urchin can be lucrative but dangerous. Each week you work, make a DEX, INT, and CHA Test. You make 10 coins for each successful Test or 20 coins for each Critical Success.  Any Critical Failure indicates you were discovered and attacked by victims or local authorities receiving injuries that require you roll on the Wounded Table with Advantage. If the result is KO’d (knocked out), you are arrested and need to escape or face fines or more severe punishments. A member of your gang will see that someone with the Healer skill helps you mitigate any results of Crippled or Disfigured rolls on the Wounded Table.
+
+
+
+
+
+
+Street Urchin related spot illustration ###
+
+
+
+
+
+
+▶ Step 3 Overview - Ability Scores
+Your character’s starting mental and physical potential is represented by a score of 2 to 12 for six Abilities. Scores will increase as the character advances in Level to a maximum of score of 18. 
+Most actions are resolved with an Ability Test where the target number for success is a roll lower than your relevant Ability Score. See Ch 1 - Core Mechanics, Action Resolution for more information.
+Review the explanation and application of the six Abilities below. Then generate scores by rolling 3d6 (Method 1) or assign scores from a preset array of numbers (Method 2) as indicated below.
+
+
+
+ABILITIES
+STR   (STRENGTH) is your capacity to exert bodily, physical force.  It is used for lifting, throwing, breaking and to make melee attacks.  You may also use STR for ranged attacks with hand thrown weapons if it is higher than your DEX.
+DEX  (DEXTERITY) is a measure of your agility, reflexes, coordination, and balance.  DEX is used to dodge attacks, move stealthily, climb, and to make ranged attacks.  You may also use DEX for melee attacks with Light weapons if it is higher than your STR.
+CON  (CONSTITUTION) represents your stamina, health, and endurance.  CON is used to resist physical pain, poison, disease, and succumbing to the effects of wounds. 
+INT     (INTELLIGENCE) represents your knowledge, perception, and memory.  INT is used for searching, tracking, and seeing through illusions.  With training, INT is employed to harness and project arcane power.
+WIS   (WISDOM) indicates your willpower, discipline, and intuition.  WIS is used to resist charms, maintain concentration, and sense motives in others.  With training, WIS is used to evoke, influence, and control divine or diabolic powers.
+CHA  (CHARISMA) is a measure of persuasiveness, eloquence, and leadership.  CHA is used to influence others, improve reaction/attitude of NPCs, and lead others.  Some fey and those with special training can employ CHA to tap and control internal sorcerous powers.
+
+
+RPG Dice ###
+
+
+
+
+
+
+
+ABILITY SCORES
+
+
+Determine scores using one of the following two methods to determine your character’s Ability Scores.
+Method 1
+
+Kara Spell Caster ###
+Roll 3d6 and drop the lowest number to generate a number from 2 to 12.
+Record this number on a scrap sheet of paper. 
+Repeat this to generate 6 numbers.
+Assign each number as you desire to STR, DEX, CON, INT, WIS, & CHA.
+Method 1 generates an average number of 8.46 but you take on the risk of having a scope of 2 to have the possibility to have a score of 12.
+
+Example
+Anita rolls the first 3d6 resulting in 2, 4, & 6. 
+She drops the 2, so records 10. 
+She then rolls 3, 3, and 4. Dropping 3, she records 7. 
+She rolls 2, 3, and 6. Dropping 2, she records 9.  
+She rolls 3, 5, and 5. Dropping 3, she records 10.
+She rolls 1, 2, and 3. Dropping 1, she records 5.
+Finally she rolls 5, 6, and 6 and records 12.
+Anita wants her character Kara to eventually be both an Arcane and Divine Spellcaster so she assigns higher scores to INT and WIS. 
+Kara’s starting Ability Scores are: 
+STR: 5   DEX: 7   CON: 10   INT: 12   WIS: 10   CHA: 9
+Method 2
+Assign six numbers from a standard array to your character’s Abilities: 7, 8, 8, 9, 9, and 10.
+Method 2 has an average of 8.5 eliminating the chance for low scores but also higher scores.  
+
+
+Example
+As indicated above, Anita wants her Kara character to eventually be both an Arcane and Divine Spellcaster. Anita assigns the higher scores to INT and WIS. 
+Kara’s starting Ability Scores are: 
+STR: 7   DEX: 8   CON: 9   INT: 10   WIS: 9   CHA: 8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+▶ Step 4 Overview - Entanglements
+To determine the attitudes for each of your Entanglements, roll 5d6 and record each number as well as a 1 and 6. Assign each number to one of the seven  groups: Colleagues, Family, Local Civic Authorities, Local Religious Authorities, Master/Mentor/Lord, Neighbors/Local Inhabitants, and Shadow Groups. Descriptions of those groups are provided below in Entanglement Groups.
+First, assign any number per the recommendation (if you choose) or as required by your Ancestry, Class, and/or Background. Afterwards, assign any remaining numbers to each remaining group as you choose.
+The number assigned to a group indicates the general demeanor and reaction members of that group will have towards you as indicated below in Entanglements Attitudes: 1: Aggressive, 2: Hostile, 3: Negative, 4: Disinterested, 5: Positive/Receptive, and 6: Friendly/Sympathetic. 
+The relationships and events from the Entanglements are the catalyst for why your character is starting a life of adventure.
+After each number has been assigned to a group, use them as prompts to help you develop a three to five sentence backstory framework for your character.  This brief outline/skeleton of a backstory should incorporate at least three familial bonds, professional bonds, friendships, enmities, and/or fallout from bad decisions or events. You and the GM can use these going forward to develop relevant plot seeds and storylines in relation to any other characters and their Entanglements. 
+Also, seek out the Groups that have high numbers assigned (positive attitudes) to provide you with information, rumors, a safe haven to recuperate, and other resources if needed.
+Note that the attitudes are not fixed. As you adventure some may improve or deteriorate. Some may be replaced. If you move far away (over 200 miles) from your point of origin, the Attitude for all groups with “Local” in their name will change. They will typically be 3 - Negative or 4 - Disinterested. 
+Also, some of the groups are broad and can be expanded by your GM to differentiate between the various deities and various Shadow Groups like smugglers, cutlists, slavers, anarchists, rebels, etc. 
+Following the Entanglement sections is a last section called Other Catalysts. It provides other optional life events and occurrences that are currently fairly common in Kelinya for the past 60 years since the Second Incursion by the Ixians.  
+
+
+
+ENTANGLEMENT GROUPS
+Colleagues – These are people that you currently work with or have worked with in the last three years. They could be fellow apprentices, pages, fellow students, initiates, or members of  your gang/cohort.
+Family - These could be a specific person or all of your immediate family (siblings, parents), extended family (cousins, aunts/uncles, grandparents) or a whole clan that is interrelated. 
+Local Civic Authorities – These people are governing power in an area overseen by mayors, elders, chiefs, lords, councils, guilds, and nobles. Their authority will be enforced by beadles, constables, reeves, wardens, knights, and city guards.  Local Authorities is defined as a 25 mile radius area where you have spent most of your life or have been residing for the past few years.
+Local Religious Authorities - These people are the spiritual authorities within a 25 mile radius of where  you have spent most of your life or have been residing for the past few years. This could be an organized priesthood or a decentralized organization of shamans, druids or holy people.  In rare instances this could also be a powerful creature like an Ixian Raver, Ixian Archon, devil, or ancient dragon that demands worship. In a theocratic society, the religious authorities govern and the local authorities are also under their direction and control. In a traditional theocracy, enforcement of their authority is through religious court magistrates and Inquisitors.
+Master - This is your current or former master, teacher, mentor, lord, or employer.
+Neighbors/Local Inhabitants - This group represents commoners within a 25 mile radius of where you have spent your life or have been residing for the past few years.
+Shadow Groups - These are people with clandestine agendas that are typically involved in illicit activities. Examples include cultists, anarchists, rebels, press gangs, thieves guilds, secret societies, and cabals of necromancers/witches/warlocks. Criminal activity could include ritual murders, assassinations, kidnapping, slavery, extortion, bribery, and/or fencing stolen goods. Rural and smaller settlements will have only one or two shadow groups in the region but a large, urban area may have multiple Shadow Groups that will compete with each over territory if engaged in overlapping activities. 
+
+
+
+ENTANGLEMENTS ATTITUDES
+Number
+Disposition
+1
+Aggressive - This person or group will actively oppose, undermine, or attack you or those close to you.  This opposition can be immediate and open or concealed until the opportunity to cause the most harm.
+2
+Hostile - This person or group will be more passive in their opposition to you or those close to you. They will not go out of their way to attack you but also will not avoid confrontation. Their opposition can also be to undermine your authority, slander you, or sabotage your activities to keep you from your objectives.
+3
+Negative - This group or person will avoid you and not initiate. If you engage them, they will not be helpful. They will also casually slander or undermine you if the opportunity presents itself.
+4
+Disinterested - This group or person will engage  with you but will offer no substantial assistance without monetary or physical coercion.
+5
+Positive/Receptive - This group or person will engage in an open manner and may assist you in meeting your needs or objectives if they are reasonable. They will typically accept some enticement or fair exchange if you require a higher level of assistance.
+6
+Friendly/Sympathetic - This group or person will initiate contact or freely engage with you. They will offer a relatively substantial amount of assistance to help you meet your needs or objectives.  If you require a higher level of support, they will typically assist you with a promise of some future recompense.
+
+
+DISPOSITION EXAMPLES
+Use the following general examples as prompts for you to develop regarding your relationship and reactions for each of your Entanglement Groups. 
+Aggressive and Hostile
+They will spread false information, slander, or start rumors about you.
+They will seek you out or tell enemies where you are hiding or your plans.
+They will seek to have you driven out of the region or turn an employer against you.
+They will claim you have harmed, maligned, or cheated them and offer a bounty (50 coins x your level ) for your arrest, capture, or punishment for something you may or may not have done.
+They may send out agents to steal from you, put obstacles in your way, or intimidate those close to you.
+Aggressives may send out agents to harm you or those close to you (extort, ransom, kidnap).
+Aggressives may use Divination or other magic in an attempt to spy, hinder, or harm you.
+Negative and Disinterested
+Negatives casually  spread false information, slander, or start rumors about you to get attention.
+They will not hesitate to tell enemies where you are hiding or your plans if asked.
+They will not provide any counsel, information, or any assistance without bribes or intimidation.
+Positive and Friendly
+They are willing to provide you with information, gossip, rumors, contacts or references.
+They are willing to provide you with short or long term sanctuary.
+They are willing to provide or help you find short term employment.
+They are willing to provide a service or money (value = 100 coins x your level) for fair repayment terms.
+Friendlies may be willing to give you money or perform a service (value of 10 coins x your level) 
+Friendlies may be willing to let you borrow something of value but want it returned.
+Friendlies may ask you for a loan or assistance with a problem with a rival.
+Friendlies may voluntarily use Divination or other magic to guard, protect, and aid you.
+
+
+
+
+OTHER CATALYSTS (OPTIONAL)
+Following are optional Events & Occurrences that can use in your background or that the GM can use as a plot hook for your first adventure. The types of events indicated below have been common in Kelinya since the Second Incursion by the Ixians that occurred 60 years ago.  
+Choose or roll 1d20 and any other dice as indicated.
+When the description indicates local, assume that it means within a 25 mile radius while regional indicates an approximately 100 mile radius.
+Most of these are written assuming a small to midsized town with a population of less than 2000. Adjust accordingly if you want it to be a smaller rural thorpe (less than 500 regional residents) a larger, more developed city (2000+ regional residents). 
+For each event indicated, consider the following suggested responses (as applicable) from your character: 
+Seek to solve the issue through negotiations with the parties involved.
+Seek to solve or mitigate the effects of the event. 
+Seek regional powers/authorities* to assist one party or mitigate the effects of the event. 
+Assist or resist one of the parties.  
+Escape the situation.  
+ * Many regional authorities may be strapped for resources, corrupt, or indifferent to the suffering of a community and be reluctant to help without some clear incentive.
+
+
+ 
+
+
+EVENTS & OCCURENCES
+1
+Continual Fog/Smog* - For the past six months there has been a dense fog (1-3) or smog (4-6) that has blanketed the region. During the day, visibility is limited to 30’ (Nearby). At night, visibility is zero. Crops are not receiving enough sunlight to properly develop. Animals and people are suffering ill effects such as weakness, fatigue, and weak bones from lack of sun exposure. 
+If the event is smog, then everything exposed becomes coated in a wet, oily soot.  Also, animals and people have begun suffering from coughing and debilitating infections of the nose, throat, and lungs. 
+Local inhabitants, especially the elderly or those with young children are fleeing.
+2
+Corruption* - For the past year, approximately 10% of all newborn animals (including people) have permanent corruption like alien coloring, strange growths, scales, etc. See the cosmetic type effects in Step X - Corruption for other examples. 
+Farmers and families are afraid and moving away. 
+3
+Cult Takeover - Cultists who were worshipping in secrecy recently began public worship of forbidden Ixian gods. The cultists are harassing traditional believers and have driven off or killed both Local Authorities and Local Religious Authorities. If the locality is remote or the regional powers are weak or indifferent, the cultist may go unopposed. 
+If notified, strong and/or concerned regional powers may choose to send troops or Inquisitors to attack the cultists and restore the previous authorities. The GM will roll 1d6 for each month. If the authorities were notified, the GM will roll 1d6 twice each month. A result of 1 indicates that assistance will be sent. 
+4
+Heresy - Due to a local rise in cultist activities and attacks, Inquisitors have taken over as both Local Authority and Local Religious Authority. They are strict and anything they perceive as deviancy, strange activity, or any challenge to social norms and orthodoxy are harshly punished. 
+5
+Ixian Demigod’s Grave - The resting place of an Ixian demigod that was slain and fell to earth 60 years ago has been discovered in a remote/hard to access location within 10 miles of the town.  This discovery attracts unwanted adventurers, wizards, and cultists. Locals see this as a prelude to forthcoming catastrophes or trouble with cultists and Inquisitors at a minimum. Families and businesses are seriously considering leaving.
+6
+Long Summer* - Locally, a second, smaller sun has been visible in the sky for the past 12 months. The recent summer did not end and extreme heat conditions with little precipitation persist. There are no signs of the weather cooling. Crops have failed due to heat and lack of water. Wells are beginning to dry up so survival for most livestock is in jeopardy. Food has become scarce and locals are leaving. 
+7
+Long Winter* - Locally, the last winter did not end and extreme cold conditions have continued for 12 months with no sign of abating. There is typically snowfall and accumulation of 1d10 inches every day. Fall crops have failed and no spring crops can be planted in the frozen ground. Survival of most livestock is in jeopardy because there is no feed or opportunities for grazing. 
+8
+Mass Psychosis - Local inhabitants have been experiencing extreme paranoia, delusions, and hallucinations at each full moon for the past year. These events have led to numerous murders by individuals or crazed mobs. Frightened locals are at their breaking point and have begun to leave.
+9
+Mold and Fungus* has grown on everything in the local vicinity for the past 3 months. No amount of cleaning or disinfecting seems to stop it. Foodstuffs are being spoiled and crops are dying.  Animals and people are also suffering from mycosis which is a fungal infection. Mycosis can affect skin, hair, nails, and internal organs and ultimately leads to death. Those that have left indicate that the symptoms abated when they were away so the elderly and those with young children are leaving.
+10
+Monochromia* - For the past 6 months, there are no visible colors except for black, white, and shades of gray in the local vicinity. Crops are not receiving proper sunlight to develop. Animals, and people are suffering ill effects such weakness, fatigue, and weak bones from lack of sun exposure. Locals have begun leaving the area.
+11
+Pestilence - An important type of livestock (sheep, goats, horses, cows, or their equivalent) are dying from a wasting disease. No traditional or magical treatment has been effective. Their loss has led to the collapse of a related market such as wool, cheese, leather, meat, etc.  Herders and scared locals are leaving the area.
+12
+Raids by Brigands* - Roving bands of hungry and desperate brigands have hindered trade and communication in the local area. Livestock, crops, and stores of local farmers have been stolen or despoiled. 
+13
+Raids by Eastern Invaders - Roving bands of organized, well armed Eastern invaders have raided small towns and holdings in the region seizing anything valuable that can be easily transported such as livestock, horses, trade goods, coins and captives.
+14
+Restless Dead - For the last 6 months, 1 in 4 deceased residents and animals have risen as undead zombies. The zombies do not attack but rather silently wander around and emulate their previous activities in life. Seeing and eradicating the zombies is traumatic. Locals are highly alarmed and beginning to close shop and move away.
+15
+Revolt, Failed - The regional authorities put down a short, local insurrection. The insurgents were either slain, imprisoned, or run off. A standing force now maintains order with a stern fist under the guidance of a new mayor. 
+16
+Revolt, Successful - The local authorities/vassals were overthrown and either slain or run out of town. The regional authorities have the area effectively under siege cutting off outside trade and communication but you have found a way to possibly slip out.
+spot illustration 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17
+Rising Antipathy - Local relations with a regional community have soured. You may have to investigate to determine the reason if you choose to stay. Choose or roll 1d10. 
+1:  Ancient Dragon* - A centuries old, peaceful coexistence with an old and extremely powerful dragon has soured. The dragon has become indiscriminate in what livestock it takes to eat and has burned some local fields. The dragon has become irascible and is dangerous to approach.
+2:  Dwarves charge double for their crafting services and raw materials if they are willing to sell at all. They are unwelcoming to any who traverse into or through their realms.
+3:  Elves have become isolationist allowing few outsiders to traverse into or through their realms for free. Harvesting of wood and wildlife in their lands is now forbidden. 
+4:  Herders - A regional group of herders that seasonally migrates through the area believes that their livestock is being poached and they respond aggressively to anyone who does not carefully approach and identify themselves. Local landholders have now become inhospitable and aggressive to the herders passing through or grazing on their land without paying a fee.  
+5:  Guild - A powerful local guild has begun withholding or charging double for their wares/services until license fees that are charged by the local or regional authorities are reduced. Roll 1d6 or choose. 1: Blacksmiths, 2: Carpenters & Masons, 3: Leatherworkers & Tanners, 4: Teamsters, 5: Rat Catchers, and 6: Weavers & Clothiers.
+6:  Halflings have begun withholding or doubling the prices for their wine, beer, and/or crops.
+7:  Humans have begun annexing lands to start holdings and establishing tolls on surrounding bridges and ferries.
+8:  Ixians are withholding or charging double for any arcane assistance or services they have traditionally provided. Also, Ixian younglings have taken up petty arson.
+9:  Orcs begin extorting regional holdings and travellers on trade routes. They are suspicious of outsiders and respond aggressively to most who attempt to traverse into or through their traditional lands without a donation.
+10: Temple/Monastery - The temple or monastery of the local, favored deity is angry at the Local Authorities for poor treatment, taxes, fees, and marginalized representation. They have begun to either demand double donations or not perform blessings, ceremonies, rituals, and any spell services at all until their demands are addressed. They are asking their followers to petition on their behalf. Each town often has a favored deity but if necessary choose or roll 1d6 or choose one of the following common ones. 1: Abala, 2: Asherah, 3: Enoch, 4: Hiram, 5: Tubal, and 6: Weut. See Step 7 - Religion for more information on the deities and their area of influence.  
+18
+Strange Odor - For the past 6 months, a strong, strange smell permeates the local area. It has changed at random intervals from 1: ammonia, 2: brimstone/sulfur, 3: lavender, 4: rotten meat, 5: rosemary, or 6: sandalwood. Locals are alarmed and fearing some forthcoming catastrophe, and are beginning to flee the area.
+19
+Strange Skies - For the past 6 months, only unknown constellations, strange moons, and planets can be seen at night. Locals fear that a new rift has opened to some profane realm and are planning to leave.
+20
+Wild Hunt* - For the past three months, hunting horns and baying dogs can be heard in the distance on moonless nights. In the local area, there are weekly reports of disappearances. Travellers report companions being taken. Some local families have partially or entirely disappeared.  Surviving witnesses only recall a flurry of sound and black shapes before falling unconscious. Expeditions to discover the source of the “wild hunt” have either disappeared or come back empty handed. Locals are scared out of their wits and starting to leave the area. 
+* The area will experience a famine within the next 1d6 months that will not end until the event or occurrence ends.
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+THIS PAGE INTENTIONALLY BLANK
+
+insert spot illustration of events 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+▶ Step 5 Overview - Starting Equipment
+You begin with the Standard Gear indicated below. Amend the list by adding or removing any items indicated from your previous selections of Ancestry, Class, and Background before recording. 
+Next, roll 1d20 to receive a Trinket from the list below. Your previous selections of Ancestry, Class, and Background may change what you receive or how this is resolved. 
+Only a few of the trinkets indicated will be readily available for purchase. A base value is listed in case you are in dire need of funds and attempt to sell the item.  If they can be located, replacing items will typically be x2 to x4 the indicated value.
+Use your trinket to create opportunities for role playing or for the GM to create adventure hooks and encounters for your character. Ask yourself questions like: How did you obtain the trinket? Was it a family heirloom, stolen, or found in an old ruin? Did someone desperate for food or coin trade it to you? Does the trinket have a mysterious provenance that could come back to haunt you? 
+After character creation is complete, you may purchase any additional gear with your available funds. See Ch 2 - Equipment. 
+
+
+
+STANDARD  GEAR
+1 Set of traveling clothes (1 pair of long pants, 1 shirt, and 1 undergarment)
+1 Leather belt with a metal buckle
+1 Pair of below the knee, leather boots
+1 Hooded cloak or 1 cloak and 1 hat
+1 Knife (Light Melee & Ranged, 1d2 damage, Range: Nearby) that can also be thrown.  
+1 Weapon Melee or Ranged Weapon. Roll 1d6 or choose.
+1-3:   Melee Weapon
+4-6:  Ranged Weapon 
+Melee Weapon - If you chose or rolled a Melee Weapon, then roll 1d6 or choose one you do not own.
+1: Axe (Simple Melee & Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon
+2: Dagger (Light Melee & Ranged, 1d4 damage, Range: Nearby) can also be used as a ranged weapon
+3: Hammer (Simple Melee & Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon 
+4: Spear (Simple Melee and Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon 
+5: Staff (Light Melee, 1d4 damage)
+6: Sword (Simple Melee, 1d6 damage)
+Ranged Weapon - If you chose or rolled a Ranged Weapon, then roll 1d6 or choose one you do not own.
+1: Crossbow and bolts (Ud8) (Simple Ranged, 1d6 damage, Range: Nearby)
+2: Dagger (Light Melee & Ranged, 1d4 damage, Range: Nearby) can also be used as a melee weapon
+3: Javelins (Ud8) (Light Ranged, 1d4 damage, Range: Nearby)
+4: Short Bow and arrows (Ud8) (Simple Ranged, 1d6 damage, Range: Nearby)
+5: Sling and stones (Ud8) (Light Ranged, 1d4 damage, Range: Nearby)
+6:  Spear (Simple Melee & Ranged, 1d6 damage, Range: Nearby) can also be used as a melee weapon
+1 Sack that will hold 15 lbs (capacity for 300 coins)
+1 Ball of of hemp twine (10’)
+1 Leather belt pouch with 3d6 coins and can hold a total of 80 coins (4 lbs). 
+1 Set of rations (Ud4)
+1 Wineskin filled with water (Ud4)
+
+
+TRINKETS
+
+
+Roll
+Description
+Value
+1
+Arrow, Black - At the end of the Encounter, you can always find it within 1d6 turns if you search.
+5
+2
+Coin, Lucky Copper - It always lands on your mental choice of heads or tails.
+5
+3
+Crystal, glowing - This palm sized crystal emits a bluish light continually and can illuminate an area Close when uncovered. The light it emits is unaffected by the Darkness spell.
+20
+4
+Dagger, curved - It does standard damage (1d4) but has 4 gems worth 10 coins each. If removed, a new gem will take its place after one week.
+40
+5
+Flask, Bountiful - This copper flask continually refills and always has enough water for two people per day. If a bottle of wine is added it will refill with wine for a week.
+15
+6
+Glass Marbles, dozen - You can cast marbles as a Standard Action to an area Close.   
+Creatures that move through them must pass a DEX Test or be Down. Marbles Nearby  
+return to their pouch if you hold it open on the ground and concentrate for one minute. 
+5
+7
+Silent Hammer - This work hammer has a head made of an unusual, dark black metal. It makes  
+no sound when hammering nails, spikes, or chisels. It can be used as a weapon. Hammer (Simple Melee & Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon.   
+10
+8
+Key, Skeleton - This key has a 1 in 4 chance to work on any mundane lock. A failed attempt can be tried again on the same lock the following day.
+20
+9
+Knife with folding blade - This knife is small and easy to conceal. The blade never 
+dulls will not break with a Critical Failure. Knife (Light Melee & Ranged, 1d2 damage, Range: Nearby) that can also be thrown.  
+10
+10
+Leather Necklace with Lucky Fish Charm - This charm gives you Advantage on your INT Test 
+when fishing or Foraging at a shoreline to increase your rations.
+5
+11
+Lucky Dice, pair - In dice games, once per day you can reroll and take the better result.
+5
+12
+Lodestone on a leather thong -  The lodestone points north by default but can be attuned to another target you can touch and concentrate on for one minute.
+10
+13
+Perfume, Floral (Ud4) - When perfume from this vial is applied, you have Advantage on CHA Tests when seeking information or asking for favors. Each application lasts 1 hour.
+5
+14
+Ring, silver with insect motif - When you wear this ring, insects avoid you. Any insect type creature must pass a WIS Test to attack you.
+10
+15
+Rope, spider silk rope, 100’ - This thin rope that can hold the weight of approximately six human-sized beings (1200 lbs). It also never tangles. It takes 8 hp of damage to break/sever.
+15
+16
+Rosewood flute - Once per day, when you play this flute as a Standard Action, the GM will reroll on the NPC Reaction Table if you ask. 
+10
+17
+Satchel, tooled leather with shoulder strap and silver buckle - This small satchel has twice the capacity of a backpack. It can hold 60 lbs (1200 coins) but never weighs more than 10 pounds. What is put in the satchel is limited by the size of its mouth (12” diameter). Living creatures cannot survive in the satchel over 24 hours if it is closed.
+20
+18
+Sneezing powder, packets (Ud6) - As a Reaction to an opponent being Close, you can blow this powder in their face. If the target fails a CON Ability Test, they will sneeze uncontrollably and have Disadvantage on any Actions until the beginning of your next turn. The powder cannot be used in windy conditions.  
+10
+19
+Staff, Walking with concealed spring blade allowing it to be used as a spear. Spear (Simple Melee and Ranged, 1d6 damage, Range: Nearby) can also be used as a ranged weapon.   
+10
+20
+Lucky Statuette Jade Monkey - While held, this palm sized statuette gives you Advantage on one INT Ability Test per day.
+10
+
+
+
+
+
+trinket  spot illustrations?  ###
+
+
+
+▶ Step 6 Overview - Languages
+You speak one or more languages based on your Ancestry, Class and Background. 
+If it was indicated, you can also read & write some of those languages. 
+Unless indicated otherwise by your Class, Ancestry, or Background, you can choose or roll 1d10 for an additional language from the list below that you can only speak. 
+Your Class, Ancestry, or Background may also have granted you the ability to read and write this additional language.
+You can add or improve languages skills (speaking then reading & writing) as you gain levels. See Ch 5 - Advancement.
+
+
+
+
+COMMON LANGUAGES OF THE  CONTINENT
+
+
+1
+Dwerg is spoken by Dwarves who live in remote mountains or subterranean settlements. It is also spoken by many other denizens of Underdark. The spoken form is clipped with short syllables and can sometimes sound harsh. Some dialects include taps and claps. These percussive elements are also used in short repeating phrases to communicate with drums and flashes of light across long distances or through the dark. The written form consists of runes made with vertical, horizontal, and diagonal slashes and dots that are easy to carve in wood or stone with an edged tool.
+2
+Infernal is spoken by Ixians and powerful extraplanar creatures from profane realm such as Ixian Ravers and Ixian Archons. Warlocks and some necromancers also learn this language through their studies. With the arrival Ixians in the northern capitals of the empire around one hundred years ago, the language was learned by many scholars and researchers. The spoken form is guttural with hard consonants. The written form consists of complex runes and pictograms. 
+3
+Istya is spoken by the raiding invaders from the Eastern continent who began arriving, raiding, and creating settlements around 40 years ago. The spoken form consists of quick , hard syllables with meanings changing due to tonal inflections. The written form consists of complex pictograms.
+4
+Kaduz is spoken by Dwarves who live in hills or in the surface settlements.  It is also commonly spoken by Halflings who reside in the hills and valleys alongside dwarven settlements. It is a similar but distinct variant related to Dwerg. Throughout the centuries it has assimilated words from the Kelinya family of languages as well as developing its own idioms often introduced by Halflings. It uses the same runic alphabet as Dwerg but has incorporated curved elements and flourishes only suitable for writing in ink.
+5
+Kelinya is an older, formal language used by the original human empire before it split into northern and southern territories that also subsequently fractured further into smaller independent states. Despite this, its uniformity has made it useful for communication and commerce so it is still widely used for commercial and legal documents. The Kelinya alphabet consists of simple circle, line, and slash configurations representing phonetic sounds.
+6
+Nulya is a dialect of Kelinya spoken primarily by Humans and Halflings inhabiting the northern portion of the Kelinya Empire that split then eventually collapsed around 80 years ago. The north has maintained a higher level of large urban settlements and the language is used and known by a larger population than all other languages on the continent. The spoken version has developed an extensive collection of idioms over the last few hundred years as well as assimilated words from Kaduz, Infernal, and Sylvan. It uses a modified and extended version of the Old Kelinya alphabet consisting of circle, line, and slash configurations representing phonetic sounds.
+7
+Muluk is spoken by Orcs and the nomadic barbarians from southwestern portion of the continent. The spoken form has brief sentences consisting of hard consonants and clicks. The click patterns are also used in short repeating phrases to communicate with drums across long distances or at night.
+8
+Sindar is an ancient language spoken by the nigh extinct High Elves who live in ancient, remote,  mountain citadels and by dragons. It is rumored that Sindar was the language used by Weut to call forth the waters from the void at the moment of creation. Sindar is also spoken by arcane researchers and Dark Elves that live in Underdark. The spoken form is melodic and flowing with meanings changing with word order and tonal inflections. The written form consists of thousands of complex pictograms.
+9
+Sulya is a dialect of Kelinya spoken by Human and Halfling farmers and herders of the Southern grasslands. Due to its lack of hard geographic borders, the southern portion of the old empire has experienced numerous conquests and invasions. Due to this, it has assimilated a multitude of words and idioms over the last 80 years from Muluk, Sylvan, and more recently Istya. Though not used extensively due to its decentralization, Sulya does have its own alphabet. It uses a modified and extended version of the Old Kelinya alphabet consisting of circle, line, and slash configurations representing phonetic sounds.
+10
+Sylvan is spoken by Elves and other forest folk who live in the primeval forests of the continent and Halfling who live in the foothills and bordering areas. Sylvan is related to Sindar but diverged over 500 years ago after an extended internecine war among elves leading to the isolation of the High Elves, the migration of the Dark Elves to Underdark and the remaining Elves congregating and settling in forests.   
+Like Sindar, the spoken form is melodic and flowing with meanings changing with word order and tonal inflections but it has slowly assimilated some Kelinya based words and colorful idioms, especially through their interaction with Halflings who love wordplay and complex metaphors. The written form consists of thousands of pictograms.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+examples of each script
+
+
+
+library or language spot illustrations?  ###
+
+
+
+▶ Step 7 Overview - Religion
+In Heartbreaker, the default setting is the planet of Yrath on the continent of Kelinya. In Kelinya, most people are polytheistic. The deities are universal, abstract concepts, typically transcending Ancestry and gender.  
+Commoners may favor a particular deity but will typically still revere, pray, and make offerings to other deities depending upon circumstances and the occasion as supplicants.  Rural commoners especially favor Abala, Asherah, Tubal, and Weut. In urban areas, all are equally revered. Clergy will often focus on a specific deity but still honor or at least acknowledge the other deities except for Ghoelb. 
+Cultists and warlocks are the exception and typically focus on a specific deity to the exclusion of all others. They seek forbidden power from deities such as Ghoelb, Moloch or other powerful entities such as ancient evil dragons, malevolent liches, scheming Ixian Archons, or destructive Ixian Ravers. 
+Below are brief descriptions of the deities, their areas of influence (portfolio), symbol, and rune. You should choose the deity your character follows or favors but if a random determinate is required, roll 1d12.
+1: Abala, 2: Asherah, 3. Enoch, 4: Gestas, 5: Ghoelb, 6: Hiram, 7: Juba, 8: Kain, 9: Moloch, 10: Tubal, 11: Weut, and 12: None 
+You are not required to select a specific deity but if or when you take the Theurgy 1 Edge, selecting a specific deity to venerate has benefits for casting spells from specific schools of magic.
+There is also brief information regarding any special assistance they provide to adherents who are Theurgic Spellcasters. See Ch 7 - Spellcasting and Spells, Theurgic Spellcasting for more detailed information. 
+
+
+
+
+DEITIES OF YRATH
+
+
+
+
+Name - Portfolio 
+Symbol
+Rune
+Abala represents agriculture, livestock, farming, harvest, home, hearth, and tamed nature. They are typically seen as a male counterpart to Asherah and some even believe they are one spirit.  Abala is especially honored by farmers, husbands, and halflings. Abala restrained Ghoelb’s right hand as it was shackled by Tubal.  For Theurgic Spellcasters, Abala provides aid to followers casting Evocation spells (magic that creates and manipulates energy and elements). 
+
+
+Asherah represents fertility, birth, rain, springs, and untamed nature. As indicated above, Asherah is considered by many as a female aspect of Abala. Asherah is especially honored by wives, herders, druids, hunters, elves, halflings, and orcs.  Asherah restrained Ghoelb’s left hand as it was shackled by Tubal. For Theurgic Spellcasters, Asherah provides aid to followers casting Abjuration spells (magic that is used for protection from forces or supernatural beings). 
+
+
+Enoch represents law, order, light, oathkeepers, learning, and writing. Enoch is especially honored by bureaucrats, mercantilers, scholars, arcane spellcasters, and city dwellers.  It was Enoch who came up with the plans for the gods to capture Ghoelb.  For Theurgic Spellcasters, Enoch provides aid to followers casting Divination spells (magic that is used for discovering or revealing information). 
+
+
+Gestas represents luck, games of chance, and trickery. Gestas is especially honored by gamblers, thespians, vagrants, and rogues. For Theurgic Spellcasters, Gestas provides aid to followers casting Divination (magic that is used for discovering or revealing information) and Illusion spells (magic that is used to trick the senses and perceptions). 
+
+
+Ghoelb is a primeval entity that is the embodiment of disorder, malevolent chaos and  the void. Ghoelb was imprisoned in an extraplanar realm by the other gods but is still able to maintain communication and provide assistance to followers. Commoners only invoke Ghoelb for the darkest of curses against hated rivals. Ghoelb is only worshiped by doomsday cultists, warlocks, and spellcasters seeking forbidden lore. For Theurgic Spellcasters, Ghoelb provides aid to followers casting Conjuration (magic that manifests materials or creatures) and Illusion spells (magic that is used to trick the senses and perceptions).
+
+
+Hiram represents freedom, wandering, exploring, journeys, fellowship, and drinking.  Hiram is especially honored by peddlers, itinerant performers, warriors, innkeepers, brewers, vintners, dwarves, halflings, and orcs. A common toast among friends and companions is “auf Hiram”. 
+For Theurgic Spellcasters, Hiram provides aid to followers casting Abjuration (magic that is used for protection from forces or supernatural beings) and Evocation spells  (magic that creates and manipulates energy and elements). 
+
+
+Juba represents fellowship, storytelling, performing, singing, and dancing.  Jubal is the light hearted sibling of the serious Tubal. Juba is especially honored by women, bards, musicians, thespians, itinerant performers, elves, halflings, and humans. In religious tradition, it was Juba’s music and storytelling that charmed Ghoelb allowing the other gods to capture and imprison them. 
+For Theurgic Spellcasters, Juba provides aid to followers casting Enchantment spells (magic that charms or influences others).  
+
+
+Kain represents battle, conflict, and sorrow. Kain is also invoked by oathbreakers to protect them from consequences. In some religious traditions, Kain was created by Ghoelb but betrayed them in order to protect the world made by Weut and the other gods. When Kain fought Ghoelb to subdue them, their sword shattered because of the betrayal. Kain is especially honored by warriors, dwarves, orcs, and Ixians. 
+For Theurgic Spellcasters, Kain provides aid to followers casting  Abjuration spells (magic that is used for protection from forces or supernatural beings).
+
+
+Moloch represents darkness, revenge, death, and grief. In religious tradition, Moloch was imprisoned in a maze as a sacrifice to a minotaur. The minotaur spared Moloch and helped them escape. Like Ghoelb, Moloch is often invoked for curses against hated rivals and enemies. Moloch is the gatekeeper for the realms of the afterlife. Moloch is especially honored by warriors, barbarians, Orcs, Ixians, Minotaurs, and necromancers. Followers often tattoo a teardrop below one or both eyes. Moloch is exclusively worshiped by some warriors, cultists, and spellcasters seeking forbidden necromantic lore. 
+For Theurgic Spellcasters, Moloch provides aid to followers casting Necromancy spells (magic that manipulates life force) and Illusion spells (magic that is used to trick the senses and perceptions). 
+
+
+Tubal represents fire, metalworking, and crafts in general. Tubal is the dour and serious sibling of Juba. In religious tradition, Tubal forged the magic chains that were used to imprison Ghoelb. Tubal is especially revered by artisans, crafters, smiths, and dwarves. For Theurgic Spellcasters, Tubal provides aid to followers casting Evocation spells (magic that creates and manipulates energy and elements), especially those related to light, heat, and fire. 
+
+
+Weut represents creativity, nature, and creation. Weut is an ancient, primeval entity who created the other gods to aid in the imprisonment of Ghoelb so that creation could begin. Taking the form of an owl, Weut created water from the void then drew up land and mountains from the calm seas. They then nested on the highest mountain to oversee the remainder of creation carried out by the other gods. Weut is especially revered by artisans, high elves, and spellcasters. For Theurgic Spellcasters, Weut provides aid to followers casting Transmutation spells (magic that changes the properties of a being, energy, or substances). 
+
+
+
+
+
+
+
+
+cosmology or religion spot illustrations?  ###
+
+
+
+
+▶ Step 8 Overview - Corruption
+Magic is dangerous to both practitioners and often those in the general vicinity. 
+Your character only has Corruption when indicated by your Class or Background. During adventures, anyone exposed to a magic mishap can receive Corruption.
+To determine Corruption, roll two dice. Roll a d20 for the Corruption Effect and a d6 for the Corruption Severity. 
+
+
+
+CORRUPTION EFFECT
+ 1
+Acid Excretions* - Your sweat is highly acidic and damages anything you touch. You cause damage or pain to anyone or anything you touch with your bare hands or skin. Anything you wear or are in skin contact with for an extended amount of time will need to be replaced after one week. You can wear gloves that need to be replaced weekly to protect possessions you touch. Expensive alkaline substances can be purchased (20 coins/week) and if applied regularly can mitigate the effects. Your touch causes 1 point of damage per hour to anything you touch.
+2
+Cloven Hooves* -  Your feet are replaced with black, cloven hooves. If you already have cloven hooves (as some Ixian and other creatures do), reroll this result. 
+3
+Glowing Eyes* -  Your eyes glow a bright color of your choice and may even cycle through colors. The light is bright enough to illuminate everything Near and make it difficult for you to hide, even in shadows.
+4
+Fungoid Infection* - Waves of fungal fruiting bodies erupt across your body every few hours. Spores are released when the caps open. Lesions also appear every few hours and emit spores when ruptured. The eruptions are painful but do not incapacitate you. You smell moldy constantly and organic possessions and items that are Near you for over a few hours become moldy and will be ruined within a week if not cleaned.  Constant washing and exposure to sun and dry air mitigate the results for a few hours. Characters with the Drawback, Mold Alergy, give you a wide berth. 
+5
+Hairless - All hair on your body falls out. If this Corruption is not permanent, the hair will regrow in one month after the effect of the Corruption abates. 
+6
+Hirsute - Within a day, you grow thick hair of a color of your choice from every part of your skin. The hair needs to be intensely trimmed and shaved at least once a week or it begins limiting your mobility, ability to grasp things, eyesight, and hearing. This will give you Disadvantage on most actions. If not maintained, you can become immobile within 3 months and you could potentially die within 6 months.
+7
+Horns*  - Horns begin growing out of your head. If you already have horns (as some Ixian and other creatures do), you may reroll this result. They can be straight and taper to sharp points or spiral. Removal of your horns by grinding or cutting them down to the quick is extremely painful and causes 2 points of damage that does not heal until after a Full Rest when the horns will completely regenerate. If you headbut someone, your horns cause an additional 1 point of damage for every 2 of your Levels.  You can only wear headgear that is modified to accommodate your horns.  
+8
+Mist* - A stationary mist forms around you that has a ghostly glow and obscured, tortured faces that are silently speaking. Within 2 turns, the mist obscures you and everything Nearby you from all but magic vision. A strong wind will disperse the mist temporarily or you can walk away from it and are momentarily clear until it returns.  Melee attacks against those obscured by the mist are at Disadvantage.  All missile attacks and damage  against those obscured by the mist are at Disadvantage. 
+9
+Overgrown Features* - A portion of your body increases in size or length. Roll 1d6.
+1:   Arms - Your arms reach down to your ankles. Your Halfing and other short friends always ask you to get things on the top shelf for them or to pass the potatoes at dinner.
+2:   Ears - Your ears are triple normal size but you receive Advantage on INT and WIS Tests where hearing is a factor.
+3:   Feet - Your feet are twice as wide and long as normal. You will need to get custom footwear.
+4:   Fingers - Your fingers become twice as long as normal but function normally otherwise.
+5:   Legs - Your legs grow to double their normal length. You walk slightly faster now and have to take smaller steps for others to keep up.
+6:   Nose - Your nose grows to triple its normal size and your olfactory sense is improved. You receive Advantage on INT and WIS Tests where smell is a factor.
+When the growth starts, constraining clothing will probably need to be removed quickly or you will receive 1d4 damage.
+Custom clothing to accommodate your enlarged body parts costs x2.
+10
+Paranoia – At least once every session, the GM will ask you and your companions to roll Initiative that will secretly be for no reason and give you misleading insights or suspicious observations. If you investigate them, only a Critical Success on a related Ability Test will dispel a false suspicion. You also regularly have disturbing dreams of alien beings sitting around a table controlling you and the world you inhabit. 
+11
+Extraplanar Attention - You have drawn an unhealthy amount of interest and attention of a powerful but playful, extraplanar, divine or profane creature. Roll 1d6. 
+1: Celestial Reaver 
+2-3: Celestial Archon
+4-5: Ixian Archon often referred to as a devil
+6: Ixian Raver often referred to as a demon
+Their interference and obsession with you does not follow the typical durations shown in Corruption Severity. Instead, apply that d6 roll to the effects below.
+1: Daily Aid/Hinder - For 2 months or until you reach your next level, whichever is longer, they will aid or hinder you depending upon their capricious mood. Roll 1d6 each day. 
+1-3:  You have Advantage on all Spell Tests for 24 hours. 
+4-6: You receive Disadvantage on all Spell Tests for 24 hours. If you are not a spellcaster, you receive Advantage/Disadvantage on all INT, WIS, & CHA Test for 24 hours.
+2: Weekly Generosity/Spite - They capriciously feel generous or spiteful depending upon whether or not they feel respected or appreciated. This perception has no relation to how you interact with them. 
+For 2 months or until you reach your next level, whichever is longer, roll 1d6 at the beginning of each week. 
+1-3:  They appear, praise you, and give you a minor magic item (typically expendable like a potion or wand with 1d4 charges) or piece of masterwork equipment. It disappears after one week. 
+4-6: They appear, acting fussy and indignant, and take away a minor magic item or an important piece of your equipment like a sword, spellbook, pouch with all your money, lock picks, etc. It will be returned after one week with an apology. 
+3: Twinsies - One day per week for 2 months, they will transform your clothes and armor to match their appearance. The properties of your transformed clothing and armor do not change and will return to normal after 24 hours. 
+If your crush is profane, the gear will typically be a black leather outfit and/or armor with lots of spikes and buckles and boots with thick, elevating soles. If your crush is divine, the armor will have a mirror finish and clothing will be airy, sparkly, and flow as if blown by an invisible breeze. In both cases, you will appear flashy, dramatic, and ostentatious. 
+4: Jealousy - Once per month for 2 months, they will use magic to attack or hinder a random ally or associate from jealousy or that they feel is treating you badly. This will occur at the most inopportune moment like when you are fighting the boss antagonist or when you are working to make an alliance with the leader of a powerful faction. They will appear for 1d6 turns and cast a spell of up to 2nd level then disappear after some snide comment. Any damage from the spell will be the minimum.
+5: Lesson - Once per month, for 2 months, they will aid an opponent to show you that you need and should appreciate them. They will appear, tell you something snarky and for one turn, a single opponent’s attack or spell is automatically successful and has maximum effect/damage. Your extraplanar patron does not intend to let this kill you. If you are injured to the point that you have to make a Wound Test from that attack you will automatically succeed. They will then take your opponent to their realm as described in Rapture below and never let them disturb you again.
+6: Rapture - They grab you and drag you off to their realm to be their pet for at least one year in their realm. They will use deadly force against anyone who attempts to stop them. You will be returned from this rapture to the spot where you were taken. Time will have moved at a different rate and you will be returned more or less whole within 6d6 days from your place of departure and have gained half the experience points required to reach the next level. 
+12
+Smell - Your body exudes a strong odor that is easy for anyone Close to you to detect. The smell permeates your possessions and lingers even after you are gone. It is virtually impossible to mask with washing or perfume. Creatures who track you using scent have Advantage.
+1:   Amonia*
+2:  Brimstone/Sulfur*
+3:  Lavender - Does not alarm commoners.
+4:  Rotten Meat*
+5:  Rosemary- Does not alarm commoners.
+6:  Sandalwood - Does not alarm commoners.
+13
+Scaly Skin* - Your skin becomes unnaturally ridged and scaly like a reptile. It can be any color of your choice but is typically an almost neon red, orange, blue, or green. Its toughness does not stack with other armor but your scaly hide is as effective as Light Armor (Ud4). Once the Usage Die is depleted for your scaly hide, it will not act as armor again until it regenerates after a Full Rest.  
+14
+Skeletal* - A portion of your body has exposed bone. The tissue that covers and attaches to the bone is ethereal but still functions to keep the affected portion of the body working. Roll 1d6 to determine the body part: 1 - Left Arm, 2- Right Arm, 3 - Left Leg, 4 - Right Leg, 5 - Torso, 6 - Head. Helmets, hats, gloves, boots, or clothing for the affected body part will need special padding or straps to stay on securely. 
+15
+Spiky* - Thick, 4” long spikes grow from your head, shoulders, back, and the tops of your hands. Removal of your spikes or cutting them down to the quick is extremely painful and causes 2 points of damage that does not heal until after a Full Rest when the spikes will completely regenerate. With these spikes, your unarmed attacks cause +1 point of damage for every 2 of your Levels. You require modified clothing and armor that costs x2.  
+16
+Translucent Skin* - Your skin is transparent making your veins, arteries, muscles, and bones visible. Extended exposure to intense sunlight is painful and any damage it would inflict is doubled. 
+17
+Warty Skin* - Your body is covered with large knobby and warty protrusions with skin discoloration. They are an  uncomfortable cosmetic disfiguration. If removed, they will regenerate at your next Full Rest.
+18
+Webbed Digits* - You grow a translucent membrane between your fingers and toes. Your swimming movement rate is doubled. 
+19
+Weeping Blood* - Blood leaks from the ducts of both of your eyes. It is uncomfortable and stains your clothes but is otherwise just a nuisance. This condition is also known as the “Mark of Moloch”. You will receive Advantage on interaction CHA Tests and the NPC Reaction Table in your first encounter with any followers Moloch and minotaurs. 
+20
+Weeping Sores* - Oozing and crusty sores and lesions appear on your face and body. They are uncomfortable and stain your clothing but are otherwise just a nuisance. 
+* Those who see or are aware of this Corruption are horrified and fearful causing you to have Disadvantage on all CHA Tests involving social interactions. However, you have Advantage on CHA Tests to intimidate those who can see the corruption up close. Interactions with other spellcasters and those who know you personally will be unaffected by your condition. 
+
+
+
+Step 8 - Corruption (continued)
+
+
+Now, roll 1d6 for the Corruption’s Severity. The severity of Corruption Effects can be eliminated with a magical Wish, Remove Greater Curse and/or the intervention of an incredibly powerful being or creature, typically for an extortionate price. The Remove Curse Spell can shorten or duration or temporarily suppress the Corruption Effects as indicated below. You may also be able to discover other treatments or magical items that can mitigate the severity.
+
+
+CORRUPTION SEVERITY
+Roll
+Description
+ 1
+The Corruption is temporary and lasts until your next Full Rest or a Remove Curse spell. 
+2
+The Corruption is temporary and lasts 3d6 days.* 
+3
+The Corruption recurs daily and lasts 12 hours*, from noon until midnight.
+4
+The Corruption lasts 24 hours* (day and night) of a full moon, 12 times a year.
+5
+The Corruption can be triggered by stressful events. Once per Encounter, when you have to roll Initiative, roll a CON Test also.  If you fail the CON Test, the Corruption Effects emerge and last 24 hours.* 
+6
+The Corruption is permanent. Remove Curse will suppress the effects for 24 hours. 
+*   Remove Curse will half the indicated duration.
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                   Summoning ###
+
+
+
+
+
+
+Downtime ###
+
+
+Images and cut paste resources
+
+
+
+
+
+
+
+
+
+
+
+
+THIS PAGE INTENTIONALLY BLANK
+insert full page spot illustration or gallery
+of bard backgrounds
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Alchemist ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Alchemy Equipment ###
+
+
+
+
+
+
+
+
+
+
+
+THIS PAGE INTENTIONALLY BLANK
+insert full page spot illustration of Arcane Researcher
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

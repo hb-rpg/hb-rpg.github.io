@@ -172,6 +172,7 @@ export enum JobSubsetEnum {
     Cartographer = "Cartographer",
     Inspector = "Inspector/Reeve",
     Interpreter = "Interpreter",
+    RatCatcher = "Rat Catcher",
     Smith = "Smith",
     Carpenter = "Carpenter",
     Cooper = "Cooper",

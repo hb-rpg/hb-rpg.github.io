@@ -187,10 +187,12 @@ export namespace EdgesData {
     export const JobSubsetToEdgeRecord : Record<JobSubset, SelectionPackage<Edges>> = {
         [JobSubsetEnum.None]: NoneEdgeSelection,
         // Vagabond / Escaped Thrall Variants
-        [JobSubsetEnum.HouseServant]: new SelectionPackage<Edges>([Crucible], [], []),
-        [JobSubsetEnum.Farmhand]: new SelectionPackage<Edges>([Crucible], [], []),
-        [JobSubsetEnum.Laborer]: new SelectionPackage<Edges>([Crucible], [], []),
-        [JobSubsetEnum.Sailor]: new SelectionPackage<Edges>([Crucible], [], []),
+        // Crucible is granted once by the "Escaped Peasant/Thrall" JobType base; subsets must not
+        // restate it or an additive merge grants a duplicate edge.
+        [JobSubsetEnum.HouseServant]: NoneEdgeSelection,
+        [JobSubsetEnum.Farmhand]: NoneEdgeSelection,
+        [JobSubsetEnum.Laborer]: NoneEdgeSelection,
+        [JobSubsetEnum.Sailor]: NoneEdgeSelection,
         
         // Martial Subsets (Inherit Armaments)
         [JobSubsetEnum.HedgeKnight]: new SelectionPackage<Edges>([Armaments], [], []),
@@ -208,6 +210,7 @@ export namespace EdgesData {
         [JobSubsetEnum.Cartographer]: NoneEdgeSelection,
         [JobSubsetEnum.Inspector]: NoneEdgeSelection,
         [JobSubsetEnum.Interpreter]: NoneEdgeSelection,
+        [JobSubsetEnum.RatCatcher]: new SelectionPackage<Edges>([Sneaky], [], []),
         [JobSubsetEnum.Smith]: NoneEdgeSelection,
         [JobSubsetEnum.Carpenter]: NoneEdgeSelection,
         [JobSubsetEnum.MoneyChanger]: NoneEdgeSelection,

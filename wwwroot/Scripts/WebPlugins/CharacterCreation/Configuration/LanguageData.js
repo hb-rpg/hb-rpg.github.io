@@ -58,7 +58,7 @@ export var LanguageData;
     const dwarfChoices = new ChoiceGroup(1, [LanguageData.SpeakDwerg, LanguageData.SpeakKaduz], []);
     const elfChoices = new ChoiceGroup(1, [LanguageData.SpeakSindar, LanguageData.SpeakSylvan], []);
     const humanChoices = new ChoiceGroup(2, [LanguageData.SpeakNulya, LanguageData.SpeakSulya, LanguageData.SpeakIstya, LanguageData.SpeakMuluk, LanguageData.SpeakSylvan], []);
-    const halflingChoice = new ChoiceGroup(1, [LanguageData.SpeakNulya, LanguageData.SpeakSulya, LanguageData.SpeakSylvan], []);
+    const halflingChoice = new ChoiceGroup(1, [LanguageData.SpeakKaduz, LanguageData.SpeakNulya, LanguageData.SpeakSulya, LanguageData.SpeakSylvan], []);
     const orcChoice = new ChoiceGroup(1, [LanguageData.SpeakSulya, LanguageData.SpeakIstya], []);
     const ixianChoice = new ChoiceGroup(1, [LanguageData.SpeakNulya, LanguageData.SpeakIstya], []);
     const raceChoiceList = [dwarfChoices, elfChoices, humanChoices, halflingChoice, orcChoice, ixianChoice];
@@ -112,6 +112,7 @@ export var LanguageData;
         [JobSubsetEnum.Cartographer]: LanguageData.NoneSelection,
         [JobSubsetEnum.Inspector]: LanguageData.NoneSelection,
         [JobSubsetEnum.Interpreter]: new SelectionPackage([], [new ChoiceGroup(3, [LanguageData.SpeakDwerg, LanguageData.SpeakInfernal, LanguageData.SpeakIstya, LanguageData.SpeakKaduz, LanguageData.SpeakNulya, LanguageData.SpeakSindar, LanguageData.SpeakSulya, LanguageData.SpeakSylvan], [])], []),
+        [JobSubsetEnum.RatCatcher]: LanguageData.NoneSelection,
         [JobSubsetEnum.Smith]: LanguageData.NoneSelection,
         [JobSubsetEnum.Carpenter]: LanguageData.NoneSelection,
         [JobSubsetEnum.MoneyChanger]: LanguageData.NoneSelection,
@@ -163,7 +164,7 @@ export var LanguageData;
         [JobSubsetEnum.Fisher]: LanguageData.NoneSelection,
         [JobSubsetEnum.Wagoner]: LanguageData.NoneSelection,
     };
-    const readWriteOverrides = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Adept/Arcane Apprentice", "Warlock", "Arcane Researcher", "Charlatan"];
+    const readWriteOverrides = [JobSubsetEnum.Scrivener, JobSubsetEnum.Advocate, JobSubsetEnum.Cartographer, JobSubsetEnum.Inspector, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Adept/Arcane Apprentice", "Warlock", "Arcane Researcher", "Charlatan"];
     LanguageData.readWriteOverride = new Set();
     readWriteOverrides.forEach((override) => LanguageData.readWriteOverride.add(override));
     LanguageData.raceLanguageOverride = new Map();
@@ -189,7 +190,8 @@ export var LanguageData;
         Elf: languageSelectionFactory(elfChoices),
         Orc: languageSelectionFactory(orcChoice),
         Halfling: languageSelectionFactory(halflingChoice),
-        Ixian: languageSelectionFactory(ixianChoice),
+        // Ixians natively speak Infernal (fixed) plus one of Nulya/Istya.
+        Ixian: new SelectionPackage([LanguageData.SpeakInfernal], [ixianChoice], [], LanguageData.raceLanguageOverride),
         Human: languageSelectionFactory(humanChoices)
     };
 })(LanguageData || (LanguageData = {}));

@@ -6,7 +6,7 @@
         </span>
     </div>
     <div class="nav-elements small-gap" data-bind="foreach: NavigationOptions">
-        <button class="wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName"></button>
+        <button class="wizard-button" data-bind="click: (data)=>$parent.UpdatePage(data), text: FriendlyName, css: { 'primary-button': FriendlyName === 'Create' }"></button>
     </div>
 </nav>
 

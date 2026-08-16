@@ -67,6 +67,8 @@
     justify-content: space-around;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
 .small-gap {
@@ -82,6 +84,13 @@
 .large-gap {
     gap: 4em !important;
     display: flex;
+    flex-wrap: wrap;
+
+    // A fixed 4em gap plus no-wrap pushes step-header content (Step # / label /
+    // edit-dice buttons) off narrow screens; shrink the gap and allow wrapping.
+    @media (width <= @max-size-before-element-reaction) {
+        gap: 1em !important;
+    }
 }
 
 .align-left {
@@ -101,6 +110,13 @@
 .vertically-stacked-widget-children {
     width: 85%;
     .section-padding();
+}
+
+// Selection-package cards (equipment, spells, ...) hold a <select> that sizes
+// itself to its widest option, which is wider than a phone. Scroll the card
+// sideways rather than letting the picker spill out past its edge.
+.choice-container {
+    overflow-x: auto;
 }
 
 // --- Grid helpers ---
@@ -190,10 +206,19 @@
     opacity: 1;
     outline: none;
     min-width: 12em;
-    display: inline;
+    max-width: 100%;
+    display: inline-block;
+    text-align: center;
     white-space: nowrap;
     -webkit-appearance: none;
     appearance: none;
+
+    // On narrow screens a fixed 12em floor forces overflow; let the button
+    // shrink to its content instead so button rows stay inside their container.
+    @media (width <= @max-size-before-element-reaction) {
+        min-width: 0;
+        white-space: normal;
+    }
 }
 
 .wizard-button:focus, .wizard-button:hover {
@@ -203,6 +228,35 @@
     border: none;
     color: @background-color;
     background: @hover-color;
+}
+
+// Disabled state (e.g. Export before every step is configured).
+.wizard-button:disabled, .wizard-button[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.wizard-button:disabled:hover, .wizard-button[disabled]:hover,
+.wizard-button:disabled:focus, .wizard-button[disabled]:focus {
+    transform: none;
+    border: 1px solid @pop-color;
+    color: @pop-color;
+    background: @background-color;
+}
+
+// Primary call-to-action: filled accent (e.g. the "Create" nav entry).
+.primary-button {
+    background: @pop-color;
+    color: @background-color;
+    border: 1px solid @pop-color;
+    font-weight: bold;
+    padding: @standard-padding @section-padding;
+}
+
+.primary-button:focus, .primary-button:hover {
+    background: @hover-color;
+    color: @background-color;
+    border: 1px solid @hover-color;
 }
 
 .button-icon:focus, .button-icon:hover {
@@ -219,8 +273,115 @@
     animation: shake 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
+// Wraps a step's Select/Roll row. That row sits in a card only ~50vw wide, so the
+// viewport media queries never fire before it runs out of room: zoom shrinks the
+// card long before it shrinks the viewport past @max-size-before-element-reaction.
+// Query the row's own width instead. The container lives here rather than on
+// .reveal-section because contain: layout (implied by container-type) would make
+// that section the containing block for the position: fixed edit modal it also
+// holds, and the section is overflow-y: hidden.
+.step-actions {
+    // .centered sizes its children shrink-to-fit, and inline-size containment on a
+    // shrink-to-fit box resolves its width with contents ignored - collapsing it to
+    // zero. Stretching gives it the card's width to measure against.
+    align-self: stretch;
+    container-type: inline-size;
+    container-name: step-actions;
+}
+
 .section-buttons {
+    align-items: center;
+    justify-content: center;
+
     @media (width <= @max-size-before-element-reaction) { flex-direction: column; }
+}
+
+// Kept alongside the viewport media query above, which stays as the fallback for
+// browsers without container query support.
+@container step-actions (width <= @step-actions-stack-width) {
+    .section-buttons {
+        flex-direction: column;
+        gap: 1em !important; // must beat .large-gap's `gap: 4em !important`
+
+        .wizard-button {
+            min-width: 0; // the 12em floor is what pushes the row past the card
+            white-space: normal;
+            max-width: 100%;
+        }
+    }
+}
+
+// The configured half of a step: the Step N / name / edit + dice header above the
+// step's preview content.
+.step-preview {
+    // Same reason as .step-actions: .centered sizes its children shrink-to-fit,
+    // and inline-size containment on a shrink-to-fit box collapses it to zero.
+    // Stretching also stops the wrapper sizing to its widest child, which is what
+    // let overflowing content drift out from under the centred header.
+    align-self: stretch;
+    container-type: inline-size;
+    container-name: step-preview;
+}
+
+// Reproduces what `large-gap flex-row centered` used to compute to, minus the two
+// competing !important declarations that made flex-direction hard to override.
+.step-preview-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4em;
+
+    // .step-preview is a plain block, so without this the preview content sits
+    // flush against the edit/dice buttons.
+    margin-bottom: @margin-size;
+}
+
+// Deliberately NOT a flex/inline-block container: its children must stay
+// block-level so they inherit the card's definite width. A shrink-to-fit parent
+// would size them by intrinsic sizing, and `repeat(auto-fit, ...)` in an
+// indefinite inline size collapses to a single repetition - which would pin the
+// grid below to one column at every width. text-align handles the inline cases
+// (SimpleContentView is a bare span); the layout classes centre themselves.
+.step-preview-content {
+    text-align: center;
+
+    // Each of these is used by exactly one preview view, but scope them here so the
+    // global utilities keep their meaning elsewhere (.container-list is also used
+    // by NamePickerView, outside any preview).
+
+    // Abilities: six bubbles that could never wrap, so they spilled out of the card.
+    .make-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 1em; // no column gap - bubbles carry 2em padding already
+    }
+
+    // Entanglements wraps its list in a bare .large-gap flex row.
+    .large-gap {
+        justify-content: center;
+    }
+
+    // Edges/Skills/Equipment/Trinkets/Spells/Drawbacks/Corruption. auto-fit keeps
+    // roughly today's five columns on a full-width card and collapses toward one as
+    // the card narrows; fixed `auto` columns packed left and left dead space.
+    .five-wide-grid {
+        grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+        justify-items: center;
+    }
+
+    // Languages and Entanglements already wrap, but packed left.
+    .container-list {
+        justify-content: center;
+    }
+}
+
+@container step-preview (width <= @step-preview-stack-width) {
+    .step-preview-header {
+        flex-direction: column;
+        gap: 1em;
+    }
 }
 
 @keyframes button-fadein {
@@ -304,9 +465,17 @@
         justify-content: space-between;
         display: flex;
         flex-wrap: wrap;
+        gap: 1em;
     }
 
-    .hoverable-container { flex-grow: 1; }
+    // Entanglements packs 7 org-type pickers here; give each a readable floor
+    // and let them wrap into a grid instead of cramming onto one row.
+    .hoverable-container {
+        flex-grow: 1;
+        flex-shrink: 1;
+        // flex-basis: 14em;
+        // min-width: 12em;
+    }
 
     .vertical-columns {
         display: flex;

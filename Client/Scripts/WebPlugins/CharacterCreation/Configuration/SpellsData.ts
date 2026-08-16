@@ -738,6 +738,7 @@ export namespace SpellData {
         [JobSubsetEnum.Cartographer]: none,
         [JobSubsetEnum.Inspector]: none,
         [JobSubsetEnum.Interpreter]: none,
+        [JobSubsetEnum.RatCatcher]: none,
         [JobSubsetEnum.Smith]: none,
         [JobSubsetEnum.Carpenter]: none,
         [JobSubsetEnum.MoneyChanger]: none,

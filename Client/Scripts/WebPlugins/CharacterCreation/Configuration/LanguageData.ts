@@ -100,7 +100,7 @@ export namespace LanguageData {
     const dwarfChoices = new ChoiceGroup(1, [SpeakDwerg, SpeakKaduz], [])
     const elfChoices = new ChoiceGroup(1, [SpeakSindar, SpeakSylvan], [])
     const humanChoices = new ChoiceGroup(2, [SpeakNulya, SpeakSulya, SpeakIstya, SpeakMuluk, SpeakSylvan], [])
-    const halflingChoice = new ChoiceGroup(1, [SpeakNulya, SpeakSulya, SpeakSylvan], [])
+    const halflingChoice = new ChoiceGroup(1, [SpeakKaduz, SpeakNulya, SpeakSulya, SpeakSylvan], [])
     const orcChoice = new ChoiceGroup(1, [SpeakSulya, SpeakIstya], [])
     const ixianChoice = new ChoiceGroup(1, [SpeakNulya, SpeakIstya], [])
 
@@ -163,6 +163,7 @@ export namespace LanguageData {
         [JobSubsetEnum.Cartographer]: NoneSelection,
         [JobSubsetEnum.Inspector]: NoneSelection,
         [JobSubsetEnum.Interpreter]: new SelectionPackage([], [new ChoiceGroup(3, [SpeakDwerg, SpeakInfernal, SpeakIstya, SpeakKaduz, SpeakNulya, SpeakSindar, SpeakSulya, SpeakSylvan], [])], []),
+        [JobSubsetEnum.RatCatcher]: NoneSelection,
         [JobSubsetEnum.Smith]: NoneSelection,
         [JobSubsetEnum.Carpenter]: NoneSelection,
         [JobSubsetEnum.MoneyChanger]: NoneSelection,
@@ -215,7 +216,7 @@ export namespace LanguageData {
         [JobSubsetEnum.Wagoner]:            NoneSelection,
     };
 
-    const readWriteOverrides : (JobType | JobSubset)[] = [JobSubsetEnum.Scrivener, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Adept/Arcane Apprentice", "Warlock", "Arcane Researcher", "Charlatan"]
+    const readWriteOverrides : (JobType | JobSubset)[] = [JobSubsetEnum.Scrivener, JobSubsetEnum.Advocate, JobSubsetEnum.Cartographer, JobSubsetEnum.Inspector, JobSubsetEnum.Interpreter, "Scholar", "Accursed", "Acolyte", "Inquisitor", "Pariah", "Alchemy Apprentice", "Adept/Arcane Apprentice", "Warlock", "Arcane Researcher", "Charlatan"]
 
     export const readWriteOverride = new Set<JobType | JobSubset>()
     readWriteOverrides.forEach((override)=>readWriteOverride.add(override)) 
@@ -254,7 +255,8 @@ export namespace LanguageData {
         Elf: languageSelectionFactory(elfChoices),
         Orc: languageSelectionFactory(orcChoice),
         Halfling: languageSelectionFactory(halflingChoice),
-        Ixian: languageSelectionFactory(ixianChoice),
+        // Ixians natively speak Infernal (fixed) plus one of Nulya/Istya.
+        Ixian: new SelectionPackage<LearnedLanguage>([SpeakInfernal], [ixianChoice], [], raceLanguageOverride),
         Human: languageSelectionFactory(humanChoices)
     };
 }

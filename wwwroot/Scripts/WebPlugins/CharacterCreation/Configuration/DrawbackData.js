@@ -98,6 +98,7 @@ export var DrawbackData;
         [JobSubsetEnum.Cartographer]: DrawbackData.none,
         [JobSubsetEnum.Inspector]: DrawbackData.none,
         [JobSubsetEnum.Interpreter]: DrawbackData.none,
+        [JobSubsetEnum.RatCatcher]: DrawbackData.none,
         [JobSubsetEnum.Smith]: DrawbackData.none,
         [JobSubsetEnum.Carpenter]: DrawbackData.none,
         [JobSubsetEnum.MoneyChanger]: DrawbackData.none,

@@ -20,6 +20,7 @@ export class CharacterSheetModel {
     sectionUnlocked;
     sectionVisible;
     sectionStepNumberReferences;
+    allConfigured;
     constructor(GlobalCharacterData) {
         this.GlobalCharacterData = GlobalCharacterData;
         this.modalPickers = [
@@ -51,6 +52,10 @@ export class CharacterSheetModel {
             this.sectionUnlocked.push(sectionUnlockedCompute);
         });
         this.sectionVisible = this.modalPickers.map((picker, index) => ko.computed(() => this.sectionUnlocked[index]() && picker.hasContent()));
+        // Every content-bearing step is configured — gates the Export button.
+        // Keyed off live IsConfigured so changing Ancestry/Background (which
+        // resets dependent steps) correctly re-disables export.
+        this.allConfigured = ko.computed(() => this.modalPickers.every((picker) => !picker.hasContent() || picker.Model.previewViewModel.Model.IsConfigured()));
         this.sectionStepNumberReferences = this.modalPickers.map(x => extractStepObservable(x));
         this.sectionStepNumberReferences.forEach((stepNumberObservable, currentSectionIndex) => {
             stepNumberObservable(currentSectionIndex + 1);

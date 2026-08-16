@@ -41,6 +41,7 @@ export var JobSubsetEnum;
     JobSubsetEnum["Cartographer"] = "Cartographer";
     JobSubsetEnum["Inspector"] = "Inspector/Reeve";
     JobSubsetEnum["Interpreter"] = "Interpreter";
+    JobSubsetEnum["RatCatcher"] = "Rat Catcher";
     JobSubsetEnum["Smith"] = "Smith";
     JobSubsetEnum["Carpenter"] = "Carpenter";
     JobSubsetEnum["Cooper"] = "Cooper";

@@ -1,3 +1,9 @@
 bin/**
 obj/**
 node_modules/**
+
+# Local deployment settings (see .env.example)
+.env
+
+# Deployment bundle produced by Tools/Windows/Publish-To-Server.ps1
+/Heartbreaker/

@@ -1,6 +1,7 @@
 // @vitest-environment happy-dom
 import { describe, expect, test } from 'vitest';
 import { ItemData } from '../Configuration/ItemData.js';
+import { ConfiguredCharacterData } from '../Configuration/CharacterWizardData.js';
 import { ItemTypes } from '../Contracts/TaggedData.js';
 import { JobSubsetEnum } from '../Contracts/StringTypes.js';
 const allPackages = [
@@ -83,6 +84,33 @@ describe('trinket packages', () => {
     test('every trinket can be sold, so each carries a Value', () => {
         for (const trinket of ItemData.basicTrinketSection)
             expect(trinket.Value, `${trinket.Name} has no sale Value`).toBeGreaterThan(0);
+    });
+    // A character draws its trinkets once ("determined at startup"); Ancestry and Background only
+    // reshape how that draw is offered. Guards the regression where every getTrinketPackage call
+    // re-shuffled, so saving a Background handed the player a different set of trinkets.
+    test('one draw yields one offer, however it is reshaped', () => {
+        const drawn = ItemData.drawTrinkets();
+        const offer = (race, job, subset) => ItemData.getTrinketPackage(race, job, subset, drawn)
+            .ChoiceSelection.flatMap(group => group.options).map(option => option.Name).sort();
+        const human = offer('Human', 'Dowser', JobSubsetEnum.None);
+        expect(offer('Human', 'Dowser', JobSubsetEnum.None)).toEqual(human);
+        // A narrower ancestry trims the menu; it must not introduce an undrawn trinket.
+        expect(human).toEqual(expect.arrayContaining(offer('Dwarf', 'Dowser', JobSubsetEnum.None)));
+    });
+    test("changing Job does not re-draw the character's trinkets", () => {
+        const data = new ConfiguredCharacterData();
+        const offeredTrinkets = () => data.TrinketSelections().ChoiceSelection()
+            .flatMap(choice => choice.Payload.options)
+            .map(option => option.Name)
+            // The sell-for-coin options are named after their value, so two trinkets worth the
+            // same are indistinguishable here. Compare the trinkets themselves.
+            .filter(name => !name.includes('Coins from selling trinket'))
+            .sort();
+        const before = offeredTrinkets();
+        expect(before.length).toBeGreaterThan(0);
+        data.Job('Dowser');
+        // Dowser widens the offer (the Lodestone joins it) but must not replace the draw.
+        expect(offeredTrinkets()).toEqual(expect.arrayContaining(before));
     });
 });
 describe('selection packages share item singletons', () => {

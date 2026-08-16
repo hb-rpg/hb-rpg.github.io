@@ -108,6 +108,7 @@ export var CorruptionData;
         [JobSubsetEnum.Cartographer]: CorruptionData_1.none,
         [JobSubsetEnum.Inspector]: CorruptionData_1.none,
         [JobSubsetEnum.Interpreter]: CorruptionData_1.none,
+        [JobSubsetEnum.RatCatcher]: CorruptionData_1.none,
         [JobSubsetEnum.Smith]: CorruptionData_1.none,
         [JobSubsetEnum.Carpenter]: CorruptionData_1.none,
         [JobSubsetEnum.MoneyChanger]: CorruptionData_1.none,

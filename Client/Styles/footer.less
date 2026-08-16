@@ -34,12 +34,29 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        
+
         img {
             // aspect-ratio: 1;
             max-height: 10em;
         }
         flex-grow: 2;
+    }
+
+    // The logo, the tagline and the contact links all compete for the same row,
+    // so on narrow screens the tagline gets crushed to a couple of characters
+    // per line. Stack every level of the footer instead.
+    @media (width <= @max-size-before-footer-stacks) {
+        padding: 0 @margin-size 2em @margin-size;
+
+        #sections {
+            flex-direction: column;
+            align-items: center;
+            gap: @margin-size;
+        }
+
+        #design-section {
+            flex-direction: column;
+        }
     }
 
     h2 {

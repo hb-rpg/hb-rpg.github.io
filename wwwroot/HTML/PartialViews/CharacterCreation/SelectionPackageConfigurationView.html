@@ -13,7 +13,7 @@
     <div class="vertically-stacked-widgets">
         <!-- ko foreach: fixedChoices -->
 
-        <div class="hoverable-container vertically-stacked-widget-children">
+        <div class="hoverable-container vertically-stacked-widget-children choice-container">
             <h4 class="title" data-bind="text: $data.Title"></h4>
             <div data-bind="text: $data.Description"></div>
         </div>
@@ -22,15 +22,17 @@
 
         <!-- ko foreach: selectableChoices -->
 
-        <div class="hoverable-container vertically-stacked-widget-children">
+        <div class="hoverable-container vertically-stacked-widget-children choice-container">
             <div data-bind="PartialView: $data"></div>
         </div>
         <!-- /ko -->
     </div>
 
+    <!-- ko if: selectableChoices().length > 0 -->
     <div class="centered">
         <button class="wizard-button pop-content" data-bind="click: ChoiceRandomly">Choose Randomly</button>
     </div>
+    <!-- /ko -->
 
 <!-- /ko -->
 

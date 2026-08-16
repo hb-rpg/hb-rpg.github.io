@@ -32,6 +32,13 @@ export var SkillsData;
     SkillsData.FarmerSkill = new Skill("Farmer", "You know when to plant and about a crop’s value & quality and you are also fairly good at predicting the inland weather.");
     SkillsData.FisherSkill = new Skill("Fisher", "You can sail small vessels, are skilled with knots and fishing gear, and can predict coastal weather.");
     SkillsData.HerderSkill = new Skill("Herder", "You know about care and valuation of herd animals and treatment of common herd animal ailments.");
+    // Livelihood / income skills (from each Background's "Other" income note)
+    SkillsData.ArtisanIncomeSkill = new Skill("Earn a Living (Artisan)", "If your reputation is not widely known, you can take up a job with a new master in a large city and make 40 coins per week.");
+    SkillsData.BureaucratIncomeSkill = new Skill("Earn a Living (Bureaucrat)", "If your reputation is not widely known, you can take up a job with a new master in a large city and make 40 coins per week.");
+    SkillsData.CrafterIncomeSkill = new Skill("Earn a Living (Crafter)", "In another town, you can take up a job with a master and make 40 coins per week.");
+    SkillsData.MercantilerIncomeSkill = new Skill("Earn a Living (Mercantiler)", "In another town, you can take up a job with a master and make 40 coins per week.");
+    SkillsData.LaborerIncomeSkill = new Skill("Earn a Living (Laborer)", "In another town, you can take up a job with a master and make 30 coins per week.");
+    SkillsData.ThrallIncomeSkill = new Skill("Earn a Living (Thrall)", "If your background remains unknown, you can make 20 coins per week with your skill; otherwise an unscrupulous master may give only meals and shelter.");
     // Class & Lore Skills
     SkillsData.OratorySkill = new Skill("Oratory", "With a brief presentation, you can try to change the target’s attitude toward an idea or person.");
     SkillsData.ProbabilitiesSkill = new Skill("Probabilities", "You can usually determine the likelihood of an occurrence mathematically.");
@@ -110,13 +117,15 @@ export var SkillsData;
         ], []),
         "Pariah": new SelectionPackage([SkillsData.TheologySkill], [], []),
         "Touched/Anchorite": noSkillSelection,
-        // Skilled Laborers (Placeholders for the parent JobType)
-        "Apprentice Artisan": noSkillSelection,
-        "Apprentice Bureaucrat": noSkillSelection,
-        "Free Laborer": noSkillSelection,
-        "Apprentice Crafter": noSkillSelection,
-        "Apprentice Mercantiler": noSkillSelection,
-        "Escaped Peasant/Thrall": noSkillSelection,
+        // Skilled Laborers — parent JobType provides the shared livelihood/income skill.
+        // Apprentice Mercantiler also grants Money Changer to every subset (rulebook: all
+        // mercantilers "record and evaluate accounting"; only some also keep Fence).
+        "Apprentice Artisan": new SelectionPackage([SkillsData.ArtisanIncomeSkill], [], []),
+        "Apprentice Bureaucrat": new SelectionPackage([SkillsData.BureaucratIncomeSkill], [], []),
+        "Free Laborer": new SelectionPackage([SkillsData.LaborerIncomeSkill], [], []),
+        "Apprentice Crafter": new SelectionPackage([SkillsData.CrafterIncomeSkill], [], []),
+        "Apprentice Mercantiler": new SelectionPackage([SkillsData.MoneyChangerSkill, SkillsData.MercantilerIncomeSkill], [], []),
+        "Escaped Peasant/Thrall": new SelectionPackage([SkillsData.ThrallIncomeSkill], [], []),
         // --- Martial Jobs ---
         "Armiger": new SelectionPackage([SkillsData.HeraldrySkill], [], []),
         "Barbarian": new SelectionPackage([], [
@@ -164,9 +173,11 @@ export var SkillsData;
         [JobSubsetEnum.Cartographer]: new SelectionPackage([SkillsData.CartographerSkill], [], []),
         [JobSubsetEnum.Inspector]: noSkillSelection,
         [JobSubsetEnum.Interpreter]: new SelectionPackage([SkillsData.PolyglotSkill], [], []),
+        [JobSubsetEnum.RatCatcher]: new SelectionPackage([SkillsData.SnaresSkill], [], []),
         [JobSubsetEnum.Smith]: new SelectionPackage([SkillsData.SmithSkill], [], []),
         [JobSubsetEnum.Carpenter]: new SelectionPackage([SkillsData.CarpenterSkill], [], []),
-        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([SkillsData.MoneyChangerSkill, SkillsData.FenceSkill], [], []),
+        // Money Changer is granted by the JobType base; the default subset only adds Fence.
+        [JobSubsetEnum.MoneyChanger]: new SelectionPackage([SkillsData.FenceSkill], [], []),
         [JobSubsetEnum.Ambler]: new SelectionPackage([SkillsData.EquitationSkill], [], []),
         [JobSubsetEnum.Chef]: new SelectionPackage([SkillsData.ChefSkill], [], []),
         // Escaped Thrall Subsets
@@ -222,7 +233,7 @@ export var SkillsData;
         [JobSubsetEnum.Mason]: new SelectionPackage([SkillsData.MasonSkill], [], []),
         [JobSubsetEnum.Swordsmith]: new SelectionPackage([SkillsData.SwordsmithSkill], [], []),
         // Additional Mercantiler subsets
-        [JobSubsetEnum.Assayer]: new SelectionPackage([SkillsData.MoneyChangerSkill, SkillsData.AssayerSkill], [], []),
+        [JobSubsetEnum.Assayer]: new SelectionPackage([SkillsData.AssayerSkill], [], []),
         [JobSubsetEnum.Herbalist]: new SelectionPackage([SkillsData.HerbalistSkill], [], []),
         [JobSubsetEnum.Peddler]: new SelectionPackage([SkillsData.PeddlerSkill, SkillsData.FenceSkill], [], []),
         // Additional Laborer subsets

@@ -26,6 +26,7 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
     sectionUnlocked   : Computed<boolean>[]
     sectionVisible    : Computed<boolean>[]
     sectionStepNumberReferences : Observable<number>[]
+    allConfigured     : Computed<boolean>
 
     constructor (public GlobalCharacterData: ConfiguredCharacterData) {
         this.modalPickers = [
@@ -72,13 +73,22 @@ export class CharacterSheetModel implements ICharacterWizardViewModel<void, void
             const sectionUnlockedCompute = ko.computed(() =>
                 this.sectionUnlocked[index - 1]() &&
                 (!prev.hasContent() || prev.Model.previewViewModel.Model.IsConfigured())
-            ) 
+            )
 
             this.sectionUnlocked.push(sectionUnlockedCompute);
         });
 
         this.sectionVisible = this.modalPickers.map((picker, index) =>
             ko.computed(() => this.sectionUnlocked[index]() && picker.hasContent())
+        );
+
+        // Every content-bearing step is configured — gates the Export button.
+        // Keyed off live IsConfigured so changing Ancestry/Background (which
+        // resets dependent steps) correctly re-disables export.
+        this.allConfigured = ko.computed(() =>
+            this.modalPickers.every((picker) =>
+                !picker.hasContent() || picker.Model.previewViewModel.Model.IsConfigured()
+            )
         );
 
         this.sectionStepNumberReferences = this.modalPickers.map(x=>extractStepObservable(x))

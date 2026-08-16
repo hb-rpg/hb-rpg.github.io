@@ -168,6 +168,11 @@ img {
   font-size: 5em;
   font-weight: bold;
 }
+@media (width <= 950px) {
+  .product-text {
+    display: none;
+  }
+}
 .product-text .emphasize {
   margin-left: 2em;
   background-color: #CC7722;
@@ -244,10 +249,18 @@ img {
   opacity: 1;
   outline: none;
   min-width: 12em;
-  display: inline;
+  max-width: 100%;
+  display: inline-block;
+  text-align: center;
   white-space: nowrap;
   -webkit-appearance: none;
   appearance: none;
+}
+@media (width <= 500px) {
+  .wizard-button {
+    min-width: 0;
+    white-space: normal;
+  }
 }
 .wizard-button:focus,
 .wizard-button:hover {
@@ -257,6 +270,20 @@ img {
   border: none;
   color: white;
   background: #a05e1b;
+}
+.wizard-button:disabled,
+.wizard-button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.wizard-button:disabled:hover,
+.wizard-button[disabled]:hover,
+.wizard-button:disabled:focus,
+.wizard-button[disabled]:focus {
+  transform: none;
+  border: 1px solid #CC7722;
+  color: #CC7722;
+  background: white;
 }
 .boolean-button {
   -webkit-appearance: none;
@@ -357,6 +384,8 @@ img {
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 .small-gap {
   display: flex;
@@ -369,6 +398,12 @@ img {
 .large-gap {
   gap: 4em !important;
   display: flex;
+  flex-wrap: wrap;
+}
+@media (width <= 500px) {
+  .large-gap {
+    gap: 1em !important;
+  }
 }
 .align-left {
   margin-left: auto;
@@ -383,6 +418,9 @@ img {
 .vertically-stacked-widget-children {
   width: 85%;
   padding: 1.5em !important;
+}
+.choice-container {
+  overflow-x: auto;
 }
 .grid-4 {
   display: inline-grid;
@@ -453,10 +491,18 @@ img {
   opacity: 1;
   outline: none;
   min-width: 12em;
-  display: inline;
+  max-width: 100%;
+  display: inline-block;
+  text-align: center;
   white-space: nowrap;
   -webkit-appearance: none;
   appearance: none;
+}
+@media (width <= 500px) {
+  .wizard-button {
+    min-width: 0;
+    white-space: normal;
+  }
 }
 .wizard-button:focus,
 .wizard-button:hover {
@@ -466,6 +512,33 @@ img {
   border: none;
   color: white;
   background: #a05e1b;
+}
+.wizard-button:disabled,
+.wizard-button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.wizard-button:disabled:hover,
+.wizard-button[disabled]:hover,
+.wizard-button:disabled:focus,
+.wizard-button[disabled]:focus {
+  transform: none;
+  border: 1px solid #CC7722;
+  color: #CC7722;
+  background: white;
+}
+.primary-button {
+  background: #CC7722;
+  color: white;
+  border: 1px solid #CC7722;
+  font-weight: bold;
+  padding: 0.5em 1.5em;
+}
+.primary-button:focus,
+.primary-button:hover {
+  background: #a05e1b;
+  color: white;
+  border: 1px solid #a05e1b;
 }
 .button-icon:focus,
 .button-icon:hover {
@@ -479,9 +552,67 @@ img {
 .random-button:hover {
   animation: shake 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.step-actions {
+  align-self: stretch;
+  container-type: inline-size;
+  container-name: step-actions;
+}
+.section-buttons {
+  align-items: center;
+  justify-content: center;
+}
 @media (width <= 500px) {
   .section-buttons {
     flex-direction: column;
+  }
+}
+@container step-actions (width <= 480px) {
+  .section-buttons {
+    flex-direction: column;
+    gap: 1em !important;
+  }
+  .section-buttons .wizard-button {
+    min-width: 0;
+    white-space: normal;
+    max-width: 100%;
+  }
+}
+.step-preview {
+  align-self: stretch;
+  container-type: inline-size;
+  container-name: step-preview;
+}
+.step-preview-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+  margin-bottom: 1em;
+}
+.step-preview-content {
+  text-align: center;
+}
+.step-preview-content .make-row {
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 1em;
+}
+.step-preview-content .large-gap {
+  justify-content: center;
+}
+.step-preview-content .five-wide-grid {
+  grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+  justify-items: center;
+}
+.step-preview-content .container-list {
+  justify-content: center;
+}
+@container step-preview (width <= 340px) {
+  .step-preview-header {
+    flex-direction: column;
+    gap: 1em;
   }
 }
 @keyframes button-fadein {
@@ -559,9 +690,11 @@ img {
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  gap: 1em;
 }
 .AbilityView .hoverable-container {
   flex-grow: 1;
+  flex-shrink: 1;
 }
 .AbilityView .vertical-columns {
   display: flex;
@@ -814,6 +947,19 @@ img {
 }
 #footer #design-section img {
   max-height: 10em;
+}
+@media (width <= 800px) {
+  #footer {
+    padding: 0 1em 2em 1em;
+  }
+  #footer #sections {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+  #footer #design-section {
+    flex-direction: column;
+  }
 }
 #footer h2 {
   font-size: 18px;

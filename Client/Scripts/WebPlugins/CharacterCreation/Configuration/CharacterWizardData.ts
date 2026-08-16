@@ -65,6 +65,10 @@ export class ConfiguredCharacterData {
 
     Gender : Observable<string | undefined>
 
+    // Drawn once per character and never re-drawn. Race/Job/JobSubset changes rebuild the trinket
+    // package, but they reshape this same draw rather than rolling a new one.
+    private readonly drawnTrinkets = ItemData.drawTrinkets()
+
     constructor () {
         this.Race = ko.observable(Races[0])
         this.Profession = ko.observable("Skilled & Laborer" as ProfessionType)
@@ -77,18 +81,15 @@ export class ConfiguredCharacterData {
 
         this.ItemSelections = TaggedObservableSelectionPackageFactory(ItemData.UniversalStartingGear, standardSourceTag)
 
-        this.TrinketSelections = TaggedObservableSelectionPackageFactory(
-            ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset()),
+        const buildTrinketPackage = () => TaggedObservableSelectionPackageFactory(
+            ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset(), this.drawnTrinkets),
             standardSourceTag
         )
 
+        this.TrinketSelections = buildTrinketPackage()
+
         const swapTrinketPackage = () => {
-            this.TrinketSelections(
-                TaggedObservableSelectionPackageFactory(
-                    ItemData.getTrinketPackage(this.Race(), this.Job(), this.JobSubset()),
-                    standardSourceTag
-                )()
-            )
+            this.TrinketSelections(buildTrinketPackage()())
         }
         this.Race.subscribe(swapTrinketPackage)
         this.Job.subscribe(swapTrinketPackage)

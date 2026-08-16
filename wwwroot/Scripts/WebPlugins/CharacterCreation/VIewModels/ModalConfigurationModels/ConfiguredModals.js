@@ -2,8 +2,6 @@ import { ko } from "../../../../Framework/Knockout/ko.js";
 import { CareerData } from "../../Configuration/CareerData.js";
 import { Races } from "../../Configuration/DispositionData.js";
 import { ReligionData } from "../../Configuration/DietiesData.js";
-import { AbilitiesToArray } from "../../Contracts/Abilities.js";
-import { DiceRoll } from "../../Utility/DiceRoll.js";
 import { EntanglementOrganizationTypesEnum } from "../../Contracts/StringTypes.js";
 import { createGenericPicker, updateRaceItemsData, updateRaceEdgesData, flattenAndCombineSelectionPackage, updateNameData, updateRaceSkillsData, updateRaceLanguageData, updateBackgroundItems, updateBackgroundEdges, updateBackgroundLanguages, updateBackgroundSkills, updateEntanglementBackgroundAffects, updateBackgroundSpells, updateEdgesSpells, updateBackgroundCorruption, updateBackgroundDrawbacks, updateRaceDrawbackData } from "../../Utility/UpdateUtility.js";
 import { PreviewModel, StringPreviewModel, StringListPreviewModel, LanguagePreviewModel, AbilityPreviewModel, EntanglementPreviewContainerModel } from "../Preview/PreviewModel.js";
@@ -37,11 +35,13 @@ export var ConfiguredModals;
 (function (ConfiguredModals) {
     ConfiguredModals.createAncestryPickerModel = (characterData) => {
         const ancestryModel = new AncestryViewModel(characterData, Races);
+        const isConfigured = ko.observable(false);
         return createGenericPicker({
             name: "Ancestry",
             characterData,
             pickerModel: ancestryModel,
             dataSelector: (data) => data.Race,
+            isConfigured,
             onUpdate: (data) => {
                 ancestryModel.Evaluate();
                 updateRaceItemsData(data, "Ancestry");
@@ -51,7 +51,7 @@ export var ConfiguredModals;
                 updateRaceDrawbackData(data, "Ancestry");
                 updateNameData(data);
             },
-            createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new StringPreviewModel(characterData.Race), ko.observable(false), modal.Randomize.bind(modal), modal.EditItem.bind(modal))
+            createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new StringPreviewModel(characterData.Race), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal))
         });
     };
     ConfiguredModals.createEdgesPickerModel = (characterData) => {
@@ -68,6 +68,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: edgesModel,
             dataSelector: (data) => data.EdgeSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Edges", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => {
                 edgesModel.Evaluate();
@@ -89,6 +90,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: skillsModel,
             dataSelector: (data) => data.SkillsSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Skills", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { skillsModel.Evaluate(); },
             hasContent: ko.computed(() => {
@@ -103,12 +105,14 @@ export var ConfiguredModals;
             displayLabel(background ? background.Name : "Unknown");
         });
         const backgroundModel = new JobBackgroundPickerModel(characterData, CareerData.possibleProfessions, CareerData.ProfessionToJobData, CareerData.JobToStoryData, CareerData.JobSubsetData);
+        const isConfigured = ko.observable(false);
         return createGenericPicker({
             name: "Background",
             characterData,
             pickerModel: backgroundModel,
             dataSelector: (data) => data.JobBackground,
-            createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new StringPreviewModel(displayLabel), ko.observable(false), modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
+            isConfigured,
+            createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new StringPreviewModel(displayLabel), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: (data) => {
                 backgroundModel.Evaluate();
                 updateBackgroundItems(data);
@@ -124,22 +128,13 @@ export var ConfiguredModals;
     };
     ConfiguredModals.createAbilityScoresPickerModel = (characterData) => {
         const abilitiesModel = new AbilityScoresModel(characterData);
-        // Derives configured state from actual data so that cancelling the modal (which
-        // doesn't write to characterData.Abilities) correctly reverts the preview to
-        // "not configured". Uses a writable computed so that the eager IsConfigured(true)
-        // call in PreviewModel.Edit() is silently ignored.
-        const isConfigured = ko.computed({
-            read: () => {
-                const arr = AbilitiesToArray(characterData.Abilities());
-                return arr.length === DiceRoll.ABILITY_SCORE_AMOUNT && arr.every(v => v > 0);
-            },
-            write: (_value) => { }
-        });
+        const isConfigured = ko.observable(false);
         return createGenericPicker({
             name: "Ability Scores",
             characterData,
             pickerModel: abilitiesModel,
             dataSelector: (data) => data.Abilities,
+            isConfigured,
             createPreview: (modal) => new PreviewModel(modal.FriendlyName, ko.observable(-1), new AbilityPreviewModel(characterData.Abilities), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { abilitiesModel.Evaluate(); }
         });
@@ -158,6 +153,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: equipmentModel,
             dataSelector: (data) => data.ItemSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Equipment", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { equipmentModel.Evaluate(); }
         });
@@ -184,6 +180,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: entanglementModel,
             dataSelector: (data) => data.OrganizationEntanglements,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Entanglement", ko.observable(-1), new EntanglementPreviewContainerModel(entanglementPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { entanglementModel.Evaluate(); }
         });
@@ -202,6 +199,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: trinketModel,
             dataSelector: (data) => data.TrinketSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Trinket", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { trinketModel.Evaluate(); }
         });
@@ -223,6 +221,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: languageModel,
             dataSelector: (data) => data.LanguageSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Language", ko.observable(-1), new LanguagePreviewModel(languagePreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { languageModel.Evaluate(); }
         });
@@ -241,6 +240,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: spellsModel,
             dataSelector: (data) => data.SpellSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Spells", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { spellsModel.Evaluate(); },
             hasContent: ko.computed(() => {
@@ -263,6 +263,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: drawbacksModel,
             dataSelector: (data) => data.DrawbacksSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Drawbacks", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { drawbacksModel.Evaluate(); },
             hasContent: ko.computed(() => {
@@ -285,6 +286,7 @@ export var ConfiguredModals;
             characterData,
             pickerModel: corruptionModel,
             dataSelector: (data) => data.CorruptionSelection,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Corruption", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { corruptionModel.Evaluate(); },
             hasContent: ko.computed(() => {
@@ -312,20 +314,21 @@ export var ConfiguredModals;
             characterData,
             pickerModel: religionModel,
             dataSelector: (data) => data.ReligionSelections,
+            isConfigured,
             createPreview: (modal) => new PreviewModel("Religion", ko.observable(-1), new StringListPreviewModel(stringPreview), isConfigured, modal.Randomize.bind(modal), modal.EditItem.bind(modal)),
             onUpdate: () => { religionModel.Evaluate(); }
         });
     };
     ConfiguredModals.createNamePickerModel = (characterData) => {
         let tempPreview = Utility.BundleViewAndModel({});
-        const namePickerModel = new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData);
-        const modal = Utility.BundleViewAndModel(new CreateObjectModel("Identity", namePickerModel, (data) => data.Name, tempPreview, () => { namePickerModel.Evaluate(); }, characterData));
-        const NameObservable = ko.observable(NameUtility.determineIdentityPreview(characterData));
-        characterData.Name.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)));
-        characterData.Gender.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)));
         const isConfigured = ko.observable(false);
         characterData.JobBackground.subscribe(() => isConfigured(false));
         characterData.Race.subscribe(() => isConfigured(false));
+        const namePickerModel = new NamePickerModel(characterData, TaggedCharacterNameData, TaggedCharacterBynameData, TaggedCharacterEpithetsData);
+        const modal = Utility.BundleViewAndModel(new CreateObjectModel("Identity", namePickerModel, (data) => data.Name, tempPreview, () => { namePickerModel.Evaluate(); }, characterData, isConfigured));
+        const NameObservable = ko.observable(NameUtility.determineIdentityPreview(characterData));
+        characterData.Name.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)));
+        characterData.Gender.subscribe(() => NameObservable(NameUtility.determineIdentityPreview(characterData)));
         tempPreview.Model = new PreviewModel(modal.Model.FriendlyName, ko.observable(-1), new StringPreviewModel(NameObservable), isConfigured, modal.Model.Randomize.bind(modal.Model), modal.Model.EditItem.bind(modal.Model));
         tempPreview.ViewUrl = tempPreview.Model.ViewUrl;
         return Object.assign(modal, { hasContent: ko.computed(() => true) });
